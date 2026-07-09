@@ -1,0 +1,7 @@
+{
+  "online_enabled": true,
+  "api_endpoint": "https://zh.moegirl.org.cn/api.php",
+  "site_base_url": "https://zh.moegirl.org.cn/",
+  "user_agent": "LW-WIKI-Bot/0.1 (contact: your-email@example.com)",
+  "summary_max_length": 300
+}
