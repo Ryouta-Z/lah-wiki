@@ -1,0 +1,812 @@
+{
+  "akashi": {
+    "bundle": "akashi_assets_all_697f8347a284deb39ea47ff379fc4d65.bundle",
+    "cn": "赤司",
+    "jp": "アカシ"
+  },
+  "akashisummerdive2108": {
+    "bundle": "akashisummerdive2108_assets_all_9602f2989c4ff92a8afdf38d45769301.bundle",
+    "cn": "水弹的赤司",
+    "jp": "水弾のアカシ"
+  },
+  "alchiba": {
+    "bundle": "alchiba_assets_all_bd4e73d8360a9454a6eba58000a6a8ad.bundle",
+    "cn": "阿尔奇巴",
+    "jp": "アルキバ"
+  },
+  "alchibachasers2105": {
+    "bundle": "alchibachasers2105_assets_all_0f867c215c4450c2732db999f0254ebe.bundle",
+    "cn": "追迹的阿尔奇巴",
+    "jp": "追跡のアルキバ"
+  },
+  "alend": {
+    "bundle": "alend_assets_all_7b8d2cd184853b2a0dabcf693d37c037.bundle",
+    "cn": "阿连德",
+    "jp": "アレンド"
+  },
+  "alphecca": {
+    "bundle": "alphecca_assets_all_3c9a9fc488039ce79fa9c97420bd403b.bundle",
+    "cn": "阿尔菲卡",
+    "jp": "アルフェッカ"
+  },
+  "alpheccathermae2307": {
+    "bundle": "alpheccathermae2307_assets_all_c847d7a7e0efc95ec779cbf06ac8d512.bundle",
+    "cn": "烈水的阿尔菲卡",
+    "jp": "烈水のアルフェッカ"
+  },
+  "andrew": {
+    "bundle": "andrew_assets_all_f9389ed2db37b698c55c19dd8ff7c643.bundle",
+    "cn": "安德鲁",
+    "jp": "アンドリュー"
+  },
+  "andrewfrontier2604": {
+    "bundle": "andrewfrontier2604_assets_all_b85959dd79c2d0f119c983a0c95038f6.bundle",
+    "cn": "共生的安德鲁",
+    "jp": "共生のアンドリュー"
+  },
+  "andrewlostancients2208": {
+    "bundle": "andrewlostancients2208_assets_all_3ccdda48836c002261deee21bc064d79.bundle",
+    "cn": "激流的安德鲁",
+    "jp": "激流のアンドリュー"
+  },
+  "anna": {
+    "bundle": "anna_assets_all_c670c7d10a75a486761c20406f18160e.bundle",
+    "cn": "杏奈",
+    "jp": "アンナ"
+  },
+  "antares": {
+    "bundle": "antares_assets_all_19c1f9865a288873d01a6b0147b4f094.bundle",
+    "cn": "安塔瑞斯",
+    "jp": "アンタレス"
+  },
+  "astar": {
+    "bundle": "astar_assets_all_4774c16121c6198398bac9098a9750c5.bundle",
+    "cn": "阿斯塔",
+    "jp": "アスター"
+  },
+  "astarLastResort2506": {
+    "bundle": "astarlastresort2506_assets_all_b97deb33963d3586ea10bc5358c15f37.bundle",
+    "cn": "斩浪的阿斯塔",
+    "jp": "斬浪のアスター"
+  },
+  "astosis": {
+    "bundle": "astosis_assets_all_8433e9f057ecc3fdc34545b8a2c41486.bundle",
+    "cn": "阿斯特西斯",
+    "jp": "アストシス"
+  },
+  "astosiswonderland2602": {
+    "bundle": "astosiswonderland2602_assets_all_c1bcf09918454c466b60a5644561e520.bundle",
+    "cn": "导刻的阿斯特西斯",
+    "jp": "導刻のアストシス"
+  },
+  "barrel": {
+    "bundle": "barrel_assets_all_5df1437d565f7ba54c16c383a6836289.bundle",
+    "cn": "巴雷尔",
+    "jp": "バレル"
+  },
+  "barrelherofesta2109": {
+    "bundle": "barrelherofesta2109_assets_all_74b0fdee15f183998e92dab0f040bd82.bundle",
+    "cn": "清涼的巴雷尔",
+    "jp": "清涼のバレル"
+  },
+  "barrelstella2510": {
+    "bundle": "barrelstella2510_assets_all_1325080a8d64daf0ce9daa0764086de1.bundle",
+    "cn": "贯志的巴雷尔",
+    "jp": "貫志のバレル"
+  },
+  "barte": {
+    "bundle": "barte_assets_all_a5e77124fb974d181eebb25eb231bfe0.bundle",
+    "cn": "芭特",
+    "jp": "バルテ"
+  },
+  "borealis": {
+    "bundle": "borealis_assets_all_c7f0767bcab8b8855593fb4520228d0f.bundle",
+    "cn": "北莱亚里斯",
+    "jp": "ボレアリス"
+  },
+  "bygul": {
+    "bundle": "bygul_assets_all_17b85d14a92b57b3e17ce667a56472aa.bundle",
+    "cn": "贝格尔",
+    "jp": "ベイグル"
+  },
+  "canes": {
+    "bundle": "canes_assets_all_633606b9e5e98a7673309cdab436c012.bundle",
+    "cn": "卡奈斯",
+    "jp": "カネス"
+  },
+  "cerastium": {
+    "bundle": "cerastium_assets_all_e3d616d3d2f74f0b181c3d377be2b9d5.bundle",
+    "cn": "塞拉丝蒂姆",
+    "jp": "セラスティウム"
+  },
+  "conche": {
+    "bundle": "conche_assets_all_e8ca56b3aeaea18cac27a58dbe5420a0.bundle",
+    "cn": "康切",
+    "jp": "コンチェ"
+  },
+  "crowne": {
+    "bundle": "crowne_assets_all_6d5fbbe35e6c3d0894c9ab1d93cdc8ef.bundle",
+    "cn": "克洛涅",
+    "jp": "クローネ"
+  },
+  "danzo": {
+    "bundle": "danzo_assets_all_a1e8f73a26aea8d80829f9ec7c64a621.bundle",
+    "cn": "段藏",
+    "jp": "ダンゾー"
+  },
+  "danzotravelers2504": {
+    "bundle": "danzotravelers2504_assets_all_518c5614ecb719fc4c08eab9b28c74e7.bundle",
+    "cn": "吟游的段藏",
+    "jp": "吟遊のダンゾー"
+  },
+  "denebora": {
+    "bundle": "denebora_assets_all_c95bd475c3eb0c4b04fa1ad201a80ae4.bundle",
+    "cn": "戴内波拉",
+    "jp": "デネボラ"
+  },
+  "digram": {
+    "bundle": "digram_assets_all_3e0f68049eb90d08bc4e311d1e641b9b.bundle",
+    "cn": "迪格拉姆",
+    "jp": "ディグラム"
+  },
+  "esperdica": {
+    "bundle": "esperdica_assets_all_56fc05ca4dfefae735298efa6123c36e.bundle",
+    "cn": "埃斯佩迪卡",
+    "jp": "エスペディカ"
+  },
+  "exio": {
+    "bundle": "exio_assets_all_bea7da06d8e3bda66905b96b0350c985.bundle",
+    "cn": "埃克西奥",
+    "jp": "エクシオ"
+  },
+  "exioanti": {
+    "bundle": null,
+    "cn": "埃克西奥",
+    "jp": "エクシオ"
+  },
+  "farden": {
+    "bundle": "farden_assets_all_cd988d4808915ef0ff456a70851c607c.bundle",
+    "cn": "法登",
+    "jp": "ファーデン"
+  },
+  "flamier": {
+    "bundle": "flamier_assets_all_6d8fe890da450c4b9c562c4d4789d7b2.bundle",
+    "cn": "芙拉蜜",
+    "jp": "フラミー"
+  },
+  "flamierghostwoods2204": {
+    "bundle": "flamierghostwoods2204_assets_all_593ee7bef6d05ab6a2b25102b0871f9a.bundle",
+    "cn": "花舞的芙拉蜜",
+    "jp": "花踊のフラミー"
+  },
+  "furlong": {
+    "bundle": "furlong_assets_all_5097d7e3a312bb518f37761e405bad75.bundle",
+    "cn": "哈隆",
+    "jp": "ハロン"
+  },
+  "furlongcircus2202": {
+    "bundle": "furlongcircus2202_assets_all_ae07bff2245b57c1d25a37db70401882.bundle",
+    "cn": "跳跃的哈隆",
+    "jp": "跳躍のハロン"
+  },
+  "gaisei": {
+    "bundle": "gaisei_assets_all_6e9c51a4fa99ec3b3e21af5f9f6824c8.bundle",
+    "cn": "盖世",
+    "jp": "ガイセイ"
+  },
+  "gaius": {
+    "bundle": "gaius_assets_all_ef2bb38bebf6a38392ae1f07d33a05b5.bundle",
+    "cn": "盖乌斯",
+    "jp": "ガイウス"
+  },
+  "gaiusseekers2502": {
+    "bundle": "gaiusseekers2502_assets_all_1c2139bbdbb3ecbf34553b7fea3ab491.bundle",
+    "cn": "威风的盖乌斯",
+    "jp": "威風のガイウス"
+  },
+  "galvo": {
+    "bundle": null,
+    "cn": "迦尔沃",
+    "jp": "ガルボ"
+  },
+  "gammei": {
+    "bundle": "gammei_assets_all_577f0d9c296066430e8abb6920754f19.bundle",
+    "cn": "雁铭",
+    "jp": "ガンメイ"
+  },
+  "gammeirakusai2304": {
+    "bundle": "gammeirakusai2304_assets_all_76fa141283504004b6f88ff6ea4d909e.bundle",
+    "cn": "祭华的雁铭",
+    "jp": "祭華のガンメイ"
+  },
+  "ganran": {
+    "bundle": "ganran_assets_all_aedcaa58bdcfcc39ca9aa8b46dbd4366.bundle",
+    "cn": "严峦",
+    "jp": "ガンラン"
+  },
+  "genji": {
+    "bundle": "genji_assets_all_da6b82969d3b4b0f1ba88466044575f1.bundle",
+    "cn": "源次",
+    "jp": "ゲンジ"
+  },
+  "giansar": {
+    "bundle": "giansar_assets_all_13f2a01b16795cebf0dac9ac75a5b544.bundle",
+    "cn": "基昂萨尔",
+    "jp": "ギアンサル"
+  },
+  "giansarlightyears2412": {
+    "bundle": "giansarlightyears2412_assets_all_a820ce55630f409264b1517ea8118fa5.bundle",
+    "cn": "惊天的基昂萨尔",
+    "jp": "驚天のギアンサル"
+  },
+  "gnomon": {
+    "bundle": "gnomon_assets_all_d40b6d7b0e11df3996f942f721d1b24f.bundle",
+    "cn": "诺蒙",
+    "jp": "ノーモン"
+  },
+  "gomeisa": {
+    "bundle": "gomeisa_assets_all_8f50ece06e0b53c9ba6e3b6f112045cd.bundle",
+    "cn": "格米萨",
+    "jp": "ゴメイサ"
+  },
+  "gomeisaxmasmelt2212": {
+    "bundle": "gomeisaxmasmelt2212_assets_all_a41adb33513c543e6fbc108be40af72a.bundle",
+    "cn": "圣冰的格米萨",
+    "jp": "聖氷のゴメイサ"
+  },
+  "goro": {
+    "bundle": "goro_assets_all_c124e342b8beb3306a62a49b272890f4.bundle",
+    "cn": "五郎",
+    "jp": "ゴロウ"
+  },
+  "goroghostwoods2204": {
+    "bundle": "goroghostwoods2204_assets_all_2466e8d62f08f0457d26f7a2ea8c1a87.bundle",
+    "cn": "奏乐的五郎",
+    "jp": "奏楽のゴロウ"
+  },
+  "grigory": {
+    "bundle": "grigory_assets_all_b89d711a703627b18f415fe1f25c108a.bundle",
+    "cn": "格里高利",
+    "jp": "グリゴリー"
+  },
+  "hisaki": {
+    "bundle": "hisaki_assets_all_03444ad7248d724587ba93841032eb7d.bundle",
+    "cn": "日先",
+    "jp": "ヒサキ"
+  },
+  "hisakilostancients2208": {
+    "bundle": "hisakilostancients2208_assets_all_36eaacf6fbe4b6fd182f17aa02250846.bundle",
+    "cn": "潜游的日先",
+    "jp": "潜遊のヒサキ"
+  },
+  "hitomi": {
+    "bundle": "hitomi_assets_all_13f514f283064ac6da2705dce30327b5.bundle",
+    "cn": "瞳",
+    "jp": "ヒトミ"
+  },
+  "hitomisummerdive2108": {
+    "bundle": "hitomisummerdive2108_assets_all_01e54552ab4af5065bc0e3243bd97e5d.bundle",
+    "cn": "波音的瞳",
+    "jp": "波音のヒトミ"
+  },
+  "houley": {
+    "bundle": "houley_assets_all_bfaec2f4de2080d36b1e4fb42e3c357c.bundle",
+    "cn": "弗雷",
+    "jp": "フーレイ"
+  },
+  "huckle": {
+    "bundle": "huckle_assets_all_fbad58f86fe5532f091dbfb9ebe14ed6.bundle",
+    "cn": "哈库尔",
+    "jp": "ハックル"
+  },
+  "hucklefrontier2604": {
+    "bundle": "hucklefrontier2604_assets_all_f567330a5e1344502749f1316a21aac8.bundle",
+    "cn": "雄飞的哈库尔",
+    "jp": "雄飛のハックル"
+  },
+  "hucklehero": {
+    "bundle": null,
+    "cn": "哈库尔",
+    "jp": "ハックル"
+  },
+  "hydoor": {
+    "bundle": "hydoor_assets_all_330ede3582c97c44a396fa13875ea349.bundle",
+    "cn": "海德尔",
+    "jp": "ハイドール"
+  },
+  "hydoortravelers2504": {
+    "bundle": "hydoortravelers2504_assets_all_077e1f3a1da59954e6368db01f97d0cb.bundle",
+    "cn": "突贯的海德尔",
+    "jp": "突貫のハイドール"
+  },
+  "isaribi": {
+    "bundle": "isaribi_assets_all_7408bb1f577877ce80ecf9f9adc62dc1.bundle",
+    "cn": "渔火",
+    "jp": "イサリビ"
+  },
+  "isaribibattleship2411": {
+    "bundle": "isaribibattleship2411_assets_all_feebfeeca531e555943d1aacda554ef2.bundle",
+    "cn": "灯标的渔火",
+    "jp": "灯標のイサリビ"
+  },
+  "joezen": {
+    "bundle": "joezen_assets_all_9f4fe5833fe71c5dc9d821e70fcf23e1.bundle",
+    "cn": "上善",
+    "jp": "ジョウゼン"
+  },
+  "kalaski": {
+    "bundle": "kalaski_assets_all_bf730a8c1916a0efc567420fbd1b113a.bundle",
+    "cn": "卡拉斯基",
+    "jp": "カラスキ"
+  },
+  "kalaskisummernight2407": {
+    "bundle": "kalaskisummernight2407_assets_all_d7a4f78c1ae144b7bb91916d04c725f3.bundle",
+    "cn": "聚光的卡拉斯基",
+    "jp": "脚光のカラスキ"
+  },
+  "kiloc": {
+    "bundle": "kiloc_assets_all_8fa7e256da3939314b754a52d113c20a.bundle",
+    "cn": "喜六",
+    "jp": "キロク"
+  },
+  "kirsch": {
+    "bundle": "kirsch_assets_all_e42506f4f99c29f9b9280299442d3ae4.bundle",
+    "cn": "姬露修",
+    "jp": "キルシュ"
+  },
+  "kouki": {
+    "bundle": "kouki_assets_all_fbe6d2f833f9333fe066488cc86ee24b.bundle",
+    "cn": "光辉 & 天狼星",
+    "jp": "コウキ＆シリウス"
+  },
+  "koukirakusai2304": {
+    "bundle": "koukirakusai2304_assets_all_6148997f3783c45364eca9b57c7d7b78.bundle",
+    "cn": "闪刃的光辉",
+    "jp": "閃刃のコウキ"
+  },
+  "kyoichi": {
+    "bundle": "kyoichi_assets_all_d3286549c0a6131ce1bbcf1ecd7331c5.bundle",
+    "cn": "教一",
+    "jp": "キョウイチ"
+  },
+  "kyoichivalentine2102": {
+    "bundle": "kyoichivalentine2102_assets_all_3ca50205b882e0e8d3bb5ff20ec44bb2.bundle",
+    "cn": "潜行的教一",
+    "jp": "潜行のキョウイチ"
+  },
+  "lilac": {
+    "bundle": "lilac_assets_all_a730cf2cc3b107ccd00b0596fd9cd0b3.bundle",
+    "cn": "莱拉克",
+    "jp": "ライラック"
+  },
+  "lilacsummernight2407": {
+    "bundle": "lilacsummernight2407_assets_all_64b8878cd528bd6a2ae48174f5a7d2b1.bundle",
+    "cn": "惠雨的莱拉克",
+    "jp": "恵雨のライラック"
+  },
+  "loren": {
+    "bundle": "loren_assets_all_240d1964e94145bf858155da72e4d110.bundle",
+    "cn": "洛伦",
+    "jp": "ロレン"
+  },
+  "lorenmain24": {
+    "bundle": "lorenmain24_assets_all_b7b765f9fc6a63f748968f6898f1239f.bundle",
+    "cn": "哨戒的洛伦",
+    "jp": "哨戒のロレン"
+  },
+  "maculata": {
+    "bundle": "maculata_assets_all_c49fa43e10de1a6f62a11a850fe08c79.bundle",
+    "cn": "玛格拉塔",
+    "jp": "マクラータ"
+  },
+  "marfik": {
+    "bundle": "marfik_assets_all_592c06e2d2c65a4c90443b2f57d03bb9.bundle",
+    "cn": "马尔菲克",
+    "jp": "マルフィク"
+  },
+  "marfikruins2104": {
+    "bundle": "marfikruins2104_assets_all_4d07648c54d7860e5cd614f45f4ba9ea.bundle",
+    "cn": "探险的马尔菲克",
+    "jp": "探険のマルフィク"
+  },
+  "melide": {
+    "bundle": "melide_assets_all_fc0fc628dcfa84b9223089467702dfd6.bundle",
+    "cn": "梅莉德",
+    "jp": "メリデ"
+  },
+  "mokdai": {
+    "bundle": "mokdai_assets_all_2494735eb7b76bddf157dd9abffacb86.bundle",
+    "cn": "木代",
+    "jp": "モクダイ"
+  },
+  "mokdaimeteorite2112": {
+    "bundle": "mokdaimeteorite2112_assets_all_b0c84e1097f616cf49121822b3e83997.bundle",
+    "cn": "圣夜的木代",
+    "jp": "聖夜のモクダイ"
+  },
+  "monomasa": {
+    "bundle": "monomasa_assets_all_9f985dd3626dd11e256794ea1ecde800.bundle",
+    "cn": "物正",
+    "jp": "モノマサ"
+  },
+  "monomasaworkout2312": {
+    "bundle": "monomasaworkout2312_assets_all_93cb85cf409d4c692ff8996f3738bbe2.bundle",
+    "cn": "星影的物正",
+    "jp": "星影のモノマサ"
+  },
+  "moriyasu": {
+    "bundle": "moriyasu_assets_all_d772723bca50a1f706d4665b06c5eeaa.bundle",
+    "cn": "杜康",
+    "jp": "モリヤス"
+  },
+  "narihito": {
+    "bundle": "narihito_assets_all_a03f7f425c037ff58564a90eb476854c.bundle",
+    "cn": "诚仁",
+    "jp": "ナリヒト"
+  },
+  "narihitometeorite2112": {
+    "bundle": "narihitometeorite2112_assets_all_256fd8483410488dbc37584d6b0e74c5.bundle",
+    "cn": "彗星的诚仁",
+    "jp": "彗星のナリヒト"
+  },
+  "nessen": {
+    "bundle": "nessen_assets_all_3a41d7c08ee5f341f93fb99755a6a470.bundle",
+    "cn": "热泉",
+    "jp": "ネッセン"
+  },
+  "nessenmasquerade2310": {
+    "bundle": "nessenmasquerade2310_assets_all_54ee9e0247cc07f128bd47658425dc28.bundle",
+    "cn": "月影的热泉",
+    "jp": "月影のネッセン"
+  },
+  "norbrand": {
+    "bundle": "norbrand_assets_all_20d85f52ff15543c3cc29d008304978a.bundle",
+    "cn": "诺尔布兰德",
+    "jp": "ノルブランド"
+  },
+  "obsidius": {
+    "bundle": "obsidius_assets_all_dbaff20cd11082a06c4b94d50b8f631a.bundle",
+    "cn": "奥布西迪乌斯",
+    "jp": "オブシディウス"
+  },
+  "obsidiuscrisis2404": {
+    "bundle": "obsidiuscrisis2404_assets_all_ce12a7e5a5bc2d5e53ae94f172cb603f.bundle",
+    "cn": "猛击的奥布西迪乌斯",
+    "jp": "猛撃のオブシディウス"
+  },
+  "okitaka": {
+    "bundle": "okitaka_assets_all_91219b3e879e1c6df04dde152fb0bd3c.bundle",
+    "cn": "兴考",
+    "jp": "オキタカ"
+  },
+  "okitakacrisis2404": {
+    "bundle": "okitakacrisis2404_assets_all_d579da8443a8c06e7c97bc7f10cc120e.bundle",
+    "cn": "急袭的兴考",
+    "jp": "急襲のオキタカ"
+  },
+  "orbiter": {
+    "bundle": "orbiter_assets_all_7537b93a1def1d4b4bb97b3a0a6950df.bundle",
+    "cn": "奥比塔",
+    "jp": "オービター"
+  },
+  "phein": {
+    "bundle": "phein_assets_all_a6fd6553082d0e215e13de3d1b0f7f67.bundle",
+    "cn": "菲因",
+    "jp": "フェイン"
+  },
+  "polaris": {
+    "bundle": "polaris_assets_all_d8da6db521616a524383c3f4d830ceb8.bundle",
+    "cn": "北极星假面",
+    "jp": "ポラリスマスク"
+  },
+  "polarisworkout2312": {
+    "bundle": "polarisworkout2312_assets_all_be28b7c1f0c8c2b2a4b892425bce2ef5.bundle",
+    "cn": "解放的北极星假面",
+    "jp": "解放のポラリスマスク"
+  },
+  "procy": {
+    "bundle": "procy_assets_all_9a26dd90b87dc4e1adfc5508255ad6fe.bundle",
+    "cn": "普洛基",
+    "jp": "プロキー"
+  },
+  "procychocolatefes2303": {
+    "bundle": "procychocolatefes2303_assets_all_a573c2253a11a497e44829c0fc94b3bc.bundle",
+    "cn": "拳闪的普洛基",
+    "jp": "拳閃のプロキー"
+  },
+  "pubraseer": {
+    "bundle": "pubraseer_assets_all_6a841aeb9f56416c4a7974676fb6ec76.bundle",
+    "cn": "帕布拉西亚",
+    "jp": "パブラシア"
+  },
+  "pubraseerrisingmoon2410": {
+    "bundle": "pubraseerrisingmoon2410_assets_all_2389867f20d9bd728f82e7ad9575cdab.bundle",
+    "cn": "星章的帕布拉西亚",
+    "jp": "星章のパブラシア"
+  },
+  "raizi": {
+    "bundle": "raizi_assets_all_35ab9a5a64db1ab567ecbafc43927d7f.bundle",
+    "cn": "列兹",
+    "jp": "レイジ"
+  },
+  "rakta": {
+    "bundle": "rakta_assets_all_9e070cdb59a4cfa2bdbef18857d5b2c1.bundle",
+    "cn": "拉克塔",
+    "jp": "ラクタ"
+  },
+  "raktathermae2307": {
+    "bundle": "raktathermae2307_assets_all_e3d2d75fb2f866ee906b92ba676b808f.bundle",
+    "cn": "慈惠之拉克塔",
+    "jp": "慈恵のラクタ"
+  },
+  "rastaban": {
+    "bundle": "rastaban_assets_all_3a9b9597dd1d7f1428ec280176d8050d.bundle",
+    "cn": "拉斯塔班",
+    "jp": "ラスタバン"
+  },
+  "reticul": {
+    "bundle": "reticul_assets_all_dbd1ab9eff1690ca3c019cfc82c7a5c8.bundle",
+    "cn": "雷蒂库尔",
+    "jp": "レティクル"
+  },
+  "rexer": {
+    "bundle": "rexer_assets_all_781911a5c73726a286f646aaad08c7c1.bundle",
+    "cn": "雷格泽",
+    "jp": "リグザ"
+  },
+  "rexervolcano2402": {
+    "bundle": "rexervolcano2402_assets_all_a84fbab16d6715cd509733c32789fcae.bundle",
+    "cn": "炎誓的雷格泽",
+    "jp": "炎誓のリグザ"
+  },
+  "roiker": {
+    "bundle": "roiker_assets_all_ee36c5c95ebac98c209923e1bda2dd86.bundle",
+    "cn": "罗伊克",
+    "jp": "ロイカー"
+  },
+  "rokusei": {
+    "bundle": null,
+    "cn": "六星",
+    "jp": "ロクセイ"
+  },
+  "roudin": {
+    "bundle": "roudin_assets_all_77be6473c46f944dadff08cd8fd29829.bundle",
+    "cn": "罗迪",
+    "jp": "ルーディン"
+  },
+  "roudinstella2510": {
+    "bundle": "roudinstella2510_assets_all_87c9d6b80ac5bfe7e62f259025bb2a9c.bundle",
+    "cn": "绚烂的罗迪",
+    "jp": "絢爛のルーディン"
+  },
+  "rutilix": {
+    "bundle": "rutilix_assets_all_ac144b8c7cb6fdd4540c1f8d76f9bb09.bundle",
+    "cn": "鲁提力克斯",
+    "jp": "ルティリクス"
+  },
+  "ryekie": {
+    "bundle": "ryekie_assets_all_a08ddc11b44b8b75c8e67cf5021d720d.bundle",
+    "cn": "雷奇",
+    "jp": "ライキ"
+  },
+  "ryekiexmas2012": {
+    "bundle": "ryekiexmas2012_assets_all_5bf6876833407a8f9b7056802c83af25.bundle",
+    "cn": "醉虎的雷奇",
+    "jp": "酔虎のライキ"
+  },
+  "ryusei": {
+    "bundle": "ryusei_assets_all_67749e0d11ff376f19f980b19d361612.bundle",
+    "cn": "龙成",
+    "jp": "リューセイ"
+  },
+  "sadayoshi": {
+    "bundle": "sadayoshi_assets_all_da02efef64e08e0ab3edceee3c594dc7.bundle",
+    "cn": "贞义",
+    "jp": "サダヨシ"
+  },
+  "sadayoshisurvival2309": {
+    "bundle": "sadayoshisurvival2309_assets_all_7d0b6b3aeed168b2340ba957750f57d4.bundle",
+    "cn": "奔放的贞义",
+    "jp": "奔放のサダヨシ"
+  },
+  "santetsu": {
+    "bundle": "santetsu_assets_all_ea43a717c1cb8c05759b94432eaf746d.bundle",
+    "cn": "算哲",
+    "jp": "サンテツ"
+  },
+  "santetsuwonderland2602": {
+    "bundle": "santetsuwonderland2602_assets_all_5d6c7340f854a86fd751b276a1e8710e.bundle",
+    "cn": "幻想的算哲",
+    "jp": "幻想のサンテツ"
+  },
+  "saotome": {
+    "bundle": "saotome_assets_all_d61d3dcbc2bcc9985856d24d4667e462.bundle",
+    "cn": "早乙女",
+    "jp": "サオトメ"
+  },
+  "seiichiro": {
+    "bundle": "seiichiro_assets_all_9a255a9a57fdc52b62b4317596fb7331.bundle",
+    "cn": "政一郎",
+    "jp": "セイイチロウ"
+  },
+  "sensettia": {
+    "bundle": "sensettia_assets_all_e2faa486283e7bfe181a7a543e7903e6.bundle",
+    "cn": "圣榭缇亚",
+    "jp": "センセチア"
+  },
+  "senthak": {
+    "bundle": "senthak_assets_all_cf09e70fa0340f3a7cd06e42b412a19a.bundle",
+    "cn": "森塔克",
+    "jp": "センサク"
+  },
+  "shaft": {
+    "bundle": "shaft_assets_all_ce07cc920538158e680a1c6698098c5b.bundle",
+    "cn": "车夫特",
+    "jp": "シャフト"
+  },
+  "shaftvirtualfesta2210": {
+    "bundle": "shaftvirtualfesta2210_assets_all_0c147d7e49bd5c6150637920bf86bee3.bundle",
+    "cn": "疾走的车夫特",
+    "jp": "疾走のシャフト"
+  },
+  "shidemasu": {
+    "bundle": "shidemasu_assets_all_1227a00172bf128668c590fae0d299e2.bundle",
+    "cn": "灵社",
+    "jp": "シデマス"
+  },
+  "shoen": {
+    "bundle": "shoen_assets_all_f42a8607e35ec60d1f6b1397ec2718d2.bundle",
+    "cn": "松烟",
+    "jp": "ショウエン"
+  },
+  "shoenvalentine2102": {
+    "bundle": "shoenvalentine2102_assets_all_bfde6a16d24f979971b4c217675ad9c5.bundle",
+    "cn": "隐密的松烟",
+    "jp": "隠密のショウエン"
+  },
+  "sterio": {
+    "bundle": "sterio_assets_all_11ed1e6f092576989addded1e66a90d3.bundle",
+    "cn": "斯忒里翁",
+    "jp": "ステリオ"
+  },
+  "steriowhiteout2512": {
+    "bundle": "steriowhiteout2512_assets_all_1cdf68fc4fceb770b789e00890d3aa6d.bundle",
+    "cn": "疾风的斯忒里翁",
+    "jp": "疾風のステリオ"
+  },
+  "subaru": {
+    "bundle": "subaru_assets_all_0bd22ebbfe04dabb813cb7592bdcdf06.bundle",
+    "cn": "昴",
+    "jp": "スバル"
+  },
+  "suhail": {
+    "bundle": "suhail_assets_all_08c9fd931808b1268fb1ab136052b8b0.bundle",
+    "cn": "苏海尔",
+    "jp": "スハイル"
+  },
+  "suhailchocolatefes2303": {
+    "bundle": "suhailchocolatefes2303_assets_all_066d7b6008a68855d34d92b5f4b848c4.bundle",
+    "cn": "觉声的苏海尔",
+    "jp": "覚声のスハイル"
+  },
+  "sui": {
+    "bundle": "sui_assets_all_df45a6820406343e546c581c4c75b40e.bundle",
+    "cn": "水",
+    "jp": "スイ"
+  },
+  "tabit": {
+    "bundle": "tabit_assets_all_a5b700c6975b1c1ab3dafbc1d3007f84.bundle",
+    "cn": "塔比特",
+    "jp": "タビト"
+  },
+  "taika": {
+    "bundle": "taika_assets_all_e3a15f4bd20c15cade319d89b0872a99.bundle",
+    "cn": "泰卡",
+    "jp": "タイカ"
+  },
+  "theoreol": {
+    "bundle": "theoreol_assets_all_118d0d5edeab0fd2e0ce99071f47e91a.bundle",
+    "cn": "德奥里欧勒",
+    "jp": "テオレオール"
+  },
+  "toshu": {
+    "bundle": "toshu_assets_all_0555122f26da453d2ccc2a376e096b42.bundle",
+    "cn": "刀舟",
+    "jp": "トウシュウ"
+  },
+  "toshuvirtualfesta2210": {
+    "bundle": "toshuvirtualfesta2210_assets_all_62312ca27eaf938fc2d3c039559dd5bf.bundle",
+    "cn": "浪迹的刀舟",
+    "jp": "流離のトウシュウ"
+  },
+  "tsuneaki": {
+    "bundle": "tsuneaki_assets_all_746b7427b0cdf152afc914d5d331bb5b.bundle",
+    "cn": "恒昭",
+    "jp": "ツネアキ"
+  },
+  "turbak": {
+    "bundle": "turbak_assets_all_72e81f73a8cdd2f8a9ce28029463d971.bundle",
+    "cn": "塔巴克",
+    "jp": "ターバック"
+  },
+  "valoray": {
+    "bundle": "valoray_assets_all_239b05adf84f55c5ffcbe6d703ef0c13.bundle",
+    "cn": "巴洛雷",
+    "jp": "バロレイ"
+  },
+  "victom": {
+    "bundle": "victom_assets_all_5b5a3534a559191806702cd8a0734d19.bundle",
+    "cn": "维克托姆",
+    "jp": "ヴィクトム"
+  },
+  "victomherofesta2109": {
+    "bundle": "victomherofesta2109_assets_all_44211893cb67eb654d2f45738d2a3210.bundle",
+    "cn": "豪爽的维克托姆",
+    "jp": "豪爽のヴィクトム"
+  },
+  "viscunam": {
+    "bundle": "viscunam_assets_all_9ffc1d7bc1ae4b87d892d139669698f4.bundle",
+    "cn": "维斯卡纳姆",
+    "jp": "ヴィスカナム"
+  },
+  "vlaham": {
+    "bundle": "vlaham_assets_all_3f0610764c9cab71290d66f65e74c3a6.bundle",
+    "cn": "伯拉罕",
+    "jp": "ヴラハム"
+  },
+  "vulpecula": {
+    "bundle": "vulpecula_assets_all_4cf629cb87354b60d12ab9e6c4c68a84.bundle",
+    "cn": "乌尔佩克拉",
+    "jp": "ウルペクラ"
+  },
+  "vulpeculaMirrors2511": {
+    "bundle": "vulpeculamirrors2511_assets_all_81069376624d01993aabdef532504eb6.bundle",
+    "cn": "黎明的乌尔佩克拉",
+    "jp": "黎明のウルペクラ"
+  },
+  "xenoakashi": {
+    "bundle": "xenoakashi_assets_all_df1ffdd2da4d1b5db944604037ebc5c7.bundle",
+    "cn": "赤司",
+    "jp": "アカシ"
+  },
+  "yasuhiko": {
+    "bundle": "yasuhiko_assets_all_ed9122a0cfd3a83e81a30f421a12c2c5.bundle",
+    "cn": "誉彦",
+    "jp": "ヤスヒコ"
+  },
+  "yohack": {
+    "bundle": "yohack_assets_all_8f2a93297fbe60f21b2aec6054c541d5.bundle",
+    "cn": "洋白",
+    "jp": "ヨハック"
+  },
+  "yohackLastResort2506": {
+    "bundle": "yohacklastresort2506_assets_all_5366c2399d363116c6c493b7d0804fbc.bundle",
+    "cn": "白波的洋白",
+    "jp": "白波のヨハック"
+  },
+  "yoshiori": {
+    "bundle": "yoshiori_assets_all_4165ab6f865e7a942ab71f5caeea87be.bundle",
+    "cn": "吉织",
+    "jp": "ヨシオリ"
+  },
+  "yoshioritrain2305": {
+    "bundle": "yoshioritrain2305_assets_all_63c6e74d438fd85979387400d3b34d52.bundle",
+    "cn": "挺身的吉织",
+    "jp": "挺身のヨシオリ"
+  },
+  "yotaro": {
+    "bundle": "yotaro_assets_all_fc30f987365780c7f2fef9ec363f0084.bundle",
+    "cn": "阳太郎",
+    "jp": "ヨウタロウ"
+  },
+  "yuhang": {
+    "bundle": "yuhang_assets_all_ab27de2c00761dcdc70073c84e0a3143.bundle",
+    "cn": "宇航",
+    "jp": "ユーハン"
+  },
+  "zaniah": {
+    "bundle": "zaniah_assets_all_60c4a683552de0e9278a6a5e779ca845.bundle",
+    "cn": "扎妮娅",
+    "jp": "ザニア"
+  }
+}

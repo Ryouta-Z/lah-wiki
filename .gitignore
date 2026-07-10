@@ -4,4 +4,7 @@ __pycache__/
 .env.prod
 .env.dev
 _nb.log
+_img.log
 *.log
+data/images/
+data/cache/
