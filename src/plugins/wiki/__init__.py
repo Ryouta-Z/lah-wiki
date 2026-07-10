@@ -9,22 +9,43 @@ from nonebot.adapters.onebot.v11 import Message
 
 from .online import search_online
 
-DATA_FILE = Path(__file__).parent.parent.parent.parent / "data" / "wiki_local.json"
+DATA_DIR = Path(__file__).parent.parent.parent.parent / "data"
+DATA_FILES = ["wiki_local.json", "lah_data.json"]
+ALIAS_FILE = DATA_DIR / "aliases.json"
 
 
 def load_data() -> dict:
-    if not DATA_FILE.exists():
+    merged = {}
+    for name in DATA_FILES:
+        fp = DATA_DIR / name
+        if fp.exists():
+            with open(fp, "r", encoding="utf-8") as f:
+                merged.update(json.load(f))
+    return merged
+
+
+def load_aliases() -> dict:
+    """中文别名表: {别名: 目标名称}, 由用户/群友维护。"""
+    if not ALIAS_FILE.exists():
         return {}
-    with open(DATA_FILE, "r", encoding="utf-8") as f:
+    with open(ALIAS_FILE, "r", encoding="utf-8") as f:
         return json.load(f)
 
 
 def build_alias_index(data: dict) -> dict:
     index = {}
+    name_to_key = {}
     for key, entry in data.items():
         index[key] = key
+        index[entry["name"]] = key
+        name_to_key[entry["name"]] = key
         for alias in entry.get("aliases", []):
-            index[alias] = key
+            if alias:
+                index[alias] = key
+
+    for cn_alias, target_name in load_aliases().items():
+        if target_name in name_to_key:
+            index[cn_alias] = name_to_key[target_name]
     return index
 
 
