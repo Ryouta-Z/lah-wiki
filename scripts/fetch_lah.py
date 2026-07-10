@@ -85,16 +85,23 @@ def _build_heroes(entries, cards, skills, hero_tr, skill_tr):
         if not name or name in seen:
             continue
         seen.add(name)
-        skill_names = []
+        skill_lines = []
         for skid in card.get("skillIds", []):
             sk = skills.get(str(skid))
             if not sk:
                 continue
-            sn, _ = _pick(skill_tr, str(skid), sk.get("skillName", ""), "")
-            if sn:
-                skill_names.append(sn)
+            sn, sd = _pick(skill_tr, str(skid), sk.get("skillName", ""),
+                           sk.get("description", ""))
+            if not sn:
+                continue
+            desc = _clean(sd)
+            if desc:
+                skill_lines.append(f"· {sn}\n  {desc}")
+            else:
+                skill_lines.append(f"· {sn}")
         rarity = "★" * card.get("rarity", 0)
-        content = f"稀有度: {rarity or '?'}\n技能: {'、'.join(skill_names) or '无'}"
+        skills_text = "\n".join(skill_lines) if skill_lines else "无"
+        content = f"稀有度: {rarity or '?'}\n【技能】\n{skills_text}"
         entries[f"hero:{hid}"] = {
             "name": name, "type": "英雄",
             "aliases": [card.get("cardName", "")] if card.get("cardName") != name else [],
