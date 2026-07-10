@@ -3,3 +3,5 @@ __pycache__/
 *.pyc
 .env.prod
 .env.dev
+_nb.log
+*.log
