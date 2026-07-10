@@ -8,6 +8,7 @@ from nonebot.params import CommandArg
 from nonebot.adapters.onebot.v11 import Message, MessageSegment
 
 from .online import search_online
+from .art import resolve_code, fetch_illust
 
 DATA_DIR = Path(__file__).parent.parent.parent.parent / "data"
 DATA_FILES = ["wiki_local.json", "lah_data.json"]
@@ -142,7 +143,27 @@ helper = on_command("帮助", aliases={"help", "菜单"}, priority=10, block=Tru
 async def handle_help():
     await helper.finish(
         "wiki 查询机器人\n"
-        "用法：/查 关键词\n"
-        "例如：/查 火球术\n"
-        "支持别名和错别字模糊匹配。"
+        "/查 关键词  查角色/技能(附头像)\n"
+        "/立绘 角色名  发送完整立绘\n"
+        "例如：/查 赤司、/立绘 赤司\n"
+        "支持中文名、日文名、别名、错别字模糊匹配。"
     )
+
+
+illust = on_command("立绘", aliases={"图", "illust"}, priority=10, block=True)
+
+
+@illust.handle()
+async def handle_illust(args: Message = CommandArg()):
+    name = args.extract_plain_text().strip()
+    if not name:
+        await illust.finish("用法：/立绘 角色名，例如 /立绘 赤司")
+
+    code = resolve_code(name)
+    if not code:
+        await illust.finish(f"没找到「{name}」这个角色，试试用官方中文名？")
+
+    path = fetch_illust(code)
+    if path:
+        await illust.finish(MessageSegment.image(path))
+    await illust.finish(f"「{name}」暂时没有立绘（社群资料站还没收录）。")
