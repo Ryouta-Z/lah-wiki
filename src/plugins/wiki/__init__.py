@@ -7,8 +7,23 @@ from nonebot.adapters.onebot.v11 import MessageEvent
 from nonebot.params import CommandArg
 from nonebot.adapters.onebot.v11 import Message, MessageSegment
 
+import time
+
 from .online import search_online
 from .art import resolve_code, fetch_illust
+
+_last_call: dict = {}
+RATE_LIMIT_SECONDS = 3
+
+
+def rate_limited(user_id: int) -> bool:
+    """同一用户查询间隔小于阈值则限流。"""
+    now = time.time()
+    last = _last_call.get(user_id, 0)
+    if now - last < RATE_LIMIT_SECONDS:
+        return True
+    _last_call[user_id] = now
+    return False
 
 DATA_DIR = Path(__file__).parent.parent.parent.parent / "data"
 DATA_FILES = ["wiki_local.json", "lah_data.json"]
@@ -108,6 +123,8 @@ wiki = on_command("查", aliases={"wiki", "查询"}, priority=10, block=True)
 
 @wiki.handle()
 async def handle_wiki(event: MessageEvent, args: Message = CommandArg()):
+    if rate_limited(event.user_id):
+        return
     keyword = args.extract_plain_text().strip()
     if not keyword:
         await wiki.finish("用法：/查 关键词，例如 /查 火球术")
@@ -154,7 +171,9 @@ illust = on_command("立绘", aliases={"图", "illust"}, priority=10, block=True
 
 
 @illust.handle()
-async def handle_illust(args: Message = CommandArg()):
+async def handle_illust(event: MessageEvent, args: Message = CommandArg()):
+    if rate_limited(event.user_id):
+        return
     name = args.extract_plain_text().strip()
     if not name:
         await illust.finish("用法：/立绘 角色名，例如 /立绘 赤司")
