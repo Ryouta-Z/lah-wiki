@@ -8,3 +8,6 @@ _img.log
 *.log
 data/images/
 data/cache/
+outputs/
+scripts/node_modules/
+.uv-cache/
