@@ -21,58 +21,78 @@ const theme = {
 const workbook = Workbook.create();
 
 function cardRows(kind) {
-  return catalog.cards.filter((card) => card.kind === kind).map((card) => [
+  return catalog.cards.filter((card) => card.kind === kind).map((card) => {
+    const identity = [
     card.cardId,
     card.name,
     card.originalName,
     "★".repeat(card.rarity),
-    card.element?.label ?? "不适用",
-    card.role.label,
-    card.stats.level1.hp ?? null,
-    card.stats.level1.attack ?? null,
-    card.stats.level1.agility ?? null,
-    card.stats.max.hp ?? null,
-    card.stats.max.attack ?? null,
-    card.stats.max.agility ?? null,
-    card.skills.map((skill) => `${skill.relation}｜${skill.name}\n${skill.description}`).join("\n\n"),
-    card.skills.some((skill) => skill.nameSource === "日文原文" || skill.descriptionSource === "日文原文")
-      ? "含日文原文"
-      : "官方简中",
-  ]);
+    ];
+    return kind === "hero"
+      ? [
+        ...identity,
+        card.element?.label ?? "不适用",
+        card.role?.label ?? "不适用",
+        card.stats.level60.hp ?? null,
+        card.stats.level60.attack ?? null,
+        card.stats.level60.agility ?? null,
+        card.skills.map((skill) => `${skill.relation}｜${skill.name}\n${skill.description}`).join("\n\n"),
+        card.skills.some((skill) => skill.nameSource === "日文原文" || skill.descriptionSource === "日文原文")
+          ? "含日文原文"
+          : "官方简中",
+      ]
+      : [
+        ...identity,
+        ...[
+          card.stats.level1.hp ?? null,
+          card.stats.level1.attack ?? null,
+          card.stats.level1.agility ?? null,
+          card.stats.max.hp ?? null,
+          card.stats.max.attack ?? null,
+          card.stats.max.agility ?? null,
+        ],
+        card.skills.map((skill) => `${skill.relation}｜${skill.name}\n${skill.description}`).join("\n\n"),
+        card.skills.some((skill) => skill.nameSource === "日文原文" || skill.descriptionSource === "日文原文")
+          ? "含日文原文"
+          : "官方简中",
+      ];
+  });
 }
 
 function buildCardSheet(name, kind, headerColor, tableName) {
   const sheet = workbook.worksheets.add(name);
-  const headers = [
-    "卡片编号", "姓名", "日文名", "稀有度", "元素", "定位",
-    "1级 HP", "1级 攻击", "1级 速度", "满级 HP", "满级 攻击", "满级 速度",
-    "关联技能", "文本来源",
-  ];
+  const isHero = kind === "hero";
+  const headers = isHero
+    ? ["卡片编号", "姓名", "日文名", "稀有度", "属性", "职能", "60级 HP", "60级 攻击", "60级 速度", "关联技能", "文本来源"]
+    : ["卡片编号", "姓名", "日文名", "稀有度", "1级 HP", "1级 攻击", "1级 速度", "最高阶段 HP", "最高阶段 攻击", "最高阶段 速度", "关联技能", "文本来源"];
+  const lastColumn = isHero ? "K" : "L";
+  const skillColumn = isHero ? "J" : "K";
+  const sourceColumn = isHero ? "K" : "L";
   const rows = cardRows(kind);
   sheet.showGridLines = false;
-  sheet.mergeCells("A1:N1");
+  sheet.mergeCells(`A1:${lastColumn}1`);
   sheet.getRange("A1").values = [[`Live A Hero ${name}速查`]];
   sheet.getRange("A1").format = { fill: headerColor, font: { bold: true, color: "#FFFFFF", size: 16 }, horizontalAlignment: "left" };
-  sheet.mergeCells("A2:N2");
-  sheet.getRange("A2").values = [[`快照 ${catalog.metadata.snapshotId} · ${rows.length} 张卡 · 仅官方简中，缺失文本标为日文原文`]];
+  sheet.mergeCells(`A2:${lastColumn}2`);
+  sheet.getRange("A2").values = [[`快照 ${catalog.metadata.snapshotId} · ${rows.length} 张卡 · ${kind === "hero" ? catalog.metadata.heroStatPolicy : catalog.metadata.sidekickSkillPolicy}`]];
   sheet.getRange("A2").format = { font: { color: theme.muted, italic: true } };
-  sheet.getRange("A4:N4").values = [headers];
+  sheet.getRange(`A4:${lastColumn}4`).values = [headers];
   sheet.getRangeByIndexes(4, 0, rows.length, headers.length).values = rows;
   const dataRange = sheet.getRangeByIndexes(3, 0, rows.length + 1, headers.length);
-  sheet.tables.add(`A4:N${rows.length + 4}`, true, tableName);
-  sheet.getRange("A4:N4").format = { fill: headerColor, font: { bold: true, color: "#FFFFFF" }, horizontalAlignment: "center", wrapText: true };
+  sheet.tables.add(`A4:${lastColumn}${rows.length + 4}`, true, tableName);
+  sheet.getRange(`A4:${lastColumn}4`).format = { fill: headerColor, font: { bold: true, color: "#FFFFFF" }, horizontalAlignment: "center", wrapText: true };
   dataRange.format.font = { color: theme.text };
   dataRange.format.borders = { preset: "insideHorizontal", style: "thin", color: theme.border };
-  sheet.getRange(`G5:L${rows.length + 4}`).format.numberFormat = "#,##0";
-  sheet.getRange(`A5:N${rows.length + 4}`).format.wrapText = true;
-  sheet.getRange(`N5:N${rows.length + 4}`).conditionalFormats.add("containsText", { text: "日文", format: { fill: theme.japanese } });
+  sheet.getRange(`${isHero ? "G" : "E"}5:${isHero ? "I" : "J"}${rows.length + 4}`).format.numberFormat = "#,##0";
+  sheet.getRange(`A5:${lastColumn}${rows.length + 4}`).format.wrapText = true;
+  sheet.getRange(`${sourceColumn}5:${sourceColumn}${rows.length + 4}`).conditionalFormats.add("containsText", { text: "日文", format: { fill: theme.japanese } });
   sheet.getRange("A:A").format.columnWidth = 14;
   sheet.getRange("B:B").format.columnWidth = 16;
   sheet.getRange("C:C").format.columnWidth = 18;
-  sheet.getRange("D:F").format.columnWidth = 12;
-  sheet.getRange("G:L").format.columnWidth = 12;
-  sheet.getRange("M:M").format.columnWidth = 62;
-  sheet.getRange("N:N").format.columnWidth = 14;
+  sheet.getRange(isHero ? "D:F" : "D:J").format.columnWidth = 12;
+  sheet.getRange(isHero ? "G:I" : "E:J").format.columnWidth = 12;
+  sheet.getRange(`${skillColumn}:${skillColumn}`).format.columnWidth = 62;
+  sheet.getRange(`${sourceColumn}:${sourceColumn}`).format.columnWidth = 14;
   sheet.getRange("1:1").format.rowHeight = 28;
   sheet.getRange("2:2").format.rowHeight = 22;
   sheet.freezePanes.freezeRows(4);
@@ -109,7 +129,7 @@ skillSheet.getRange(`A5:G${skillRows.length + 4}`).format.borders = { preset: "i
 skillSheet.getRange(`E5:E${skillRows.length + 4}`).conditionalFormats.add("containsText", { text: "日文", format: { fill: theme.japanese } });
 skillSheet.getRange(`G5:G${skillRows.length + 4}`).conditionalFormats.add("containsText", { text: "日文", format: { fill: theme.japanese } });
 skillSheet.getRange("A:A").format.columnWidth = 15;
-skillSheet.getRange("B:B").format.columnWidth = 14;
+skillSheet.getRange("B:B").format.columnWidth = 24;
 skillSheet.getRange("C:D").format.columnWidth = 22;
 skillSheet.getRange("E:E").format.columnWidth = 14;
 skillSheet.getRange("F:F").format.columnWidth = 68;
@@ -119,9 +139,50 @@ skillSheet.getRange("2:2").format.rowHeight = 22;
 skillSheet.freezePanes.freezeRows(4);
 skillSheet.freezePanes.freezeColumns(2);
 
+const upgradeSheet = workbook.worksheets.add("技能强化");
+const upgradeHeaders = ["英雄编号", "英雄名称", "日文名", "强化阶段", "任务编号", "强化前技能", "强化前说明", "强化后技能", "强化后（最高等级）说明", "文本来源"];
+const upgradeRows = catalog.skillUpgrades.map((upgrade) => [
+  upgrade.cardId,
+  upgrade.cardName,
+  upgrade.cardOriginalName,
+  upgrade.skillLevel ?? null,
+  upgrade.questId ?? null,
+  upgrade.before.name,
+  upgrade.before.description,
+  upgrade.after.name,
+  upgrade.after.description,
+  [upgrade.before, upgrade.after].some((skill) => skill.nameSource === "日文原文" || skill.descriptionSource === "日文原文") ? "含日文原文" : "官方简中",
+]);
+upgradeSheet.showGridLines = false;
+upgradeSheet.mergeCells("A1:J1");
+upgradeSheet.getRange("A1").values = [["Live A Hero 技能强化速查"]];
+upgradeSheet.getRange("A1").format = { fill: "#B45309", font: { bold: true, color: "#FFFFFF", size: 16 }, horizontalAlignment: "left" };
+upgradeSheet.mergeCells("A2:J2");
+upgradeSheet.getRange("A2").values = [[`快照 ${catalog.metadata.snapshotId} · ${upgradeRows.length} 项英雄技能强化（强化后说明为最高等级终态）`]];
+upgradeSheet.getRange("A2").format = { font: { color: theme.muted, italic: true } };
+upgradeSheet.getRange("A4:J4").values = [upgradeHeaders];
+upgradeSheet.getRangeByIndexes(4, 0, upgradeRows.length, upgradeHeaders.length).values = upgradeRows;
+upgradeSheet.tables.add(`A4:J${upgradeRows.length + 4}`, true, "SkillUpgrades");
+upgradeSheet.getRange("A4:J4").format = { fill: "#B45309", font: { bold: true, color: "#FFFFFF" }, horizontalAlignment: "center", wrapText: true };
+upgradeSheet.getRange(`A5:J${upgradeRows.length + 4}`).format.wrapText = true;
+upgradeSheet.getRange(`A5:J${upgradeRows.length + 4}`).format.borders = { preset: "insideHorizontal", style: "thin", color: theme.border };
+upgradeSheet.getRange(`J5:J${upgradeRows.length + 4}`).conditionalFormats.add("containsText", { text: "日文", format: { fill: theme.japanese } });
+upgradeSheet.getRange("A:A").format.columnWidth = 14;
+upgradeSheet.getRange("B:C").format.columnWidth = 18;
+upgradeSheet.getRange("D:E").format.columnWidth = 12;
+upgradeSheet.getRange("F:F").format.columnWidth = 22;
+upgradeSheet.getRange("G:G").format.columnWidth = 48;
+upgradeSheet.getRange("H:H").format.columnWidth = 22;
+upgradeSheet.getRange("I:I").format.columnWidth = 48;
+upgradeSheet.getRange("J:J").format.columnWidth = 14;
+upgradeSheet.getRange("1:1").format.rowHeight = 28;
+upgradeSheet.getRange("2:2").format.rowHeight = 22;
+upgradeSheet.freezePanes.freezeRows(4);
+upgradeSheet.freezePanes.freezeColumns(2);
+
 await fs.mkdir(path.dirname(outputPath), { recursive: true });
 const checks = [];
-for (const [sheetName, range] of [["英雄卡", "A1:N8"], ["助手卡", "A1:N8"], ["技能", "A1:G8"]]) {
+for (const [sheetName, range] of [["英雄卡", "A1:K8"], ["助手卡", "A1:L8"], ["技能", "A1:G8"], ["技能强化", "A1:J8"]]) {
   checks.push(await workbook.inspect({ kind: "table", range: `${sheetName}!${range}`, include: "values,formulas", tableMaxRows: 8, tableMaxCols: 14 }));
 }
 const formulaErrors = await workbook.inspect({
@@ -133,14 +194,14 @@ const formulaErrors = await workbook.inspect({
 const xlsx = await SpreadsheetFile.exportXlsx(workbook);
 await xlsx.save(outputPath);
 
-for (const sheetName of ["英雄卡", "助手卡", "技能"]) {
-  const preview = await workbook.render({ sheetName, range: "A1:N12", scale: 1, format: "png" });
-  await preview.arrayBuffer();
+for (const [sheetName, range] of [["英雄卡", "A1:K12"], ["助手卡", "A1:L12"], ["技能", "A1:G12"], ["技能强化", "A1:J12"]]) {
+  const preview = await workbook.render({ sheetName, range, scale: 1, format: "png" });
+  await fs.writeFile(path.join(path.dirname(outputPath), `${sheetName}.preview.png`), new Uint8Array(await preview.arrayBuffer()));
 }
 
 console.log(JSON.stringify({
   outputPath,
-  sheets: ["英雄卡", "助手卡", "技能"],
+  sheets: ["英雄卡", "助手卡", "技能", "技能强化"],
   skillCount: skillRows.length,
   checks: checks.map((check) => check.ndjson),
   formulaErrors: formulaErrors.ndjson,
