@@ -20,6 +20,19 @@ const theme = {
 
 const workbook = Workbook.create();
 
+function skillText(skill) {
+  const cost = skill.viewCost == null ? "" : ` · 消耗 View：${skill.viewCost}`;
+  return `${skill.relation}｜${skill.name}${cost}\n${skill.description}`;
+}
+
+function officialChineseAvailability(skill) {
+  return skill.officialChineseAvailability ?? (skill.descriptionSource === "官方简中" ? "完整官方简中" : "无官方简中");
+}
+
+function statusTermSources(skill) {
+  return skill.statusTermSources || "—";
+}
+
 function cardRows(kind) {
   return catalog.cards.filter((card) => card.kind === kind).map((card) => {
     const identity = [
@@ -36,7 +49,7 @@ function cardRows(kind) {
         card.stats.level60.hp ?? null,
         card.stats.level60.attack ?? null,
         card.stats.level60.agility ?? null,
-        card.skills.map((skill) => `${skill.relation}｜${skill.name}\n${skill.description}`).join("\n\n"),
+        card.skills.map(skillText).join("\n\n"),
         card.skills.some((skill) => skill.nameSource === "日文原文" || skill.descriptionSource === "日文原文")
           ? "含日文原文"
           : "官方简中",
@@ -51,7 +64,7 @@ function cardRows(kind) {
           card.stats.max.attack ?? null,
           card.stats.max.agility ?? null,
         ],
-        card.skills.map((skill) => `${skill.relation}｜${skill.name}\n${skill.description}`).join("\n\n"),
+        card.skills.map(skillText).join("\n\n"),
         card.skills.some((skill) => skill.nameSource === "日文原文" || skill.descriptionSource === "日文原文")
           ? "含日文原文"
           : "官方简中",
@@ -103,44 +116,50 @@ buildCardSheet("英雄卡", "hero", theme.hero, "HeroCards");
 buildCardSheet("助手卡", "sidekick", theme.sidekick, "SidekickCards");
 
 const skillSheet = workbook.worksheets.add("技能");
-const skillHeaders = ["技能编号", "关联类型", "中文名称", "日文名", "名称来源", "技能说明", "说明来源"];
+const skillHeaders = ["技能编号", "关联类型", "View 消耗", "中文名称", "日文名", "名称来源", "技能说明", "说明来源", "官方简中可用性", "词条说明来源"];
 const skillRows = catalog.skills.map((skill) => [
   skill.skillId,
   skill.relation,
+  skill.viewCost,
   skill.name,
   skill.originalName,
   skill.nameSource,
   skill.description,
   skill.descriptionSource,
+  officialChineseAvailability(skill),
+  statusTermSources(skill),
 ]);
 skillSheet.showGridLines = false;
-skillSheet.mergeCells("A1:G1");
+skillSheet.mergeCells("A1:J1");
 skillSheet.getRange("A1").values = [["Live A Hero 技能速查"]];
 skillSheet.getRange("A1").format = { fill: theme.skill, font: { bold: true, color: "#FFFFFF", size: 16 }, horizontalAlignment: "left" };
-skillSheet.mergeCells("A2:G2");
+skillSheet.mergeCells("A2:J2");
 skillSheet.getRange("A2").values = [[`快照 ${catalog.metadata.snapshotId} · ${skillRows.length} 个去重技能`]];
 skillSheet.getRange("A2").format = { font: { color: theme.muted, italic: true } };
-skillSheet.getRange("A4:G4").values = [skillHeaders];
+skillSheet.getRange("A4:J4").values = [skillHeaders];
 skillSheet.getRangeByIndexes(4, 0, skillRows.length, skillHeaders.length).values = skillRows;
-skillSheet.tables.add(`A4:G${skillRows.length + 4}`, true, "Skills");
-skillSheet.getRange("A4:G4").format = { fill: theme.skill, font: { bold: true, color: "#FFFFFF" }, horizontalAlignment: "center", wrapText: true };
-skillSheet.getRange(`A5:G${skillRows.length + 4}`).format.wrapText = true;
-skillSheet.getRange(`A5:G${skillRows.length + 4}`).format.borders = { preset: "insideHorizontal", style: "thin", color: theme.border };
-skillSheet.getRange(`E5:E${skillRows.length + 4}`).conditionalFormats.add("containsText", { text: "日文", format: { fill: theme.japanese } });
-skillSheet.getRange(`G5:G${skillRows.length + 4}`).conditionalFormats.add("containsText", { text: "日文", format: { fill: theme.japanese } });
+skillSheet.tables.add(`A4:J${skillRows.length + 4}`, true, "Skills");
+skillSheet.getRange("A4:J4").format = { fill: theme.skill, font: { bold: true, color: "#FFFFFF" }, horizontalAlignment: "center", wrapText: true };
+skillSheet.getRange(`A5:J${skillRows.length + 4}`).format.wrapText = true;
+skillSheet.getRange(`A5:J${skillRows.length + 4}`).format.borders = { preset: "insideHorizontal", style: "thin", color: theme.border };
+skillSheet.getRange(`C5:C${skillRows.length + 4}`).format.numberFormat = "#,##0";
+skillSheet.getRange(`F5:F${skillRows.length + 4}`).conditionalFormats.add("containsText", { text: "日文", format: { fill: theme.japanese } });
+skillSheet.getRange(`H5:H${skillRows.length + 4}`).conditionalFormats.add("containsText", { text: "日文", format: { fill: theme.japanese } });
 skillSheet.getRange("A:A").format.columnWidth = 15;
 skillSheet.getRange("B:B").format.columnWidth = 24;
-skillSheet.getRange("C:D").format.columnWidth = 22;
-skillSheet.getRange("E:E").format.columnWidth = 14;
-skillSheet.getRange("F:F").format.columnWidth = 68;
-skillSheet.getRange("G:G").format.columnWidth = 14;
+skillSheet.getRange("C:C").format.columnWidth = 12;
+skillSheet.getRange("D:E").format.columnWidth = 22;
+skillSheet.getRange("F:F").format.columnWidth = 14;
+skillSheet.getRange("G:G").format.columnWidth = 68;
+skillSheet.getRange("H:H").format.columnWidth = 14;
+skillSheet.getRange("I:J").format.columnWidth = 18;
 skillSheet.getRange("1:1").format.rowHeight = 28;
 skillSheet.getRange("2:2").format.rowHeight = 22;
 skillSheet.freezePanes.freezeRows(4);
 skillSheet.freezePanes.freezeColumns(2);
 
 const upgradeSheet = workbook.worksheets.add("技能强化");
-const upgradeHeaders = ["英雄编号", "英雄名称", "日文名", "强化阶段", "任务编号", "强化前技能", "强化前说明", "强化后技能", "强化后（最高等级）说明", "文本来源"];
+const upgradeHeaders = ["英雄编号", "英雄名称", "日文名", "强化阶段", "任务编号", "强化前技能", "强化前说明", "强化后技能", "强化后（最高等级）说明", "文本来源", "官方简中可用性", "词条说明来源"];
 const upgradeRows = catalog.skillUpgrades.map((upgrade) => [
   upgrade.cardId,
   upgrade.cardName,
@@ -151,21 +170,23 @@ const upgradeRows = catalog.skillUpgrades.map((upgrade) => [
   upgrade.before.description,
   upgrade.after.name,
   upgrade.after.description,
-  [upgrade.before, upgrade.after].some((skill) => skill.nameSource === "日文原文" || skill.descriptionSource === "日文原文") ? "含日文原文" : "官方简中",
+  [upgrade.before, upgrade.after].some((skill) => skill.nameSource === "日文原文" || skill.descriptionSource !== "官方简中") ? "含日文原文" : "官方简中",
+  officialChineseAvailability(upgrade.after),
+  statusTermSources(upgrade.after),
 ]);
 upgradeSheet.showGridLines = false;
-upgradeSheet.mergeCells("A1:J1");
+upgradeSheet.mergeCells("A1:L1");
 upgradeSheet.getRange("A1").values = [["Live A Hero 技能强化速查"]];
 upgradeSheet.getRange("A1").format = { fill: "#B45309", font: { bold: true, color: "#FFFFFF", size: 16 }, horizontalAlignment: "left" };
-upgradeSheet.mergeCells("A2:J2");
+upgradeSheet.mergeCells("A2:L2");
 upgradeSheet.getRange("A2").values = [[`快照 ${catalog.metadata.snapshotId} · ${upgradeRows.length} 项英雄技能强化（强化后说明为最高等级终态）`]];
 upgradeSheet.getRange("A2").format = { font: { color: theme.muted, italic: true } };
-upgradeSheet.getRange("A4:J4").values = [upgradeHeaders];
+upgradeSheet.getRange("A4:L4").values = [upgradeHeaders];
 upgradeSheet.getRangeByIndexes(4, 0, upgradeRows.length, upgradeHeaders.length).values = upgradeRows;
-upgradeSheet.tables.add(`A4:J${upgradeRows.length + 4}`, true, "SkillUpgrades");
-upgradeSheet.getRange("A4:J4").format = { fill: "#B45309", font: { bold: true, color: "#FFFFFF" }, horizontalAlignment: "center", wrapText: true };
-upgradeSheet.getRange(`A5:J${upgradeRows.length + 4}`).format.wrapText = true;
-upgradeSheet.getRange(`A5:J${upgradeRows.length + 4}`).format.borders = { preset: "insideHorizontal", style: "thin", color: theme.border };
+upgradeSheet.tables.add(`A4:L${upgradeRows.length + 4}`, true, "SkillUpgrades");
+upgradeSheet.getRange("A4:L4").format = { fill: "#B45309", font: { bold: true, color: "#FFFFFF" }, horizontalAlignment: "center", wrapText: true };
+upgradeSheet.getRange(`A5:L${upgradeRows.length + 4}`).format.wrapText = true;
+upgradeSheet.getRange(`A5:L${upgradeRows.length + 4}`).format.borders = { preset: "insideHorizontal", style: "thin", color: theme.border };
 upgradeSheet.getRange(`J5:J${upgradeRows.length + 4}`).conditionalFormats.add("containsText", { text: "日文", format: { fill: theme.japanese } });
 upgradeSheet.getRange("A:A").format.columnWidth = 14;
 upgradeSheet.getRange("B:C").format.columnWidth = 18;
@@ -175,6 +196,7 @@ upgradeSheet.getRange("G:G").format.columnWidth = 48;
 upgradeSheet.getRange("H:H").format.columnWidth = 22;
 upgradeSheet.getRange("I:I").format.columnWidth = 48;
 upgradeSheet.getRange("J:J").format.columnWidth = 14;
+upgradeSheet.getRange("K:L").format.columnWidth = 18;
 upgradeSheet.getRange("1:1").format.rowHeight = 28;
 upgradeSheet.getRange("2:2").format.rowHeight = 22;
 upgradeSheet.freezePanes.freezeRows(4);
@@ -182,7 +204,7 @@ upgradeSheet.freezePanes.freezeColumns(2);
 
 await fs.mkdir(path.dirname(outputPath), { recursive: true });
 const checks = [];
-for (const [sheetName, range] of [["英雄卡", "A1:K8"], ["助手卡", "A1:L8"], ["技能", "A1:G8"], ["技能强化", "A1:J8"]]) {
+for (const [sheetName, range] of [["英雄卡", "A1:K8"], ["助手卡", "A1:L8"], ["技能", "A1:J8"], ["技能强化", "A1:L8"]]) {
   checks.push(await workbook.inspect({ kind: "table", range: `${sheetName}!${range}`, include: "values,formulas", tableMaxRows: 8, tableMaxCols: 14 }));
 }
 const formulaErrors = await workbook.inspect({
@@ -194,7 +216,7 @@ const formulaErrors = await workbook.inspect({
 const xlsx = await SpreadsheetFile.exportXlsx(workbook);
 await xlsx.save(outputPath);
 
-for (const [sheetName, range] of [["英雄卡", "A1:K12"], ["助手卡", "A1:L12"], ["技能", "A1:G12"], ["技能强化", "A1:J12"]]) {
+for (const [sheetName, range] of [["英雄卡", "A1:K12"], ["助手卡", "A1:L12"], ["技能", "A1:J12"], ["技能强化", "A1:L12"]]) {
   const preview = await workbook.render({ sheetName, range, scale: 1, format: "png" });
   await fs.writeFile(path.join(path.dirname(outputPath), `${sheetName}.preview.png`), new Uint8Array(await preview.arrayBuffer()));
 }

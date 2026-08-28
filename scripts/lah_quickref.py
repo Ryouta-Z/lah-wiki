@@ -13,6 +13,20 @@ from pathlib import Path
 from tempfile import NamedTemporaryFile
 from typing import Any
 
+try:
+    from scripts.assistant_tags import (
+        DEFAULT_ASSISTANT_TAGS_PATH,
+        read_assistant_tag_config,
+        tags_for_assignments,
+        validate_assistant_tag_config,
+    )
+except ModuleNotFoundError:  # Allow `python scripts/lah_quickref.py` from the project root.
+    from assistant_tags import (  # type: ignore[no-redef]
+        DEFAULT_ASSISTANT_TAGS_PATH,
+        read_assistant_tag_config,
+        tags_for_assignments,
+        validate_assistant_tag_config,
+    )
 
 ROOT = Path(__file__).parent.parent
 DEFAULT_SNAPSHOT_DIR = ROOT / "data" / "cache" / "lah-localization"
@@ -39,6 +53,107 @@ ROLE_LABELS = {
     99: "特殊",
 }
 
+# These terms are either tied to a particular skill or need a more useful
+# explanation than the generic status record carries.  They remain ordinary
+# status-term records in the catalog, so the existing clickable glossary still
+# works; inlineDescription is shown only on the first occurrence in a skill.
+SPECIAL_STATUS_TERMS_BY_SKILL: dict[str, list[dict[str, str]]] = {
+    "1025205": [{
+        "id": "special:steel-fist",
+        "name": "钢拳",
+        "description": "每个钢拳使该技能伤害+10%；自身获得DEF上升时钢拳+1，最多3个。",
+        "inlineDescription": "每个钢拳使伤害+10%；自身获得DEF上升时钢拳+1，最多3个",
+        "source": "专用说明",
+    }],
+    "1033106": [{
+        "id": "special:sunlight",
+        "name": "阳光",
+        "description": "ATK+20%。",
+        "inlineDescription": "ATK+20%",
+        "source": "官方简中",
+    }],
+    "1033107": [{
+        "id": "special:new-green",
+        "name": "新绿",
+        "description": "绝境状态时解除，并依附加者基础ATK的50%恢复HP。",
+        "inlineDescription": "绝境时解除，并依附加者基础ATK的50%恢复HP",
+        "source": "官方简中",
+    }],
+    "1034105": [{
+        "id": "special:continuous-jump",
+        "name": "连续跳跃",
+        "description": "每个蓄能数SPD+1；自身获得SPD上升时蓄能数+1，最多50。",
+        "inlineDescription": "每个蓄能数SPD+1；自身获得SPD上升时蓄能数+1，最多50",
+        "source": "官方简中",
+    }],
+    "1082105": [{
+        "id": "special:concert",
+        "name": "协奏",
+        "description": "以获得View的技能取得的View变为1.5倍。",
+        "inlineDescription": "以获得View的技能取得的View变为1.5倍",
+        "source": "官方简中",
+    }],
+    "1082106": [{
+        "id": "special:concert",
+        "name": "协奏",
+        "description": "以获得View的技能取得的View变为1.5倍。",
+        "inlineDescription": "以获得View的技能取得的View变为1.5倍",
+        "source": "官方简中",
+    }],
+    "1082107": [{
+        "id": "special:concert",
+        "name": "协奏",
+        "description": "以获得View的技能取得的View变为1.5倍。",
+        "inlineDescription": "以获得View的技能取得的View变为1.5倍",
+        "source": "官方简中",
+    }],
+    "1112201": [{
+        "id": "special:shadow-copy",
+        "name": "影印",
+        "description": "不可叠加的蓄能状态；由幻想的算哲的技能处理，且我方所有幻想的算哲无法战斗时解除。",
+        "inlineDescription": "不可叠加的蓄能状态；我方所有幻想的算哲无法战斗时解除",
+        "source": "专用说明",
+    }],
+    "1112202": [{
+        "id": "special:mirror-realm",
+        "name": "镜界",
+        "matchName": "鏡界",
+        "description": "幻想的算哲的专用计量；主动技能附加增益时+1，并按该增益持续回合数额外增加，最多20。",
+        "inlineDescription": "专用计量；主动技能附加增益时+1，并按持续回合数额外增加，最多20",
+        "source": "专用说明",
+    }],
+    "1112204": [
+        {
+            "id": "special:mirror-realm",
+            "name": "镜界",
+            "matchName": "鏡界",
+            "description": "幻想的算哲的专用计量；主动技能附加增益时+1，并按该增益持续回合数额外增加，最多20。",
+            "inlineDescription": "专用计量；主动技能附加增益时+1，并按持续回合数额外增加，最多20",
+            "source": "专用说明",
+        },
+        {
+            "id": "special:second-arrow",
+            "name": "马肖迪克·尼尔",
+            "matchName": "マーショディク・ニール",
+            "description": "第二箭（暂译）：镜界为5～9时消耗5并造成40%全体伤害；10～14时消耗10并造成60%；15～20时消耗15并造成80%。不获得View或连击数。",
+            "inlineDescription": "第二箭（暂译）：依镜界消耗5/10/15，对全体造成40/60/80%伤害；不获得View或连击数",
+            "source": "专用说明",
+        },
+    ],
+}
+
+# 幻想的算哲的强化技能与基础技能共用同一组专用计量词条。
+SPECIAL_STATUS_TERMS_BY_SKILL["1112205"] = [dict(term) for term in SPECIAL_STATUS_TERMS_BY_SKILL["1112201"]]
+SPECIAL_STATUS_TERMS_BY_SKILL["1112206"] = [dict(term) for term in SPECIAL_STATUS_TERMS_BY_SKILL["1112202"]]
+SPECIAL_STATUS_TERMS_BY_SKILL["1112207"] = [dict(term) for term in SPECIAL_STATUS_TERMS_BY_SKILL["1112204"]]
+
+# 「解除所有减益效果」 is the terminal form of the earlier three-debuff
+# effect.  Retaining both makes the highest rank read as two simultaneous rules.
+SUBSUMED_HIGHEST_EFFECT_IDS = {209: {594}}
+UPGRADE_CONDITION_TEXT_OVERRIDES = {
+    ("1030107", 12): "发动前，解除自身2个减益效果。",
+}
+
 
 def build_catalog(
     snapshot_dir: Path,
@@ -46,6 +161,7 @@ def build_catalog(
     char_map_path: Path = DEFAULT_CHAR_MAP_PATH,
     icon_dir: Path = DEFAULT_ICON_DIR,
     avatar_overrides_path: Path = DEFAULT_AVATAR_OVERRIDES_PATH,
+    assistant_tags_path: Path | None = None,
 ) -> dict[str, Any]:
     """Return a normalized catalog from one complete, date-consistent snapshot."""
     snapshot = _snapshot_files(snapshot_dir)
@@ -66,6 +182,15 @@ def build_catalog(
         *_build_cards(_highest_sidekick_cards(sidekick_cards), skills, localized, aliases, avatars, status_terms, "sidekick"),
     ]
     cards.sort(key=lambda card: (card["kind"], card["name"], card["cardId"]))
+    assistant_tag_config = None
+    if assistant_tags_path is not None:
+        assistant_tag_config = read_assistant_tag_config(assistant_tags_path)
+        sidekick_keys = {card["key"] for card in cards if card["kind"] == "sidekick"}
+        assistant_tag_config = validate_assistant_tag_config(assistant_tag_config, sidekick_keys)
+        tags_by_sidekick = tags_for_assignments(assistant_tag_config)
+        for card in cards:
+            if card["kind"] == "sidekick":
+                card["tags"] = tags_by_sidekick.get(card["key"], [])
 
     skill_rows = _unique_skills(cards)
     skill_upgrades = _unique_skill_upgrades(cards)
@@ -77,7 +202,7 @@ def build_catalog(
             "sidekickCardCount": sum(card["kind"] == "sidekick" for card in cards),
             "skillCount": len(skill_rows),
             "skillUpgradeCount": len(skill_upgrades),
-            "translationPolicy": "仅官方简中；缺失项保留日文原文。",
+            "translationPolicy": "官方简中优先；缺失片段保留日文原文。",
             "heroStatPolicy": "同名英雄仅保留最高星卡的 60 级属性；无 60 级数据的特殊卡保留技能并标记。",
             "sidekickSkillPolicy": "每名助手仅保留最高阶段的主动技能与最高等级装备技能。",
         },
@@ -85,6 +210,7 @@ def build_catalog(
         "skills": skill_rows,
         "skillUpgrades": skill_upgrades,
         "statusTerms": sorted(status_terms["all"].values(), key=lambda term: (term["name"], term["id"])),
+        "assistantTags": assistant_tag_config["tags"] if assistant_tag_config else [],
     }
 
 
@@ -99,8 +225,32 @@ def write_static_site(
     _write_text_atomic(output_path, render_static_html(catalog, avatar_url_prefix))
 
 
-def render_static_html(catalog: dict[str, Any], avatar_url_prefix: str = "../data/images/icon") -> str:
+def rebuild_quickref(
+    assistant_tags_path: Path = DEFAULT_ASSISTANT_TAGS_PATH,
+    snapshot_dir: Path = DEFAULT_SNAPSHOT_DIR,
+    catalog_path: Path = DEFAULT_CATALOG_PATH,
+    site_path: Path = DEFAULT_SITE_PATH,
+) -> dict[str, Any]:
+    """Rebuild the public offline catalog after a local administrator saves tags."""
+    catalog = build_catalog(snapshot_dir, assistant_tags_path=assistant_tags_path)
+    write_catalog(catalog, catalog_path)
+    write_static_site(catalog, site_path)
+    return catalog
+
+
+def render_static_html(
+    catalog: dict[str, Any],
+    avatar_url_prefix: str = "../data/images/icon",
+    *,
+    include_tag_settings: bool = True,
+) -> str:
     embedded_catalog = json.dumps(catalog, ensure_ascii=False).replace("</", "<\\/")
+    tag_settings_button = '      <button id="tagSettings" type="button">标签设置</button>' if include_tag_settings else ""
+    tag_settings_dialog = """  <dialog id="tagSettingsDetail" aria-labelledby="tagSettingsTitle"><div class="detail"><button class="close tag-settings-close" aria-label="关闭标签设置">×</button><h2 id="tagSettingsTitle">标签管理</h2><p class="status-content">本页仅用于查询。请先在项目根目录运行 <code>uv run python scripts/assistant_tag_admin.py</code>，再打开 <a href="http://127.0.0.1:8787/" target="_blank" rel="noreferrer">本机标签管理页</a> 维护标签和助手归属。保存后会自动更新本页。</p></div></dialog>
+""" if include_tag_settings else ""
+    tag_settings_listeners = """    $('tagSettings').addEventListener('click', () => $('tagSettingsDetail').showModal());
+    document.querySelector('.tag-settings-close').addEventListener('click', () => $('tagSettingsDetail').close());
+""" if include_tag_settings else ""
     return f"""<!doctype html>
 <html lang="zh-CN">
 <head>
@@ -113,9 +263,9 @@ def render_static_html(catalog: dict[str, Any], avatar_url_prefix: str = "../dat
     header {{ padding: 34px max(20px, calc((100vw - 1180px) / 2)); background: linear-gradient(130deg, #1d4ed8, #7c3aed); }}
     h1 {{ margin: 0; font-size: clamp(25px, 4vw, 38px); }} header p {{ color: #dbeafe; margin: 10px 0 0; }}
     main {{ width: min(1180px, calc(100% - 32px)); margin: 24px auto 52px; }}
-    .controls {{ display: grid; grid-template-columns: minmax(220px, 2fr) repeat(4, minmax(110px, 1fr)) minmax(220px, 1.7fr) minmax(110px, 1fr); gap: 12px; align-items: end; }}
-    input, select, .controls button {{ width: 100%; border: 1px solid #394867; border-radius: 9px; background: #172235; color: #edf2ff; padding: 12px; font: inherit; }} .controls button {{ cursor: pointer; }} .controls button:hover, .controls button:focus {{ border-color: #77a5ff; background: #1b2c49; }}
-    .filter-control {{ display: grid; gap: 6px; min-width: 0; }} .control-label {{ color: #b9c7df; font-size: 13px; font-weight: 700; }} .sort-selects {{ display: grid; grid-template-columns: minmax(0, 1fr) minmax(82px, auto); }} .sort-selects select {{ border-radius: 0; }} .sort-selects select:first-child {{ border-radius: 9px 0 0 9px; }} .sort-selects select + select {{ border-left: 0; border-radius: 0 9px 9px 0; }} .multi-select {{ position: relative; }} .multi-select-trigger {{ display: flex; justify-content: space-between; align-items: center; text-align: left; }} .multi-select-trigger::after {{ content: '▾'; margin-left: 8px; color: #b9c7df; }} .multi-select-menu {{ position: absolute; z-index: 4; top: calc(100% + 6px); left: 0; width: max-content; min-width: 100%; max-width: min(310px, calc(100vw - 32px)); padding: 8px; border: 1px solid #516a93; border-radius: 9px; background: #132038; box-shadow: 0 12px 32px rgb(0 0 0 / 35%); }} .multi-select-options {{ display: grid; gap: 2px; max-height: 260px; overflow: auto; }} .multi-select-option {{ display: flex; align-items: center; gap: 8px; padding: 7px; border-radius: 6px; cursor: pointer; }} .multi-select-option:hover {{ background: #1b2c49; }} .multi-select-option input {{ width: auto; margin: 0; padding: 0; border: 0; background: transparent; accent-color: #77a5ff; }} .multi-select-clear {{ margin-top: 8px; border-color: #516a93 !important; background: #1c2b46 !important; }}
+    .controls {{ display: grid; grid-template-columns: minmax(220px, 2fr) repeat(5, minmax(105px, 1fr)) minmax(190px, 1.5fr) minmax(110px, 1fr); gap: 10px; align-items: end; }}
+    input, select, .controls button {{ width: 100%; border: 1px solid #394867; border-radius: 9px; background: #172235; color: #edf2ff; padding: 10px; font: inherit; font-size: 15px; }} .controls button {{ cursor: pointer; }} .controls button:hover, .controls button:focus {{ border-color: #77a5ff; background: #1b2c49; }}
+    .filter-control {{ display: grid; gap: 5px; min-width: 0; }} .control-label {{ color: #b9c7df; font-size: 13px; font-weight: 700; }} .sort-selects {{ display: grid; grid-template-columns: minmax(0, 1fr) minmax(82px, auto); }} .sort-selects select {{ border-radius: 0; }} .sort-selects select:first-child {{ border-radius: 9px 0 0 9px; }} .sort-selects select + select {{ border-left: 0; border-radius: 0 9px 9px 0; }} .multi-select {{ position: relative; }} .multi-select-trigger {{ display: flex; justify-content: space-between; align-items: center; min-width: 0; text-align: left; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }} .multi-select-trigger::after {{ content: '▾'; flex: 0 0 auto; margin-left: 6px; color: #b9c7df; }} .multi-select-menu {{ position: absolute; z-index: 4; top: calc(100% + 6px); left: 0; width: max-content; min-width: 100%; max-width: min(310px, calc(100vw - 32px)); padding: 8px; border: 1px solid #516a93; border-radius: 9px; background: #132038; box-shadow: 0 12px 32px rgb(0 0 0 / 35%); }} .multi-select-options {{ display: grid; gap: 2px; max-height: 260px; overflow: auto; }} .multi-select-option {{ display: flex; align-items: center; gap: 8px; padding: 7px; border-radius: 6px; cursor: pointer; }} .multi-select-option:hover {{ background: #1b2c49; }} .multi-select-option input {{ width: auto; margin: 0; padding: 0; border: 0; background: transparent; accent-color: #77a5ff; }} .multi-select-clear {{ margin-top: 8px; border-color: #516a93 !important; background: #1c2b46 !important; }} .tag-select .multi-select-options {{ max-height: none; overflow: visible; }} .tag-menu-level {{ position: relative; display: grid; gap: 2px; min-width: 180px; }} .tag-menu-level .tag-menu-level {{ position: absolute; z-index: 1; top: -8px; left: calc(100% + 14px); max-height: 260px; padding: 8px; overflow: auto; border: 1px solid #516a93; border-radius: 9px; background: #132038; box-shadow: 0 12px 32px rgb(0 0 0 / 35%); }} .tag-menu-branch {{ border: 0 !important; background: transparent !important; text-align: left; padding: 7px !important; }} .tag-menu-branch::after {{ content: '›'; float: right; margin-left: 20px; color: #b9c7df; }} .tag-menu-branch.is-active {{ background: #1b2c49 !important; }}
     .summary {{ display: flex; gap: 12px; flex-wrap: wrap; margin: 18px 0; color: #b9c7df; }} .pill {{ padding: 6px 10px; border-radius: 999px; background: #1f2c43; }}
     .groups {{ display: grid; gap: 28px; }} h2 {{ margin: 0 0 10px; font-size: 22px; }} .results {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }}
     button.card {{ cursor: pointer; text-align: left; border: 1px solid #31425f; border-radius: 12px; color: inherit; padding: 15px; background: #162238; font: inherit; }} button.card:hover, button.card:focus {{ border-color: #77a5ff; background: #1b2c49; }} .card-layout {{ display: grid; grid-template-columns: 58px minmax(0, 1fr); gap: 12px; align-items: center; }}
@@ -123,8 +273,8 @@ def render_static_html(catalog: dict[str, Any], avatar_url_prefix: str = "../dat
     .avatar {{ display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; overflow: hidden; border: 1px solid #4d6a98; border-radius: 50%; background: #263c60; color: #d8e7ff; font-weight: 700; }} .avatar img {{ width: 100%; height: 100%; object-fit: cover; }} .avatar-small {{ width: 58px; height: 58px; font-size: 24px; }} .avatar-large {{ width: 86px; height: 86px; font-size: 34px; }} .avatar-missing {{ border-style: dashed; color: #b7c8e5; }}
     dialog {{ width: min(820px, calc(100% - 28px)); max-height: 88vh; overflow: auto; color: #edf2ff; background: #132038; border: 1px solid #516a93; border-radius: 14px; padding: 0; }} dialog::backdrop {{ background: rgb(0 0 0 / 65%); }}
     .detail {{ padding: 24px; }} .close {{ float: right; cursor: pointer; color: #dce8ff; background: transparent; border: 0; font-size: 26px; }} .detail-heading {{ display: flex; gap: 16px; align-items: center; padding-right: 34px; }} .detail-heading h2 {{ margin: 0; }} .hero-detail-header {{ position: sticky; top: 0; z-index: 1; display: flex; gap: 16px; align-items: center; width: calc(100% + 48px); margin: -24px -24px 18px; padding: 24px 58px 18px 24px; background: #132038; border-bottom: 1px solid #516a93; box-shadow: 0 5px 12px rgb(8 15 29 / 55%); }} .hero-detail-header .detail-close {{ position: absolute; top: 18px; right: 18px; z-index: 2; }} .hero-detail-header .detail-heading {{ flex: 1 1 280px; min-width: 0; padding-right: 0; }} .hero-detail-facts {{ display: grid; flex: 0 1 250px; grid-template-columns: repeat(2, minmax(105px, 1fr)); gap: 9px; }} .hero-detail-fact {{ min-width: 0; padding: 9px 11px; border-radius: 8px; background: #1c2b46; }} .hero-detail-fact strong {{ display: block; font-size: 22px; }} .stat-grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 9px; margin: 18px 0; }} .stat {{ background: #1c2b46; padding: 10px; border-radius: 8px; }} .skill {{ border-left: 3px solid #7aa6ff; background: #192942; padding: 12px; margin: 10px 0; white-space: pre-wrap; }} .upgrade {{ border-left-color: #f59e0b; }} .source {{ color: #fbbf24; font-size: 12px; margin-top: 6px; }}
-    .status-detail {{ position: fixed; right: 24px; bottom: 24px; z-index: 3; width: min(620px, calc(100% - 28px)); max-height: min(560px, calc(100vh - 48px)); overflow: auto; color: #edf2ff; background: #132038; border: 1px solid #516a93; border-radius: 14px; box-shadow: 0 12px 32px rgb(0 0 0 / 45%); }} .status-term {{ cursor: pointer; border: 0; border-bottom: 1px dashed #8fb5ff; color: #a8c7ff; background: transparent; padding: 0; font: inherit; font-weight: 700; }} .status-term:hover, .status-term:focus {{ color: #d7e6ff; border-bottom-style: solid; }} .status-term-highlight {{ color: #c5d7ff; background: rgb(122 166 255 / 18%); border-radius: 3px; padding: 0 2px; font-weight: 700; }} .status-content {{ margin: 16px 0 0; white-space: pre-wrap; line-height: 1.65; }}
-    .empty {{ color: #a9b7cf; margin: 20px 0; }} @media (max-width: 850px) {{ .controls {{ grid-template-columns: repeat(2, minmax(0, 1fr)); }} .controls input {{ grid-column: span 2; }} }} @media (max-width: 600px) {{ .hero-detail-header {{ flex-wrap: wrap; align-items: flex-start; }} .hero-detail-facts {{ width: 100%; flex-basis: 100%; }} .sort-selects {{ grid-template-columns: 1fr; gap: 6px; }} .sort-selects select, .sort-selects select:first-child, .sort-selects select + select {{ border: 1px solid #394867; border-radius: 9px; }} }}
+    .status-detail {{ position: fixed; right: 24px; bottom: 24px; z-index: 3; width: min(620px, calc(100% - 28px)); max-height: min(560px, calc(100vh - 48px)); overflow: auto; color: #edf2ff; background: #132038; border: 1px solid #516a93; border-radius: 14px; box-shadow: 0 12px 32px rgb(0 0 0 / 45%); }} .status-term {{ cursor: pointer; border: 0; border-bottom: 1px dashed #8fb5ff; color: #a8c7ff; background: transparent; padding: 0; font: inherit; font-weight: 700; }} .status-term:hover, .status-term:focus {{ color: #d7e6ff; border-bottom-style: solid; }} .status-term-highlight {{ color: #c5d7ff; background: rgb(122 166 255 / 18%); border-radius: 3px; padding: 0 2px; font-weight: 700; }} .status-term-note {{ color: #b7c8e8; font-size: 0.92em; }} .status-content {{ margin: 16px 0 0; white-space: pre-wrap; line-height: 1.65; }}
+    .empty {{ color: #a9b7cf; margin: 20px 0; }} @media (max-width: 850px) {{ .controls {{ grid-template-columns: repeat(2, minmax(0, 1fr)); }} .controls input {{ grid-column: span 2; }} }} @media (max-width: 600px) {{ input, select, .controls button {{ padding: 9px; font-size: 14px; }} .tag-menu-level .tag-menu-level {{ position: static; width: auto; min-width: 0; margin-top: 8px; }} .hero-detail-header {{ flex-wrap: wrap; align-items: flex-start; }} .hero-detail-facts {{ width: 100%; flex-basis: 100%; }} .sort-selects {{ grid-template-columns: 1fr; gap: 6px; }} .sort-selects select, .sort-selects select:first-child, .sort-selects select + select {{ border: 1px solid #394867; border-radius: 9px; }} }}
   </style>
 </head>
 <body>
@@ -136,17 +286,19 @@ def render_static_html(catalog: dict[str, Any], avatar_url_prefix: str = "../dat
       <section class="filter-control multi-select" id="rarity"><span class="control-label" id="rarity-label">稀有度</span><button class="multi-select-trigger" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="rarity-menu" aria-labelledby="rarity-label">全部</button><div class="multi-select-menu" id="rarity-menu" role="group" aria-labelledby="rarity-label" hidden><div class="multi-select-options"></div><button class="multi-select-clear" type="button">清空</button></div></section>
       <section class="filter-control multi-select" id="element"><span class="control-label" id="element-label">属性</span><button class="multi-select-trigger" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="element-menu" aria-labelledby="element-label">全部</button><div class="multi-select-menu" id="element-menu" role="group" aria-labelledby="element-label" hidden><div class="multi-select-options"></div><button class="multi-select-clear" type="button">清空</button></div></section>
       <section class="filter-control multi-select" id="role"><span class="control-label" id="role-label">职能</span><button class="multi-select-trigger" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="role-menu" aria-labelledby="role-label">全部</button><div class="multi-select-menu" id="role-menu" role="group" aria-labelledby="role-label" hidden><div class="multi-select-options"></div><button class="multi-select-clear" type="button">清空</button></div></section>
+      <section class="filter-control multi-select tag-select" id="tags"><span class="control-label" id="tags-label">标签</span><button class="multi-select-trigger" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="tags-menu" aria-labelledby="tags-label">全部</button><div class="multi-select-menu" id="tags-menu" role="group" aria-labelledby="tags-label" hidden><div class="multi-select-options"></div><button class="multi-select-clear" type="button">清空</button></div></section>
       <label class="filter-control sort-control"><span class="control-label">排序</span><span class="sort-selects"><select id="sortField" aria-label="排序依据"><option value="cardId">卡片 ID</option><option value="name">名称</option><option value="rarity">稀有度</option><option value="hp">HP</option><option value="attack">攻击</option><option value="agility">速度</option></select><select id="sortDirection" aria-label="排序顺序"><option value="asc">升序</option><option value="desc">降序</option></select></span></label>
-      <button id="tagSettings" type="button">标签设置</button>
+{tag_settings_button}
     </section>
     <p class="summary" id="summary"></p><div class="groups" id="groups"></div>
   </main>
   <dialog id="detail"><div class="detail"><div id="detailContent"></div><section id="statusDetail" class="status-detail" hidden aria-labelledby="statusTitle"><div class="detail"><button class="close status-close" aria-label="关闭词条说明">×</button><h2 id="statusTitle"></h2><div class="status-content" id="statusContent"></div></div></section></div></dialog>
-  <dialog id="tagSettingsDetail" aria-labelledby="tagSettingsTitle"><div class="detail"><button class="close tag-settings-close" aria-label="关闭标签设置">×</button><h2 id="tagSettingsTitle">标签设置</h2><p class="status-content">英雄卡固定展示属性、职能和类型；助手卡仅展示类型。自定义标签即将开放。</p></div></dialog>
+{tag_settings_dialog}
   <script>
     const catalog = {embedded_catalog};
     const avatarUrlPrefix = {json.dumps(avatar_url_prefix)};
     const cards = catalog.cards;
+    const assistantTags = catalog.assistantTags || [];
     const byId = new Map(cards.map(card => [card.key, card]));
     const statusById = new Map(catalog.statusTerms.map(term => [term.id, term]));
     const statusTermsByName = new Map();
@@ -176,23 +328,30 @@ def render_static_html(catalog: dict[str, Any], avatar_url_prefix: str = "../dat
       const seenNames = new Set();
       let markup = ''; let textStart = 0; let index = 0;
       while (index < text.length) {{
-        const candidate = terms.find(item => text.startsWith(item.name, index));
+        const candidate = terms.find(item => text.startsWith(item.matchName || item.name, index));
         if (!candidate) {{ index += 1; continue; }}
         const matchedTerms = candidate.terms || [candidate];
         const status = matchedTerms[0];
+        const matchedName = candidate.matchName || candidate.name;
         markup += escape(text.slice(textStart, index));
         if (matchedTerms.length === 1 && !seenNames.has(candidate.name)) {{
-          markup += `<button class="status-term" type="button" data-status-id="${{escape(status.id)}}">${{escape(candidate.name)}}</button>`;
+          markup += `<button class="status-term" type="button" data-status-id="${{escape(status.id)}}">${{escape(matchedName)}}</button>`;
+          if (status.inlineDescription) markup += `<span class="status-term-note">（${{escape(status.inlineDescription)}}）</span>`;
         }} else {{
-          markup += `<span class="status-term-highlight">${{escape(candidate.name)}}</span>`;
+          markup += `<span class="status-term-highlight">${{escape(matchedName)}}</span>`;
         }}
         seenNames.add(candidate.name);
-        index += candidate.name.length; textStart = index;
+        index += matchedName.length; textStart = index;
       }}
       return markup + escape(text.slice(textStart));
     }}
     function descriptionMarkup(skill) {{
       return termMarkup(skill.description, skill.statusTerms || []);
+    }}
+    function sourceMarkup(skill) {{
+      if (skill.descriptionSource === '部分日文回退') return '<div class="source">部分日文原文（官方简中未完整覆盖）</div>';
+      if (skill.nameSource === '日文原文' || skill.descriptionSource === '日文原文') return '<div class="source">日文原文（官方简中未覆盖）</div>';
+      return '';
     }}
     function statusDescriptionMarkup(status) {{
       return termMarkup(status.description, glossaryCandidates.filter(candidate => candidate.name !== status.name));
@@ -231,12 +390,55 @@ def render_static_html(catalog: dict[str, Any], avatar_url_prefix: str = "../dat
     const heroes = cards.filter(card => card.kind === 'hero');
     setupMultiSelect('element', new Set(heroes.map(card => card.element?.label)));
     setupMultiSelect('role', new Set(heroes.map(card => card.role?.label)));
+    const tagById = new Map(assistantTags.map(tag => [tag.id, tag]));
+    const tagChildren = parentId => assistantTags.filter(tag => tag.parentId === parentId);
+    const selectedTagIds = new Set();
+    let tagMenuPath = [];
+    function selectedTagValues() {{ return new Set(selectedTagIds); }}
+    function tagPath(tagId) {{
+      const tag = tagById.get(tagId); return tag?.parentId ? [...tagPath(tag.parentId), tag.label] : tag ? [tag.label] : [];
+    }}
+    function updateTagLabel() {{
+      const labels = [...selectedTagValues()].map(tagId => tagById.get(tagId)?.label).filter(Boolean);
+      $('tags').querySelector('.multi-select-trigger').textContent = labels.length === 0 ? '全部' : labels.length === 1 ? labels[0] : `已选 ${{labels.length}} 项`;
+    }}
+    function renderTagLevel(parentId, depth) {{
+      const level = document.createElement('div'); level.className = 'tag-menu-level';
+      for (const tag of tagChildren(parentId)) {{
+        if (tagChildren(tag.id).length) {{
+          const branch = document.createElement('button'); branch.type = 'button'; branch.className = `tag-menu-branch${{tagMenuPath[depth] === tag.id ? ' is-active' : ''}}`; branch.textContent = tag.label;
+          const openBranch = event => {{
+            if (event.type === 'click') event.stopPropagation();
+            tagMenuPath = [...tagMenuPath.slice(0, depth), tag.id]; renderTagMenu();
+          }};
+          branch.addEventListener('mouseenter', openBranch); branch.addEventListener('focus', openBranch); branch.addEventListener('click', openBranch); level.append(branch); continue;
+        }}
+        const label = document.createElement('label'); label.className = 'multi-select-option';
+        const input = document.createElement('input'); input.type = 'checkbox'; input.value = tag.id; input.checked = selectedTagIds.has(tag.id);
+        input.addEventListener('change', () => {{
+          if (input.checked) selectedTagIds.add(tag.id); else selectedTagIds.delete(tag.id);
+          updateTagLabel(); render();
+        }});
+        label.append(input, document.createTextNode(tag.label)); level.append(label);
+      }}
+      const activeBranchId = tagMenuPath[depth];
+      if (activeBranchId && tagChildren(activeBranchId).length) level.append(renderTagLevel(activeBranchId, depth + 1));
+      if (!level.childElementCount) level.textContent = '此分类下暂无可筛选标签。';
+      return level;
+    }}
+    function renderTagMenu() {{
+      const options = $('tags').querySelector('.multi-select-options'); options.replaceChildren(renderTagLevel(null, 0));
+    }}
+    $('tags').querySelector('.multi-select-clear').addEventListener('click', () => {{
+      selectedTagIds.clear(); updateTagLabel(); renderTagMenu(); render();
+    }});
+    renderTagMenu();
     $('snapshot').textContent = `快照：${{catalog.metadata.snapshotId}} · 英雄 ${{catalog.metadata.heroCardCount}} 张（仅 60 级属性）· 助手 ${{catalog.metadata.sidekickCardCount}} 张（最高技能阶段）· 技能强化 ${{catalog.metadata.skillUpgradeCount}} 项`;
     function matches(card) {{
       const query = $('query').value.trim().toLocaleLowerCase();
-      const haystack = [card.name, card.originalName, card.cardId, ...card.aliases, ...card.skills.flatMap(skill => [skill.name, skill.originalName, skill.description])].join('\\n').toLocaleLowerCase();
-      const rarity = selectedValues('rarity'); const element = selectedValues('element'); const role = selectedValues('role');
-      return (!query || haystack.includes(query)) && (!$('kind').value || card.kind === $('kind').value) && (!rarity.size || rarity.has('★'.repeat(displayRarity(card)))) && (!element.size || element.has(card.element?.label)) && (!role.size || role.has(card.role?.label));
+      const haystack = [card.name, card.originalName, card.cardId, ...card.aliases, ...card.skills.flatMap(skill => [skill.name, skill.originalName, skill.description]), ...(card.tags || []).map(tag => tag.label)].join('\\n').toLocaleLowerCase();
+      const rarity = selectedValues('rarity'); const element = selectedValues('element'); const role = selectedValues('role'); const tags = selectedTagValues();
+      return (!query || haystack.includes(query)) && (!$('kind').value || card.kind === $('kind').value) && (!rarity.size || rarity.has('★'.repeat(displayRarity(card)))) && (!element.size || element.has(card.element?.label)) && (!role.size || role.has(card.role?.label)) && (!tags.size || (card.kind === 'sidekick' && [...tags].every(tagId => card.tags?.some(tag => tag.id === tagId))));
     }}
     function sortValue(card, field) {{
       if (field === 'name') return card.name;
@@ -268,7 +470,7 @@ def render_static_html(catalog: dict[str, Any], avatar_url_prefix: str = "../dat
         const list = result.filter(card => card.kind === kind).sort(compareCards); if (!list.length) continue;
         const section = document.createElement('section'); const heading = document.createElement('h2'); heading.textContent = `${{kindLabel(kind)}}（${{list.length}}）`; section.append(heading);
         const grid = document.createElement('div'); grid.className = 'results';
-        for (const card of list) {{ const button = document.createElement('button'); button.className='card'; button.dataset.key=card.key; const tags = card.kind === 'hero' ? [card.element?.label, card.role?.label, kindLabel(card.kind)] : [kindLabel(card.kind)]; button.innerHTML = `<div class="card-layout">${{avatarMarkup(card, 'avatar-small')}}<div><div class="card-title"><span>${{escape(card.name)}}</span><span>${{escape('★'.repeat(displayRarity(card)))}}</span></div><div class="muted">${{escape(card.originalName)}} · #${{escape(card.cardId)}}</div><div class="tags">${{tags.map(tag => `<span class="tag">${{escape(tag)}}</span>`).join('')}}</div></div></div>`; grid.append(button); }}
+        for (const card of list) {{ const button = document.createElement('button'); button.className='card'; button.dataset.key=card.key; const tags = card.kind === 'hero' ? [card.element?.label, card.role?.label, kindLabel(card.kind)] : [kindLabel(card.kind), ...(card.tags || []).slice(0, 3).map(tag => tag.label), ...(card.tags || []).length > 3 ? [`+${{card.tags.length - 3}}`] : []]; button.innerHTML = `<div class="card-layout">${{avatarMarkup(card, 'avatar-small')}}<div><div class="card-title"><span>${{escape(card.name)}}</span><span>${{escape('★'.repeat(displayRarity(card)))}}</span></div><div class="muted">${{escape(card.originalName)}} · #${{escape(card.cardId)}}</div><div class="tags">${{tags.filter(Boolean).map(tag => `<span class="tag">${{escape(tag)}}</span>`).join('')}}</div></div></div>`; grid.append(button); }}
         section.append(grid); groups.append(section);
       }}
       if (!result.length) groups.innerHTML = '<p class="empty">没有匹配项。可尝试角色日文名、卡片编号或技能文字。</p>';
@@ -277,14 +479,16 @@ def render_static_html(catalog: dict[str, Any], avatar_url_prefix: str = "../dat
       $('detail').classList.toggle('hero-detail', card.kind === 'hero');
       const stats = card.kind === 'hero'
         ? [['60级 HP',card.stats.level60.hp], ['60级 攻击',card.stats.level60.attack], ['60级 速度',card.stats.level60.agility]]
-        : [['稀有度','★'.repeat(card.rarity)], ['1级 HP',card.stats.level1.hp], ['1级 攻击',card.stats.level1.attack], ['1级 速度',card.stats.level1.agility], ['最高阶段 HP',card.stats.max.hp], ['最高阶段 攻击',card.stats.max.attack], ['最高阶段 速度',card.stats.max.agility]];
+        : [['稀有度','★'.repeat(card.rarity)], ['满级 HP',card.stats.max.hp], ['满级 攻击',card.stats.max.attack], ['满级 速度',card.stats.max.agility]];
       const detailClose = '<button class="close detail-close" aria-label="关闭">×</button>';
       const heading = `<div class="detail-heading">${{avatarMarkup(card, 'avatar-large')}}<div><h2>${{escape(kindLabel(card.kind))}} · ${{escape(card.name)}}</h2><p class="muted">${{escape(card.originalName)}} · 卡片编号 #${{escape(card.cardId)}}${{card.kind === 'sidekick' ? ` · 最高技能阶段 ${{escape(card.skillLevel)}}` : ''}}</p></div></div>`;
       const heroHeader = card.kind === 'hero'
         ? `<div class="hero-detail-header">${{detailClose}}${{heading}}<div class="hero-detail-facts"><div class="hero-detail-fact"><div class="muted">属性</div><strong>${{escape(card.element?.label || '不适用')}}</strong></div><div class="hero-detail-fact"><div class="muted">职能</div><strong>${{escape(card.role?.label || '不适用')}}</strong></div></div></div>`
         : `${{detailClose}}${{heading}}`;
-      const upgradeHtml = card.skillUpgrades.length ? `<h3>技能强化（独立记录）</h3>${{card.skillUpgrades.map(upgrade => `<article class="skill upgrade"><strong>${{escape(upgrade.before.name)}} → ${{escape(upgrade.after.name)}}</strong><div class="muted">技能 #${{escape(upgrade.before.skillId)}} → #${{escape(upgrade.after.skillId)}}${{upgrade.questId ? ` · 任务 #${{escape(upgrade.questId)}}` : ''}}</div><div><b>强化前：</b>${{descriptionMarkup(upgrade.before)}}</div><div><b>强化后（最高等级）：</b>${{descriptionMarkup(upgrade.after)}}</div>${{upgrade.after.descriptionSource === '日文原文' ? '<div class="source">日文原文（官方简中未覆盖）</div>' : ''}}</article>`).join('')}}` : '';
-      $('detailContent').innerHTML = `${{heroHeader}}<div class="stat-grid">${{stats.map(([label,value]) => `<div class="stat"><div class="muted">${{label}}</div><strong>${{escape(value ?? '—')}}</strong></div>`).join('')}}</div><h3>关联技能</h3>${{card.skills.map(skill => `<article class="skill"><strong>${{escape(skill.relation)}} · ${{escape(skill.name)}}</strong><div class="muted">${{escape(skill.originalName)}} · #${{escape(skill.skillId)}}</div><div>${{descriptionMarkup(skill)}}</div>${{skill.nameSource === '日文原文' || skill.descriptionSource === '日文原文' ? '<div class="source">日文原文（官方简中未覆盖）</div>' : ''}}</article>`).join('')}}${{upgradeHtml}}`;
+      const upgradeHtml = card.skillUpgrades.length ? `<h3>技能强化（独立记录）</h3>${{card.skillUpgrades.map(upgrade => `<article class="skill upgrade"><strong>${{escape(upgrade.before.name)}} → ${{escape(upgrade.after.name)}}</strong><div class="muted">技能 #${{escape(upgrade.before.skillId)}} → #${{escape(upgrade.after.skillId)}}${{upgrade.questId ? ` · 任务 #${{escape(upgrade.questId)}}` : ''}}</div><div><b>强化前：</b>${{descriptionMarkup(upgrade.before)}}</div><div><b>强化后（最高等级）：</b>${{descriptionMarkup(upgrade.after)}}</div>${{sourceMarkup(upgrade.after)}}</article>`).join('')}}` : '';
+      const skillCostMarkup = skill => skill.viewCost != null ? `<div class="muted">消耗 View：${{escape(skill.viewCost)}}</div>` : '';
+      const tagHtml = card.kind === 'sidekick' && card.tags?.length ? `<h3>助手标签</h3><div class="tags">${{card.tags.map(tag => `<span class="tag">${{escape(tag.path.join(' › '))}}</span>`).join('')}}</div>` : '';
+      $('detailContent').innerHTML = `${{heroHeader}}<div class="stat-grid">${{stats.map(([label,value]) => `<div class="stat"><div class="muted">${{label}}</div><strong>${{escape(value ?? '—')}}</strong></div>`).join('')}}</div>${{tagHtml}}<h3>关联技能</h3>${{card.skills.map(skill => `<article class="skill"><strong>${{escape(skill.relation)}} · ${{escape(skill.name)}}</strong><div class="muted">${{escape(skill.originalName)}} · #${{escape(skill.skillId)}}</div>${{skillCostMarkup(skill)}}<div>${{descriptionMarkup(skill)}}</div>${{sourceMarkup(skill)}}</article>`).join('')}}${{upgradeHtml}}`;
       $('detail').showModal();
     }}
     $('query').addEventListener('input', render);
@@ -310,8 +514,7 @@ def render_static_html(catalog: dict[str, Any], avatar_url_prefix: str = "../dat
     document.addEventListener('error', event => {{ if (event.target.matches('img.avatar-image')) useAvatarPlaceholder(event.target); }}, true);
     document.querySelector('.status-close').addEventListener('click', () => $('statusDetail').hidden = true);
     $('detail').addEventListener('close', () => $('statusDetail').hidden = true);
-    $('tagSettings').addEventListener('click', () => $('tagSettingsDetail').showModal());
-    document.querySelector('.tag-settings-close').addEventListener('click', () => $('tagSettingsDetail').close());
+{tag_settings_listeners}
     render();
   </script>
 </body>
@@ -341,10 +544,22 @@ def _build_cards(
         active_ids = raw_card.get("skillIds") or []
         equipment_ids = raw_card.get("equipmentSkills") or [] if kind == "sidekick" else []
         append_ids = raw_card.get("equipmentAppendSkills") or [] if kind == "sidekick" else []
+        card_status_terms = _status_terms_for_card(raw_card, status_terms)
+        equipment_rows = (
+            _sidekick_equipment_skill_rows(
+                equipment_ids,
+                append_ids,
+                skills,
+                localized,
+                status_terms,
+                card_status_terms,
+            )
+            if kind == "sidekick"
+            else []
+        )
         card_skills = [
-            *[_skill_row(skill_id, "主动技能" if kind == "hero" else "主动技能（最高阶段）", skills, localized, status_terms) for skill_id in active_ids],
-            *[_skill_row(skill_id, "装备技能（最高等级）", skills, localized, status_terms) for skill_id in _highest_skill_ids(equipment_ids)],
-            *[_skill_row(skill_id, "追加装备技能（最高等级）", skills, localized, status_terms) for skill_id in _highest_skill_ids(append_ids)],
+            *[_skill_row(skill_id, "主动技能" if kind == "hero" else "主动技能（最高阶段）", skills, localized, status_terms, card_status_terms=card_status_terms) for skill_id in active_ids],
+            *equipment_rows,
         ]
         result.append(
             {
@@ -363,7 +578,7 @@ def _build_cards(
                 "stats": _stats(raw_card.get("growths") or [], kind),
                 "skills": card_skills,
                 "skillLevel": raw_card.get("levelZone") if kind == "sidekick" else None,
-                "skillUpgrades": _skill_upgrades(raw_card, skills, localized, status_terms) if kind == "hero" else [],
+                "skillUpgrades": _skill_upgrades(raw_card, skills, localized, status_terms, card_status_terms) if kind == "hero" else [],
             }
         )
     return result
@@ -375,9 +590,12 @@ def _skill_row(
     skills: dict[str, dict[str, Any]],
     localized: dict[str, str],
     status_terms: dict[str, dict[str, str]],
+    card_status_terms: list[dict[str, str]] | None = None,
     description_override: str | None = None,
     description_source_override: str | None = None,
+    official_chinese_availability_override: str | None = None,
     effects_override: list[dict[str, Any]] | None = None,
+    status_term_skill_ids: list[int | str] | None = None,
 ) -> dict[str, Any]:
     raw_skill = skills.get(str(skill_id))
     if raw_skill is None:
@@ -395,16 +613,102 @@ def _skill_row(
         if effects_override is not None
         else raw_skill
     )
+    skill_status_terms = _status_terms_for_skill(
+        skill_for_status_terms,
+        cleaned_description,
+        status_terms,
+        card_status_terms,
+        status_term_skill_ids,
+    )
     return {
         "skillId": str(skill_id),
         "relation": relation,
+        "viewCost": raw_skill.get("useView") if relation.startswith("主动技能") else None,
         "name": name,
         "nameSource": "官方简中" if localized.get(f"SKILL_NAME_{skill_id}") else "日文原文",
         "originalName": original_name,
         "description": cleaned_description,
         "descriptionSource": description_source,
-        "statusTerms": _status_terms_for_skill(skill_for_status_terms, cleaned_description, status_terms),
+        "officialChineseAvailability": official_chinese_availability_override or (
+            "完整官方简中" if description_source == "官方简中" else "无官方简中"
+        ),
+        "statusTermSources": "、".join(
+            sorted({term.get("source", "官方简中") for term in skill_status_terms})
+        ) or "—",
+        "statusTerms": skill_status_terms,
     }
+
+
+def _sidekick_equipment_skill_rows(
+    equipment_ids: list[int | str],
+    append_ids: list[int | str],
+    skills: dict[str, dict[str, Any]],
+    localized: dict[str, str],
+    status_terms: dict[str, dict[str, str]],
+    card_status_terms: list[dict[str, str]],
+) -> list[dict[str, Any]]:
+    highest_equipment_ids = _highest_skill_ids(equipment_ids)
+    if not highest_equipment_ids:
+        return []
+
+    equipment_id = highest_equipment_ids[0]
+    relation = "装备技能（最高等级）"
+    equipment = _skill_row(
+        equipment_id, relation, skills, localized, status_terms, card_status_terms
+    )
+    highest_append_ids = _highest_skill_ids(append_ids)
+    if not highest_append_ids:
+        return [equipment]
+
+    append_id = highest_append_ids[0]
+    append = _skill_row(append_id, relation, skills, localized, status_terms, card_status_terms)
+    if not append["description"] or append["description"] == equipment["description"]:
+        return [
+            _skill_row(
+                equipment_id,
+                relation,
+                skills,
+                localized,
+                status_terms,
+                card_status_terms,
+                effects_override=[
+                    *(skills[str(equipment_id)].get("effects") or []),
+                    *(skills[str(append_id)].get("effects") or []),
+                ],
+                status_term_skill_ids=[append_id],
+            )
+        ]
+
+    sections = [
+        ("装备效果", equipment["description"]),
+        ("追加效果", append["description"]),
+    ]
+    description = "\n\n".join(f"【{label}】\n{text}" for label, text in sections if text)
+    sources = [equipment["descriptionSource"], append["descriptionSource"]]
+    all_official = all(source == "官方简中" for source in sources)
+    any_official = any(source == "官方简中" for source in sources)
+    return [
+        _skill_row(
+            equipment_id,
+            relation,
+            skills,
+            localized,
+            status_terms,
+            card_status_terms,
+            description_override=description,
+            description_source_override=(
+                "官方简中" if all_official else "部分日文回退" if any_official else "日文原文"
+            ),
+            official_chinese_availability_override=(
+                "完整官方简中" if all_official else "部分官方简中" if any_official else "无官方简中"
+            ),
+            effects_override=[
+                *(skills[str(equipment_id)].get("effects") or []),
+                *(skills[str(append_id)].get("effects") or []),
+            ],
+            status_term_skill_ids=[append_id],
+        )
+    ]
 
 
 def _unique_skills(cards: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -547,28 +851,43 @@ def _skill_upgrades(
     skills: dict[str, dict[str, Any]],
     localized: dict[str, str],
     status_terms: dict[str, dict[str, str]],
+    card_status_terms: list[dict[str, str]],
 ) -> list[dict[str, Any]]:
-    learn_no_by_skill = {
-        str(item["skillId"]): item.get("skillLearnNo")
-        for item in raw_card.get("skillProvider", {}).get("activeSkills", [])
-    }
-    upgrades = []
-    for quest in raw_card.get("skillUpgradeQuestInfos") or []:
-        for change in quest.get("changeSkills") or []:
-            before_id = change.get("beforeSkillId")
-            after_id = change.get("afterSkillId")
-            if before_id is None or after_id is None:
-                continue
-            learn_no = learn_no_by_skill.get(str(before_id))
-            upgrades.append(
-                {
-                    "skillLevel": quest.get("skillUpgrade"),
-                    "questId": str(quest["questId"]) if quest.get("questId") is not None else None,
-                    "before": _skill_row(before_id, f"技能 {learn_no}" if learn_no else "强化前", skills, localized, status_terms),
-                    "after": _highest_upgrade_skill_row(after_id, skills, localized, status_terms),
-                }
-            )
-    return upgrades
+    if not raw_card.get("hasSkillUpgrade"):
+        return []
+
+    active_skills = raw_card.get("skillProvider", {}).get("activeSkills", [])
+    base_skills = sorted(
+        (item for item in active_skills if item.get("skillUpgrade") == 0),
+        key=lambda item: item.get("skillLearnNo", 0),
+    )
+    upgraded_skills = sorted(
+        (item for item in active_skills if item.get("skillUpgrade") == 1),
+        key=lambda item: item.get("skillLearnNo", 0),
+    )
+    if len(base_skills) != 3 or len(upgraded_skills) != 3:
+        return []
+
+    quest = next(iter(raw_card.get("skillUpgradeQuestInfos") or []), {})
+    quest_id = str(quest["questId"]) if quest.get("questId") is not None else None
+    return [
+        {
+            "skillLevel": quest.get("skillUpgrade"),
+            "questId": quest_id,
+            "before": _skill_row(
+                before["skillId"],
+                f"技能 {before['skillLearnNo']}",
+                skills,
+                localized,
+                status_terms,
+                card_status_terms,
+            ),
+            "after": _highest_upgrade_skill_row(
+                after["skillId"], skills, localized, status_terms, card_status_terms
+            ),
+        }
+        for before, after in zip(base_skills, upgraded_skills, strict=True)
+    ]
 
 
 def _highest_upgrade_skill_row(
@@ -576,6 +895,7 @@ def _highest_upgrade_skill_row(
     skills: dict[str, dict[str, Any]],
     localized: dict[str, str],
     status_terms: dict[str, dict[str, str]],
+    card_status_terms: list[dict[str, str]],
 ) -> dict[str, Any]:
     raw_skill = skills.get(str(skill_id))
     if raw_skill is None:
@@ -589,31 +909,68 @@ def _highest_upgrade_skill_row(
         else:
             base_effects.append(effect)
     if not condition_groups:
-        return _skill_row(skill_id, "强化后", skills, localized, status_terms)
+        return _skill_row(skill_id, "强化后", skills, localized, status_terms, card_status_terms)
 
     highest_effects = [
         max(effects, key=lambda effect: (effect.get("conditionPriority", 0), effect.get("serialNo", 0)))
         for effects in condition_groups.values()
     ]
+    highest_effects = _remove_subsumed_highest_effects(highest_effects)
     highest_effects.sort(key=lambda effect: effect.get("serialNo", 0))
+    base_description = _clean_text(raw_skill.get("description", ""))
+    localized_base_description = _clean_text(localized.get(f"SKILL_DESCRIPTION_{skill_id}", ""))
+    condition_parts = [
+        _upgrade_condition_part(skill_id, effect, localized)
+        for effect in highest_effects
+    ]
+    prefix_parts = [part for part in condition_parts if part[2]]
+    suffix_parts = [part for part in condition_parts if not part[2]]
     final_description = "\n".join(
         part
         for part in [
-            _clean_text(raw_skill.get("description", "")),
-            *(_clean_text(effect.get("conditionDescription", "")) for effect in highest_effects),
+            *(part[0] for part in prefix_parts),
+            localized_base_description or base_description,
+            *(part[0] for part in suffix_parts),
         ]
         if part
     )
+    all_official = bool(localized_base_description) and all(part[1] for part in condition_parts)
+    any_official = bool(localized_base_description) or any(part[1] for part in condition_parts)
+    description_source = "官方简中" if all_official else "部分日文回退" if any_official else "日文原文"
     return _skill_row(
         skill_id,
         "强化后",
         skills,
         localized,
         status_terms,
+        card_status_terms,
         description_override=final_description,
-        description_source_override="日文原文",
+        description_source_override=description_source,
+        official_chinese_availability_override=(
+            "完整官方简中" if all_official else "部分官方简中" if any_official else "无官方简中"
+        ),
         effects_override=[*base_effects, *highest_effects],
     )
+
+
+def _remove_subsumed_highest_effects(effects: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    effect_ids = {effect.get("skillEffectId") for effect in effects}
+    subsumed = set().union(
+        *(subsumed_ids for all_id, subsumed_ids in SUBSUMED_HIGHEST_EFFECT_IDS.items() if all_id in effect_ids)
+    ) if effect_ids else set()
+    return [effect for effect in effects if effect.get("skillEffectId") not in subsumed]
+
+
+def _upgrade_condition_part(
+    skill_id: int | str, effect: dict[str, Any], localized: dict[str, str]
+) -> tuple[str, bool, bool]:
+    serial_no = effect.get("serialNo", 0)
+    override = UPGRADE_CONDITION_TEXT_OVERRIDES.get((str(skill_id), serial_no))
+    localized_text = _clean_text(
+        localized.get(f"SKILL_EFFECT_CONDITION_DESCRIPTION_{skill_id}_{serial_no}", "")
+    )
+    text = override or localized_text or _clean_text(effect.get("conditionDescription", ""))
+    return text, bool(override or localized_text), bool(override)
 
 
 def _aliases_by_original(aliases: dict[str, str]) -> dict[str, list[str]]:
@@ -696,22 +1053,48 @@ def _status_terms_by_id(localized: dict[str, str]) -> dict[str, dict[str, dict[s
                 "id": status_id,
                 "name": name,
                 "description": _clean_status_description(description),
+                "source": "官方简中",
             }
     result["all"] = {**result["effect"], **result["skill"]}
+    for terms in SPECIAL_STATUS_TERMS_BY_SKILL.values():
+        for term in terms:
+            result["all"][term["id"]] = dict(term)
     return result
 
 
+def _status_terms_for_card(
+    raw_card: dict[str, Any], status_terms: dict[str, dict[str, dict[str, str]]]
+) -> list[dict[str, str]]:
+    stock_id = str(raw_card.get("stockId") or "")
+    if not stock_id:
+        return []
+    return [term for status_id, term in status_terms["skill"].items() if status_id.startswith(stock_id)]
+
+
 def _status_terms_for_skill(
-    raw_skill: dict[str, Any], description: str, status_terms: dict[str, dict[str, dict[str, str]]]
+    raw_skill: dict[str, Any],
+    description: str,
+    status_terms: dict[str, dict[str, dict[str, str]]],
+    card_status_terms: list[dict[str, str]] | None = None,
+    status_term_skill_ids: list[int | str] | None = None,
 ) -> list[dict[str, str]]:
     candidates: dict[str, dict[str, dict[str, str]]] = {}
-    for effect in raw_skill.get("effects") or []:
-        status_term = status_terms["effect"].get(str(effect.get("skillEffectId")))
-        if status_term and status_term["name"] in description:
+    def add(status_term: dict[str, str] | None) -> None:
+        if status_term and (status_term.get("matchName") or status_term["name"]) in description:
             candidates.setdefault(status_term["name"], {})[status_term["id"]] = status_term
-    skill_status = status_terms["skill"].get(str(raw_skill.get("skillId")))
-    if skill_status and skill_status["name"] in description:
-        candidates.setdefault(skill_status["name"], {})[skill_status["id"]] = skill_status
+
+    for effect in raw_skill.get("effects") or []:
+        add(status_terms["effect"].get(str(effect.get("skillEffectId"))))
+    skill_ids = [raw_skill.get("skillId"), *(status_term_skill_ids or [])]
+    for skill_id in skill_ids:
+        add(status_terms["skill"].get(str(skill_id)))
+    for status_term in card_status_terms or []:
+        if status_term and status_term["name"] not in candidates:
+            add(status_term)
+    for skill_id in skill_ids:
+        for status_term in SPECIAL_STATUS_TERMS_BY_SKILL.get(str(skill_id), []):
+            if (status_term.get("matchName") or status_term["name"]) in description:
+                candidates[status_term["name"]] = {status_term["id"]: dict(status_term)}
     return [next(iter(terms.values())) for terms in candidates.values() if len(terms) == 1]
 
 
@@ -736,13 +1119,14 @@ def main() -> None:
     parser.add_argument("--snapshot-dir", type=Path, default=DEFAULT_SNAPSHOT_DIR)
     parser.add_argument("--catalog", type=Path, default=DEFAULT_CATALOG_PATH)
     parser.add_argument("--site", type=Path, default=DEFAULT_SITE_PATH)
+    parser.add_argument("--assistant-tags", type=Path, default=DEFAULT_ASSISTANT_TAGS_PATH)
     parser.add_argument("--xlsx", type=Path, help="同时导出 Excel 工作簿")
     parser.add_argument(
         "--node",
         default=str(CODEX_NODE_PATH) if CODEX_NODE_PATH.is_file() else shutil.which("node") or "node",
     )
     args = parser.parse_args()
-    catalog = build_catalog(args.snapshot_dir)
+    catalog = build_catalog(args.snapshot_dir, assistant_tags_path=args.assistant_tags)
     write_catalog(catalog, args.catalog)
     write_static_site(catalog, args.site)
     if args.xlsx:

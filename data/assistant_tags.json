@@ -1,0 +1,302 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "id": "targeting",
+      "label": "主动-作用目标",
+      "parentId": null
+    },
+    {
+      "id": "target-self",
+      "label": "自身",
+      "parentId": "targeting"
+    },
+    {
+      "id": "target-ally-single",
+      "label": "友方单体",
+      "parentId": "targeting"
+    },
+    {
+      "id": "target-ally-multi",
+      "label": "友方多目标",
+      "parentId": "targeting"
+    },
+    {
+      "id": "target-ally-all",
+      "label": "友方全体",
+      "parentId": "targeting"
+    },
+    {
+      "id": "target-enemy-single",
+      "label": "敌方单体",
+      "parentId": "targeting"
+    },
+    {
+      "id": "target-enemy-multi",
+      "label": "敌方多目标",
+      "parentId": "targeting"
+    },
+    {
+      "id": "target-enemy-all",
+      "label": "敌方全体",
+      "parentId": "targeting"
+    },
+    {
+      "id": "target-none",
+      "label": "无目标",
+      "parentId": "targeting"
+    },
+    {
+      "id": "value",
+      "label": "主动-作用数值",
+      "parentId": null
+    },
+    {
+      "id": "value-damage",
+      "label": "伤害",
+      "parentId": "value"
+    },
+    {
+      "id": "value-recovery",
+      "label": "恢复",
+      "parentId": "value"
+    },
+    {
+      "id": "value-shield",
+      "label": "护盾",
+      "parentId": "value"
+    },
+    {
+      "id": "value-view",
+      "label": "View",
+      "parentId": "value"
+    },
+    {
+      "id": "tag-0de9c9e5-fa97-4d86-bed3-e869d5b61c7b",
+      "label": "主动-作用BUFF",
+      "parentId": null
+    },
+    {
+      "id": "effect-damage-up",
+      "label": "增伤",
+      "parentId": "effect"
+    },
+    {
+      "id": "effect-damage-down",
+      "label": "减伤",
+      "parentId": "effect"
+    },
+    {
+      "id": "tag-974a4bee-84ca-4868-ab63-405e4001bb49",
+      "label": "被动-触发时机",
+      "parentId": null
+    },
+    {
+      "id": "auto-target-selection",
+      "label": "自动选择目标",
+      "parentId": "auto-battle"
+    },
+    {
+      "id": "auto-skill-2",
+      "label": "释放技能 2",
+      "parentId": "auto-battle"
+    },
+    {
+      "id": "auto-skill-3",
+      "label": "释放技能 3",
+      "parentId": "auto-battle"
+    },
+    {
+      "id": "auto-mixed-skill",
+      "label": "混合释放",
+      "parentId": "auto-battle"
+    },
+    {
+      "id": "tag-14324fd4-8d77-4f36-9489-15d41f397129",
+      "label": "持续伤害",
+      "parentId": "value"
+    },
+    {
+      "id": "tag-5de2a892-f831-4f0c-9039-b1bcc4c1bb93",
+      "label": "速度",
+      "parentId": "value"
+    },
+    {
+      "id": "tag-732e632c-1e6c-4cbd-b7cf-1bba43ceafd2",
+      "label": "行动等待",
+      "parentId": "auto-battle"
+    },
+    {
+      "id": "effect",
+      "label": "被动-作用效果",
+      "parentId": null
+    },
+    {
+      "id": "tag-a5911010-fe08-4163-a081-ad0e332d32be",
+      "label": "增伤",
+      "parentId": "tag-0de9c9e5-fa97-4d86-bed3-e869d5b61c7b"
+    },
+    {
+      "id": "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+      "label": "减伤",
+      "parentId": "tag-0de9c9e5-fa97-4d86-bed3-e869d5b61c7b"
+    },
+    {
+      "id": "tag-0f6ebd6c-6189-46c8-98f1-80dfbb14dfc2",
+      "label": "View",
+      "parentId": "tag-0de9c9e5-fa97-4d86-bed3-e869d5b61c7b"
+    },
+    {
+      "id": "tag-14eb2792-1177-4b2d-98c9-a5aa50a69add",
+      "label": "速度",
+      "parentId": "tag-0de9c9e5-fa97-4d86-bed3-e869d5b61c7b"
+    },
+    {
+      "id": "tag-1a0c8c81-6f4c-4fee-9669-6f32b5f72acc",
+      "label": "目标控制",
+      "parentId": "tag-0de9c9e5-fa97-4d86-bed3-e869d5b61c7b"
+    },
+    {
+      "id": "auto-battle",
+      "label": "被动-自动战斗",
+      "parentId": null
+    },
+    {
+      "id": "tag-bc2a6ed4-a1ea-4114-afb7-93ab272f0f9c",
+      "label": "登场时",
+      "parentId": "tag-974a4bee-84ca-4868-ab63-405e4001bb49"
+    },
+    {
+      "id": "tag-2628a7f6-5404-4480-b800-2353e5a81a97",
+      "label": "回合开始时",
+      "parentId": "tag-974a4bee-84ca-4868-ab63-405e4001bb49"
+    },
+    {
+      "id": "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+      "label": "受伤时",
+      "parentId": "tag-974a4bee-84ca-4868-ab63-405e4001bb49"
+    },
+    {
+      "id": "tag-bfc74203-a39c-4054-aaf8-b534ca659fde",
+      "label": "幸运",
+      "parentId": "tag-0de9c9e5-fa97-4d86-bed3-e869d5b61c7b"
+    },
+    {
+      "id": "tag-143d8bab-4954-4174-abba-09e3dee91e40",
+      "label": "View",
+      "parentId": "effect"
+    },
+    {
+      "id": "tag-e8cc00a9-5862-46cc-ae3f-d28a410615ea",
+      "label": "速度",
+      "parentId": "effect"
+    },
+    {
+      "id": "tag-8fcfaf4e-e5d8-4566-be66-f057c959d8fd",
+      "label": "其他",
+      "parentId": "tag-0de9c9e5-fa97-4d86-bed3-e869d5b61c7b"
+    },
+    {
+      "id": "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+      "label": "行动相关",
+      "parentId": "tag-974a4bee-84ca-4868-ab63-405e4001bb49"
+    },
+    {
+      "id": "tag-1b0f9f8f-e267-4dc9-aa01-abc680c571db",
+      "label": "目标控制",
+      "parentId": "effect"
+    },
+    {
+      "id": "tag-d1f5e200-ead4-4e15-bf53-21424f16a1c1",
+      "label": "获得buff时",
+      "parentId": "tag-974a4bee-84ca-4868-ab63-405e4001bb49"
+    },
+    {
+      "id": "tag-aad3d89b-68eb-49ef-b10e-7ee02d71efb7",
+      "label": "主动攻击",
+      "parentId": "tag-974a4bee-84ca-4868-ab63-405e4001bb49"
+    },
+    {
+      "id": "tag-793e072d-675e-4152-8457-de2602f28886",
+      "label": "buff解除",
+      "parentId": "effect"
+    }
+  ],
+  "assignments": {
+    "sidekick:131816": [
+      "target-enemy-single",
+      "tag-14324fd4-8d77-4f36-9489-15d41f397129",
+      "effect-damage-up"
+    ],
+    "sidekick:123016": [
+      "target-self",
+      "target-enemy-single",
+      "value-damage",
+      "value-shield",
+      "effect-damage-up",
+      "tag-732e632c-1e6c-4cbd-b7cf-1bba43ceafd2"
+    ],
+    "sidekick:119916": [
+      "target-self",
+      "target-enemy-single",
+      "value-damage",
+      "effect-damage-up",
+      "auto-mixed-skill",
+      "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+      "tag-1a0c8c81-6f4c-4fee-9669-6f32b5f72acc",
+      "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f"
+    ],
+    "sidekick:199916": [
+      "tag-143d8bab-4954-4174-abba-09e3dee91e40",
+      "tag-bfc74203-a39c-4054-aaf8-b534ca659fde"
+    ],
+    "sidekick:106516": [
+      "target-self",
+      "tag-1a0c8c81-6f4c-4fee-9669-6f32b5f72acc",
+      "tag-2628a7f6-5404-4480-b800-2353e5a81a97",
+      "tag-1b0f9f8f-e267-4dc9-aa01-abc680c571db"
+    ],
+    "sidekick:102316": [
+      "target-self",
+      "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+      "tag-1a0c8c81-6f4c-4fee-9669-6f32b5f72acc",
+      "tag-bc2a6ed4-a1ea-4114-afb7-93ab272f0f9c",
+      "effect-damage-down"
+    ],
+    "sidekick:132716": [
+      "tag-8fcfaf4e-e5d8-4566-be66-f057c959d8fd",
+      "target-enemy-multi",
+      "target-enemy-single",
+      "tag-aad3d89b-68eb-49ef-b10e-7ee02d71efb7",
+      "effect-damage-up"
+    ],
+    "sidekick:124816": [
+      "target-ally-single",
+      "value-recovery",
+      "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+      "tag-aad3d89b-68eb-49ef-b10e-7ee02d71efb7",
+      "tag-143d8bab-4954-4174-abba-09e3dee91e40"
+    ],
+    "sidekick:124116": [
+      "target-self",
+      "value-view",
+      "tag-0f6ebd6c-6189-46c8-98f1-80dfbb14dfc2",
+      "tag-aad3d89b-68eb-49ef-b10e-7ee02d71efb7",
+      "tag-143d8bab-4954-4174-abba-09e3dee91e40",
+      "effect-damage-up"
+    ],
+    "sidekick:115716": [
+      "target-self",
+      "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+      "tag-14324fd4-8d77-4f36-9489-15d41f397129",
+      "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+      "tag-793e072d-675e-4152-8457-de2602f28886"
+    ],
+    "sidekick:106916": [
+      "target-ally-single",
+      "value-view",
+      "tag-e8cc00a9-5862-46cc-ae3f-d28a410615ea",
+      "tag-d1f5e200-ead4-4e15-bf53-21424f16a1c1"
+    ]
+  }
+}
