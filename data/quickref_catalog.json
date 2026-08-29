@@ -1,7 +1,7 @@
 {
   "metadata": {
     "snapshotId": "20260815",
-    "generatedAt": "2026-08-28T12:50:26.578400+00:00",
+    "generatedAt": "2026-08-29T09:58:30.980553+00:00",
     "heroCardCount": 205,
     "sidekickCardCount": 153,
     "skillCount": 856,
@@ -19640,7 +19640,56 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-self",
+          "label": "自身",
+          "path": [
+            "主动-作用目标",
+            "自身"
+          ]
+        },
+        {
+          "id": "tag-14324fd4-8d77-4f36-9489-15d41f397129",
+          "label": "持续伤害",
+          "path": [
+            "主动-作用数值",
+            "持续伤害"
+          ]
+        },
+        {
+          "id": "tag-8fcfaf4e-e5d8-4566-be66-f057c959d8fd",
+          "label": "其他",
+          "path": [
+            "主动-作用BUFF",
+            "其他"
+          ]
+        },
+        {
+          "id": "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+          "label": "受伤时",
+          "path": [
+            "被动-触发时机",
+            "受伤时"
+          ]
+        },
+        {
+          "id": "effect-damage-down",
+          "label": "减伤",
+          "path": [
+            "被动-作用效果",
+            "减伤"
+          ]
+        },
+        {
+          "id": "tag-1b0f9f8f-e267-4dc9-aa01-abc680c571db",
+          "label": "目标控制",
+          "path": [
+            "被动-作用效果",
+            "目标控制"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:105716",
@@ -19710,7 +19759,56 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-single",
+          "label": "友方单体",
+          "path": [
+            "主动-作用目标",
+            "友方单体"
+          ]
+        },
+        {
+          "id": "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+          "label": "减伤",
+          "path": [
+            "主动-作用BUFF",
+            "减伤"
+          ]
+        },
+        {
+          "id": "tag-0f6ebd6c-6189-46c8-98f1-80dfbb14dfc2",
+          "label": "View",
+          "path": [
+            "主动-作用BUFF",
+            "View"
+          ]
+        },
+        {
+          "id": "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+          "label": "受伤时",
+          "path": [
+            "被动-触发时机",
+            "受伤时"
+          ]
+        },
+        {
+          "id": "tag-aad3d89b-68eb-49ef-b10e-7ee02d71efb7",
+          "label": "主动攻击",
+          "path": [
+            "被动-触发时机",
+            "主动攻击"
+          ]
+        },
+        {
+          "id": "tag-143d8bab-4954-4174-abba-09e3dee91e40",
+          "label": "View",
+          "path": [
+            "被动-作用效果",
+            "View"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:111916",
@@ -19773,7 +19871,40 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-none",
+          "label": "无目标",
+          "path": [
+            "主动-作用目标",
+            "无目标"
+          ]
+        },
+        {
+          "id": "tag-8eb3238c-bec2-443a-ab9b-a6395c7e6792",
+          "label": "Combo",
+          "path": [
+            "主动-作用数值",
+            "Combo"
+          ]
+        },
+        {
+          "id": "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+          "label": "行动相关",
+          "path": [
+            "被动-触发时机",
+            "行动相关"
+          ]
+        },
+        {
+          "id": "tag-868418fc-205d-4447-9233-8b6085310f28",
+          "label": "Combo",
+          "path": [
+            "被动-作用效果",
+            "Combo"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:107916",
@@ -19836,7 +19967,32 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-single",
+          "label": "友方单体",
+          "path": [
+            "主动-作用目标",
+            "友方单体"
+          ]
+        },
+        {
+          "id": "tag-1a0c8c81-6f4c-4fee-9669-6f32b5f72acc",
+          "label": "目标控制",
+          "path": [
+            "主动-作用BUFF",
+            "目标控制"
+          ]
+        },
+        {
+          "id": "tag-2628a7f6-5404-4480-b800-2353e5a81a97",
+          "label": "回合开始时",
+          "path": [
+            "被动-触发时机",
+            "回合开始时"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:121516",
@@ -19906,7 +20062,40 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-damage",
+          "label": "伤害",
+          "path": [
+            "主动-作用数值",
+            "伤害"
+          ]
+        },
+        {
+          "id": "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+          "label": "受伤时",
+          "path": [
+            "被动-触发时机",
+            "受伤时"
+          ]
+        },
+        {
+          "id": "tag-aad3d89b-68eb-49ef-b10e-7ee02d71efb7",
+          "label": "主动攻击",
+          "path": [
+            "被动-触发时机",
+            "主动攻击"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:101816",
@@ -19968,7 +20157,40 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-none",
+          "label": "无目标",
+          "path": [
+            "主动-作用目标",
+            "无目标"
+          ]
+        },
+        {
+          "id": "value-view",
+          "label": "View",
+          "path": [
+            "主动-作用数值",
+            "View"
+          ]
+        },
+        {
+          "id": "tag-bfc74203-a39c-4054-aaf8-b534ca659fde",
+          "label": "幸运",
+          "path": [
+            "主动-作用BUFF",
+            "幸运"
+          ]
+        },
+        {
+          "id": "tag-143d8bab-4954-4174-abba-09e3dee91e40",
+          "label": "View",
+          "path": [
+            "被动-作用效果",
+            "View"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:100516",
@@ -20032,7 +20254,48 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-self",
+          "label": "自身",
+          "path": [
+            "主动-作用目标",
+            "自身"
+          ]
+        },
+        {
+          "id": "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+          "label": "减伤",
+          "path": [
+            "主动-作用BUFF",
+            "减伤"
+          ]
+        },
+        {
+          "id": "tag-14eb2792-1177-4b2d-98c9-a5aa50a69add",
+          "label": "速度",
+          "path": [
+            "主动-作用BUFF",
+            "速度"
+          ]
+        },
+        {
+          "id": "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+          "label": "受伤时",
+          "path": [
+            "被动-触发时机",
+            "受伤时"
+          ]
+        },
+        {
+          "id": "effect-damage-down",
+          "label": "减伤",
+          "path": [
+            "被动-作用效果",
+            "减伤"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:107516",
@@ -20096,7 +20359,56 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-single",
+          "label": "友方单体",
+          "path": [
+            "主动-作用目标",
+            "友方单体"
+          ]
+        },
+        {
+          "id": "tag-8eb3238c-bec2-443a-ab9b-a6395c7e6792",
+          "label": "Combo",
+          "path": [
+            "主动-作用数值",
+            "Combo"
+          ]
+        },
+        {
+          "id": "tag-a5911010-fe08-4163-a081-ad0e332d32be",
+          "label": "增伤",
+          "path": [
+            "主动-作用BUFF",
+            "增伤"
+          ]
+        },
+        {
+          "id": "tag-2628a7f6-5404-4480-b800-2353e5a81a97",
+          "label": "回合开始时",
+          "path": [
+            "被动-触发时机",
+            "回合开始时"
+          ]
+        },
+        {
+          "id": "effect-damage-up",
+          "label": "增伤",
+          "path": [
+            "被动-作用效果",
+            "增伤"
+          ]
+        },
+        {
+          "id": "auto-target-selection",
+          "label": "自动选择目标",
+          "path": [
+            "被动-自动战斗",
+            "自动选择目标"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:101316",
@@ -20160,7 +20472,32 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-damage",
+          "label": "伤害",
+          "path": [
+            "主动-作用数值",
+            "伤害"
+          ]
+        },
+        {
+          "id": "effect-damage-up",
+          "label": "增伤",
+          "path": [
+            "被动-作用效果",
+            "增伤"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:115316",
@@ -20224,7 +20561,88 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-self",
+          "label": "自身",
+          "path": [
+            "主动-作用目标",
+            "自身"
+          ]
+        },
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-damage",
+          "label": "伤害",
+          "path": [
+            "主动-作用数值",
+            "伤害"
+          ]
+        },
+        {
+          "id": "tag-a5911010-fe08-4163-a081-ad0e332d32be",
+          "label": "增伤",
+          "path": [
+            "主动-作用BUFF",
+            "增伤"
+          ]
+        },
+        {
+          "id": "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+          "label": "减伤",
+          "path": [
+            "主动-作用BUFF",
+            "减伤"
+          ]
+        },
+        {
+          "id": "tag-14eb2792-1177-4b2d-98c9-a5aa50a69add",
+          "label": "速度",
+          "path": [
+            "主动-作用BUFF",
+            "速度"
+          ]
+        },
+        {
+          "id": "tag-8fcfaf4e-e5d8-4566-be66-f057c959d8fd",
+          "label": "其他",
+          "path": [
+            "主动-作用BUFF",
+            "其他"
+          ]
+        },
+        {
+          "id": "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+          "label": "行动相关",
+          "path": [
+            "被动-触发时机",
+            "行动相关"
+          ]
+        },
+        {
+          "id": "tag-d1f5e200-ead4-4e15-bf53-21424f16a1c1",
+          "label": "获得buff时",
+          "path": [
+            "被动-触发时机",
+            "获得buff时"
+          ]
+        },
+        {
+          "id": "auto-target-selection",
+          "label": "自动选择目标",
+          "path": [
+            "被动-自动战斗",
+            "自动选择目标"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:101516",
@@ -20288,7 +20706,56 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-self",
+          "label": "自身",
+          "path": [
+            "主动-作用目标",
+            "自身"
+          ]
+        },
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-damage",
+          "label": "伤害",
+          "path": [
+            "主动-作用数值",
+            "伤害"
+          ]
+        },
+        {
+          "id": "tag-bfc74203-a39c-4054-aaf8-b534ca659fde",
+          "label": "幸运",
+          "path": [
+            "主动-作用BUFF",
+            "幸运"
+          ]
+        },
+        {
+          "id": "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+          "label": "受伤时",
+          "path": [
+            "被动-触发时机",
+            "受伤时"
+          ]
+        },
+        {
+          "id": "tag-143d8bab-4954-4174-abba-09e3dee91e40",
+          "label": "View",
+          "path": [
+            "被动-作用效果",
+            "View"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:108216",
@@ -20359,7 +20826,32 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-single",
+          "label": "友方单体",
+          "path": [
+            "主动-作用目标",
+            "友方单体"
+          ]
+        },
+        {
+          "id": "tag-0f6ebd6c-6189-46c8-98f1-80dfbb14dfc2",
+          "label": "View",
+          "path": [
+            "主动-作用BUFF",
+            "View"
+          ]
+        },
+        {
+          "id": "tag-143d8bab-4954-4174-abba-09e3dee91e40",
+          "label": "View",
+          "path": [
+            "被动-作用效果",
+            "View"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:121016",
@@ -20430,7 +20922,40 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-damage",
+          "label": "伤害",
+          "path": [
+            "主动-作用数值",
+            "伤害"
+          ]
+        },
+        {
+          "id": "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+          "label": "行动相关",
+          "path": [
+            "被动-触发时机",
+            "行动相关"
+          ]
+        },
+        {
+          "id": "effect-damage-up",
+          "label": "增伤",
+          "path": [
+            "被动-作用效果",
+            "增伤"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:107216",
@@ -20494,7 +21019,40 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "tag-0f6ebd6c-6189-46c8-98f1-80dfbb14dfc2",
+          "label": "View",
+          "path": [
+            "主动-作用BUFF",
+            "View"
+          ]
+        },
+        {
+          "id": "tag-bc2a6ed4-a1ea-4114-afb7-93ab272f0f9c",
+          "label": "登场时",
+          "path": [
+            "被动-触发时机",
+            "登场时"
+          ]
+        },
+        {
+          "id": "tag-1b0f9f8f-e267-4dc9-aa01-abc680c571db",
+          "label": "目标控制",
+          "path": [
+            "被动-作用效果",
+            "目标控制"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:103416",
@@ -20558,7 +21116,32 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-single",
+          "label": "友方单体",
+          "path": [
+            "主动-作用目标",
+            "友方单体"
+          ]
+        },
+        {
+          "id": "tag-a5911010-fe08-4163-a081-ad0e332d32be",
+          "label": "增伤",
+          "path": [
+            "主动-作用BUFF",
+            "增伤"
+          ]
+        },
+        {
+          "id": "tag-14eb2792-1177-4b2d-98c9-a5aa50a69add",
+          "label": "速度",
+          "path": [
+            "主动-作用BUFF",
+            "速度"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:100816",
@@ -20622,7 +21205,48 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-self",
+          "label": "自身",
+          "path": [
+            "主动-作用目标",
+            "自身"
+          ]
+        },
+        {
+          "id": "value-recovery",
+          "label": "恢复",
+          "path": [
+            "主动-作用数值",
+            "恢复"
+          ]
+        },
+        {
+          "id": "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+          "label": "减伤",
+          "path": [
+            "主动-作用BUFF",
+            "减伤"
+          ]
+        },
+        {
+          "id": "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+          "label": "受伤时",
+          "path": [
+            "被动-触发时机",
+            "受伤时"
+          ]
+        },
+        {
+          "id": "effect-damage-down",
+          "label": "减伤",
+          "path": [
+            "被动-作用效果",
+            "减伤"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:106416",
@@ -20686,7 +21310,56 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "tag-5de2a892-f831-4f0c-9039-b1bcc4c1bb93",
+          "label": "速度",
+          "path": [
+            "主动-作用数值",
+            "速度"
+          ]
+        },
+        {
+          "id": "tag-14eb2792-1177-4b2d-98c9-a5aa50a69add",
+          "label": "速度",
+          "path": [
+            "主动-作用BUFF",
+            "速度"
+          ]
+        },
+        {
+          "id": "tag-2628a7f6-5404-4480-b800-2353e5a81a97",
+          "label": "回合开始时",
+          "path": [
+            "被动-触发时机",
+            "回合开始时"
+          ]
+        },
+        {
+          "id": "effect-damage-up",
+          "label": "增伤",
+          "path": [
+            "被动-作用效果",
+            "增伤"
+          ]
+        },
+        {
+          "id": "auto-target-selection",
+          "label": "自动选择目标",
+          "path": [
+            "被动-自动战斗",
+            "自动选择目标"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:122916",
@@ -20750,7 +21423,48 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "tag-05bd6160-5ec5-4aea-b58b-654ed0a4c3d6",
+          "label": "易伤",
+          "path": [
+            "主动-作用BUFF",
+            "易伤"
+          ]
+        },
+        {
+          "id": "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+          "label": "行动相关",
+          "path": [
+            "被动-触发时机",
+            "行动相关"
+          ]
+        },
+        {
+          "id": "tag-409c10bc-2492-496f-a581-dd5459a9e601",
+          "label": "场地效果",
+          "path": [
+            "被动-触发时机",
+            "场地效果"
+          ]
+        },
+        {
+          "id": "tag-ee5aa837-a581-4021-9f2d-b44c2fa27a3c",
+          "label": "恢复",
+          "path": [
+            "被动-作用效果",
+            "恢复"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:112616",
@@ -20814,7 +21528,64 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-single",
+          "label": "友方单体",
+          "path": [
+            "主动-作用目标",
+            "友方单体"
+          ]
+        },
+        {
+          "id": "value-recovery",
+          "label": "恢复",
+          "path": [
+            "主动-作用数值",
+            "恢复"
+          ]
+        },
+        {
+          "id": "tag-a5911010-fe08-4163-a081-ad0e332d32be",
+          "label": "增伤",
+          "path": [
+            "主动-作用BUFF",
+            "增伤"
+          ]
+        },
+        {
+          "id": "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+          "label": "减伤",
+          "path": [
+            "主动-作用BUFF",
+            "减伤"
+          ]
+        },
+        {
+          "id": "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+          "label": "受伤时",
+          "path": [
+            "被动-触发时机",
+            "受伤时"
+          ]
+        },
+        {
+          "id": "tag-ee5aa837-a581-4021-9f2d-b44c2fa27a3c",
+          "label": "恢复",
+          "path": [
+            "被动-作用效果",
+            "恢复"
+          ]
+        },
+        {
+          "id": "auto-target-selection",
+          "label": "自动选择目标",
+          "path": [
+            "被动-自动战斗",
+            "自动选择目标"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:103516",
@@ -20878,7 +21649,40 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-self",
+          "label": "自身",
+          "path": [
+            "主动-作用目标",
+            "自身"
+          ]
+        },
+        {
+          "id": "tag-8fcfaf4e-e5d8-4566-be66-f057c959d8fd",
+          "label": "其他",
+          "path": [
+            "主动-作用BUFF",
+            "其他"
+          ]
+        },
+        {
+          "id": "tag-bc2a6ed4-a1ea-4114-afb7-93ab272f0f9c",
+          "label": "登场时",
+          "path": [
+            "被动-触发时机",
+            "登场时"
+          ]
+        },
+        {
+          "id": "effect-damage-up",
+          "label": "增伤",
+          "path": [
+            "被动-作用效果",
+            "增伤"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:115216",
@@ -20942,7 +21746,40 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-single",
+          "label": "友方单体",
+          "path": [
+            "主动-作用目标",
+            "友方单体"
+          ]
+        },
+        {
+          "id": "value-recovery",
+          "label": "恢复",
+          "path": [
+            "主动-作用数值",
+            "恢复"
+          ]
+        },
+        {
+          "id": "tag-a5911010-fe08-4163-a081-ad0e332d32be",
+          "label": "增伤",
+          "path": [
+            "主动-作用BUFF",
+            "增伤"
+          ]
+        },
+        {
+          "id": "auto-skill-2",
+          "label": "释放技能 2",
+          "path": [
+            "被动-自动战斗",
+            "释放技能 2"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:112416",
@@ -21006,7 +21843,48 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-self",
+          "label": "自身",
+          "path": [
+            "主动-作用目标",
+            "自身"
+          ]
+        },
+        {
+          "id": "value-recovery",
+          "label": "恢复",
+          "path": [
+            "主动-作用数值",
+            "恢复"
+          ]
+        },
+        {
+          "id": "tag-1a0c8c81-6f4c-4fee-9669-6f32b5f72acc",
+          "label": "目标控制",
+          "path": [
+            "主动-作用BUFF",
+            "目标控制"
+          ]
+        },
+        {
+          "id": "tag-aad3d89b-68eb-49ef-b10e-7ee02d71efb7",
+          "label": "主动攻击",
+          "path": [
+            "被动-触发时机",
+            "主动攻击"
+          ]
+        },
+        {
+          "id": "tag-1b0f9f8f-e267-4dc9-aa01-abc680c571db",
+          "label": "目标控制",
+          "path": [
+            "被动-作用效果",
+            "目标控制"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:128716",
@@ -21070,7 +21948,56 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-damage",
+          "label": "伤害",
+          "path": [
+            "主动-作用数值",
+            "伤害"
+          ]
+        },
+        {
+          "id": "value-view",
+          "label": "View",
+          "path": [
+            "主动-作用数值",
+            "View"
+          ]
+        },
+        {
+          "id": "tag-143d8bab-4954-4174-abba-09e3dee91e40",
+          "label": "View",
+          "path": [
+            "被动-作用效果",
+            "View"
+          ]
+        },
+        {
+          "id": "tag-ee5aa837-a581-4021-9f2d-b44c2fa27a3c",
+          "label": "恢复",
+          "path": [
+            "被动-作用效果",
+            "恢复"
+          ]
+        },
+        {
+          "id": "auto-skill-2",
+          "label": "释放技能 2",
+          "path": [
+            "被动-自动战斗",
+            "释放技能 2"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:115116",
@@ -21134,7 +22061,48 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-damage",
+          "label": "伤害",
+          "path": [
+            "主动-作用数值",
+            "伤害"
+          ]
+        },
+        {
+          "id": "value-recovery",
+          "label": "恢复",
+          "path": [
+            "主动-作用数值",
+            "恢复"
+          ]
+        },
+        {
+          "id": "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+          "label": "行动相关",
+          "path": [
+            "被动-触发时机",
+            "行动相关"
+          ]
+        },
+        {
+          "id": "tag-868418fc-205d-4447-9233-8b6085310f28",
+          "label": "Combo",
+          "path": [
+            "被动-作用效果",
+            "Combo"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:112316",
@@ -21198,7 +22166,56 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-self",
+          "label": "自身",
+          "path": [
+            "主动-作用目标",
+            "自身"
+          ]
+        },
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "tag-1a0c8c81-6f4c-4fee-9669-6f32b5f72acc",
+          "label": "目标控制",
+          "path": [
+            "主动-作用BUFF",
+            "目标控制"
+          ]
+        },
+        {
+          "id": "tag-bc2a6ed4-a1ea-4114-afb7-93ab272f0f9c",
+          "label": "登场时",
+          "path": [
+            "被动-触发时机",
+            "登场时"
+          ]
+        },
+        {
+          "id": "tag-1b0f9f8f-e267-4dc9-aa01-abc680c571db",
+          "label": "目标控制",
+          "path": [
+            "被动-作用效果",
+            "目标控制"
+          ]
+        },
+        {
+          "id": "auto-target-selection",
+          "label": "自动选择目标",
+          "path": [
+            "被动-自动战斗",
+            "自动选择目标"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:116016",
@@ -21262,7 +22279,40 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-damage",
+          "label": "伤害",
+          "path": [
+            "主动-作用数值",
+            "伤害"
+          ]
+        },
+        {
+          "id": "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+          "label": "受伤时",
+          "path": [
+            "被动-触发时机",
+            "受伤时"
+          ]
+        },
+        {
+          "id": "tag-793e072d-675e-4152-8457-de2602f28886",
+          "label": "buff解除",
+          "path": [
+            "被动-作用效果",
+            "buff解除"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:121716",
@@ -21326,7 +22376,48 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-none",
+          "label": "无目标",
+          "path": [
+            "主动-作用目标",
+            "无目标"
+          ]
+        },
+        {
+          "id": "value-view",
+          "label": "View",
+          "path": [
+            "主动-作用数值",
+            "View"
+          ]
+        },
+        {
+          "id": "tag-8eb3238c-bec2-443a-ab9b-a6395c7e6792",
+          "label": "Combo",
+          "path": [
+            "主动-作用数值",
+            "Combo"
+          ]
+        },
+        {
+          "id": "effect-damage-up",
+          "label": "增伤",
+          "path": [
+            "被动-作用效果",
+            "增伤"
+          ]
+        },
+        {
+          "id": "auto-mixed-skill",
+          "label": "混合释放",
+          "path": [
+            "被动-自动战斗",
+            "混合释放"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:102816",
@@ -21390,7 +22481,32 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-single",
+          "label": "友方单体",
+          "path": [
+            "主动-作用目标",
+            "友方单体"
+          ]
+        },
+        {
+          "id": "tag-8fcfaf4e-e5d8-4566-be66-f057c959d8fd",
+          "label": "其他",
+          "path": [
+            "主动-作用BUFF",
+            "其他"
+          ]
+        },
+        {
+          "id": "tag-2628a7f6-5404-4480-b800-2353e5a81a97",
+          "label": "回合开始时",
+          "path": [
+            "被动-触发时机",
+            "回合开始时"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:118316",
@@ -21454,7 +22570,56 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-multi",
+          "label": "友方多目标",
+          "path": [
+            "主动-作用目标",
+            "友方多目标"
+          ]
+        },
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-damage",
+          "label": "伤害",
+          "path": [
+            "主动-作用数值",
+            "伤害"
+          ]
+        },
+        {
+          "id": "value-recovery",
+          "label": "恢复",
+          "path": [
+            "主动-作用数值",
+            "恢复"
+          ]
+        },
+        {
+          "id": "tag-ee5aa837-a581-4021-9f2d-b44c2fa27a3c",
+          "label": "恢复",
+          "path": [
+            "被动-作用效果",
+            "恢复"
+          ]
+        },
+        {
+          "id": "auto-skill-3",
+          "label": "释放技能 3",
+          "path": [
+            "被动-自动战斗",
+            "释放技能 3"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:126416",
@@ -21518,7 +22683,56 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-multi",
+          "label": "友方多目标",
+          "path": [
+            "主动-作用目标",
+            "友方多目标"
+          ]
+        },
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-damage",
+          "label": "伤害",
+          "path": [
+            "主动-作用数值",
+            "伤害"
+          ]
+        },
+        {
+          "id": "value-recovery",
+          "label": "恢复",
+          "path": [
+            "主动-作用数值",
+            "恢复"
+          ]
+        },
+        {
+          "id": "tag-aad3d89b-68eb-49ef-b10e-7ee02d71efb7",
+          "label": "主动攻击",
+          "path": [
+            "被动-触发时机",
+            "主动攻击"
+          ]
+        },
+        {
+          "id": "tag-ee5aa837-a581-4021-9f2d-b44c2fa27a3c",
+          "label": "恢复",
+          "path": [
+            "被动-作用效果",
+            "恢复"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:102516",
@@ -21582,7 +22796,48 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-single",
+          "label": "友方单体",
+          "path": [
+            "主动-作用目标",
+            "友方单体"
+          ]
+        },
+        {
+          "id": "value-view",
+          "label": "View",
+          "path": [
+            "主动-作用数值",
+            "View"
+          ]
+        },
+        {
+          "id": "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+          "label": "减伤",
+          "path": [
+            "主动-作用BUFF",
+            "减伤"
+          ]
+        },
+        {
+          "id": "tag-2628a7f6-5404-4480-b800-2353e5a81a97",
+          "label": "回合开始时",
+          "path": [
+            "被动-触发时机",
+            "回合开始时"
+          ]
+        },
+        {
+          "id": "effect-damage-down",
+          "label": "减伤",
+          "path": [
+            "被动-作用效果",
+            "减伤"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:124916",
@@ -21646,7 +22901,40 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-single",
+          "label": "友方单体",
+          "path": [
+            "主动-作用目标",
+            "友方单体"
+          ]
+        },
+        {
+          "id": "tag-a5911010-fe08-4163-a081-ad0e332d32be",
+          "label": "增伤",
+          "path": [
+            "主动-作用BUFF",
+            "增伤"
+          ]
+        },
+        {
+          "id": "tag-bfc74203-a39c-4054-aaf8-b534ca659fde",
+          "label": "幸运",
+          "path": [
+            "主动-作用BUFF",
+            "幸运"
+          ]
+        },
+        {
+          "id": "auto-target-selection",
+          "label": "自动选择目标",
+          "path": [
+            "被动-自动战斗",
+            "自动选择目标"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:100716",
@@ -21710,7 +22998,48 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-damage",
+          "label": "伤害",
+          "path": [
+            "主动-作用数值",
+            "伤害"
+          ]
+        },
+        {
+          "id": "tag-8eb3238c-bec2-443a-ab9b-a6395c7e6792",
+          "label": "Combo",
+          "path": [
+            "主动-作用数值",
+            "Combo"
+          ]
+        },
+        {
+          "id": "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+          "label": "行动相关",
+          "path": [
+            "被动-触发时机",
+            "行动相关"
+          ]
+        },
+        {
+          "id": "tag-868418fc-205d-4447-9233-8b6085310f28",
+          "label": "Combo",
+          "path": [
+            "被动-作用效果",
+            "Combo"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:107316",
@@ -21774,7 +23103,32 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+          "label": "行动相关",
+          "path": [
+            "被动-触发时机",
+            "行动相关"
+          ]
+        },
+        {
+          "id": "effect-damage-down",
+          "label": "减伤",
+          "path": [
+            "被动-作用效果",
+            "减伤"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:130516",
@@ -21838,7 +23192,40 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-single",
+          "label": "友方单体",
+          "path": [
+            "主动-作用目标",
+            "友方单体"
+          ]
+        },
+        {
+          "id": "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+          "label": "减伤",
+          "path": [
+            "主动-作用BUFF",
+            "减伤"
+          ]
+        },
+        {
+          "id": "tag-1b0f9f8f-e267-4dc9-aa01-abc680c571db",
+          "label": "目标控制",
+          "path": [
+            "被动-作用效果",
+            "目标控制"
+          ]
+        },
+        {
+          "id": "auto-skill-2",
+          "label": "释放技能 2",
+          "path": [
+            "被动-自动战斗",
+            "释放技能 2"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:126616",
@@ -21909,7 +23296,56 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-damage",
+          "label": "伤害",
+          "path": [
+            "主动-作用数值",
+            "伤害"
+          ]
+        },
+        {
+          "id": "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+          "label": "行动相关",
+          "path": [
+            "被动-触发时机",
+            "行动相关"
+          ]
+        },
+        {
+          "id": "effect-damage-up",
+          "label": "增伤",
+          "path": [
+            "被动-作用效果",
+            "增伤"
+          ]
+        },
+        {
+          "id": "tag-143d8bab-4954-4174-abba-09e3dee91e40",
+          "label": "View",
+          "path": [
+            "被动-作用效果",
+            "View"
+          ]
+        },
+        {
+          "id": "auto-target-selection",
+          "label": "自动选择目标",
+          "path": [
+            "被动-自动战斗",
+            "自动选择目标"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:124216",
@@ -21972,7 +23408,32 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-self",
+          "label": "自身",
+          "path": [
+            "主动-作用目标",
+            "自身"
+          ]
+        },
+        {
+          "id": "value-view",
+          "label": "View",
+          "path": [
+            "主动-作用数值",
+            "View"
+          ]
+        },
+        {
+          "id": "tag-143d8bab-4954-4174-abba-09e3dee91e40",
+          "label": "View",
+          "path": [
+            "被动-作用效果",
+            "View"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:115816",
@@ -22035,7 +23496,48 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-self",
+          "label": "自身",
+          "path": [
+            "主动-作用目标",
+            "自身"
+          ]
+        },
+        {
+          "id": "tag-14324fd4-8d77-4f36-9489-15d41f397129",
+          "label": "持续伤害",
+          "path": [
+            "主动-作用数值",
+            "持续伤害"
+          ]
+        },
+        {
+          "id": "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+          "label": "减伤",
+          "path": [
+            "主动-作用BUFF",
+            "减伤"
+          ]
+        },
+        {
+          "id": "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+          "label": "受伤时",
+          "path": [
+            "被动-触发时机",
+            "受伤时"
+          ]
+        },
+        {
+          "id": "tag-d69ae9b8-04bc-4767-abc8-96a681811c8c",
+          "label": "持续伤害",
+          "path": [
+            "被动-作用效果",
+            "持续伤害"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:107016",
@@ -22105,7 +23607,24 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-single",
+          "label": "友方单体",
+          "path": [
+            "主动-作用目标",
+            "友方单体"
+          ]
+        },
+        {
+          "id": "tag-0f6ebd6c-6189-46c8-98f1-80dfbb14dfc2",
+          "label": "View",
+          "path": [
+            "主动-作用BUFF",
+            "View"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:119716",
@@ -22168,7 +23687,48 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-self",
+          "label": "自身",
+          "path": [
+            "主动-作用目标",
+            "自身"
+          ]
+        },
+        {
+          "id": "tag-14324fd4-8d77-4f36-9489-15d41f397129",
+          "label": "持续伤害",
+          "path": [
+            "主动-作用数值",
+            "持续伤害"
+          ]
+        },
+        {
+          "id": "tag-8fcfaf4e-e5d8-4566-be66-f057c959d8fd",
+          "label": "其他",
+          "path": [
+            "主动-作用BUFF",
+            "其他"
+          ]
+        },
+        {
+          "id": "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+          "label": "受伤时",
+          "path": [
+            "被动-触发时机",
+            "受伤时"
+          ]
+        },
+        {
+          "id": "effect-damage-down",
+          "label": "减伤",
+          "path": [
+            "被动-作用效果",
+            "减伤"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:105816",
@@ -22238,7 +23798,48 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-single",
+          "label": "友方单体",
+          "path": [
+            "主动-作用目标",
+            "友方单体"
+          ]
+        },
+        {
+          "id": "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+          "label": "减伤",
+          "path": [
+            "主动-作用BUFF",
+            "减伤"
+          ]
+        },
+        {
+          "id": "tag-0f6ebd6c-6189-46c8-98f1-80dfbb14dfc2",
+          "label": "View",
+          "path": [
+            "主动-作用BUFF",
+            "View"
+          ]
+        },
+        {
+          "id": "tag-aad3d89b-68eb-49ef-b10e-7ee02d71efb7",
+          "label": "主动攻击",
+          "path": [
+            "被动-触发时机",
+            "主动攻击"
+          ]
+        },
+        {
+          "id": "tag-143d8bab-4954-4174-abba-09e3dee91e40",
+          "label": "View",
+          "path": [
+            "被动-作用效果",
+            "View"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:112016",
@@ -22308,7 +23909,48 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-none",
+          "label": "无目标",
+          "path": [
+            "主动-作用目标",
+            "无目标"
+          ]
+        },
+        {
+          "id": "tag-8eb3238c-bec2-443a-ab9b-a6395c7e6792",
+          "label": "Combo",
+          "path": [
+            "主动-作用数值",
+            "Combo"
+          ]
+        },
+        {
+          "id": "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+          "label": "行动相关",
+          "path": [
+            "被动-触发时机",
+            "行动相关"
+          ]
+        },
+        {
+          "id": "tag-143d8bab-4954-4174-abba-09e3dee91e40",
+          "label": "View",
+          "path": [
+            "被动-作用效果",
+            "View"
+          ]
+        },
+        {
+          "id": "tag-868418fc-205d-4447-9233-8b6085310f28",
+          "label": "Combo",
+          "path": [
+            "被动-作用效果",
+            "Combo"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:104516",
@@ -22371,7 +24013,24 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-damage",
+          "label": "伤害",
+          "path": [
+            "主动-作用数值",
+            "伤害"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:108016",
@@ -22434,7 +24093,40 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-single",
+          "label": "友方单体",
+          "path": [
+            "主动-作用目标",
+            "友方单体"
+          ]
+        },
+        {
+          "id": "tag-1a0c8c81-6f4c-4fee-9669-6f32b5f72acc",
+          "label": "目标控制",
+          "path": [
+            "主动-作用BUFF",
+            "目标控制"
+          ]
+        },
+        {
+          "id": "tag-2628a7f6-5404-4480-b800-2353e5a81a97",
+          "label": "回合开始时",
+          "path": [
+            "被动-触发时机",
+            "回合开始时"
+          ]
+        },
+        {
+          "id": "effect-damage-down",
+          "label": "减伤",
+          "path": [
+            "被动-作用效果",
+            "减伤"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:121616",
@@ -22504,7 +24196,40 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-damage",
+          "label": "伤害",
+          "path": [
+            "主动-作用数值",
+            "伤害"
+          ]
+        },
+        {
+          "id": "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+          "label": "受伤时",
+          "path": [
+            "被动-触发时机",
+            "受伤时"
+          ]
+        },
+        {
+          "id": "tag-aad3d89b-68eb-49ef-b10e-7ee02d71efb7",
+          "label": "主动攻击",
+          "path": [
+            "被动-触发时机",
+            "主动攻击"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:116116",
@@ -22568,7 +24293,56 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-single",
+          "label": "友方单体",
+          "path": [
+            "主动-作用目标",
+            "友方单体"
+          ]
+        },
+        {
+          "id": "target-ally-multi",
+          "label": "友方多目标",
+          "path": [
+            "主动-作用目标",
+            "友方多目标"
+          ]
+        },
+        {
+          "id": "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+          "label": "减伤",
+          "path": [
+            "主动-作用BUFF",
+            "减伤"
+          ]
+        },
+        {
+          "id": "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+          "label": "行动相关",
+          "path": [
+            "被动-触发时机",
+            "行动相关"
+          ]
+        },
+        {
+          "id": "effect-damage-down",
+          "label": "减伤",
+          "path": [
+            "被动-作用效果",
+            "减伤"
+          ]
+        },
+        {
+          "id": "auto-skill-3",
+          "label": "释放技能 3",
+          "path": [
+            "被动-自动战斗",
+            "释放技能 3"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:114016",
@@ -22632,7 +24406,40 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-view",
+          "label": "View",
+          "path": [
+            "主动-作用数值",
+            "View"
+          ]
+        },
+        {
+          "id": "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+          "label": "受伤时",
+          "path": [
+            "被动-触发时机",
+            "受伤时"
+          ]
+        },
+        {
+          "id": "auto-target-selection",
+          "label": "自动选择目标",
+          "path": [
+            "被动-自动战斗",
+            "自动选择目标"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:130116",
@@ -22703,7 +24510,48 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-self",
+          "label": "自身",
+          "path": [
+            "主动-作用目标",
+            "自身"
+          ]
+        },
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-damage",
+          "label": "伤害",
+          "path": [
+            "主动-作用数值",
+            "伤害"
+          ]
+        },
+        {
+          "id": "effect-damage-up",
+          "label": "增伤",
+          "path": [
+            "被动-作用效果",
+            "增伤"
+          ]
+        },
+        {
+          "id": "tag-ee5aa837-a581-4021-9f2d-b44c2fa27a3c",
+          "label": "恢复",
+          "path": [
+            "被动-作用效果",
+            "恢复"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:118216",
@@ -22774,7 +24622,40 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-single",
+          "label": "友方单体",
+          "path": [
+            "主动-作用目标",
+            "友方单体"
+          ]
+        },
+        {
+          "id": "tag-0f6ebd6c-6189-46c8-98f1-80dfbb14dfc2",
+          "label": "View",
+          "path": [
+            "主动-作用BUFF",
+            "View"
+          ]
+        },
+        {
+          "id": "tag-bfc74203-a39c-4054-aaf8-b534ca659fde",
+          "label": "幸运",
+          "path": [
+            "主动-作用BUFF",
+            "幸运"
+          ]
+        },
+        {
+          "id": "effect-damage-up",
+          "label": "增伤",
+          "path": [
+            "被动-作用效果",
+            "增伤"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:102016",
@@ -22838,7 +24719,40 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-damage",
+          "label": "伤害",
+          "path": [
+            "主动-作用数值",
+            "伤害"
+          ]
+        },
+        {
+          "id": "effect-damage-up",
+          "label": "增伤",
+          "path": [
+            "被动-作用效果",
+            "增伤"
+          ]
+        },
+        {
+          "id": "tag-1b0f9f8f-e267-4dc9-aa01-abc680c571db",
+          "label": "目标控制",
+          "path": [
+            "被动-作用效果",
+            "目标控制"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:130216",
@@ -22902,7 +24816,48 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "tag-8eb3238c-bec2-443a-ab9b-a6395c7e6792",
+          "label": "Combo",
+          "path": [
+            "主动-作用数值",
+            "Combo"
+          ]
+        },
+        {
+          "id": "effect-damage-up",
+          "label": "增伤",
+          "path": [
+            "被动-作用效果",
+            "增伤"
+          ]
+        },
+        {
+          "id": "tag-868418fc-205d-4447-9233-8b6085310f28",
+          "label": "Combo",
+          "path": [
+            "被动-作用效果",
+            "Combo"
+          ]
+        },
+        {
+          "id": "tag-732e632c-1e6c-4cbd-b7cf-1bba43ceafd2",
+          "label": "行动等待",
+          "path": [
+            "被动-自动战斗",
+            "行动等待"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:111416",
@@ -22973,7 +24928,56 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-single",
+          "label": "友方单体",
+          "path": [
+            "主动-作用目标",
+            "友方单体"
+          ]
+        },
+        {
+          "id": "tag-a5911010-fe08-4163-a081-ad0e332d32be",
+          "label": "增伤",
+          "path": [
+            "主动-作用BUFF",
+            "增伤"
+          ]
+        },
+        {
+          "id": "tag-0f6ebd6c-6189-46c8-98f1-80dfbb14dfc2",
+          "label": "View",
+          "path": [
+            "主动-作用BUFF",
+            "View"
+          ]
+        },
+        {
+          "id": "tag-aad3d89b-68eb-49ef-b10e-7ee02d71efb7",
+          "label": "主动攻击",
+          "path": [
+            "被动-触发时机",
+            "主动攻击"
+          ]
+        },
+        {
+          "id": "effect-damage-up",
+          "label": "增伤",
+          "path": [
+            "被动-作用效果",
+            "增伤"
+          ]
+        },
+        {
+          "id": "auto-target-selection",
+          "label": "自动选择目标",
+          "path": [
+            "被动-自动战斗",
+            "自动选择目标"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:101016",
@@ -23037,7 +25041,40 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-none",
+          "label": "无目标",
+          "path": [
+            "主动-作用目标",
+            "无目标"
+          ]
+        },
+        {
+          "id": "tag-8eb3238c-bec2-443a-ab9b-a6395c7e6792",
+          "label": "Combo",
+          "path": [
+            "主动-作用数值",
+            "Combo"
+          ]
+        },
+        {
+          "id": "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+          "label": "行动相关",
+          "path": [
+            "被动-触发时机",
+            "行动相关"
+          ]
+        },
+        {
+          "id": "tag-868418fc-205d-4447-9233-8b6085310f28",
+          "label": "Combo",
+          "path": [
+            "被动-作用效果",
+            "Combo"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:121116",
@@ -23108,7 +25145,40 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-single",
+          "label": "友方单体",
+          "path": [
+            "主动-作用目标",
+            "友方单体"
+          ]
+        },
+        {
+          "id": "value-shield",
+          "label": "护盾",
+          "path": [
+            "主动-作用数值",
+            "护盾"
+          ]
+        },
+        {
+          "id": "tag-a5911010-fe08-4163-a081-ad0e332d32be",
+          "label": "增伤",
+          "path": [
+            "主动-作用BUFF",
+            "增伤"
+          ]
+        },
+        {
+          "id": "tag-732e632c-1e6c-4cbd-b7cf-1bba43ceafd2",
+          "label": "行动等待",
+          "path": [
+            "被动-自动战斗",
+            "行动等待"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:105316",
@@ -23172,7 +25242,40 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-self",
+          "label": "自身",
+          "path": [
+            "主动-作用目标",
+            "自身"
+          ]
+        },
+        {
+          "id": "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+          "label": "减伤",
+          "path": [
+            "主动-作用BUFF",
+            "减伤"
+          ]
+        },
+        {
+          "id": "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+          "label": "受伤时",
+          "path": [
+            "被动-触发时机",
+            "受伤时"
+          ]
+        },
+        {
+          "id": "effect-damage-down",
+          "label": "减伤",
+          "path": [
+            "被动-作用效果",
+            "减伤"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:126116",
@@ -23243,7 +25346,48 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-damage",
+          "label": "伤害",
+          "path": [
+            "主动-作用数值",
+            "伤害"
+          ]
+        },
+        {
+          "id": "tag-8fcfaf4e-e5d8-4566-be66-f057c959d8fd",
+          "label": "其他",
+          "path": [
+            "主动-作用BUFF",
+            "其他"
+          ]
+        },
+        {
+          "id": "tag-409c10bc-2492-496f-a581-dd5459a9e601",
+          "label": "场地效果",
+          "path": [
+            "被动-触发时机",
+            "场地效果"
+          ]
+        },
+        {
+          "id": "auto-mixed-skill",
+          "label": "混合释放",
+          "path": [
+            "被动-自动战斗",
+            "混合释放"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:102716",
@@ -23307,7 +25451,32 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-damage",
+          "label": "伤害",
+          "path": [
+            "主动-作用数值",
+            "伤害"
+          ]
+        },
+        {
+          "id": "tag-2628a7f6-5404-4480-b800-2353e5a81a97",
+          "label": "回合开始时",
+          "path": [
+            "被动-触发时机",
+            "回合开始时"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:103216",
@@ -23371,7 +25540,32 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-self",
+          "label": "自身",
+          "path": [
+            "主动-作用目标",
+            "自身"
+          ]
+        },
+        {
+          "id": "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+          "label": "减伤",
+          "path": [
+            "主动-作用BUFF",
+            "减伤"
+          ]
+        },
+        {
+          "id": "tag-14eb2792-1177-4b2d-98c9-a5aa50a69add",
+          "label": "速度",
+          "path": [
+            "主动-作用BUFF",
+            "速度"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:124016",
@@ -23434,7 +25628,32 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-self",
+          "label": "自身",
+          "path": [
+            "主动-作用目标",
+            "自身"
+          ]
+        },
+        {
+          "id": "value-view",
+          "label": "View",
+          "path": [
+            "主动-作用数值",
+            "View"
+          ]
+        },
+        {
+          "id": "tag-143d8bab-4954-4174-abba-09e3dee91e40",
+          "label": "View",
+          "path": [
+            "被动-作用效果",
+            "View"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:115616",
@@ -23497,7 +25716,40 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-self",
+          "label": "自身",
+          "path": [
+            "主动-作用目标",
+            "自身"
+          ]
+        },
+        {
+          "id": "tag-14324fd4-8d77-4f36-9489-15d41f397129",
+          "label": "持续伤害",
+          "path": [
+            "主动-作用数值",
+            "持续伤害"
+          ]
+        },
+        {
+          "id": "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+          "label": "减伤",
+          "path": [
+            "主动-作用BUFF",
+            "减伤"
+          ]
+        },
+        {
+          "id": "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+          "label": "受伤时",
+          "path": [
+            "被动-触发时机",
+            "受伤时"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:106816",
@@ -23567,7 +25819,32 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-single",
+          "label": "友方单体",
+          "path": [
+            "主动-作用目标",
+            "友方单体"
+          ]
+        },
+        {
+          "id": "tag-0f6ebd6c-6189-46c8-98f1-80dfbb14dfc2",
+          "label": "View",
+          "path": [
+            "主动-作用BUFF",
+            "View"
+          ]
+        },
+        {
+          "id": "tag-d69ae9b8-04bc-4767-abc8-96a681811c8c",
+          "label": "持续伤害",
+          "path": [
+            "被动-作用效果",
+            "持续伤害"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:119516",
@@ -23637,7 +25914,56 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-self",
+          "label": "自身",
+          "path": [
+            "主动-作用目标",
+            "自身"
+          ]
+        },
+        {
+          "id": "tag-14324fd4-8d77-4f36-9489-15d41f397129",
+          "label": "持续伤害",
+          "path": [
+            "主动-作用数值",
+            "持续伤害"
+          ]
+        },
+        {
+          "id": "tag-8fcfaf4e-e5d8-4566-be66-f057c959d8fd",
+          "label": "其他",
+          "path": [
+            "主动-作用BUFF",
+            "其他"
+          ]
+        },
+        {
+          "id": "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+          "label": "受伤时",
+          "path": [
+            "被动-触发时机",
+            "受伤时"
+          ]
+        },
+        {
+          "id": "effect-damage-down",
+          "label": "减伤",
+          "path": [
+            "被动-作用效果",
+            "减伤"
+          ]
+        },
+        {
+          "id": "tag-143d8bab-4954-4174-abba-09e3dee91e40",
+          "label": "View",
+          "path": [
+            "被动-作用效果",
+            "View"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:105616",
@@ -23700,7 +26026,40 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-single",
+          "label": "友方单体",
+          "path": [
+            "主动-作用目标",
+            "友方单体"
+          ]
+        },
+        {
+          "id": "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+          "label": "减伤",
+          "path": [
+            "主动-作用BUFF",
+            "减伤"
+          ]
+        },
+        {
+          "id": "tag-0f6ebd6c-6189-46c8-98f1-80dfbb14dfc2",
+          "label": "View",
+          "path": [
+            "主动-作用BUFF",
+            "View"
+          ]
+        },
+        {
+          "id": "tag-aad3d89b-68eb-49ef-b10e-7ee02d71efb7",
+          "label": "主动攻击",
+          "path": [
+            "被动-触发时机",
+            "主动攻击"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:111816",
@@ -23763,7 +26122,40 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-none",
+          "label": "无目标",
+          "path": [
+            "主动-作用目标",
+            "无目标"
+          ]
+        },
+        {
+          "id": "tag-8eb3238c-bec2-443a-ab9b-a6395c7e6792",
+          "label": "Combo",
+          "path": [
+            "主动-作用数值",
+            "Combo"
+          ]
+        },
+        {
+          "id": "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+          "label": "行动相关",
+          "path": [
+            "被动-触发时机",
+            "行动相关"
+          ]
+        },
+        {
+          "id": "tag-868418fc-205d-4447-9233-8b6085310f28",
+          "label": "Combo",
+          "path": [
+            "被动-作用效果",
+            "Combo"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:104316",
@@ -23826,7 +26218,32 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-damage",
+          "label": "伤害",
+          "path": [
+            "主动-作用数值",
+            "伤害"
+          ]
+        },
+        {
+          "id": "effect-damage-up",
+          "label": "增伤",
+          "path": [
+            "被动-作用效果",
+            "增伤"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:107816",
@@ -23896,7 +26313,40 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-single",
+          "label": "友方单体",
+          "path": [
+            "主动-作用目标",
+            "友方单体"
+          ]
+        },
+        {
+          "id": "tag-1a0c8c81-6f4c-4fee-9669-6f32b5f72acc",
+          "label": "目标控制",
+          "path": [
+            "主动-作用BUFF",
+            "目标控制"
+          ]
+        },
+        {
+          "id": "tag-2628a7f6-5404-4480-b800-2353e5a81a97",
+          "label": "回合开始时",
+          "path": [
+            "被动-触发时机",
+            "回合开始时"
+          ]
+        },
+        {
+          "id": "tag-143d8bab-4954-4174-abba-09e3dee91e40",
+          "label": "View",
+          "path": [
+            "被动-作用效果",
+            "View"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:121416",
@@ -23966,7 +26416,40 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-damage",
+          "label": "伤害",
+          "path": [
+            "主动-作用数值",
+            "伤害"
+          ]
+        },
+        {
+          "id": "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+          "label": "受伤时",
+          "path": [
+            "被动-触发时机",
+            "受伤时"
+          ]
+        },
+        {
+          "id": "tag-aad3d89b-68eb-49ef-b10e-7ee02d71efb7",
+          "label": "主动攻击",
+          "path": [
+            "被动-触发时机",
+            "主动攻击"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:100216",
@@ -24030,7 +26513,32 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-none",
+          "label": "无目标",
+          "path": [
+            "主动-作用目标",
+            "无目标"
+          ]
+        },
+        {
+          "id": "value-view",
+          "label": "View",
+          "path": [
+            "主动-作用数值",
+            "View"
+          ]
+        },
+        {
+          "id": "tag-143d8bab-4954-4174-abba-09e3dee91e40",
+          "label": "View",
+          "path": [
+            "被动-作用效果",
+            "View"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:112916",
@@ -24094,7 +26602,40 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-multi",
+          "label": "友方多目标",
+          "path": [
+            "主动-作用目标",
+            "友方多目标"
+          ]
+        },
+        {
+          "id": "value-recovery",
+          "label": "恢复",
+          "path": [
+            "主动-作用数值",
+            "恢复"
+          ]
+        },
+        {
+          "id": "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+          "label": "行动相关",
+          "path": [
+            "被动-触发时机",
+            "行动相关"
+          ]
+        },
+        {
+          "id": "tag-ee5aa837-a581-4021-9f2d-b44c2fa27a3c",
+          "label": "恢复",
+          "path": [
+            "被动-作用效果",
+            "恢复"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:130316",
@@ -24158,7 +26699,40 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-self",
+          "label": "自身",
+          "path": [
+            "主动-作用目标",
+            "自身"
+          ]
+        },
+        {
+          "id": "value-view",
+          "label": "View",
+          "path": [
+            "主动-作用数值",
+            "View"
+          ]
+        },
+        {
+          "id": "tag-1a0c8c81-6f4c-4fee-9669-6f32b5f72acc",
+          "label": "目标控制",
+          "path": [
+            "主动-作用BUFF",
+            "目标控制"
+          ]
+        },
+        {
+          "id": "effect-damage-down",
+          "label": "减伤",
+          "path": [
+            "被动-作用效果",
+            "减伤"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:101216",
@@ -24222,7 +26796,24 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-single",
+          "label": "友方单体",
+          "path": [
+            "主动-作用目标",
+            "友方单体"
+          ]
+        },
+        {
+          "id": "tag-a5911010-fe08-4163-a081-ad0e332d32be",
+          "label": "增伤",
+          "path": [
+            "主动-作用BUFF",
+            "增伤"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:103316",
@@ -24286,7 +26877,24 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-single",
+          "label": "友方单体",
+          "path": [
+            "主动-作用目标",
+            "友方单体"
+          ]
+        },
+        {
+          "id": "tag-14eb2792-1177-4b2d-98c9-a5aa50a69add",
+          "label": "速度",
+          "path": [
+            "主动-作用BUFF",
+            "速度"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:117016",
@@ -24350,7 +26958,48 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-single",
+          "label": "友方单体",
+          "path": [
+            "主动-作用目标",
+            "友方单体"
+          ]
+        },
+        {
+          "id": "value-view",
+          "label": "View",
+          "path": [
+            "主动-作用数值",
+            "View"
+          ]
+        },
+        {
+          "id": "tag-14eb2792-1177-4b2d-98c9-a5aa50a69add",
+          "label": "速度",
+          "path": [
+            "主动-作用BUFF",
+            "速度"
+          ]
+        },
+        {
+          "id": "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+          "label": "受伤时",
+          "path": [
+            "被动-触发时机",
+            "受伤时"
+          ]
+        },
+        {
+          "id": "tag-aad3d89b-68eb-49ef-b10e-7ee02d71efb7",
+          "label": "主动攻击",
+          "path": [
+            "被动-触发时机",
+            "主动攻击"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:107116",
@@ -24414,7 +27063,56 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-single",
+          "label": "友方单体",
+          "path": [
+            "主动-作用目标",
+            "友方单体"
+          ]
+        },
+        {
+          "id": "tag-a5911010-fe08-4163-a081-ad0e332d32be",
+          "label": "增伤",
+          "path": [
+            "主动-作用BUFF",
+            "增伤"
+          ]
+        },
+        {
+          "id": "tag-8fcfaf4e-e5d8-4566-be66-f057c959d8fd",
+          "label": "其他",
+          "path": [
+            "主动-作用BUFF",
+            "其他"
+          ]
+        },
+        {
+          "id": "tag-2628a7f6-5404-4480-b800-2353e5a81a97",
+          "label": "回合开始时",
+          "path": [
+            "被动-触发时机",
+            "回合开始时"
+          ]
+        },
+        {
+          "id": "tag-143d8bab-4954-4174-abba-09e3dee91e40",
+          "label": "View",
+          "path": [
+            "被动-作用效果",
+            "View"
+          ]
+        },
+        {
+          "id": "auto-target-selection",
+          "label": "自动选择目标",
+          "path": [
+            "被动-自动战斗",
+            "自动选择目标"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:123716",
@@ -24478,7 +27176,48 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-single",
+          "label": "友方单体",
+          "path": [
+            "主动-作用目标",
+            "友方单体"
+          ]
+        },
+        {
+          "id": "target-ally-multi",
+          "label": "友方多目标",
+          "path": [
+            "主动-作用目标",
+            "友方多目标"
+          ]
+        },
+        {
+          "id": "value-recovery",
+          "label": "恢复",
+          "path": [
+            "主动-作用数值",
+            "恢复"
+          ]
+        },
+        {
+          "id": "effect-damage-up",
+          "label": "增伤",
+          "path": [
+            "被动-作用效果",
+            "增伤"
+          ]
+        },
+        {
+          "id": "auto-skill-3",
+          "label": "释放技能 3",
+          "path": [
+            "被动-自动战斗",
+            "释放技能 3"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:116816",
@@ -24542,7 +27281,32 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-damage",
+          "label": "伤害",
+          "path": [
+            "主动-作用数值",
+            "伤害"
+          ]
+        },
+        {
+          "id": "tag-143d8bab-4954-4174-abba-09e3dee91e40",
+          "label": "View",
+          "path": [
+            "被动-作用效果",
+            "View"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:100316",
@@ -24606,7 +27370,24 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "tag-aad3d89b-68eb-49ef-b10e-7ee02d71efb7",
+          "label": "主动攻击",
+          "path": [
+            "被动-触发时机",
+            "主动攻击"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:123916",
@@ -24669,7 +27450,40 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-self",
+          "label": "自身",
+          "path": [
+            "主动-作用目标",
+            "自身"
+          ]
+        },
+        {
+          "id": "value-view",
+          "label": "View",
+          "path": [
+            "主动-作用数值",
+            "View"
+          ]
+        },
+        {
+          "id": "effect-damage-down",
+          "label": "减伤",
+          "path": [
+            "被动-作用效果",
+            "减伤"
+          ]
+        },
+        {
+          "id": "tag-143d8bab-4954-4174-abba-09e3dee91e40",
+          "label": "View",
+          "path": [
+            "被动-作用效果",
+            "View"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:115516",
@@ -24732,7 +27546,40 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-self",
+          "label": "自身",
+          "path": [
+            "主动-作用目标",
+            "自身"
+          ]
+        },
+        {
+          "id": "tag-14324fd4-8d77-4f36-9489-15d41f397129",
+          "label": "持续伤害",
+          "path": [
+            "主动-作用数值",
+            "持续伤害"
+          ]
+        },
+        {
+          "id": "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+          "label": "减伤",
+          "path": [
+            "主动-作用BUFF",
+            "减伤"
+          ]
+        },
+        {
+          "id": "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+          "label": "受伤时",
+          "path": [
+            "被动-触发时机",
+            "受伤时"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:106716",
@@ -24802,7 +27649,24 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-single",
+          "label": "友方单体",
+          "path": [
+            "主动-作用目标",
+            "友方单体"
+          ]
+        },
+        {
+          "id": "tag-0f6ebd6c-6189-46c8-98f1-80dfbb14dfc2",
+          "label": "View",
+          "path": [
+            "主动-作用BUFF",
+            "View"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:119416",
@@ -24865,7 +27729,48 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-self",
+          "label": "自身",
+          "path": [
+            "主动-作用目标",
+            "自身"
+          ]
+        },
+        {
+          "id": "tag-14324fd4-8d77-4f36-9489-15d41f397129",
+          "label": "持续伤害",
+          "path": [
+            "主动-作用数值",
+            "持续伤害"
+          ]
+        },
+        {
+          "id": "tag-8fcfaf4e-e5d8-4566-be66-f057c959d8fd",
+          "label": "其他",
+          "path": [
+            "主动-作用BUFF",
+            "其他"
+          ]
+        },
+        {
+          "id": "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+          "label": "受伤时",
+          "path": [
+            "被动-触发时机",
+            "受伤时"
+          ]
+        },
+        {
+          "id": "effect-damage-down",
+          "label": "减伤",
+          "path": [
+            "被动-作用效果",
+            "减伤"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:105516",
@@ -24928,7 +27833,48 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-single",
+          "label": "友方单体",
+          "path": [
+            "主动-作用目标",
+            "友方单体"
+          ]
+        },
+        {
+          "id": "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+          "label": "减伤",
+          "path": [
+            "主动-作用BUFF",
+            "减伤"
+          ]
+        },
+        {
+          "id": "tag-0f6ebd6c-6189-46c8-98f1-80dfbb14dfc2",
+          "label": "View",
+          "path": [
+            "主动-作用BUFF",
+            "View"
+          ]
+        },
+        {
+          "id": "tag-aad3d89b-68eb-49ef-b10e-7ee02d71efb7",
+          "label": "主动攻击",
+          "path": [
+            "被动-触发时机",
+            "主动攻击"
+          ]
+        },
+        {
+          "id": "tag-ee5aa837-a581-4021-9f2d-b44c2fa27a3c",
+          "label": "恢复",
+          "path": [
+            "被动-作用效果",
+            "恢复"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:111716",
@@ -24991,7 +27937,48 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-none",
+          "label": "无目标",
+          "path": [
+            "主动-作用目标",
+            "无目标"
+          ]
+        },
+        {
+          "id": "tag-8eb3238c-bec2-443a-ab9b-a6395c7e6792",
+          "label": "Combo",
+          "path": [
+            "主动-作用数值",
+            "Combo"
+          ]
+        },
+        {
+          "id": "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+          "label": "行动相关",
+          "path": [
+            "被动-触发时机",
+            "行动相关"
+          ]
+        },
+        {
+          "id": "effect-damage-down",
+          "label": "减伤",
+          "path": [
+            "被动-作用效果",
+            "减伤"
+          ]
+        },
+        {
+          "id": "tag-868418fc-205d-4447-9233-8b6085310f28",
+          "label": "Combo",
+          "path": [
+            "被动-作用效果",
+            "Combo"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:107716",
@@ -25054,7 +28041,32 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-single",
+          "label": "友方单体",
+          "path": [
+            "主动-作用目标",
+            "友方单体"
+          ]
+        },
+        {
+          "id": "tag-1a0c8c81-6f4c-4fee-9669-6f32b5f72acc",
+          "label": "目标控制",
+          "path": [
+            "主动-作用BUFF",
+            "目标控制"
+          ]
+        },
+        {
+          "id": "tag-2628a7f6-5404-4480-b800-2353e5a81a97",
+          "label": "回合开始时",
+          "path": [
+            "被动-触发时机",
+            "回合开始时"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:121316",
@@ -25124,7 +28136,40 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-damage",
+          "label": "伤害",
+          "path": [
+            "主动-作用数值",
+            "伤害"
+          ]
+        },
+        {
+          "id": "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+          "label": "受伤时",
+          "path": [
+            "被动-触发时机",
+            "受伤时"
+          ]
+        },
+        {
+          "id": "tag-aad3d89b-68eb-49ef-b10e-7ee02d71efb7",
+          "label": "主动攻击",
+          "path": [
+            "被动-触发时机",
+            "主动攻击"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:128916",
@@ -25188,7 +28233,64 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-view",
+          "label": "View",
+          "path": [
+            "主动-作用数值",
+            "View"
+          ]
+        },
+        {
+          "id": "tag-5de2a892-f831-4f0c-9039-b1bcc4c1bb93",
+          "label": "速度",
+          "path": [
+            "主动-作用数值",
+            "速度"
+          ]
+        },
+        {
+          "id": "tag-14eb2792-1177-4b2d-98c9-a5aa50a69add",
+          "label": "速度",
+          "path": [
+            "主动-作用BUFF",
+            "速度"
+          ]
+        },
+        {
+          "id": "effect-damage-up",
+          "label": "增伤",
+          "path": [
+            "被动-作用效果",
+            "增伤"
+          ]
+        },
+        {
+          "id": "tag-e8cc00a9-5862-46cc-ae3f-d28a410615ea",
+          "label": "速度",
+          "path": [
+            "被动-作用效果",
+            "速度"
+          ]
+        },
+        {
+          "id": "auto-target-selection",
+          "label": "自动选择目标",
+          "path": [
+            "被动-自动战斗",
+            "自动选择目标"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:126516",
@@ -25259,7 +28361,32 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-single",
+          "label": "友方单体",
+          "path": [
+            "主动-作用目标",
+            "友方单体"
+          ]
+        },
+        {
+          "id": "tag-a5911010-fe08-4163-a081-ad0e332d32be",
+          "label": "增伤",
+          "path": [
+            "主动-作用BUFF",
+            "增伤"
+          ]
+        },
+        {
+          "id": "tag-143d8bab-4954-4174-abba-09e3dee91e40",
+          "label": "View",
+          "path": [
+            "被动-作用效果",
+            "View"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:119016",
@@ -25323,7 +28450,48 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-single",
+          "label": "友方单体",
+          "path": [
+            "主动-作用目标",
+            "友方单体"
+          ]
+        },
+        {
+          "id": "tag-8fcfaf4e-e5d8-4566-be66-f057c959d8fd",
+          "label": "其他",
+          "path": [
+            "主动-作用BUFF",
+            "其他"
+          ]
+        },
+        {
+          "id": "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+          "label": "行动相关",
+          "path": [
+            "被动-触发时机",
+            "行动相关"
+          ]
+        },
+        {
+          "id": "tag-143d8bab-4954-4174-abba-09e3dee91e40",
+          "label": "View",
+          "path": [
+            "被动-作用效果",
+            "View"
+          ]
+        },
+        {
+          "id": "auto-mixed-skill",
+          "label": "混合释放",
+          "path": [
+            "被动-自动战斗",
+            "混合释放"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:102116",
@@ -25387,7 +28555,40 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-single",
+          "label": "友方单体",
+          "path": [
+            "主动-作用目标",
+            "友方单体"
+          ]
+        },
+        {
+          "id": "value-recovery",
+          "label": "恢复",
+          "path": [
+            "主动-作用数值",
+            "恢复"
+          ]
+        },
+        {
+          "id": "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+          "label": "行动相关",
+          "path": [
+            "被动-触发时机",
+            "行动相关"
+          ]
+        },
+        {
+          "id": "tag-ee5aa837-a581-4021-9f2d-b44c2fa27a3c",
+          "label": "恢复",
+          "path": [
+            "被动-作用效果",
+            "恢复"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:101716",
@@ -25451,7 +28652,40 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-multi",
+          "label": "敌方多目标",
+          "path": [
+            "主动-作用目标",
+            "敌方多目标"
+          ]
+        },
+        {
+          "id": "value-damage",
+          "label": "伤害",
+          "path": [
+            "主动-作用数值",
+            "伤害"
+          ]
+        },
+        {
+          "id": "tag-aad3d89b-68eb-49ef-b10e-7ee02d71efb7",
+          "label": "主动攻击",
+          "path": [
+            "被动-触发时机",
+            "主动攻击"
+          ]
+        },
+        {
+          "id": "tag-e8cc00a9-5862-46cc-ae3f-d28a410615ea",
+          "label": "速度",
+          "path": [
+            "被动-作用效果",
+            "速度"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:102216",
@@ -25515,7 +28749,48 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-self",
+          "label": "自身",
+          "path": [
+            "主动-作用目标",
+            "自身"
+          ]
+        },
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-damage",
+          "label": "伤害",
+          "path": [
+            "主动-作用数值",
+            "伤害"
+          ]
+        },
+        {
+          "id": "tag-a5911010-fe08-4163-a081-ad0e332d32be",
+          "label": "增伤",
+          "path": [
+            "主动-作用BUFF",
+            "增伤"
+          ]
+        },
+        {
+          "id": "effect-damage-up",
+          "label": "增伤",
+          "path": [
+            "被动-作用效果",
+            "增伤"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:128816",
@@ -25579,7 +28854,40 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-single",
+          "label": "友方单体",
+          "path": [
+            "主动-作用目标",
+            "友方单体"
+          ]
+        },
+        {
+          "id": "value-damage",
+          "label": "伤害",
+          "path": [
+            "主动-作用数值",
+            "伤害"
+          ]
+        },
+        {
+          "id": "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+          "label": "减伤",
+          "path": [
+            "主动-作用BUFF",
+            "减伤"
+          ]
+        },
+        {
+          "id": "tag-143d8bab-4954-4174-abba-09e3dee91e40",
+          "label": "View",
+          "path": [
+            "被动-作用效果",
+            "View"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:123816",
@@ -25642,7 +28950,32 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-self",
+          "label": "自身",
+          "path": [
+            "主动-作用目标",
+            "自身"
+          ]
+        },
+        {
+          "id": "value-view",
+          "label": "View",
+          "path": [
+            "主动-作用数值",
+            "View"
+          ]
+        },
+        {
+          "id": "tag-143d8bab-4954-4174-abba-09e3dee91e40",
+          "label": "View",
+          "path": [
+            "被动-作用效果",
+            "View"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:115416",
@@ -25705,7 +29038,48 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-self",
+          "label": "自身",
+          "path": [
+            "主动-作用目标",
+            "自身"
+          ]
+        },
+        {
+          "id": "tag-14324fd4-8d77-4f36-9489-15d41f397129",
+          "label": "持续伤害",
+          "path": [
+            "主动-作用数值",
+            "持续伤害"
+          ]
+        },
+        {
+          "id": "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+          "label": "减伤",
+          "path": [
+            "主动-作用BUFF",
+            "减伤"
+          ]
+        },
+        {
+          "id": "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+          "label": "受伤时",
+          "path": [
+            "被动-触发时机",
+            "受伤时"
+          ]
+        },
+        {
+          "id": "tag-d69ae9b8-04bc-4767-abc8-96a681811c8c",
+          "label": "持续伤害",
+          "path": [
+            "被动-作用效果",
+            "持续伤害"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:106616",
@@ -25775,7 +29149,32 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-single",
+          "label": "友方单体",
+          "path": [
+            "主动-作用目标",
+            "友方单体"
+          ]
+        },
+        {
+          "id": "tag-0f6ebd6c-6189-46c8-98f1-80dfbb14dfc2",
+          "label": "View",
+          "path": [
+            "主动-作用BUFF",
+            "View"
+          ]
+        },
+        {
+          "id": "tag-d69ae9b8-04bc-4767-abc8-96a681811c8c",
+          "label": "持续伤害",
+          "path": [
+            "被动-作用效果",
+            "持续伤害"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:119316",
@@ -25838,7 +29237,56 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-self",
+          "label": "自身",
+          "path": [
+            "主动-作用目标",
+            "自身"
+          ]
+        },
+        {
+          "id": "tag-14324fd4-8d77-4f36-9489-15d41f397129",
+          "label": "持续伤害",
+          "path": [
+            "主动-作用数值",
+            "持续伤害"
+          ]
+        },
+        {
+          "id": "tag-8fcfaf4e-e5d8-4566-be66-f057c959d8fd",
+          "label": "其他",
+          "path": [
+            "主动-作用BUFF",
+            "其他"
+          ]
+        },
+        {
+          "id": "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+          "label": "受伤时",
+          "path": [
+            "被动-触发时机",
+            "受伤时"
+          ]
+        },
+        {
+          "id": "effect-damage-up",
+          "label": "增伤",
+          "path": [
+            "被动-作用效果",
+            "增伤"
+          ]
+        },
+        {
+          "id": "effect-damage-down",
+          "label": "减伤",
+          "path": [
+            "被动-作用效果",
+            "减伤"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:105416",
@@ -25901,7 +29349,48 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-single",
+          "label": "友方单体",
+          "path": [
+            "主动-作用目标",
+            "友方单体"
+          ]
+        },
+        {
+          "id": "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+          "label": "减伤",
+          "path": [
+            "主动-作用BUFF",
+            "减伤"
+          ]
+        },
+        {
+          "id": "tag-0f6ebd6c-6189-46c8-98f1-80dfbb14dfc2",
+          "label": "View",
+          "path": [
+            "主动-作用BUFF",
+            "View"
+          ]
+        },
+        {
+          "id": "tag-aad3d89b-68eb-49ef-b10e-7ee02d71efb7",
+          "label": "主动攻击",
+          "path": [
+            "被动-触发时机",
+            "主动攻击"
+          ]
+        },
+        {
+          "id": "tag-868418fc-205d-4447-9233-8b6085310f28",
+          "label": "Combo",
+          "path": [
+            "被动-作用效果",
+            "Combo"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:111616",
@@ -25964,7 +29453,48 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-none",
+          "label": "无目标",
+          "path": [
+            "主动-作用目标",
+            "无目标"
+          ]
+        },
+        {
+          "id": "tag-8eb3238c-bec2-443a-ab9b-a6395c7e6792",
+          "label": "Combo",
+          "path": [
+            "主动-作用数值",
+            "Combo"
+          ]
+        },
+        {
+          "id": "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+          "label": "行动相关",
+          "path": [
+            "被动-触发时机",
+            "行动相关"
+          ]
+        },
+        {
+          "id": "effect-damage-up",
+          "label": "增伤",
+          "path": [
+            "被动-作用效果",
+            "增伤"
+          ]
+        },
+        {
+          "id": "tag-868418fc-205d-4447-9233-8b6085310f28",
+          "label": "Combo",
+          "path": [
+            "被动-作用效果",
+            "Combo"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:107616",
@@ -26027,7 +29557,32 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-single",
+          "label": "友方单体",
+          "path": [
+            "主动-作用目标",
+            "友方单体"
+          ]
+        },
+        {
+          "id": "tag-1a0c8c81-6f4c-4fee-9669-6f32b5f72acc",
+          "label": "目标控制",
+          "path": [
+            "主动-作用BUFF",
+            "目标控制"
+          ]
+        },
+        {
+          "id": "tag-2628a7f6-5404-4480-b800-2353e5a81a97",
+          "label": "回合开始时",
+          "path": [
+            "被动-触发时机",
+            "回合开始时"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:121216",
@@ -26097,7 +29652,40 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-damage",
+          "label": "伤害",
+          "path": [
+            "主动-作用数值",
+            "伤害"
+          ]
+        },
+        {
+          "id": "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+          "label": "受伤时",
+          "path": [
+            "被动-触发时机",
+            "受伤时"
+          ]
+        },
+        {
+          "id": "tag-aad3d89b-68eb-49ef-b10e-7ee02d71efb7",
+          "label": "主动攻击",
+          "path": [
+            "被动-触发时机",
+            "主动攻击"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:120616",
@@ -26161,7 +29749,56 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-self",
+          "label": "自身",
+          "path": [
+            "主动-作用目标",
+            "自身"
+          ]
+        },
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-damage",
+          "label": "伤害",
+          "path": [
+            "主动-作用数值",
+            "伤害"
+          ]
+        },
+        {
+          "id": "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+          "label": "减伤",
+          "path": [
+            "主动-作用BUFF",
+            "减伤"
+          ]
+        },
+        {
+          "id": "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+          "label": "行动相关",
+          "path": [
+            "被动-触发时机",
+            "行动相关"
+          ]
+        },
+        {
+          "id": "auto-skill-3",
+          "label": "释放技能 3",
+          "path": [
+            "被动-自动战斗",
+            "释放技能 3"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:105116",
@@ -26225,7 +29862,32 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-damage",
+          "label": "伤害",
+          "path": [
+            "主动-作用数值",
+            "伤害"
+          ]
+        },
+        {
+          "id": "tag-2628a7f6-5404-4480-b800-2353e5a81a97",
+          "label": "回合开始时",
+          "path": [
+            "被动-触发时机",
+            "回合开始时"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:103116",
@@ -26289,7 +29951,48 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-damage",
+          "label": "伤害",
+          "path": [
+            "主动-作用数值",
+            "伤害"
+          ]
+        },
+        {
+          "id": "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+          "label": "受伤时",
+          "path": [
+            "被动-触发时机",
+            "受伤时"
+          ]
+        },
+        {
+          "id": "effect-damage-up",
+          "label": "增伤",
+          "path": [
+            "被动-作用效果",
+            "增伤"
+          ]
+        },
+        {
+          "id": "effect-damage-down",
+          "label": "减伤",
+          "path": [
+            "被动-作用效果",
+            "减伤"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:105916",
@@ -26353,7 +30056,48 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-damage",
+          "label": "伤害",
+          "path": [
+            "主动-作用数值",
+            "伤害"
+          ]
+        },
+        {
+          "id": "tag-14eb2792-1177-4b2d-98c9-a5aa50a69add",
+          "label": "速度",
+          "path": [
+            "主动-作用BUFF",
+            "速度"
+          ]
+        },
+        {
+          "id": "tag-bc2a6ed4-a1ea-4114-afb7-93ab272f0f9c",
+          "label": "登场时",
+          "path": [
+            "被动-触发时机",
+            "登场时"
+          ]
+        },
+        {
+          "id": "tag-e8cc00a9-5862-46cc-ae3f-d28a410615ea",
+          "label": "速度",
+          "path": [
+            "被动-作用效果",
+            "速度"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:132616",
@@ -26423,7 +30167,48 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-self",
+          "label": "自身",
+          "path": [
+            "主动-作用目标",
+            "自身"
+          ]
+        },
+        {
+          "id": "target-ally-single",
+          "label": "友方单体",
+          "path": [
+            "主动-作用目标",
+            "友方单体"
+          ]
+        },
+        {
+          "id": "value-shield",
+          "label": "护盾",
+          "path": [
+            "主动-作用数值",
+            "护盾"
+          ]
+        },
+        {
+          "id": "tag-a5911010-fe08-4163-a081-ad0e332d32be",
+          "label": "增伤",
+          "path": [
+            "主动-作用BUFF",
+            "增伤"
+          ]
+        },
+        {
+          "id": "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+          "label": "受伤时",
+          "path": [
+            "被动-触发时机",
+            "受伤时"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:119116",
@@ -26494,7 +30279,40 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "tag-8fcfaf4e-e5d8-4566-be66-f057c959d8fd",
+          "label": "其他",
+          "path": [
+            "主动-作用BUFF",
+            "其他"
+          ]
+        },
+        {
+          "id": "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+          "label": "行动相关",
+          "path": [
+            "被动-触发时机",
+            "行动相关"
+          ]
+        },
+        {
+          "id": "tag-868418fc-205d-4447-9233-8b6085310f28",
+          "label": "Combo",
+          "path": [
+            "被动-作用效果",
+            "Combo"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:111516",
@@ -26558,7 +30376,24 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-single",
+          "label": "友方单体",
+          "path": [
+            "主动-作用目标",
+            "友方单体"
+          ]
+        },
+        {
+          "id": "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+          "label": "行动相关",
+          "path": [
+            "被动-触发时机",
+            "行动相关"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:101916",
@@ -26622,7 +30457,40 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-single",
+          "label": "友方单体",
+          "path": [
+            "主动-作用目标",
+            "友方单体"
+          ]
+        },
+        {
+          "id": "tag-a5911010-fe08-4163-a081-ad0e332d32be",
+          "label": "增伤",
+          "path": [
+            "主动-作用BUFF",
+            "增伤"
+          ]
+        },
+        {
+          "id": "tag-2628a7f6-5404-4480-b800-2353e5a81a97",
+          "label": "回合开始时",
+          "path": [
+            "被动-触发时机",
+            "回合开始时"
+          ]
+        },
+        {
+          "id": "effect-damage-up",
+          "label": "增伤",
+          "path": [
+            "被动-作用效果",
+            "增伤"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:111216",
@@ -26686,7 +30554,40 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-damage",
+          "label": "伤害",
+          "path": [
+            "主动-作用数值",
+            "伤害"
+          ]
+        },
+        {
+          "id": "tag-bc2a6ed4-a1ea-4114-afb7-93ab272f0f9c",
+          "label": "登场时",
+          "path": [
+            "被动-触发时机",
+            "登场时"
+          ]
+        },
+        {
+          "id": "tag-e8cc00a9-5862-46cc-ae3f-d28a410615ea",
+          "label": "速度",
+          "path": [
+            "被动-作用效果",
+            "速度"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:100916",
@@ -26750,7 +30651,40 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-self",
+          "label": "自身",
+          "path": [
+            "主动-作用目标",
+            "自身"
+          ]
+        },
+        {
+          "id": "tag-a5911010-fe08-4163-a081-ad0e332d32be",
+          "label": "增伤",
+          "path": [
+            "主动-作用BUFF",
+            "增伤"
+          ]
+        },
+        {
+          "id": "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+          "label": "受伤时",
+          "path": [
+            "被动-触发时机",
+            "受伤时"
+          ]
+        },
+        {
+          "id": "effect-damage-up",
+          "label": "增伤",
+          "path": [
+            "被动-作用效果",
+            "增伤"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:112516",
@@ -26814,7 +30748,48 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-single",
+          "label": "友方单体",
+          "path": [
+            "主动-作用目标",
+            "友方单体"
+          ]
+        },
+        {
+          "id": "tag-8eb3238c-bec2-443a-ab9b-a6395c7e6792",
+          "label": "Combo",
+          "path": [
+            "主动-作用数值",
+            "Combo"
+          ]
+        },
+        {
+          "id": "tag-14eb2792-1177-4b2d-98c9-a5aa50a69add",
+          "label": "速度",
+          "path": [
+            "主动-作用BUFF",
+            "速度"
+          ]
+        },
+        {
+          "id": "tag-d1f5e200-ead4-4e15-bf53-21424f16a1c1",
+          "label": "获得buff时",
+          "path": [
+            "被动-触发时机",
+            "获得buff时"
+          ]
+        },
+        {
+          "id": "tag-868418fc-205d-4447-9233-8b6085310f28",
+          "label": "Combo",
+          "path": [
+            "被动-作用效果",
+            "Combo"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:111316",
@@ -26878,7 +30853,40 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-damage",
+          "label": "伤害",
+          "path": [
+            "主动-作用数值",
+            "伤害"
+          ]
+        },
+        {
+          "id": "tag-d1f5e200-ead4-4e15-bf53-21424f16a1c1",
+          "label": "获得buff时",
+          "path": [
+            "被动-触发时机",
+            "获得buff时"
+          ]
+        },
+        {
+          "id": "effect-damage-up",
+          "label": "增伤",
+          "path": [
+            "被动-作用效果",
+            "增伤"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:120916",
@@ -26949,7 +30957,56 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-view",
+          "label": "View",
+          "path": [
+            "主动-作用数值",
+            "View"
+          ]
+        },
+        {
+          "id": "tag-2628a7f6-5404-4480-b800-2353e5a81a97",
+          "label": "回合开始时",
+          "path": [
+            "被动-触发时机",
+            "回合开始时"
+          ]
+        },
+        {
+          "id": "tag-d1f5e200-ead4-4e15-bf53-21424f16a1c1",
+          "label": "获得buff时",
+          "path": [
+            "被动-触发时机",
+            "获得buff时"
+          ]
+        },
+        {
+          "id": "effect-damage-up",
+          "label": "增伤",
+          "path": [
+            "被动-作用效果",
+            "增伤"
+          ]
+        },
+        {
+          "id": "auto-target-selection",
+          "label": "自动选择目标",
+          "path": [
+            "被动-自动战斗",
+            "自动选择目标"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:101116",
@@ -27013,7 +31070,40 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "tag-14324fd4-8d77-4f36-9489-15d41f397129",
+          "label": "持续伤害",
+          "path": [
+            "主动-作用数值",
+            "持续伤害"
+          ]
+        },
+        {
+          "id": "tag-bc2a6ed4-a1ea-4114-afb7-93ab272f0f9c",
+          "label": "登场时",
+          "path": [
+            "被动-触发时机",
+            "登场时"
+          ]
+        },
+        {
+          "id": "tag-d69ae9b8-04bc-4767-abc8-96a681811c8c",
+          "label": "持续伤害",
+          "path": [
+            "被动-作用效果",
+            "持续伤害"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:120016",
@@ -27077,7 +31167,56 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-damage",
+          "label": "伤害",
+          "path": [
+            "主动-作用数值",
+            "伤害"
+          ]
+        },
+        {
+          "id": "tag-8eb3238c-bec2-443a-ab9b-a6395c7e6792",
+          "label": "Combo",
+          "path": [
+            "主动-作用数值",
+            "Combo"
+          ]
+        },
+        {
+          "id": "effect-damage-up",
+          "label": "增伤",
+          "path": [
+            "被动-作用效果",
+            "增伤"
+          ]
+        },
+        {
+          "id": "tag-868418fc-205d-4447-9233-8b6085310f28",
+          "label": "Combo",
+          "path": [
+            "被动-作用效果",
+            "Combo"
+          ]
+        },
+        {
+          "id": "auto-skill-3",
+          "label": "释放技能 3",
+          "path": [
+            "被动-自动战斗",
+            "释放技能 3"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:103016",
@@ -27141,7 +31280,48 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-damage",
+          "label": "伤害",
+          "path": [
+            "主动-作用数值",
+            "伤害"
+          ]
+        },
+        {
+          "id": "tag-14324fd4-8d77-4f36-9489-15d41f397129",
+          "label": "持续伤害",
+          "path": [
+            "主动-作用数值",
+            "持续伤害"
+          ]
+        },
+        {
+          "id": "tag-2628a7f6-5404-4480-b800-2353e5a81a97",
+          "label": "回合开始时",
+          "path": [
+            "被动-触发时机",
+            "回合开始时"
+          ]
+        },
+        {
+          "id": "effect-damage-up",
+          "label": "增伤",
+          "path": [
+            "被动-作用效果",
+            "增伤"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:110116",
@@ -27205,7 +31385,48 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-single",
+          "label": "友方单体",
+          "path": [
+            "主动-作用目标",
+            "友方单体"
+          ]
+        },
+        {
+          "id": "value-recovery",
+          "label": "恢复",
+          "path": [
+            "主动-作用数值",
+            "恢复"
+          ]
+        },
+        {
+          "id": "tag-8eb3238c-bec2-443a-ab9b-a6395c7e6792",
+          "label": "Combo",
+          "path": [
+            "主动-作用数值",
+            "Combo"
+          ]
+        },
+        {
+          "id": "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+          "label": "受伤时",
+          "path": [
+            "被动-触发时机",
+            "受伤时"
+          ]
+        },
+        {
+          "id": "effect-damage-down",
+          "label": "减伤",
+          "path": [
+            "被动-作用效果",
+            "减伤"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:112816",
@@ -27269,7 +31490,32 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-self",
+          "label": "自身",
+          "path": [
+            "主动-作用目标",
+            "自身"
+          ]
+        },
+        {
+          "id": "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+          "label": "受伤时",
+          "path": [
+            "被动-触发时机",
+            "受伤时"
+          ]
+        },
+        {
+          "id": "auto-target-selection",
+          "label": "自动选择目标",
+          "path": [
+            "被动-自动战斗",
+            "自动选择目标"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:110016",
@@ -27333,7 +31579,48 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-none",
+          "label": "无目标",
+          "path": [
+            "主动-作用目标",
+            "无目标"
+          ]
+        },
+        {
+          "id": "value-view",
+          "label": "View",
+          "path": [
+            "主动-作用数值",
+            "View"
+          ]
+        },
+        {
+          "id": "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+          "label": "行动相关",
+          "path": [
+            "被动-触发时机",
+            "行动相关"
+          ]
+        },
+        {
+          "id": "tag-143d8bab-4954-4174-abba-09e3dee91e40",
+          "label": "View",
+          "path": [
+            "被动-作用效果",
+            "View"
+          ]
+        },
+        {
+          "id": "auto-target-selection",
+          "label": "自动选择目标",
+          "path": [
+            "被动-自动战斗",
+            "自动选择目标"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:102916",
@@ -27397,7 +31684,32 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-view",
+          "label": "View",
+          "path": [
+            "主动-作用数值",
+            "View"
+          ]
+        },
+        {
+          "id": "tag-143d8bab-4954-4174-abba-09e3dee91e40",
+          "label": "View",
+          "path": [
+            "被动-作用效果",
+            "View"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:131916",
@@ -27468,7 +31780,32 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-self",
+          "label": "自身",
+          "path": [
+            "主动-作用目标",
+            "自身"
+          ]
+        },
+        {
+          "id": "tag-a5911010-fe08-4163-a081-ad0e332d32be",
+          "label": "增伤",
+          "path": [
+            "主动-作用BUFF",
+            "增伤"
+          ]
+        },
+        {
+          "id": "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+          "label": "受伤时",
+          "path": [
+            "被动-触发时机",
+            "受伤时"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:125516",
@@ -27539,7 +31876,64 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-damage",
+          "label": "伤害",
+          "path": [
+            "主动-作用数值",
+            "伤害"
+          ]
+        },
+        {
+          "id": "tag-0f6ebd6c-6189-46c8-98f1-80dfbb14dfc2",
+          "label": "View",
+          "path": [
+            "主动-作用BUFF",
+            "View"
+          ]
+        },
+        {
+          "id": "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+          "label": "行动相关",
+          "path": [
+            "被动-触发时机",
+            "行动相关"
+          ]
+        },
+        {
+          "id": "tag-409c10bc-2492-496f-a581-dd5459a9e601",
+          "label": "场地效果",
+          "path": [
+            "被动-触发时机",
+            "场地效果"
+          ]
+        },
+        {
+          "id": "tag-143d8bab-4954-4174-abba-09e3dee91e40",
+          "label": "View",
+          "path": [
+            "被动-作用效果",
+            "View"
+          ]
+        },
+        {
+          "id": "auto-skill-2",
+          "label": "释放技能 2",
+          "path": [
+            "被动-自动战斗",
+            "释放技能 2"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:120716",
@@ -27603,7 +31997,56 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-self",
+          "label": "自身",
+          "path": [
+            "主动-作用目标",
+            "自身"
+          ]
+        },
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-damage",
+          "label": "伤害",
+          "path": [
+            "主动-作用数值",
+            "伤害"
+          ]
+        },
+        {
+          "id": "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+          "label": "受伤时",
+          "path": [
+            "被动-触发时机",
+            "受伤时"
+          ]
+        },
+        {
+          "id": "tag-ee5aa837-a581-4021-9f2d-b44c2fa27a3c",
+          "label": "恢复",
+          "path": [
+            "被动-作用效果",
+            "恢复"
+          ]
+        },
+        {
+          "id": "auto-skill-2",
+          "label": "释放技能 2",
+          "path": [
+            "被动-自动战斗",
+            "释放技能 2"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:108116",
@@ -27667,7 +32110,32 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-damage",
+          "label": "伤害",
+          "path": [
+            "主动-作用数值",
+            "伤害"
+          ]
+        },
+        {
+          "id": "tag-bc2a6ed4-a1ea-4114-afb7-93ab272f0f9c",
+          "label": "登场时",
+          "path": [
+            "被动-触发时机",
+            "登场时"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:100116",
@@ -27732,7 +32200,40 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-self",
+          "label": "自身",
+          "path": [
+            "主动-作用目标",
+            "自身"
+          ]
+        },
+        {
+          "id": "tag-a5911010-fe08-4163-a081-ad0e332d32be",
+          "label": "增伤",
+          "path": [
+            "主动-作用BUFF",
+            "增伤"
+          ]
+        },
+        {
+          "id": "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+          "label": "减伤",
+          "path": [
+            "主动-作用BUFF",
+            "减伤"
+          ]
+        },
+        {
+          "id": "effect-damage-up",
+          "label": "增伤",
+          "path": [
+            "被动-作用效果",
+            "增伤"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:132816",
@@ -27795,7 +32296,56 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-multi",
+          "label": "友方多目标",
+          "path": [
+            "主动-作用目标",
+            "友方多目标"
+          ]
+        },
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-damage",
+          "label": "伤害",
+          "path": [
+            "主动-作用数值",
+            "伤害"
+          ]
+        },
+        {
+          "id": "value-recovery",
+          "label": "恢复",
+          "path": [
+            "主动-作用数值",
+            "恢复"
+          ]
+        },
+        {
+          "id": "tag-aad3d89b-68eb-49ef-b10e-7ee02d71efb7",
+          "label": "主动攻击",
+          "path": [
+            "被动-触发时机",
+            "主动攻击"
+          ]
+        },
+        {
+          "id": "auto-target-selection",
+          "label": "自动选择目标",
+          "path": [
+            "被动-自动战斗",
+            "自动选择目标"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:106316",
@@ -27859,7 +32409,24 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "tag-2628a7f6-5404-4480-b800-2353e5a81a97",
+          "label": "回合开始时",
+          "path": [
+            "被动-触发时机",
+            "回合开始时"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:116916",
@@ -27924,7 +32491,56 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-damage",
+          "label": "伤害",
+          "path": [
+            "主动-作用数值",
+            "伤害"
+          ]
+        },
+        {
+          "id": "tag-14324fd4-8d77-4f36-9489-15d41f397129",
+          "label": "持续伤害",
+          "path": [
+            "主动-作用数值",
+            "持续伤害"
+          ]
+        },
+        {
+          "id": "tag-d1f5e200-ead4-4e15-bf53-21424f16a1c1",
+          "label": "获得buff时",
+          "path": [
+            "被动-触发时机",
+            "获得buff时"
+          ]
+        },
+        {
+          "id": "effect-damage-up",
+          "label": "增伤",
+          "path": [
+            "被动-作用效果",
+            "增伤"
+          ]
+        },
+        {
+          "id": "auto-skill-3",
+          "label": "释放技能 3",
+          "path": [
+            "被动-自动战斗",
+            "释放技能 3"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:102416",
@@ -27988,7 +32604,32 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-none",
+          "label": "无目标",
+          "path": [
+            "主动-作用目标",
+            "无目标"
+          ]
+        },
+        {
+          "id": "value-recovery",
+          "label": "恢复",
+          "path": [
+            "主动-作用数值",
+            "恢复"
+          ]
+        },
+        {
+          "id": "tag-2628a7f6-5404-4480-b800-2353e5a81a97",
+          "label": "回合开始时",
+          "path": [
+            "被动-触发时机",
+            "回合开始时"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:121816",
@@ -28052,7 +32693,32 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-damage",
+          "label": "伤害",
+          "path": [
+            "主动-作用数值",
+            "伤害"
+          ]
+        },
+        {
+          "id": "effect-damage-up",
+          "label": "增伤",
+          "path": [
+            "被动-作用效果",
+            "增伤"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:102616",
@@ -28116,7 +32782,40 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "tag-5de2a892-f831-4f0c-9039-b1bcc4c1bb93",
+          "label": "速度",
+          "path": [
+            "主动-作用数值",
+            "速度"
+          ]
+        },
+        {
+          "id": "tag-14eb2792-1177-4b2d-98c9-a5aa50a69add",
+          "label": "速度",
+          "path": [
+            "主动-作用BUFF",
+            "速度"
+          ]
+        },
+        {
+          "id": "tag-2628a7f6-5404-4480-b800-2353e5a81a97",
+          "label": "回合开始时",
+          "path": [
+            "被动-触发时机",
+            "回合开始时"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:106216",
@@ -28180,7 +32879,40 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-self",
+          "label": "自身",
+          "path": [
+            "主动-作用目标",
+            "自身"
+          ]
+        },
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-damage",
+          "label": "伤害",
+          "path": [
+            "主动-作用数值",
+            "伤害"
+          ]
+        },
+        {
+          "id": "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+          "label": "减伤",
+          "path": [
+            "主动-作用BUFF",
+            "减伤"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:119216",
@@ -28244,7 +32976,48 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-damage",
+          "label": "伤害",
+          "path": [
+            "主动-作用数值",
+            "伤害"
+          ]
+        },
+        {
+          "id": "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+          "label": "受伤时",
+          "path": [
+            "被动-触发时机",
+            "受伤时"
+          ]
+        },
+        {
+          "id": "tag-aad3d89b-68eb-49ef-b10e-7ee02d71efb7",
+          "label": "主动攻击",
+          "path": [
+            "被动-触发时机",
+            "主动攻击"
+          ]
+        },
+        {
+          "id": "auto-mixed-skill",
+          "label": "混合释放",
+          "path": [
+            "被动-自动战斗",
+            "混合释放"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:118916",
@@ -28308,7 +33081,40 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+          "label": "受伤时",
+          "path": [
+            "被动-触发时机",
+            "受伤时"
+          ]
+        },
+        {
+          "id": "tag-aad3d89b-68eb-49ef-b10e-7ee02d71efb7",
+          "label": "主动攻击",
+          "path": [
+            "被动-触发时机",
+            "主动攻击"
+          ]
+        },
+        {
+          "id": "tag-ee5aa837-a581-4021-9f2d-b44c2fa27a3c",
+          "label": "恢复",
+          "path": [
+            "被动-作用效果",
+            "恢复"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:123616",
@@ -28372,7 +33178,32 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-single",
+          "label": "友方单体",
+          "path": [
+            "主动-作用目标",
+            "友方单体"
+          ]
+        },
+        {
+          "id": "value-shield",
+          "label": "护盾",
+          "path": [
+            "主动-作用数值",
+            "护盾"
+          ]
+        },
+        {
+          "id": "effect-damage-up",
+          "label": "增伤",
+          "path": [
+            "被动-作用效果",
+            "增伤"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:100616",
@@ -28436,7 +33267,56 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-damage",
+          "label": "伤害",
+          "path": [
+            "主动-作用数值",
+            "伤害"
+          ]
+        },
+        {
+          "id": "tag-5de2a892-f831-4f0c-9039-b1bcc4c1bb93",
+          "label": "速度",
+          "path": [
+            "主动-作用数值",
+            "速度"
+          ]
+        },
+        {
+          "id": "tag-14eb2792-1177-4b2d-98c9-a5aa50a69add",
+          "label": "速度",
+          "path": [
+            "主动-作用BUFF",
+            "速度"
+          ]
+        },
+        {
+          "id": "effect-damage-up",
+          "label": "增伤",
+          "path": [
+            "被动-作用效果",
+            "增伤"
+          ]
+        },
+        {
+          "id": "tag-e8cc00a9-5862-46cc-ae3f-d28a410615ea",
+          "label": "速度",
+          "path": [
+            "被动-作用效果",
+            "速度"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:100416",
@@ -28500,7 +33380,48 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-damage",
+          "label": "伤害",
+          "path": [
+            "主动-作用数值",
+            "伤害"
+          ]
+        },
+        {
+          "id": "tag-14eb2792-1177-4b2d-98c9-a5aa50a69add",
+          "label": "速度",
+          "path": [
+            "主动-作用BUFF",
+            "速度"
+          ]
+        },
+        {
+          "id": "effect-damage-up",
+          "label": "增伤",
+          "path": [
+            "被动-作用效果",
+            "增伤"
+          ]
+        },
+        {
+          "id": "tag-e8cc00a9-5862-46cc-ae3f-d28a410615ea",
+          "label": "速度",
+          "path": [
+            "被动-作用效果",
+            "速度"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:112216",
@@ -28571,7 +33492,64 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-self",
+          "label": "自身",
+          "path": [
+            "主动-作用目标",
+            "自身"
+          ]
+        },
+        {
+          "id": "tag-a5911010-fe08-4163-a081-ad0e332d32be",
+          "label": "增伤",
+          "path": [
+            "主动-作用BUFF",
+            "增伤"
+          ]
+        },
+        {
+          "id": "tag-0f6ebd6c-6189-46c8-98f1-80dfbb14dfc2",
+          "label": "View",
+          "path": [
+            "主动-作用BUFF",
+            "View"
+          ]
+        },
+        {
+          "id": "tag-14eb2792-1177-4b2d-98c9-a5aa50a69add",
+          "label": "速度",
+          "path": [
+            "主动-作用BUFF",
+            "速度"
+          ]
+        },
+        {
+          "id": "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+          "label": "受伤时",
+          "path": [
+            "被动-触发时机",
+            "受伤时"
+          ]
+        },
+        {
+          "id": "tag-aad3d89b-68eb-49ef-b10e-7ee02d71efb7",
+          "label": "主动攻击",
+          "path": [
+            "被动-触发时机",
+            "主动攻击"
+          ]
+        },
+        {
+          "id": "tag-793e072d-675e-4152-8457-de2602f28886",
+          "label": "buff解除",
+          "path": [
+            "被动-作用效果",
+            "buff解除"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:131616",
@@ -28642,7 +33620,56 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-ally-single",
+          "label": "友方单体",
+          "path": [
+            "主动-作用目标",
+            "友方单体"
+          ]
+        },
+        {
+          "id": "tag-0f6ebd6c-6189-46c8-98f1-80dfbb14dfc2",
+          "label": "View",
+          "path": [
+            "主动-作用BUFF",
+            "View"
+          ]
+        },
+        {
+          "id": "tag-14eb2792-1177-4b2d-98c9-a5aa50a69add",
+          "label": "速度",
+          "path": [
+            "主动-作用BUFF",
+            "速度"
+          ]
+        },
+        {
+          "id": "effect-damage-up",
+          "label": "增伤",
+          "path": [
+            "被动-作用效果",
+            "增伤"
+          ]
+        },
+        {
+          "id": "tag-e8cc00a9-5862-46cc-ae3f-d28a410615ea",
+          "label": "速度",
+          "path": [
+            "被动-作用效果",
+            "速度"
+          ]
+        },
+        {
+          "id": "auto-target-selection",
+          "label": "自动选择目标",
+          "path": [
+            "被动-自动战斗",
+            "自动选择目标"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:101416",
@@ -28706,7 +33733,48 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-self",
+          "label": "自身",
+          "path": [
+            "主动-作用目标",
+            "自身"
+          ]
+        },
+        {
+          "id": "target-ally-single",
+          "label": "友方单体",
+          "path": [
+            "主动-作用目标",
+            "友方单体"
+          ]
+        },
+        {
+          "id": "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+          "label": "减伤",
+          "path": [
+            "主动-作用BUFF",
+            "减伤"
+          ]
+        },
+        {
+          "id": "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+          "label": "受伤时",
+          "path": [
+            "被动-触发时机",
+            "受伤时"
+          ]
+        },
+        {
+          "id": "effect-damage-down",
+          "label": "减伤",
+          "path": [
+            "被动-作用效果",
+            "减伤"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:106116",
@@ -28770,7 +33838,32 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-self",
+          "label": "自身",
+          "path": [
+            "主动-作用目标",
+            "自身"
+          ]
+        },
+        {
+          "id": "target-enemy-single",
+          "label": "敌方单体",
+          "path": [
+            "主动-作用目标",
+            "敌方单体"
+          ]
+        },
+        {
+          "id": "value-damage",
+          "label": "伤害",
+          "path": [
+            "主动-作用数值",
+            "伤害"
+          ]
+        }
+      ]
     },
     {
       "key": "sidekick:119816",
@@ -28834,7 +33927,32 @@
       ],
       "skillLevel": 6,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "target-self",
+          "label": "自身",
+          "path": [
+            "主动-作用目标",
+            "自身"
+          ]
+        },
+        {
+          "id": "tag-a5911010-fe08-4163-a081-ad0e332d32be",
+          "label": "增伤",
+          "path": [
+            "主动-作用BUFF",
+            "增伤"
+          ]
+        },
+        {
+          "id": "effect-damage-up",
+          "label": "增伤",
+          "path": [
+            "被动-作用效果",
+            "增伤"
+          ]
+        }
+      ]
     }
   ],
   "skills": [
@@ -49661,6 +54779,11 @@
       "parentId": "tag-0de9c9e5-fa97-4d86-bed3-e869d5b61c7b"
     },
     {
+      "id": "tag-05bd6160-5ec5-4aea-b58b-654ed0a4c3d6",
+      "label": "易伤",
+      "parentId": "tag-0de9c9e5-fa97-4d86-bed3-e869d5b61c7b"
+    },
+    {
       "id": "tag-0f6ebd6c-6189-46c8-98f1-80dfbb14dfc2",
       "label": "View",
       "parentId": "tag-0de9c9e5-fa97-4d86-bed3-e869d5b61c7b"
@@ -49668,11 +54791,6 @@
     {
       "id": "tag-14eb2792-1177-4b2d-98c9-a5aa50a69add",
       "label": "速度",
-      "parentId": "tag-0de9c9e5-fa97-4d86-bed3-e869d5b61c7b"
-    },
-    {
-      "id": "tag-1a0c8c81-6f4c-4fee-9669-6f32b5f72acc",
-      "label": "目标控制",
       "parentId": "tag-0de9c9e5-fa97-4d86-bed3-e869d5b61c7b"
     },
     {
@@ -49696,8 +54814,8 @@
       "parentId": "tag-974a4bee-84ca-4868-ab63-405e4001bb49"
     },
     {
-      "id": "tag-bfc74203-a39c-4054-aaf8-b534ca659fde",
-      "label": "幸运",
+      "id": "tag-1a0c8c81-6f4c-4fee-9669-6f32b5f72acc",
+      "label": "目标控制",
       "parentId": "tag-0de9c9e5-fa97-4d86-bed3-e869d5b61c7b"
     },
     {
@@ -49711,8 +54829,8 @@
       "parentId": "effect"
     },
     {
-      "id": "tag-8fcfaf4e-e5d8-4566-be66-f057c959d8fd",
-      "label": "其他",
+      "id": "tag-bfc74203-a39c-4054-aaf8-b534ca659fde",
+      "label": "幸运",
       "parentId": "tag-0de9c9e5-fa97-4d86-bed3-e869d5b61c7b"
     },
     {
@@ -49739,6 +54857,36 @@
       "id": "tag-793e072d-675e-4152-8457-de2602f28886",
       "label": "buff解除",
       "parentId": "effect"
+    },
+    {
+      "id": "tag-d69ae9b8-04bc-4767-abc8-96a681811c8c",
+      "label": "持续伤害",
+      "parentId": "effect"
+    },
+    {
+      "id": "tag-ee5aa837-a581-4021-9f2d-b44c2fa27a3c",
+      "label": "恢复",
+      "parentId": "effect"
+    },
+    {
+      "id": "tag-8eb3238c-bec2-443a-ab9b-a6395c7e6792",
+      "label": "Combo",
+      "parentId": "value"
+    },
+    {
+      "id": "tag-868418fc-205d-4447-9233-8b6085310f28",
+      "label": "Combo",
+      "parentId": "effect"
+    },
+    {
+      "id": "tag-409c10bc-2492-496f-a581-dd5459a9e601",
+      "label": "场地效果",
+      "parentId": "tag-974a4bee-84ca-4868-ab63-405e4001bb49"
+    },
+    {
+      "id": "tag-8fcfaf4e-e5d8-4566-be66-f057c959d8fd",
+      "label": "其他",
+      "parentId": "tag-0de9c9e5-fa97-4d86-bed3-e869d5b61c7b"
     }
   ]
 }

@@ -142,6 +142,11 @@
       "parentId": "tag-0de9c9e5-fa97-4d86-bed3-e869d5b61c7b"
     },
     {
+      "id": "tag-05bd6160-5ec5-4aea-b58b-654ed0a4c3d6",
+      "label": "易伤",
+      "parentId": "tag-0de9c9e5-fa97-4d86-bed3-e869d5b61c7b"
+    },
+    {
       "id": "tag-0f6ebd6c-6189-46c8-98f1-80dfbb14dfc2",
       "label": "View",
       "parentId": "tag-0de9c9e5-fa97-4d86-bed3-e869d5b61c7b"
@@ -149,11 +154,6 @@
     {
       "id": "tag-14eb2792-1177-4b2d-98c9-a5aa50a69add",
       "label": "速度",
-      "parentId": "tag-0de9c9e5-fa97-4d86-bed3-e869d5b61c7b"
-    },
-    {
-      "id": "tag-1a0c8c81-6f4c-4fee-9669-6f32b5f72acc",
-      "label": "目标控制",
       "parentId": "tag-0de9c9e5-fa97-4d86-bed3-e869d5b61c7b"
     },
     {
@@ -177,8 +177,8 @@
       "parentId": "tag-974a4bee-84ca-4868-ab63-405e4001bb49"
     },
     {
-      "id": "tag-bfc74203-a39c-4054-aaf8-b534ca659fde",
-      "label": "幸运",
+      "id": "tag-1a0c8c81-6f4c-4fee-9669-6f32b5f72acc",
+      "label": "目标控制",
       "parentId": "tag-0de9c9e5-fa97-4d86-bed3-e869d5b61c7b"
     },
     {
@@ -192,8 +192,8 @@
       "parentId": "effect"
     },
     {
-      "id": "tag-8fcfaf4e-e5d8-4566-be66-f057c959d8fd",
-      "label": "其他",
+      "id": "tag-bfc74203-a39c-4054-aaf8-b534ca659fde",
+      "label": "幸运",
       "parentId": "tag-0de9c9e5-fa97-4d86-bed3-e869d5b61c7b"
     },
     {
@@ -220,6 +220,36 @@
       "id": "tag-793e072d-675e-4152-8457-de2602f28886",
       "label": "buff解除",
       "parentId": "effect"
+    },
+    {
+      "id": "tag-d69ae9b8-04bc-4767-abc8-96a681811c8c",
+      "label": "持续伤害",
+      "parentId": "effect"
+    },
+    {
+      "id": "tag-ee5aa837-a581-4021-9f2d-b44c2fa27a3c",
+      "label": "恢复",
+      "parentId": "effect"
+    },
+    {
+      "id": "tag-8eb3238c-bec2-443a-ab9b-a6395c7e6792",
+      "label": "Combo",
+      "parentId": "value"
+    },
+    {
+      "id": "tag-868418fc-205d-4447-9233-8b6085310f28",
+      "label": "Combo",
+      "parentId": "effect"
+    },
+    {
+      "id": "tag-409c10bc-2492-496f-a581-dd5459a9e601",
+      "label": "场地效果",
+      "parentId": "tag-974a4bee-84ca-4868-ab63-405e4001bb49"
+    },
+    {
+      "id": "tag-8fcfaf4e-e5d8-4566-be66-f057c959d8fd",
+      "label": "其他",
+      "parentId": "tag-0de9c9e5-fa97-4d86-bed3-e869d5b61c7b"
     }
   ],
   "assignments": {
@@ -297,6 +327,912 @@
       "value-view",
       "tag-e8cc00a9-5862-46cc-ae3f-d28a410615ea",
       "tag-d1f5e200-ead4-4e15-bf53-21424f16a1c1"
+    ],
+    "sidekick:100116": [
+      "target-self",
+      "tag-a5911010-fe08-4163-a081-ad0e332d32be",
+      "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+      "effect-damage-up"
+    ],
+    "sidekick:100216": [
+      "target-none",
+      "value-view",
+      "tag-143d8bab-4954-4174-abba-09e3dee91e40"
+    ],
+    "sidekick:100316": [
+      "target-enemy-single",
+      "tag-aad3d89b-68eb-49ef-b10e-7ee02d71efb7"
+    ],
+    "sidekick:100416": [
+      "target-enemy-single",
+      "value-damage",
+      "tag-14eb2792-1177-4b2d-98c9-a5aa50a69add",
+      "effect-damage-up",
+      "tag-e8cc00a9-5862-46cc-ae3f-d28a410615ea"
+    ],
+    "sidekick:100516": [
+      "target-self",
+      "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+      "tag-14eb2792-1177-4b2d-98c9-a5aa50a69add",
+      "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+      "effect-damage-down"
+    ],
+    "sidekick:100616": [
+      "target-enemy-single",
+      "value-damage",
+      "tag-5de2a892-f831-4f0c-9039-b1bcc4c1bb93",
+      "tag-14eb2792-1177-4b2d-98c9-a5aa50a69add",
+      "effect-damage-up",
+      "tag-e8cc00a9-5862-46cc-ae3f-d28a410615ea"
+    ],
+    "sidekick:100716": [
+      "target-enemy-single",
+      "value-damage",
+      "tag-8eb3238c-bec2-443a-ab9b-a6395c7e6792",
+      "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+      "tag-868418fc-205d-4447-9233-8b6085310f28"
+    ],
+    "sidekick:100816": [
+      "target-self",
+      "value-recovery",
+      "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+      "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+      "effect-damage-down"
+    ],
+    "sidekick:100916": [
+      "target-self",
+      "tag-a5911010-fe08-4163-a081-ad0e332d32be",
+      "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+      "effect-damage-up"
+    ],
+    "sidekick:101016": [
+      "target-none",
+      "tag-8eb3238c-bec2-443a-ab9b-a6395c7e6792",
+      "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+      "tag-868418fc-205d-4447-9233-8b6085310f28"
+    ],
+    "sidekick:101116": [
+      "target-enemy-single",
+      "tag-14324fd4-8d77-4f36-9489-15d41f397129",
+      "tag-bc2a6ed4-a1ea-4114-afb7-93ab272f0f9c",
+      "tag-d69ae9b8-04bc-4767-abc8-96a681811c8c"
+    ],
+    "sidekick:101216": [
+      "target-ally-single",
+      "tag-a5911010-fe08-4163-a081-ad0e332d32be"
+    ],
+    "sidekick:101316": [
+      "target-enemy-single",
+      "value-damage",
+      "effect-damage-up"
+    ],
+    "sidekick:101416": [
+      "target-ally-single",
+      "target-self",
+      "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+      "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+      "effect-damage-down"
+    ],
+    "sidekick:101516": [
+      "target-self",
+      "target-enemy-single",
+      "value-damage",
+      "tag-bfc74203-a39c-4054-aaf8-b534ca659fde",
+      "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+      "tag-143d8bab-4954-4174-abba-09e3dee91e40"
+    ],
+    "sidekick:101716": [
+      "target-enemy-multi",
+      "value-damage",
+      "tag-aad3d89b-68eb-49ef-b10e-7ee02d71efb7",
+      "tag-e8cc00a9-5862-46cc-ae3f-d28a410615ea"
+    ],
+    "sidekick:101816": [
+      "target-none",
+      "value-view",
+      "tag-bfc74203-a39c-4054-aaf8-b534ca659fde",
+      "tag-143d8bab-4954-4174-abba-09e3dee91e40"
+    ],
+    "sidekick:101916": [
+      "target-ally-single",
+      "tag-a5911010-fe08-4163-a081-ad0e332d32be",
+      "tag-2628a7f6-5404-4480-b800-2353e5a81a97",
+      "effect-damage-up"
+    ],
+    "sidekick:102016": [
+      "target-enemy-single",
+      "value-damage",
+      "effect-damage-up",
+      "tag-1b0f9f8f-e267-4dc9-aa01-abc680c571db"
+    ],
+    "sidekick:102116": [
+      "target-ally-single",
+      "value-recovery",
+      "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+      "tag-ee5aa837-a581-4021-9f2d-b44c2fa27a3c"
+    ],
+    "sidekick:102216": [
+      "target-self",
+      "target-enemy-single",
+      "value-damage",
+      "tag-a5911010-fe08-4163-a081-ad0e332d32be",
+      "effect-damage-up"
+    ],
+    "sidekick:102416": [
+      "target-none",
+      "value-recovery",
+      "tag-2628a7f6-5404-4480-b800-2353e5a81a97"
+    ],
+    "sidekick:102516": [
+      "target-ally-single",
+      "value-view",
+      "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+      "tag-2628a7f6-5404-4480-b800-2353e5a81a97",
+      "effect-damage-down"
+    ],
+    "sidekick:102616": [
+      "target-enemy-single",
+      "tag-5de2a892-f831-4f0c-9039-b1bcc4c1bb93",
+      "tag-14eb2792-1177-4b2d-98c9-a5aa50a69add",
+      "tag-2628a7f6-5404-4480-b800-2353e5a81a97"
+    ],
+    "sidekick:102716": [
+      "target-enemy-single",
+      "value-damage",
+      "tag-2628a7f6-5404-4480-b800-2353e5a81a97"
+    ],
+    "sidekick:102816": [
+      "target-ally-single",
+      "tag-8fcfaf4e-e5d8-4566-be66-f057c959d8fd",
+      "tag-2628a7f6-5404-4480-b800-2353e5a81a97"
+    ],
+    "sidekick:102916": [
+      "target-enemy-single",
+      "value-view",
+      "tag-143d8bab-4954-4174-abba-09e3dee91e40"
+    ],
+    "sidekick:103016": [
+      "target-enemy-single",
+      "value-damage",
+      "tag-14324fd4-8d77-4f36-9489-15d41f397129",
+      "tag-2628a7f6-5404-4480-b800-2353e5a81a97",
+      "effect-damage-up"
+    ],
+    "sidekick:103116": [
+      "target-enemy-single",
+      "value-damage",
+      "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+      "effect-damage-up",
+      "effect-damage-down"
+    ],
+    "sidekick:103216": [
+      "target-self",
+      "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+      "tag-14eb2792-1177-4b2d-98c9-a5aa50a69add"
+    ],
+    "sidekick:103316": [
+      "target-ally-single",
+      "tag-14eb2792-1177-4b2d-98c9-a5aa50a69add"
+    ],
+    "sidekick:103416": [
+      "target-ally-single",
+      "tag-a5911010-fe08-4163-a081-ad0e332d32be",
+      "tag-14eb2792-1177-4b2d-98c9-a5aa50a69add"
+    ],
+    "sidekick:103516": [
+      "target-self",
+      "tag-8fcfaf4e-e5d8-4566-be66-f057c959d8fd",
+      "tag-bc2a6ed4-a1ea-4114-afb7-93ab272f0f9c",
+      "effect-damage-up"
+    ],
+    "sidekick:104316": [
+      "target-enemy-single",
+      "value-damage",
+      "effect-damage-up"
+    ],
+    "sidekick:104516": [
+      "target-enemy-single",
+      "value-damage"
+    ],
+    "sidekick:105116": [
+      "target-enemy-single",
+      "value-damage",
+      "tag-2628a7f6-5404-4480-b800-2353e5a81a97"
+    ],
+    "sidekick:105316": [
+      "target-self",
+      "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+      "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+      "effect-damage-down"
+    ],
+    "sidekick:105416": [
+      "target-ally-single",
+      "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+      "tag-0f6ebd6c-6189-46c8-98f1-80dfbb14dfc2",
+      "tag-aad3d89b-68eb-49ef-b10e-7ee02d71efb7",
+      "tag-868418fc-205d-4447-9233-8b6085310f28"
+    ],
+    "sidekick:105516": [
+      "target-ally-single",
+      "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+      "tag-0f6ebd6c-6189-46c8-98f1-80dfbb14dfc2",
+      "tag-aad3d89b-68eb-49ef-b10e-7ee02d71efb7",
+      "tag-ee5aa837-a581-4021-9f2d-b44c2fa27a3c"
+    ],
+    "sidekick:105616": [
+      "target-ally-single",
+      "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+      "tag-0f6ebd6c-6189-46c8-98f1-80dfbb14dfc2",
+      "tag-aad3d89b-68eb-49ef-b10e-7ee02d71efb7"
+    ],
+    "sidekick:105716": [
+      "target-ally-single",
+      "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+      "tag-0f6ebd6c-6189-46c8-98f1-80dfbb14dfc2",
+      "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+      "tag-aad3d89b-68eb-49ef-b10e-7ee02d71efb7",
+      "tag-143d8bab-4954-4174-abba-09e3dee91e40"
+    ],
+    "sidekick:105816": [
+      "target-ally-single",
+      "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+      "tag-0f6ebd6c-6189-46c8-98f1-80dfbb14dfc2",
+      "tag-aad3d89b-68eb-49ef-b10e-7ee02d71efb7",
+      "tag-143d8bab-4954-4174-abba-09e3dee91e40"
+    ],
+    "sidekick:105916": [
+      "target-enemy-single",
+      "value-damage",
+      "tag-14eb2792-1177-4b2d-98c9-a5aa50a69add",
+      "tag-bc2a6ed4-a1ea-4114-afb7-93ab272f0f9c",
+      "tag-e8cc00a9-5862-46cc-ae3f-d28a410615ea"
+    ],
+    "sidekick:106116": [
+      "target-self",
+      "target-enemy-single",
+      "value-damage"
+    ],
+    "sidekick:106216": [
+      "target-self",
+      "target-enemy-single",
+      "value-damage",
+      "tag-38a5c7c0-96c0-415e-9e23-765eea886dac"
+    ],
+    "sidekick:106316": [
+      "target-enemy-single",
+      "tag-2628a7f6-5404-4480-b800-2353e5a81a97"
+    ],
+    "sidekick:106416": [
+      "target-enemy-single",
+      "tag-5de2a892-f831-4f0c-9039-b1bcc4c1bb93",
+      "tag-14eb2792-1177-4b2d-98c9-a5aa50a69add",
+      "tag-2628a7f6-5404-4480-b800-2353e5a81a97",
+      "effect-damage-up",
+      "auto-target-selection"
+    ],
+    "sidekick:106616": [
+      "target-ally-single",
+      "tag-0f6ebd6c-6189-46c8-98f1-80dfbb14dfc2",
+      "tag-d69ae9b8-04bc-4767-abc8-96a681811c8c"
+    ],
+    "sidekick:106716": [
+      "target-ally-single",
+      "tag-0f6ebd6c-6189-46c8-98f1-80dfbb14dfc2"
+    ],
+    "sidekick:106816": [
+      "target-ally-single",
+      "tag-0f6ebd6c-6189-46c8-98f1-80dfbb14dfc2",
+      "tag-d69ae9b8-04bc-4767-abc8-96a681811c8c"
+    ],
+    "sidekick:107016": [
+      "target-ally-single",
+      "tag-0f6ebd6c-6189-46c8-98f1-80dfbb14dfc2"
+    ],
+    "sidekick:107116": [
+      "target-ally-single",
+      "tag-a5911010-fe08-4163-a081-ad0e332d32be",
+      "tag-8fcfaf4e-e5d8-4566-be66-f057c959d8fd",
+      "tag-2628a7f6-5404-4480-b800-2353e5a81a97",
+      "tag-143d8bab-4954-4174-abba-09e3dee91e40",
+      "auto-target-selection"
+    ],
+    "sidekick:107216": [
+      "target-enemy-single",
+      "tag-0f6ebd6c-6189-46c8-98f1-80dfbb14dfc2",
+      "tag-bc2a6ed4-a1ea-4114-afb7-93ab272f0f9c",
+      "tag-1b0f9f8f-e267-4dc9-aa01-abc680c571db"
+    ],
+    "sidekick:107316": [
+      "target-enemy-single",
+      "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+      "effect-damage-down"
+    ],
+    "sidekick:107516": [
+      "target-ally-single",
+      "tag-8eb3238c-bec2-443a-ab9b-a6395c7e6792",
+      "tag-a5911010-fe08-4163-a081-ad0e332d32be",
+      "tag-2628a7f6-5404-4480-b800-2353e5a81a97",
+      "effect-damage-up",
+      "auto-target-selection"
+    ],
+    "sidekick:107616": [
+      "target-ally-single",
+      "tag-1a0c8c81-6f4c-4fee-9669-6f32b5f72acc",
+      "tag-2628a7f6-5404-4480-b800-2353e5a81a97"
+    ],
+    "sidekick:107716": [
+      "target-ally-single",
+      "tag-1a0c8c81-6f4c-4fee-9669-6f32b5f72acc",
+      "tag-2628a7f6-5404-4480-b800-2353e5a81a97"
+    ],
+    "sidekick:107816": [
+      "target-ally-single",
+      "tag-1a0c8c81-6f4c-4fee-9669-6f32b5f72acc",
+      "tag-2628a7f6-5404-4480-b800-2353e5a81a97",
+      "tag-143d8bab-4954-4174-abba-09e3dee91e40"
+    ],
+    "sidekick:107916": [
+      "target-ally-single",
+      "tag-1a0c8c81-6f4c-4fee-9669-6f32b5f72acc",
+      "tag-2628a7f6-5404-4480-b800-2353e5a81a97"
+    ],
+    "sidekick:108016": [
+      "target-ally-single",
+      "tag-1a0c8c81-6f4c-4fee-9669-6f32b5f72acc",
+      "tag-2628a7f6-5404-4480-b800-2353e5a81a97",
+      "effect-damage-down"
+    ],
+    "sidekick:108116": [
+      "target-enemy-single",
+      "value-damage",
+      "tag-bc2a6ed4-a1ea-4114-afb7-93ab272f0f9c"
+    ],
+    "sidekick:108216": [
+      "target-ally-single",
+      "tag-0f6ebd6c-6189-46c8-98f1-80dfbb14dfc2",
+      "tag-143d8bab-4954-4174-abba-09e3dee91e40"
+    ],
+    "sidekick:110016": [
+      "target-none",
+      "value-view",
+      "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+      "tag-143d8bab-4954-4174-abba-09e3dee91e40",
+      "auto-target-selection"
+    ],
+    "sidekick:110116": [
+      "target-ally-single",
+      "value-recovery",
+      "tag-8eb3238c-bec2-443a-ab9b-a6395c7e6792",
+      "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+      "effect-damage-down"
+    ],
+    "sidekick:111216": [
+      "target-enemy-single",
+      "value-damage",
+      "tag-bc2a6ed4-a1ea-4114-afb7-93ab272f0f9c",
+      "tag-e8cc00a9-5862-46cc-ae3f-d28a410615ea"
+    ],
+    "sidekick:111316": [
+      "target-enemy-single",
+      "value-damage",
+      "tag-d1f5e200-ead4-4e15-bf53-21424f16a1c1",
+      "effect-damage-up"
+    ],
+    "sidekick:111416": [
+      "target-ally-single",
+      "tag-a5911010-fe08-4163-a081-ad0e332d32be",
+      "tag-0f6ebd6c-6189-46c8-98f1-80dfbb14dfc2",
+      "tag-aad3d89b-68eb-49ef-b10e-7ee02d71efb7",
+      "effect-damage-up",
+      "auto-target-selection"
+    ],
+    "sidekick:111516": [
+      "target-ally-single",
+      "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3"
+    ],
+    "sidekick:111616": [
+      "target-none",
+      "tag-8eb3238c-bec2-443a-ab9b-a6395c7e6792",
+      "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+      "effect-damage-up",
+      "tag-868418fc-205d-4447-9233-8b6085310f28"
+    ],
+    "sidekick:111716": [
+      "target-none",
+      "tag-8eb3238c-bec2-443a-ab9b-a6395c7e6792",
+      "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+      "effect-damage-down",
+      "tag-868418fc-205d-4447-9233-8b6085310f28"
+    ],
+    "sidekick:111816": [
+      "target-none",
+      "tag-8eb3238c-bec2-443a-ab9b-a6395c7e6792",
+      "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+      "tag-868418fc-205d-4447-9233-8b6085310f28"
+    ],
+    "sidekick:111916": [
+      "target-none",
+      "tag-8eb3238c-bec2-443a-ab9b-a6395c7e6792",
+      "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+      "tag-868418fc-205d-4447-9233-8b6085310f28"
+    ],
+    "sidekick:112016": [
+      "target-none",
+      "tag-8eb3238c-bec2-443a-ab9b-a6395c7e6792",
+      "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+      "tag-143d8bab-4954-4174-abba-09e3dee91e40",
+      "tag-868418fc-205d-4447-9233-8b6085310f28"
+    ],
+    "sidekick:112216": [
+      "target-self",
+      "tag-a5911010-fe08-4163-a081-ad0e332d32be",
+      "tag-0f6ebd6c-6189-46c8-98f1-80dfbb14dfc2",
+      "tag-14eb2792-1177-4b2d-98c9-a5aa50a69add",
+      "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+      "tag-aad3d89b-68eb-49ef-b10e-7ee02d71efb7",
+      "tag-793e072d-675e-4152-8457-de2602f28886"
+    ],
+    "sidekick:112316": [
+      "target-self",
+      "target-enemy-single",
+      "tag-1a0c8c81-6f4c-4fee-9669-6f32b5f72acc",
+      "tag-bc2a6ed4-a1ea-4114-afb7-93ab272f0f9c",
+      "tag-1b0f9f8f-e267-4dc9-aa01-abc680c571db",
+      "auto-target-selection"
+    ],
+    "sidekick:112416": [
+      "target-self",
+      "value-recovery",
+      "tag-1a0c8c81-6f4c-4fee-9669-6f32b5f72acc",
+      "tag-aad3d89b-68eb-49ef-b10e-7ee02d71efb7",
+      "tag-1b0f9f8f-e267-4dc9-aa01-abc680c571db"
+    ],
+    "sidekick:112516": [
+      "target-ally-single",
+      "tag-8eb3238c-bec2-443a-ab9b-a6395c7e6792",
+      "tag-14eb2792-1177-4b2d-98c9-a5aa50a69add",
+      "tag-d1f5e200-ead4-4e15-bf53-21424f16a1c1",
+      "tag-868418fc-205d-4447-9233-8b6085310f28"
+    ],
+    "sidekick:112616": [
+      "target-ally-single",
+      "value-recovery",
+      "tag-a5911010-fe08-4163-a081-ad0e332d32be",
+      "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+      "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+      "tag-ee5aa837-a581-4021-9f2d-b44c2fa27a3c",
+      "auto-target-selection"
+    ],
+    "sidekick:112816": [
+      "target-self",
+      "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+      "auto-target-selection"
+    ],
+    "sidekick:112916": [
+      "target-ally-multi",
+      "value-recovery",
+      "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+      "tag-ee5aa837-a581-4021-9f2d-b44c2fa27a3c"
+    ],
+    "sidekick:114016": [
+      "target-enemy-single",
+      "value-view",
+      "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+      "auto-target-selection"
+    ],
+    "sidekick:115116": [
+      "target-enemy-single",
+      "value-damage",
+      "value-recovery",
+      "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+      "tag-868418fc-205d-4447-9233-8b6085310f28"
+    ],
+    "sidekick:115216": [
+      "target-ally-single",
+      "value-recovery",
+      "tag-a5911010-fe08-4163-a081-ad0e332d32be",
+      "auto-skill-2"
+    ],
+    "sidekick:115316": [
+      "target-self",
+      "target-enemy-single",
+      "value-damage",
+      "tag-a5911010-fe08-4163-a081-ad0e332d32be",
+      "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+      "tag-14eb2792-1177-4b2d-98c9-a5aa50a69add",
+      "tag-8fcfaf4e-e5d8-4566-be66-f057c959d8fd",
+      "tag-d1f5e200-ead4-4e15-bf53-21424f16a1c1",
+      "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+      "auto-target-selection"
+    ],
+    "sidekick:115416": [
+      "target-self",
+      "tag-14324fd4-8d77-4f36-9489-15d41f397129",
+      "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+      "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+      "tag-d69ae9b8-04bc-4767-abc8-96a681811c8c"
+    ],
+    "sidekick:115516": [
+      "target-self",
+      "tag-14324fd4-8d77-4f36-9489-15d41f397129",
+      "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+      "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f"
+    ],
+    "sidekick:115616": [
+      "target-self",
+      "tag-14324fd4-8d77-4f36-9489-15d41f397129",
+      "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+      "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f"
+    ],
+    "sidekick:115816": [
+      "target-self",
+      "tag-14324fd4-8d77-4f36-9489-15d41f397129",
+      "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+      "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+      "tag-d69ae9b8-04bc-4767-abc8-96a681811c8c"
+    ],
+    "sidekick:116016": [
+      "target-enemy-single",
+      "value-damage",
+      "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+      "tag-793e072d-675e-4152-8457-de2602f28886"
+    ],
+    "sidekick:116116": [
+      "target-ally-single",
+      "target-ally-multi",
+      "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+      "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+      "effect-damage-down",
+      "auto-skill-3"
+    ],
+    "sidekick:116816": [
+      "target-enemy-single",
+      "value-damage",
+      "tag-143d8bab-4954-4174-abba-09e3dee91e40"
+    ],
+    "sidekick:116916": [
+      "target-enemy-single",
+      "value-damage",
+      "tag-14324fd4-8d77-4f36-9489-15d41f397129",
+      "tag-d1f5e200-ead4-4e15-bf53-21424f16a1c1",
+      "effect-damage-up",
+      "auto-skill-3"
+    ],
+    "sidekick:117016": [
+      "target-ally-single",
+      "value-view",
+      "tag-14eb2792-1177-4b2d-98c9-a5aa50a69add",
+      "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+      "tag-aad3d89b-68eb-49ef-b10e-7ee02d71efb7"
+    ],
+    "sidekick:118216": [
+      "target-ally-single",
+      "tag-0f6ebd6c-6189-46c8-98f1-80dfbb14dfc2",
+      "tag-bfc74203-a39c-4054-aaf8-b534ca659fde",
+      "effect-damage-up"
+    ],
+    "sidekick:118316": [
+      "target-ally-multi",
+      "target-enemy-single",
+      "value-damage",
+      "value-recovery",
+      "tag-ee5aa837-a581-4021-9f2d-b44c2fa27a3c",
+      "auto-skill-3"
+    ],
+    "sidekick:118916": [
+      "target-enemy-single",
+      "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+      "tag-aad3d89b-68eb-49ef-b10e-7ee02d71efb7",
+      "tag-ee5aa837-a581-4021-9f2d-b44c2fa27a3c"
+    ],
+    "sidekick:119016": [
+      "target-ally-single",
+      "tag-8fcfaf4e-e5d8-4566-be66-f057c959d8fd",
+      "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+      "tag-143d8bab-4954-4174-abba-09e3dee91e40",
+      "auto-mixed-skill"
+    ],
+    "sidekick:119116": [
+      "target-enemy-single",
+      "tag-8fcfaf4e-e5d8-4566-be66-f057c959d8fd",
+      "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+      "tag-868418fc-205d-4447-9233-8b6085310f28"
+    ],
+    "sidekick:119216": [
+      "target-enemy-single",
+      "value-damage",
+      "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+      "tag-aad3d89b-68eb-49ef-b10e-7ee02d71efb7",
+      "auto-mixed-skill"
+    ],
+    "sidekick:119316": [
+      "target-self",
+      "tag-14324fd4-8d77-4f36-9489-15d41f397129",
+      "tag-8fcfaf4e-e5d8-4566-be66-f057c959d8fd",
+      "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+      "effect-damage-up",
+      "effect-damage-down"
+    ],
+    "sidekick:119416": [
+      "target-self",
+      "tag-14324fd4-8d77-4f36-9489-15d41f397129",
+      "tag-8fcfaf4e-e5d8-4566-be66-f057c959d8fd",
+      "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+      "effect-damage-down"
+    ],
+    "sidekick:119516": [
+      "target-self",
+      "tag-14324fd4-8d77-4f36-9489-15d41f397129",
+      "tag-8fcfaf4e-e5d8-4566-be66-f057c959d8fd",
+      "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+      "effect-damage-down",
+      "tag-143d8bab-4954-4174-abba-09e3dee91e40"
+    ],
+    "sidekick:119616": [
+      "target-self",
+      "tag-14324fd4-8d77-4f36-9489-15d41f397129",
+      "tag-8fcfaf4e-e5d8-4566-be66-f057c959d8fd",
+      "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+      "effect-damage-down",
+      "tag-1b0f9f8f-e267-4dc9-aa01-abc680c571db"
+    ],
+    "sidekick:119716": [
+      "target-self",
+      "tag-14324fd4-8d77-4f36-9489-15d41f397129",
+      "tag-8fcfaf4e-e5d8-4566-be66-f057c959d8fd",
+      "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+      "effect-damage-down"
+    ],
+    "sidekick:119816": [
+      "target-self",
+      "tag-a5911010-fe08-4163-a081-ad0e332d32be",
+      "effect-damage-up"
+    ],
+    "sidekick:120016": [
+      "target-enemy-single",
+      "value-damage",
+      "tag-8eb3238c-bec2-443a-ab9b-a6395c7e6792",
+      "effect-damage-up",
+      "tag-868418fc-205d-4447-9233-8b6085310f28",
+      "auto-skill-3"
+    ],
+    "sidekick:120616": [
+      "target-self",
+      "target-enemy-single",
+      "value-damage",
+      "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+      "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+      "auto-skill-3"
+    ],
+    "sidekick:120716": [
+      "target-self",
+      "target-enemy-single",
+      "value-damage",
+      "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+      "tag-ee5aa837-a581-4021-9f2d-b44c2fa27a3c",
+      "auto-skill-2"
+    ],
+    "sidekick:120916": [
+      "target-enemy-single",
+      "value-view",
+      "tag-2628a7f6-5404-4480-b800-2353e5a81a97",
+      "tag-d1f5e200-ead4-4e15-bf53-21424f16a1c1",
+      "effect-damage-up",
+      "auto-target-selection"
+    ],
+    "sidekick:121016": [
+      "target-enemy-single",
+      "value-damage",
+      "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+      "effect-damage-up"
+    ],
+    "sidekick:121116": [
+      "target-ally-single",
+      "value-shield",
+      "tag-a5911010-fe08-4163-a081-ad0e332d32be",
+      "tag-732e632c-1e6c-4cbd-b7cf-1bba43ceafd2"
+    ],
+    "sidekick:121216": [
+      "target-enemy-single",
+      "value-damage",
+      "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+      "tag-aad3d89b-68eb-49ef-b10e-7ee02d71efb7"
+    ],
+    "sidekick:121316": [
+      "target-enemy-single",
+      "value-damage",
+      "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+      "tag-aad3d89b-68eb-49ef-b10e-7ee02d71efb7"
+    ],
+    "sidekick:121416": [
+      "target-enemy-single",
+      "value-damage",
+      "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+      "tag-aad3d89b-68eb-49ef-b10e-7ee02d71efb7"
+    ],
+    "sidekick:121516": [
+      "target-enemy-single",
+      "value-damage",
+      "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+      "tag-aad3d89b-68eb-49ef-b10e-7ee02d71efb7"
+    ],
+    "sidekick:121616": [
+      "target-enemy-single",
+      "value-damage",
+      "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f",
+      "tag-aad3d89b-68eb-49ef-b10e-7ee02d71efb7"
+    ],
+    "sidekick:121716": [
+      "target-none",
+      "value-view",
+      "tag-8eb3238c-bec2-443a-ab9b-a6395c7e6792",
+      "effect-damage-up",
+      "auto-mixed-skill"
+    ],
+    "sidekick:121816": [
+      "target-enemy-single",
+      "value-damage",
+      "effect-damage-up"
+    ],
+    "sidekick:122916": [
+      "target-enemy-single",
+      "tag-05bd6160-5ec5-4aea-b58b-654ed0a4c3d6",
+      "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+      "tag-409c10bc-2492-496f-a581-dd5459a9e601",
+      "tag-ee5aa837-a581-4021-9f2d-b44c2fa27a3c"
+    ],
+    "sidekick:123616": [
+      "target-ally-single",
+      "value-shield",
+      "effect-damage-up"
+    ],
+    "sidekick:123716": [
+      "target-ally-single",
+      "target-ally-multi",
+      "value-recovery",
+      "effect-damage-up",
+      "auto-skill-3"
+    ],
+    "sidekick:123816": [
+      "target-self",
+      "value-view",
+      "tag-143d8bab-4954-4174-abba-09e3dee91e40"
+    ],
+    "sidekick:123916": [
+      "target-self",
+      "value-view",
+      "effect-damage-down",
+      "tag-143d8bab-4954-4174-abba-09e3dee91e40"
+    ],
+    "sidekick:124016": [
+      "target-self",
+      "value-view",
+      "tag-143d8bab-4954-4174-abba-09e3dee91e40"
+    ],
+    "sidekick:124216": [
+      "target-self",
+      "value-view",
+      "tag-143d8bab-4954-4174-abba-09e3dee91e40"
+    ],
+    "sidekick:124916": [
+      "target-ally-single",
+      "tag-a5911010-fe08-4163-a081-ad0e332d32be",
+      "tag-bfc74203-a39c-4054-aaf8-b534ca659fde",
+      "auto-target-selection"
+    ],
+    "sidekick:125516": [
+      "target-enemy-single",
+      "value-damage",
+      "tag-0f6ebd6c-6189-46c8-98f1-80dfbb14dfc2",
+      "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+      "tag-409c10bc-2492-496f-a581-dd5459a9e601",
+      "tag-143d8bab-4954-4174-abba-09e3dee91e40",
+      "auto-skill-2"
+    ],
+    "sidekick:126116": [
+      "target-enemy-single",
+      "value-damage",
+      "tag-8fcfaf4e-e5d8-4566-be66-f057c959d8fd",
+      "tag-409c10bc-2492-496f-a581-dd5459a9e601",
+      "auto-mixed-skill"
+    ],
+    "sidekick:126416": [
+      "target-ally-multi",
+      "target-enemy-single",
+      "value-damage",
+      "value-recovery",
+      "tag-aad3d89b-68eb-49ef-b10e-7ee02d71efb7",
+      "tag-ee5aa837-a581-4021-9f2d-b44c2fa27a3c"
+    ],
+    "sidekick:126516": [
+      "target-ally-single",
+      "tag-a5911010-fe08-4163-a081-ad0e332d32be",
+      "tag-143d8bab-4954-4174-abba-09e3dee91e40"
+    ],
+    "sidekick:126616": [
+      "target-enemy-single",
+      "value-damage",
+      "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+      "effect-damage-up",
+      "tag-143d8bab-4954-4174-abba-09e3dee91e40",
+      "auto-target-selection"
+    ],
+    "sidekick:128716": [
+      "target-enemy-single",
+      "value-damage",
+      "value-view",
+      "tag-143d8bab-4954-4174-abba-09e3dee91e40",
+      "tag-ee5aa837-a581-4021-9f2d-b44c2fa27a3c",
+      "auto-skill-2"
+    ],
+    "sidekick:128816": [
+      "target-ally-single",
+      "value-damage",
+      "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+      "tag-143d8bab-4954-4174-abba-09e3dee91e40"
+    ],
+    "sidekick:128916": [
+      "target-enemy-single",
+      "value-view",
+      "tag-5de2a892-f831-4f0c-9039-b1bcc4c1bb93",
+      "tag-14eb2792-1177-4b2d-98c9-a5aa50a69add",
+      "effect-damage-up",
+      "tag-e8cc00a9-5862-46cc-ae3f-d28a410615ea",
+      "auto-target-selection"
+    ],
+    "sidekick:130116": [
+      "target-self",
+      "target-enemy-single",
+      "value-damage",
+      "effect-damage-up",
+      "tag-ee5aa837-a581-4021-9f2d-b44c2fa27a3c"
+    ],
+    "sidekick:130216": [
+      "target-enemy-single",
+      "tag-8eb3238c-bec2-443a-ab9b-a6395c7e6792",
+      "effect-damage-up",
+      "tag-868418fc-205d-4447-9233-8b6085310f28",
+      "tag-732e632c-1e6c-4cbd-b7cf-1bba43ceafd2"
+    ],
+    "sidekick:130316": [
+      "target-self",
+      "value-view",
+      "tag-1a0c8c81-6f4c-4fee-9669-6f32b5f72acc",
+      "effect-damage-down"
+    ],
+    "sidekick:130516": [
+      "target-ally-single",
+      "tag-38a5c7c0-96c0-415e-9e23-765eea886dac",
+      "tag-1b0f9f8f-e267-4dc9-aa01-abc680c571db",
+      "auto-skill-2"
+    ],
+    "sidekick:131616": [
+      "target-ally-single",
+      "tag-0f6ebd6c-6189-46c8-98f1-80dfbb14dfc2",
+      "tag-14eb2792-1177-4b2d-98c9-a5aa50a69add",
+      "effect-damage-up",
+      "tag-e8cc00a9-5862-46cc-ae3f-d28a410615ea",
+      "auto-target-selection"
+    ],
+    "sidekick:131916": [
+      "target-self",
+      "tag-a5911010-fe08-4163-a081-ad0e332d32be",
+      "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f"
+    ],
+    "sidekick:132616": [
+      "target-ally-single",
+      "target-self",
+      "value-shield",
+      "tag-a5911010-fe08-4163-a081-ad0e332d32be",
+      "tag-ffc4dcd1-6a8d-483e-b393-5a11bec7cc5f"
+    ],
+    "sidekick:132816": [
+      "target-ally-multi",
+      "target-enemy-single",
+      "value-damage",
+      "value-recovery",
+      "tag-aad3d89b-68eb-49ef-b10e-7ee02d71efb7",
+      "auto-target-selection"
     ]
   }
 }
