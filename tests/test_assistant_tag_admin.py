@@ -60,6 +60,9 @@ class AssistantTagAdminTest(unittest.TestCase):
         self.assertNotIn("tag-group", page.text)
         self.assertIn("countLabel", page.text)
         self.assertIn("assignmentDraftTagIds", page.text)
+        self.assertIn("assignmentDraftPinnedTagIds", page.text)
+        self.assertIn('id="pinnedTags"', page.text)
+        self.assertIn("置顶标签（0/3）", page.text)
         self.assertIn("drag-handle", page.text)
         self.assertIn("/api/tags/order", page.text)
         self.assertIn("depth === 0 ? 'below' : 'side'", page.text)
@@ -73,9 +76,20 @@ class AssistantTagAdminTest(unittest.TestCase):
         self.assertEqual(state.status_code, 200)
         self.assertEqual(state.json()["sidekicks"][0]["key"], "sidekick:100111")
 
-        saved = self.client.put("/api/sidekicks/sidekick:100111/tags", json={"tagIds": ["target-self"]})
+        saved = self.client.put(
+            "/api/sidekicks/sidekick:100111/tags",
+            json={"tagIds": ["target-self", "value-damage"], "pinnedTagIds": ["value-damage"]},
+        )
         self.assertEqual(saved.status_code, 200)
-        self.assertEqual(saved.json()["config"]["assignments"], {"sidekick:100111": ["target-self"]})
+        self.assertEqual(saved.json()["config"]["assignments"], {"sidekick:100111": ["target-self", "value-damage"]})
+        self.assertEqual(saved.json()["config"]["pinnedAssignments"], {"sidekick:100111": ["value-damage"]})
+
+        saved_without_pins = self.client.put(
+            "/api/sidekicks/sidekick:100111/tags",
+            json={"tagIds": ["target-self"]},
+        )
+        self.assertEqual(saved_without_pins.status_code, 200)
+        self.assertEqual(saved_without_pins.json()["config"]["pinnedAssignments"], {})
 
         rejected = self.client.put("/api/sidekicks/sidekick:100111/tags", json={"tagIds": ["targeting"]})
         self.assertEqual(rejected.status_code, 400)
@@ -109,7 +123,10 @@ class AssistantTagAdminTest(unittest.TestCase):
         self.assertIn("全部直接子标签", rejected.json()["detail"])
 
     def test_delete_requires_confirmation_and_clears_affected_assignments(self):
-        self.client.put("/api/sidekicks/sidekick:100111/tags", json={"tagIds": ["target-self"]})
+        self.client.put(
+            "/api/sidekicks/sidekick:100111/tags",
+            json={"tagIds": ["target-self"], "pinnedTagIds": ["target-self"]},
+        )
 
         preview = self.client.delete("/api/tags/targeting")
         self.assertEqual(preview.status_code, 409)
@@ -118,6 +135,7 @@ class AssistantTagAdminTest(unittest.TestCase):
         deleted = self.client.delete("/api/tags/targeting?confirm=true")
         self.assertEqual(deleted.status_code, 200)
         self.assertEqual(deleted.json()["config"]["assignments"], {})
+        self.assertEqual(deleted.json()["config"]["pinnedAssignments"], {})
 
 
 if __name__ == "__main__":

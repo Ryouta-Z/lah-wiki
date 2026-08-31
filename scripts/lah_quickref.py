@@ -548,14 +548,16 @@ def render_static_html(
           const button = document.createElement('button');
           button.className = `card${{useOfficialCardLayout && card.kind === 'hero' ? ' hero-card' : ''}}`;
           button.dataset.key = card.key;
+          const sidekickTags = card.tags || [];
+          const orderedSidekickTags = [...sidekickTags.filter(tag => tag.pinned), ...sidekickTags.filter(tag => !tag.pinned)];
           const legacyTags = card.kind === 'hero'
             ? [card.element?.label, card.role?.label, kindLabel(card.kind)]
-            : [kindLabel(card.kind), ...(card.tags || []).slice(0, 3).map(tag => tag.label), ...(card.tags || []).length > 3 ? [`+${{card.tags.length - 3}}`] : []];
-          const sidekickTagLabels = (card.tags || []).map(tag => tag.label);
+            : [kindLabel(card.kind), ...orderedSidekickTags.slice(0, 3).map(tag => tag.label), ...(orderedSidekickTags.length > 3 ? [`+${{orderedSidekickTags.length - 3}}`] : [])];
+          const sidekickTagLabels = orderedSidekickTags.map(tag => tag.label);
           const tags = card.kind === 'sidekick'
-            ? (sidekickTagLabels.length <= 6
+            ? (sidekickTagLabels.length <= 3
               ? sidekickTagLabels
-              : [...sidekickTagLabels.slice(0, 5), `+${{sidekickTagLabels.length - 5}}`])
+              : [...sidekickTagLabels.slice(0, 3), `+${{sidekickTagLabels.length - 3}}`])
             : [];
           const tagsMarkup = tags.length ? `<div class="tags card-tags">${{tags.map(tag => `<span class="tag">${{escape(tag)}}</span>`).join('')}}</div>` : '';
           const officialCardMarkup = `<div class="card-layout">${{characterPortraitMarkup(card)}}<div class="card-copy"><div class="name-copy"><h3 class="card-name">${{escape(card.name)}}</h3><p class="card-jp-name">${{escape(card.originalName)}} · #${{escape(card.cardId)}}</p></div>${{heroMetadataMarkup(card)}}${{tagsMarkup}}</div></div>`;

@@ -40,9 +40,11 @@ _DEFAULT_TAGS = [
     {"id": "auto-mixed-skill", "label": "混合释放", "parentId": "auto-battle"},
 ]
 
+MAX_PINNED_TAGS_PER_ASSISTANT = 3
+
 
 def default_assistant_tag_config() -> dict[str, Any]:
-    return {"version": 1, "tags": deepcopy(_DEFAULT_TAGS), "assignments": {}}
+    return {"version": 1, "tags": deepcopy(_DEFAULT_TAGS), "assignments": {}, "pinnedAssignments": {}}
 
 
 def read_assistant_tag_config(path: Path = DEFAULT_ASSISTANT_TAGS_PATH) -> dict[str, Any]:
@@ -71,7 +73,8 @@ def validate_assistant_tag_config(
         raise ValueError("助手标签配置版本必须为 1")
     tags = config.get("tags")
     assignments = config.get("assignments")
-    if not isinstance(tags, list) or not isinstance(assignments, dict):
+    pinned_assignments = config.get("pinnedAssignments", {})
+    if not isinstance(tags, list) or not isinstance(assignments, dict) or not isinstance(pinned_assignments, dict):
         raise ValueError("助手标签配置必须包含 tags 数组和 assignments 对象")
 
     normalized_tags = []
@@ -130,7 +133,30 @@ def validate_assistant_tag_config(
         if tag_ids:
             normalized_assignments[sidekick_key] = list(tag_ids)
 
-    return {"version": 1, "tags": normalized_tags, "assignments": normalized_assignments}
+    normalized_pinned_assignments: dict[str, list[str]] = {}
+    for sidekick_key, tag_ids in pinned_assignments.items():
+        if not isinstance(sidekick_key, str) or not sidekick_key.startswith("sidekick:"):
+            raise ValueError(f"置顶标签归属必须使用助手键：{sidekick_key}")
+        if valid_keys is not None and sidekick_key not in valid_keys:
+            raise ValueError(f"置顶标签归属引用了不存在的助手：{sidekick_key}")
+        if not isinstance(tag_ids, list) or not all(isinstance(tag_id, str) for tag_id in tag_ids):
+            raise ValueError(f"助手置顶标签必须是字符串数组：{sidekick_key}")
+        if len(tag_ids) != len(set(tag_ids)):
+            raise ValueError(f"助手置顶标签重复：{sidekick_key}")
+        if len(tag_ids) > MAX_PINNED_TAGS_PER_ASSISTANT:
+            raise ValueError(f"每名助手最多置顶 {MAX_PINNED_TAGS_PER_ASSISTANT} 个标签：{sidekick_key}")
+        assigned_tag_ids = set(normalized_assignments.get(sidekick_key, []))
+        if not set(tag_ids).issubset(assigned_tag_ids):
+            raise ValueError(f"置顶标签必须已分配给助手：{sidekick_key}")
+        if tag_ids:
+            normalized_pinned_assignments[sidekick_key] = list(tag_ids)
+
+    return {
+        "version": 1,
+        "tags": normalized_tags,
+        "assignments": normalized_assignments,
+        "pinnedAssignments": normalized_pinned_assignments,
+    }
 
 
 def tag_paths(config: dict[str, Any]) -> dict[str, tuple[str, ...]]:
@@ -197,7 +223,12 @@ def tags_for_assignments(config: dict[str, Any]) -> dict[str, list[dict[str, Any
     order = {tag_id: index for index, tag_id in enumerate(ordered_tag_ids(validated))}
     return {
         sidekick_key: [
-            {"id": tag_id, "label": tags_by_id[tag_id]["label"], "path": list(paths[tag_id])}
+            {
+                "id": tag_id,
+                "label": tags_by_id[tag_id]["label"],
+                "path": list(paths[tag_id]),
+                "pinned": tag_id in set(validated["pinnedAssignments"].get(sidekick_key, [])),
+            }
             for tag_id in sorted(tag_ids, key=lambda current_id: order[current_id])
         ]
         for sidekick_key, tag_ids in validated["assignments"].items()
@@ -226,6 +257,15 @@ def delete_tag(config: dict[str, Any], tag_id: str) -> set[str]:
     validated["assignments"] = {
         sidekick_key: tag_ids
         for sidekick_key, tag_ids in validated["assignments"].items()
+        if tag_ids
+    }
+    validated["pinnedAssignments"] = {
+        sidekick_key: [pinned_id for pinned_id in tag_ids if pinned_id not in removed]
+        for sidekick_key, tag_ids in validated["pinnedAssignments"].items()
+    }
+    validated["pinnedAssignments"] = {
+        sidekick_key: tag_ids
+        for sidekick_key, tag_ids in validated["pinnedAssignments"].items()
         if tag_ids
     }
     config.clear()

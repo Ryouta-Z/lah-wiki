@@ -425,6 +425,7 @@ class LahQuickrefTest(unittest.TestCase):
             tags_path = source / "assistant_tags.json"
             config = default_assistant_tag_config()
             config["assignments"] = {"sidekick:100111": ["target-self", "value-damage"]}
+            config["pinnedAssignments"] = {"sidekick:100111": ["value-damage"]}
             write_assistant_tag_config(tags_path, config)
             catalog = self._catalog(source, tags_path)
 
@@ -433,8 +434,8 @@ class LahQuickrefTest(unittest.TestCase):
         self.assertEqual(
             sidekick["tags"],
             [
-                {"id": "target-self", "label": "自身", "path": ["作用目标", "自身"]},
-                {"id": "value-damage", "label": "伤害", "path": ["作用数值", "伤害"]},
+                {"id": "target-self", "label": "自身", "path": ["作用目标", "自身"], "pinned": False},
+                {"id": "value-damage", "label": "伤害", "path": ["作用数值", "伤害"], "pinned": True},
             ],
         )
         self.assertNotIn("tags", hero)
@@ -599,10 +600,10 @@ class LahQuickrefTest(unittest.TestCase):
         self.assertIn("const useOfficialCardLayout = false", public_html)
         self.assertIn('<body class="official-card-layout">', html)
         self.assertIn('<body class="">', public_html)
-        self.assertIn("const sidekickTagLabels = (card.tags || []).map(tag => tag.label);", html)
-        self.assertIn("sidekickTagLabels.length <= 6", html)
-        self.assertIn("sidekickTagLabels.slice(0, 5)", html)
-        self.assertIn("sidekickTagLabels.length - 5", html)
+        self.assertIn("const sidekickTags = card.tags || [];", html)
+        self.assertIn("const orderedSidekickTags = [...sidekickTags.filter(tag => tag.pinned), ...sidekickTags.filter(tag => !tag.pinned)];", html)
+        self.assertIn("orderedSidekickTags.slice(0, 3)", html)
+        self.assertIn("orderedSidekickTags.length - 3", html)
         self.assertIn("const legacyTags = card.kind === 'hero'", html)
         self.assertIn("function characterPortraitMarkup", html)
         self.assertIn("function cardFrameMarkup", html)
@@ -678,7 +679,7 @@ class LahQuickrefTest(unittest.TestCase):
         self.assertIn("tag.path.join(' › ')", html)
         self.assertIn("card.kind === 'sidekick' && [...tags].every", html)
         self.assertIn("...(card.tags || []).map(tag => tag.label)", html)
-        self.assertIn("...(card.tags || []).slice(0, 3).map(tag => tag.label)", html)
+        self.assertIn("...orderedSidekickTags.slice(0, 3).map(tag => tag.label)", html)
         self.assertNotIn("['元素',card.element?.label", html)
         self.assertNotIn("['定位',card.role", html)
         self.assertIn("function compareCards(left, right)", html)

@@ -34,6 +34,32 @@ class AssistantTagsTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "助手"):
             validate_assistant_tag_config(config, {"sidekick:100"})
 
+    def test_pinned_assignments_are_optional_leaf_assignments_with_a_three_tag_limit(self):
+        legacy_config = default_assistant_tag_config()
+        legacy_config.pop("pinnedAssignments")
+        self.assertEqual(validate_assistant_tag_config(legacy_config)["pinnedAssignments"], {})
+
+        config = default_assistant_tag_config()
+        config["assignments"] = {
+            "sidekick:100": ["target-self", "target-none", "value-damage", "value-recovery"]
+        }
+        config["pinnedAssignments"] = {"sidekick:100": ["target-none", "value-damage"]}
+
+        validated = validate_assistant_tag_config(config, {"sidekick:100"})
+        self.assertEqual(validated["pinnedAssignments"], config["pinnedAssignments"])
+        self.assertEqual(
+            [(tag["id"], tag["pinned"]) for tag in tags_for_assignments(validated)["sidekick:100"]],
+            [("target-self", False), ("target-none", True), ("value-damage", True), ("value-recovery", False)],
+        )
+
+        config["pinnedAssignments"] = {"sidekick:100": ["target-self", "target-none", "value-damage", "value-recovery"]}
+        with self.assertRaisesRegex(ValueError, "最多置顶 3"):
+            validate_assistant_tag_config(config, {"sidekick:100"})
+
+        config["pinnedAssignments"] = {"sidekick:100": ["auto-skill-2"]}
+        with self.assertRaisesRegex(ValueError, "已分配"):
+            validate_assistant_tag_config(config, {"sidekick:100"})
+
     def test_rejects_parent_cycles_and_removes_subtree_assignments(self):
         config = default_assistant_tag_config()
         config["tags"][0]["parentId"] = "target-self"
@@ -42,10 +68,12 @@ class AssistantTagsTest(unittest.TestCase):
 
         config = default_assistant_tag_config()
         config["assignments"] = {"sidekick:100": ["target-self", "target-none", "value-damage"]}
+        config["pinnedAssignments"] = {"sidekick:100": ["target-self", "target-none"]}
         removed = delete_tag(config, "targeting")
 
         self.assertEqual(removed, {"targeting", "target-self", "target-ally-single", "target-ally-multi", "target-ally-all", "target-enemy-single", "target-enemy-multi", "target-enemy-all", "target-none"})
         self.assertEqual(config["assignments"], {"sidekick:100": ["value-damage"]})
+        self.assertEqual(config["pinnedAssignments"], {})
 
     def test_reorders_only_complete_sibling_groups(self):
         config = default_assistant_tag_config()
