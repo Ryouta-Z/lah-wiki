@@ -222,7 +222,20 @@ def write_static_site(
     catalog: dict[str, Any], output_path: Path, icon_dir: Path = DEFAULT_ICON_DIR
 ) -> None:
     avatar_url_prefix = Path(os.path.relpath(icon_dir, start=output_path.parent)).as_posix()
-    _write_text_atomic(output_path, render_static_html(catalog, avatar_url_prefix))
+    official_ui_dir = ROOT / "data" / "cache" / "official-ui-candidates" / "selected"
+    local_official_asset_prefix = (
+        Path(os.path.relpath(official_ui_dir, start=output_path.parent)).as_posix()
+        if official_ui_dir.is_dir()
+        else ""
+    )
+    _write_text_atomic(
+        output_path,
+        render_static_html(
+            catalog,
+            avatar_url_prefix,
+            local_official_asset_prefix=local_official_asset_prefix,
+        ),
+    )
 
 
 def rebuild_quickref(
@@ -242,6 +255,7 @@ def render_static_html(
     catalog: dict[str, Any],
     avatar_url_prefix: str = "../data/images/icon",
     *,
+    local_official_asset_prefix: str = "",
     include_tag_settings: bool = True,
 ) -> str:
     embedded_catalog = json.dumps(catalog, ensure_ascii=False).replace("</", "<\\/")
@@ -270,6 +284,7 @@ def render_static_html(
     .groups {{ display: grid; gap: 28px; }} h2 {{ margin: 0 0 10px; font-size: 22px; }} .results {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }}
     button.card {{ cursor: pointer; text-align: left; border: 1px solid #31425f; border-radius: 12px; color: inherit; padding: 15px; background: #162238; font: inherit; }} button.card:hover, button.card:focus {{ border-color: #77a5ff; background: #1b2c49; }} .card-layout {{ display: grid; grid-template-columns: 58px minmax(0, 1fr); gap: 12px; align-items: center; }}
     .card-title {{ display: flex; justify-content: space-between; gap: 8px; font-weight: 700; }} .muted {{ color: #a9b7cf; font-size: 13px; }} .tags {{ display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }} .tag {{ background: #293b59; border-radius: 5px; padding: 3px 7px; font-size: 12px; }}
+    .hero-card-meta {{ display: flex; justify-content: flex-end; margin-top: 10px; }} .hero-element-role {{ display: grid; justify-items: center; gap: 5px; }} .hero-element {{ display: inline-flex; width: 32px; height: 32px; align-items: center; justify-content: center; overflow: hidden; border: 1px solid rgb(184 240 255 / 50%); border-radius: 8px; background: #173a51; color: #d6f7ff; font-size: 12px; font-weight: 700; line-height: 1; }} .hero-element img {{ display: block; width: 100%; height: 100%; object-fit: contain; }} .hero-role {{ min-height: 25px; padding: 4px 8px; border: 1px solid #59d9ef; border-radius: 999px; background: #0e7890; box-shadow: inset 0 1px 0 rgb(255 255 255 / 18%); color: #ecfdff; font-size: 12px; font-weight: 700; line-height: 1.2; white-space: nowrap; }}
     .avatar {{ display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; overflow: hidden; border: 1px solid #4d6a98; border-radius: 50%; background: #263c60; color: #d8e7ff; font-weight: 700; }} .avatar img {{ width: 100%; height: 100%; object-fit: cover; }} .avatar-small {{ width: 58px; height: 58px; font-size: 24px; }} .avatar-large {{ width: 86px; height: 86px; font-size: 34px; }} .avatar-missing {{ border-style: dashed; color: #b7c8e5; }}
     dialog {{ width: min(820px, calc(100% - 28px)); max-height: 88vh; overflow: auto; color: #edf2ff; background: #132038; border: 1px solid #516a93; border-radius: 14px; padding: 0; }} dialog::backdrop {{ background: rgb(0 0 0 / 65%); }}
     .detail {{ padding: 24px; }} .close {{ float: right; cursor: pointer; color: #dce8ff; background: transparent; border: 0; font-size: 26px; }} .detail-heading {{ display: flex; gap: 16px; align-items: center; padding-right: 34px; }} .detail-heading h2 {{ margin: 0; }} .hero-detail-header {{ position: sticky; top: 0; z-index: 1; display: flex; gap: 16px; align-items: center; width: calc(100% + 48px); margin: -24px -24px 18px; padding: 24px 58px 18px 24px; background: #132038; border-bottom: 1px solid #516a93; box-shadow: 0 5px 12px rgb(8 15 29 / 55%); }} .hero-detail-header .detail-close {{ position: absolute; top: 18px; right: 18px; z-index: 2; }} .hero-detail-header .detail-heading {{ flex: 1 1 280px; min-width: 0; padding-right: 0; }} .hero-detail-facts {{ display: grid; flex: 0 1 250px; grid-template-columns: repeat(2, minmax(105px, 1fr)); gap: 9px; }} .hero-detail-fact {{ min-width: 0; padding: 9px 11px; border-radius: 8px; background: #1c2b46; }} .hero-detail-fact strong {{ display: block; font-size: 22px; }} .stat-grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 9px; margin: 18px 0; }} .stat {{ background: #1c2b46; padding: 10px; border-radius: 8px; }} .skill {{ border-left: 3px solid #7aa6ff; background: #192942; padding: 12px; margin: 10px 0; white-space: pre-wrap; }} .upgrade {{ border-left-color: #f59e0b; }} .source {{ color: #fbbf24; font-size: 12px; margin-top: 6px; }}
@@ -297,6 +312,7 @@ def render_static_html(
   <script>
     const catalog = {embedded_catalog};
     const avatarUrlPrefix = {json.dumps(avatar_url_prefix)};
+    const localOfficialAssetPrefix = {json.dumps(local_official_asset_prefix)};
     const cards = catalog.cards;
     const assistantTags = catalog.assistantTags || [];
     const byId = new Map(cards.map(card => [card.key, card]));
@@ -318,6 +334,22 @@ def render_static_html(
       const filename = avatar.filename || `${{avatar.code}}.png`;
       const source = `${{avatarUrlPrefix}}/${{encodeURIComponent(filename)}}`;
       return `<span class="avatar ${{size}}"><img class="avatar-image" loading="lazy" src="${{escape(source)}}" alt="${{escape(label)}}"></span>`;
+    }}
+    const elementAssetName = {{1: 'fire', 2: 'water', 3: 'earth', 4: 'light', 5: 'shadow'}};
+    function heroMetadataMarkup(card) {{
+      if (card.kind !== 'hero' || (!card.element?.label && !card.role?.label)) return '';
+      const assetName = elementAssetName[card.element?.code];
+      const element = card.element?.label
+        ? (localOfficialAssetPrefix && assetName
+          ? `<span class="hero-element"><img loading="lazy" src="${{escape(`${{localOfficialAssetPrefix}}/element-${{assetName}}.png`)}}" alt="${{escape(card.element.label)}}属性" data-element-label="${{escape(card.element.label)}}" onerror="useHeroElementFallback(this)"></span>`
+          : `<span class="hero-element">${{escape(card.element.label)}}</span>`)
+        : '';
+      const role = card.role?.label ? `<span class="hero-role">${{escape(card.role.label)}}</span>` : '';
+      return `<div class="hero-card-meta"><div class="hero-element-role">${{element}}${{role}}</div></div>`;
+    }}
+    function useHeroElementFallback(image) {{
+      const holder = image.closest('.hero-element');
+      if (holder) holder.textContent = image.dataset.elementLabel || '?';
     }}
     function useAvatarPlaceholder(image) {{
       const avatar = image.closest('.avatar'); if (!avatar) return;
@@ -470,7 +502,16 @@ def render_static_html(
         const list = result.filter(card => card.kind === kind).sort(compareCards); if (!list.length) continue;
         const section = document.createElement('section'); const heading = document.createElement('h2'); heading.textContent = `${{kindLabel(kind)}}（${{list.length}}）`; section.append(heading);
         const grid = document.createElement('div'); grid.className = 'results';
-        for (const card of list) {{ const button = document.createElement('button'); button.className='card'; button.dataset.key=card.key; const tags = card.kind === 'hero' ? [card.element?.label, card.role?.label, kindLabel(card.kind)] : [kindLabel(card.kind), ...(card.tags || []).slice(0, 3).map(tag => tag.label), ...(card.tags || []).length > 3 ? [`+${{card.tags.length - 3}}`] : []]; button.innerHTML = `<div class="card-layout">${{avatarMarkup(card, 'avatar-small')}}<div><div class="card-title"><span>${{escape(card.name)}}</span><span>${{escape('★'.repeat(displayRarity(card)))}}</span></div><div class="muted">${{escape(card.originalName)}} · #${{escape(card.cardId)}}</div><div class="tags">${{tags.filter(Boolean).map(tag => `<span class="tag">${{escape(tag)}}</span>`).join('')}}</div></div></div>`; grid.append(button); }}
+        for (const card of list) {{
+          const button = document.createElement('button');
+          button.className = `card${{card.kind === 'hero' ? ' hero-card' : ''}}`;
+          button.dataset.key = card.key;
+          const tags = card.kind === 'hero'
+            ? [kindLabel(card.kind)]
+            : [kindLabel(card.kind), ...(card.tags || []).slice(0, 3).map(tag => tag.label), ...(card.tags || []).length > 3 ? [`+${{card.tags.length - 3}}`] : []];
+          button.innerHTML = `<div class="card-layout">${{avatarMarkup(card, 'avatar-small')}}<div><div class="card-title"><span>${{escape(card.name)}}</span><span>${{escape('★'.repeat(displayRarity(card)))}}</span></div><div class="muted">${{escape(card.originalName)}} · #${{escape(card.cardId)}}</div>${{heroMetadataMarkup(card)}}<div class="tags">${{tags.filter(Boolean).map(tag => `<span class="tag">${{escape(tag)}}</span>`).join('')}}</div></div></div>`;
+          grid.append(button);
+        }}
         section.append(grid); groups.append(section);
       }}
       if (!result.length) groups.innerHTML = '<p class="empty">没有匹配项。可尝试角色日文名、卡片编号或技能文字。</p>';
