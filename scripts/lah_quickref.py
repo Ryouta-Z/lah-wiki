@@ -234,6 +234,7 @@ def write_static_site(
             catalog,
             avatar_url_prefix,
             local_official_asset_prefix=local_official_asset_prefix,
+            use_official_card_layout=True,
         ),
     )
 
@@ -256,6 +257,7 @@ def render_static_html(
     avatar_url_prefix: str = "../data/images/icon",
     *,
     local_official_asset_prefix: str = "",
+    use_official_card_layout: bool = False,
     include_tag_settings: bool = True,
 ) -> str:
     embedded_catalog = json.dumps(catalog, ensure_ascii=False).replace("</", "<\\/")
@@ -281,15 +283,15 @@ def render_static_html(
     input, select, .controls button {{ width: 100%; border: 1px solid #394867; border-radius: 9px; background: #172235; color: #edf2ff; padding: 10px; font: inherit; font-size: 15px; }} .controls button {{ cursor: pointer; }} .controls button:hover, .controls button:focus {{ border-color: #77a5ff; background: #1b2c49; }}
     .filter-control {{ display: grid; gap: 5px; min-width: 0; }} .control-label {{ color: #b9c7df; font-size: 13px; font-weight: 700; }} .sort-selects {{ display: grid; grid-template-columns: minmax(0, 1fr) minmax(82px, auto); }} .sort-selects select {{ border-radius: 0; }} .sort-selects select:first-child {{ border-radius: 9px 0 0 9px; }} .sort-selects select + select {{ border-left: 0; border-radius: 0 9px 9px 0; }} .multi-select {{ position: relative; }} .multi-select-trigger {{ display: flex; justify-content: space-between; align-items: center; min-width: 0; text-align: left; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }} .multi-select-trigger::after {{ content: '▾'; flex: 0 0 auto; margin-left: 6px; color: #b9c7df; }} .multi-select-menu {{ position: absolute; z-index: 4; top: calc(100% + 6px); left: 0; width: max-content; min-width: 100%; max-width: min(310px, calc(100vw - 32px)); padding: 8px; border: 1px solid #516a93; border-radius: 9px; background: #132038; box-shadow: 0 12px 32px rgb(0 0 0 / 35%); }} .multi-select-options {{ display: grid; gap: 2px; max-height: 260px; overflow: auto; }} .multi-select-option {{ display: flex; align-items: center; gap: 8px; padding: 7px; border-radius: 6px; cursor: pointer; }} .multi-select-option:hover {{ background: #1b2c49; }} .multi-select-option input {{ width: auto; margin: 0; padding: 0; border: 0; background: transparent; accent-color: #77a5ff; }} .multi-select-clear {{ margin-top: 8px; border-color: #516a93 !important; background: #1c2b46 !important; }} .tag-select .multi-select-options {{ max-height: none; overflow: visible; }} .tag-menu-level {{ position: relative; display: grid; gap: 2px; min-width: 180px; }} .tag-menu-level .tag-menu-level {{ position: absolute; z-index: 1; top: -8px; left: calc(100% + 14px); max-height: 260px; padding: 8px; overflow: auto; border: 1px solid #516a93; border-radius: 9px; background: #132038; box-shadow: 0 12px 32px rgb(0 0 0 / 35%); }} .tag-menu-branch {{ border: 0 !important; background: transparent !important; text-align: left; padding: 7px !important; }} .tag-menu-branch::after {{ content: '›'; float: right; margin-left: 20px; color: #b9c7df; }} .tag-menu-branch.is-active {{ background: #1b2c49 !important; }}
     .summary {{ display: flex; gap: 12px; flex-wrap: wrap; margin: 18px 0; color: #b9c7df; }} .pill {{ padding: 6px 10px; border-radius: 999px; background: #1f2c43; }}
-    .groups {{ display: grid; gap: 28px; }} h2 {{ margin: 0 0 10px; font-size: 22px; }} .results {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }}
-    button.card {{ cursor: pointer; text-align: left; border: 1px solid #31425f; border-radius: 12px; color: inherit; padding: 15px; background: #162238; font: inherit; }} button.card:hover, button.card:focus {{ border-color: #77a5ff; background: #1b2c49; }} .card-layout {{ display: grid; grid-template-columns: 58px minmax(0, 1fr); gap: 12px; align-items: center; }}
+    .groups {{ display: grid; gap: 28px; }} h2 {{ margin: 0 0 10px; font-size: 22px; }} .results {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); gap: 18px; }}
+    button.card {{ cursor: pointer; min-width: 0; min-height: 220px; text-align: left; border: 1px solid rgb(212 223 255 / 19%); border-radius: 18px; color: inherit; padding: 21px 20px 20px; background: rgb(7 13 30 / 69%); box-shadow: inset 0 1px rgb(255 255 255 / 7%); font: inherit; }} button.card:hover, button.card:focus {{ border-color: #77a5ff; background: #1b2c49; }} .card-layout {{ display: grid; grid-template-columns: 148px minmax(0, 1fr); gap: 20px; align-items: start; }}
     .card-title {{ display: flex; justify-content: space-between; gap: 8px; font-weight: 700; }} .muted {{ color: #a9b7cf; font-size: 13px; }} .tags {{ display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }} .tag {{ background: #293b59; border-radius: 5px; padding: 3px 7px; font-size: 12px; }}
-    .hero-card-meta {{ display: flex; justify-content: flex-end; margin-top: 10px; }} .hero-element-role {{ display: grid; justify-items: center; gap: 5px; }} .hero-element {{ display: inline-flex; width: 32px; height: 32px; align-items: center; justify-content: center; overflow: hidden; border: 1px solid rgb(184 240 255 / 50%); border-radius: 8px; background: #173a51; color: #d6f7ff; font-size: 12px; font-weight: 700; line-height: 1; }} .hero-element img {{ display: block; width: 100%; height: 100%; object-fit: contain; }} .hero-role {{ min-height: 25px; padding: 4px 8px; border: 1px solid #59d9ef; border-radius: 999px; background: #0e7890; box-shadow: inset 0 1px 0 rgb(255 255 255 / 18%); color: #ecfdff; font-size: 12px; font-weight: 700; line-height: 1.2; white-space: nowrap; }}
-    .avatar {{ display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; overflow: hidden; border: 1px solid #4d6a98; border-radius: 50%; background: #263c60; color: #d8e7ff; font-weight: 700; }} .avatar img {{ width: 100%; height: 100%; object-fit: cover; }} .avatar-small {{ width: 58px; height: 58px; font-size: 24px; }} .avatar-large {{ width: 86px; height: 86px; font-size: 34px; }} .avatar-missing {{ border-style: dashed; color: #b7c8e5; }}
+    .portrait-block {{ position: relative; min-height: 176px; }} .portrait-shell {{ position: relative; width: 144px; height: 144px; }} .official-frame {{ position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; pointer-events: none; }} .official-frame-fallback {{ border: 2px solid #7d879b; border-radius: 8px; opacity: .8; }} .role-badge {{ position: absolute; z-index: 2; left: 10px; bottom: 0; display: inline-flex; align-items: center; gap: 5px; min-height: 27px; padding: 3px 5px; }} .role-badge.sidekick {{ left: 50%; transform: translateX(-50%); }} .role-badge .role-icon {{ width: 22px; height: 22px; }} .role-badge .role-wordmark {{ width: auto; height: 20px; }} .role-badge.sidekick .role-wordmark {{ height: 17px; }} .role-fallback {{ padding: 3px 8px; border-radius: 999px; background: #233658; color: #dce7ff; font-size: 12px; font-weight: 800; letter-spacing: .08em; }}
+    .avatar {{ display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; overflow: hidden; border: 1px solid #4d6a98; border-radius: 50%; background: #263c60; color: #d8e7ff; font-weight: 700; }} .avatar img {{ width: 100%; height: 100%; object-fit: cover; }} .avatar-small {{ width: 58px; height: 58px; font-size: 24px; }} .avatar-large {{ width: 86px; height: 86px; font-size: 34px; }} .avatar-missing {{ border-style: dashed; color: #b7c8e5; }} .card-avatar {{ position: absolute; inset: 10px; width: auto; height: auto; border-radius: 0; }} .card-avatar img {{ object-fit: cover; }} .card-copy {{ min-width: 0; padding-top: 5px; }} .name-line {{ display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }} .name-copy {{ min-width: 0; }} .card-name {{ margin: 0; font-size: 25px; line-height: 1.08; letter-spacing: -.05em; }} .card-jp-name {{ margin: 6px 0 0; color: #aeb9d5; font-size: 13px; }} .attribute-stack {{ display: flex; flex: 0 0 84px; flex-direction: column; align-items: center; gap: 6px; width: 84px; }} .hero-element {{ display: inline-flex; width: 32px; height: 32px; align-items: center; justify-content: center; overflow: hidden; border-radius: 8px; box-shadow: 0 0 0 1px rgb(255 255 255 / 15%), 0 7px 14px rgb(0 0 0 / 20%); }} .hero-element img {{ display: block; width: 100%; height: 100%; object-fit: contain; }} .hero-role {{ display: inline-flex; align-items: center; min-height: 26px; max-width: 84px; padding: 5px 9px; border: 1px solid rgb(173 246 255 / 68%); border-radius: 8px; color: #061524; background: linear-gradient(135deg, #b9f7ff, #2cb8e8); box-shadow: 0 5px 14px rgb(25 202 239 / 22%), inset 0 1px rgb(255 255 255 / 62%); font-size: 12px; font-weight: 900; line-height: 1.1; white-space: nowrap; }} .card-tags {{ margin-top: 18px; }}
     dialog {{ width: min(820px, calc(100% - 28px)); max-height: 88vh; overflow: auto; color: #edf2ff; background: #132038; border: 1px solid #516a93; border-radius: 14px; padding: 0; }} dialog::backdrop {{ background: rgb(0 0 0 / 65%); }}
     .detail {{ padding: 24px; }} .close {{ float: right; cursor: pointer; color: #dce8ff; background: transparent; border: 0; font-size: 26px; }} .detail-heading {{ display: flex; gap: 16px; align-items: center; padding-right: 34px; }} .detail-heading h2 {{ margin: 0; }} .hero-detail-header {{ position: sticky; top: 0; z-index: 1; display: flex; gap: 16px; align-items: center; width: calc(100% + 48px); margin: -24px -24px 18px; padding: 24px 58px 18px 24px; background: #132038; border-bottom: 1px solid #516a93; box-shadow: 0 5px 12px rgb(8 15 29 / 55%); }} .hero-detail-header .detail-close {{ position: absolute; top: 18px; right: 18px; z-index: 2; }} .hero-detail-header .detail-heading {{ flex: 1 1 280px; min-width: 0; padding-right: 0; }} .hero-detail-facts {{ display: grid; flex: 0 1 250px; grid-template-columns: repeat(2, minmax(105px, 1fr)); gap: 9px; }} .hero-detail-fact {{ min-width: 0; padding: 9px 11px; border-radius: 8px; background: #1c2b46; }} .hero-detail-fact strong {{ display: block; font-size: 22px; }} .stat-grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 9px; margin: 18px 0; }} .stat {{ background: #1c2b46; padding: 10px; border-radius: 8px; }} .skill {{ border-left: 3px solid #7aa6ff; background: #192942; padding: 12px; margin: 10px 0; white-space: pre-wrap; }} .upgrade {{ border-left-color: #f59e0b; }} .source {{ color: #fbbf24; font-size: 12px; margin-top: 6px; }}
     .status-detail {{ position: fixed; right: 24px; bottom: 24px; z-index: 3; width: min(620px, calc(100% - 28px)); max-height: min(560px, calc(100vh - 48px)); overflow: auto; color: #edf2ff; background: #132038; border: 1px solid #516a93; border-radius: 14px; box-shadow: 0 12px 32px rgb(0 0 0 / 45%); }} .status-term {{ cursor: pointer; border: 0; border-bottom: 1px dashed #8fb5ff; color: #a8c7ff; background: transparent; padding: 0; font: inherit; font-weight: 700; }} .status-term:hover, .status-term:focus {{ color: #d7e6ff; border-bottom-style: solid; }} .status-term-highlight {{ color: #c5d7ff; background: rgb(122 166 255 / 18%); border-radius: 3px; padding: 0 2px; font-weight: 700; }} .status-term-note {{ color: #b7c8e8; font-size: 0.92em; }} .status-content {{ margin: 16px 0 0; white-space: pre-wrap; line-height: 1.65; }}
-    .empty {{ color: #a9b7cf; margin: 20px 0; }} @media (max-width: 850px) {{ .controls {{ grid-template-columns: repeat(2, minmax(0, 1fr)); }} .controls input {{ grid-column: span 2; }} }} @media (max-width: 600px) {{ input, select, .controls button {{ padding: 9px; font-size: 14px; }} .tag-menu-level .tag-menu-level {{ position: static; width: auto; min-width: 0; margin-top: 8px; }} .hero-detail-header {{ flex-wrap: wrap; align-items: flex-start; }} .hero-detail-facts {{ width: 100%; flex-basis: 100%; }} .sort-selects {{ grid-template-columns: 1fr; gap: 6px; }} .sort-selects select, .sort-selects select:first-child, .sort-selects select + select {{ border: 1px solid #394867; border-radius: 9px; }} }}
+    .empty {{ color: #a9b7cf; margin: 20px 0; }} @media (max-width: 850px) {{ .controls {{ grid-template-columns: repeat(2, minmax(0, 1fr)); }} .controls input {{ grid-column: span 2; }} }} @media (max-width: 600px) {{ input, select, .controls button {{ padding: 9px; font-size: 14px; }} .results {{ grid-template-columns: 1fr; }} .card-layout {{ grid-template-columns: 122px minmax(0, 1fr); gap: 14px; }} button.card {{ padding: 16px 14px; }} .portrait-block {{ min-height: 151px; }} .portrait-shell {{ width: 119px; height: 119px; }} .card-avatar {{ inset: 8px; }} .card-name {{ font-size: 22px; white-space: nowrap; }} .card-tags {{ margin-top: 12px; }} .tag-menu-level .tag-menu-level {{ position: static; width: auto; min-width: 0; margin-top: 8px; }} .hero-detail-header {{ flex-wrap: wrap; align-items: flex-start; }} .hero-detail-facts {{ width: 100%; flex-basis: 100%; }} .sort-selects {{ grid-template-columns: 1fr; gap: 6px; }} .sort-selects select, .sort-selects select:first-child, .sort-selects select + select {{ border: 1px solid #394867; border-radius: 9px; }} }}
   </style>
 </head>
 <body>
@@ -313,6 +315,7 @@ def render_static_html(
     const catalog = {embedded_catalog};
     const avatarUrlPrefix = {json.dumps(avatar_url_prefix)};
     const localOfficialAssetPrefix = {json.dumps(local_official_asset_prefix)};
+    const useOfficialCardLayout = {str(use_official_card_layout).lower()};
     const cards = catalog.cards;
     const assistantTags = catalog.assistantTags || [];
     const byId = new Map(cards.map(card => [card.key, card]));
@@ -327,6 +330,7 @@ def render_static_html(
     const escape = value => String(value ?? '').replace(/[&<>"']/g, char => ({{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}}[char]));
     const kindLabel = kind => kind === 'hero' ? '英雄' : '助手';
     const displayRarity = card => card.kind === 'hero' ? card.initialRarity : card.rarity;
+    const frameAssetName = card => String(Math.min(3, Math.max(0, Number(displayRarity(card) || 1) - 2))).padStart(2, '0');
     function avatarMarkup(card, size) {{
       const avatar = card.avatar || {{status: 'missing', code: null}};
       const label = avatar.status === 'available' ? `${{card.name}} 头像` : `${{card.name}}（本地暂无头像）`;
@@ -334,6 +338,44 @@ def render_static_html(
       const filename = avatar.filename || `${{avatar.code}}.png`;
       const source = `${{avatarUrlPrefix}}/${{encodeURIComponent(filename)}}`;
       return `<span class="avatar ${{size}}"><img class="avatar-image" loading="lazy" src="${{escape(source)}}" alt="${{escape(label)}}"></span>`;
+    }}
+    function cardAvatarMarkup(card) {{
+      const avatar = card.avatar || {{status: 'missing', code: null}};
+      const label = avatar.status === 'available' ? `${{card.name}} 头像` : `${{card.name}}（本地暂无头像）`;
+      if (avatar.status !== 'available' || !avatar.code) return `<span class="avatar card-avatar avatar-missing" role="img" aria-label="${{escape(label)}}" title="本地暂无头像">?</span>`;
+      const filename = avatar.filename || `${{avatar.code}}.png`;
+      const source = `${{avatarUrlPrefix}}/${{encodeURIComponent(filename)}}`;
+      return `<span class="avatar card-avatar"><img class="avatar-image" loading="lazy" src="${{escape(source)}}" alt="${{escape(label)}}"></span>`;
+    }}
+    function cardFrameMarkup(card) {{
+      const rarity = Math.min(5, Math.max(1, Number(displayRarity(card) || 1)));
+      const frame = frameAssetName(card);
+      const label = `${{rarity}}星${{kindLabel(card.kind)}}边框`;
+      return localOfficialAssetPrefix
+        ? `<img class="official-frame" loading="lazy" src="${{escape(`${{localOfficialAssetPrefix}}/hero-frame-${{frame}}.png`)}}" alt="${{escape(label)}}" onerror="useFrameFallback(this)">`
+        : `<span class="official-frame official-frame-fallback" role="img" aria-label="${{escape(label)}}"></span>`;
+    }}
+    function useFrameFallback(image) {{
+      const fallback = document.createElement('span');
+      fallback.className = 'official-frame official-frame-fallback';
+      fallback.setAttribute('role', 'img'); fallback.setAttribute('aria-label', image.alt || '星级边框');
+      image.replaceWith(fallback);
+    }}
+    function roleBadgeMarkup(card) {{
+      const role = card.kind === 'hero' ? 'hero' : 'sidekick';
+      const label = kindLabel(card.kind);
+      return localOfficialAssetPrefix
+        ? `<span class="role-badge${{role === 'sidekick' ? ' sidekick' : ''}}"><img class="role-icon" loading="lazy" src="${{escape(`${{localOfficialAssetPrefix}}/role-${{role}}.png`)}}" alt="" onerror="useRoleAssetFallback(this)"><img class="role-wordmark" loading="lazy" src="${{escape(`${{localOfficialAssetPrefix}}/role-${{role}}-wordmark.png`)}}" alt="${{label}}" onerror="useRoleAssetFallback(this)"></span>`
+        : `<span class="role-badge${{role === 'sidekick' ? ' sidekick' : ''}}"><span class="role-fallback">${{escape(label)}}</span></span>`;
+    }}
+    function useRoleAssetFallback(image) {{
+      const badge = image.closest('.role-badge');
+      if (!badge) return;
+      const label = badge.classList.contains('sidekick') ? '助手' : '英雄';
+      badge.replaceChildren(Object.assign(document.createElement('span'), {{className: 'role-fallback', textContent: label}}));
+    }}
+    function characterPortraitMarkup(card) {{
+      return `<div class="portrait-block"><div class="portrait-shell">${{cardAvatarMarkup(card)}}${{cardFrameMarkup(card)}}</div>${{roleBadgeMarkup(card)}}</div>`;
     }}
     const elementAssetName = {{1: 'fire', 2: 'water', 3: 'earth', 4: 'light', 5: 'shadow'}};
     function heroMetadataMarkup(card) {{
@@ -345,7 +387,7 @@ def render_static_html(
           : `<span class="hero-element">${{escape(card.element.label)}}</span>`)
         : '';
       const role = card.role?.label ? `<span class="hero-role">${{escape(card.role.label)}}</span>` : '';
-      return `<div class="hero-card-meta"><div class="hero-element-role">${{element}}${{role}}</div></div>`;
+      return `<div class="attribute-stack">${{element}}${{role}}</div>`;
     }}
     function useHeroElementFallback(image) {{
       const holder = image.closest('.hero-element');
@@ -504,12 +546,18 @@ def render_static_html(
         const grid = document.createElement('div'); grid.className = 'results';
         for (const card of list) {{
           const button = document.createElement('button');
-          button.className = `card${{card.kind === 'hero' ? ' hero-card' : ''}}`;
+          button.className = `card${{useOfficialCardLayout && card.kind === 'hero' ? ' hero-card' : ''}}`;
           button.dataset.key = card.key;
-          const tags = card.kind === 'hero'
-            ? [kindLabel(card.kind)]
+          const legacyTags = card.kind === 'hero'
+            ? [card.element?.label, card.role?.label, kindLabel(card.kind)]
             : [kindLabel(card.kind), ...(card.tags || []).slice(0, 3).map(tag => tag.label), ...(card.tags || []).length > 3 ? [`+${{card.tags.length - 3}}`] : []];
-          button.innerHTML = `<div class="card-layout">${{avatarMarkup(card, 'avatar-small')}}<div><div class="card-title"><span>${{escape(card.name)}}</span><span>${{escape('★'.repeat(displayRarity(card)))}}</span></div><div class="muted">${{escape(card.originalName)}} · #${{escape(card.cardId)}}</div>${{heroMetadataMarkup(card)}}<div class="tags">${{tags.filter(Boolean).map(tag => `<span class="tag">${{escape(tag)}}</span>`).join('')}}</div></div></div>`;
+          const tags = card.kind === 'sidekick'
+            ? [...(card.tags || []).slice(0, 3).map(tag => tag.label), ...(card.tags || []).length > 3 ? [`+${{card.tags.length - 3}}`] : []]
+            : [];
+          const tagsMarkup = tags.length ? `<div class="tags card-tags">${{tags.map(tag => `<span class="tag">${{escape(tag)}}</span>`).join('')}}</div>` : '';
+          const officialCardMarkup = `<div class="card-layout">${{characterPortraitMarkup(card)}}<div class="card-copy"><div class="name-line"><div class="name-copy"><h3 class="card-name">${{escape(card.name)}}</h3><p class="card-jp-name">${{escape(card.originalName)}} · #${{escape(card.cardId)}}</p></div>${{heroMetadataMarkup(card)}}</div>${{tagsMarkup}}</div></div>`;
+          const legacyCardMarkup = `<div class="card-layout">${{avatarMarkup(card, 'avatar-small')}}<div><div class="card-title"><span>${{escape(card.name)}}</span><span>${{escape('★'.repeat(displayRarity(card)))}}</span></div><div class="muted">${{escape(card.originalName)}} · #${{escape(card.cardId)}}</div><div class="tags">${{legacyTags.filter(Boolean).map(tag => `<span class="tag">${{escape(tag)}}</span>`).join('')}}</div></div></div>`;
+          button.innerHTML = useOfficialCardLayout ? officialCardMarkup : legacyCardMarkup;
           grid.append(button);
         }}
         section.append(grid); groups.append(section);

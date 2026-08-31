@@ -570,7 +570,12 @@ class LahQuickrefTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             source = Path(directory)
             self._write_snapshot(source)
-            html = render_static_html(self._catalog(source))
+            html = render_static_html(
+                self._catalog(source),
+                local_official_asset_prefix="../data/cache/official-ui-candidates/selected",
+                use_official_card_layout=True,
+            )
+            public_html = render_static_html(self._catalog(source), include_tag_settings=False)
 
         self.assertIn("赤司", html)
         self.assertIn("英雄", html)
@@ -588,11 +593,18 @@ class LahQuickrefTest(unittest.TestCase):
         self.assertIn("avatar-image", html)
         self.assertIn("function heroMetadataMarkup", html)
         self.assertIn("function useHeroElementFallback", html)
-        self.assertIn("hero-element-role", html)
         self.assertIn("hero-role", html)
-        self.assertIn("const localOfficialAssetPrefix = \"\"", html)
-        self.assertIn("? [kindLabel(card.kind)]", html)
-        self.assertNotIn("[card.element?.label, card.role?.label, kindLabel(card.kind)]", html)
+        self.assertIn('const localOfficialAssetPrefix = "../data/cache/official-ui-candidates/selected"', html)
+        self.assertIn("const useOfficialCardLayout = true", html)
+        self.assertIn("const useOfficialCardLayout = false", public_html)
+        self.assertIn("? [...(card.tags || []).slice(0, 3).map(tag => tag.label)", html)
+        self.assertIn("const legacyTags = card.kind === 'hero'", html)
+        self.assertIn("function characterPortraitMarkup", html)
+        self.assertIn("function cardFrameMarkup", html)
+        self.assertIn("hero-frame-${frame}.png", html)
+        self.assertIn("role-${role}-wordmark.png", html)
+        self.assertIn("grid-template-columns: repeat(auto-fill, minmax(420px, 1fr))", html)
+        self.assertIn("grid-template-columns: 122px minmax(0, 1fr)", html)
         self.assertIn("const stats = card.kind === 'hero'\n        ?", html)
         self.assertIn('class="hero-detail-header"', html)
         self.assertIn('class="close detail-close"', html)
