@@ -66,7 +66,9 @@ def _tree(obj: Any, label: str) -> dict[str, Any]:
         raise ExtractionError(f"Could not read {label} metadata") from error
 
 
-def _spine_skeleton(objects: dict[int, Any]) -> tuple[Any, dict[str, Any]]:
+def _spine_skeleton(
+    objects: dict[int, Any], skeleton_name: str | None = None
+) -> tuple[Any, dict[str, Any]]:
     candidates = []
     for obj in objects.values():
         if obj.type.name != "MonoBehaviour":
@@ -74,8 +76,11 @@ def _spine_skeleton(objects: dict[int, Any]) -> tuple[Any, dict[str, Any]]:
         metadata = _tree(obj, "MonoBehaviour")
         if "skeletonJSON" in metadata and "atlasAssets" in metadata:
             candidates.append((obj, metadata))
+    if skeleton_name:
+        candidates = [candidate for candidate in candidates if candidate[1].get("m_Name") == skeleton_name]
     if len(candidates) != 1:
-        raise ExtractionError(f"Expected one Spine SkeletonData asset, found {len(candidates)}")
+        label = f" named {skeleton_name!r}" if skeleton_name else ""
+        raise ExtractionError(f"Expected one Spine SkeletonData asset{label}, found {len(candidates)}")
     return candidates[0]
 
 
@@ -124,10 +129,12 @@ def _sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
-def _write_package(bundle_path: Path, staging_dir: Path) -> tuple[str, ...]:
+def _write_package(
+    bundle_path: Path, staging_dir: Path, skeleton_name: str | None = None
+) -> tuple[str, ...]:
     environment = UnityPy.load(str(bundle_path))
     objects = {obj.path_id: obj for obj in environment.objects}
-    skeleton_asset, skeleton_metadata = _spine_skeleton(objects)
+    skeleton_asset, skeleton_metadata = _spine_skeleton(objects, skeleton_name)
     skeleton_text_asset = _object(objects, skeleton_metadata["skeletonJSON"], "SkeletonData skeletonJSON")
     skeleton_name = _safe_filename(getattr(skeleton_text_asset.read(), "m_Name", ""), "skeleton")
     skeleton_file = f"{skeleton_name}.json"
@@ -261,7 +268,11 @@ def _replace_output(staging_dir: Path, output_dir: Path) -> None:
     shutil.rmtree(backup_dir)
 
 
-def extract(bundle_path: Path = DEFAULT_BUNDLE, output_dir: Path = DEFAULT_OUTPUT_DIR) -> ExtractionResult:
+def extract(
+    bundle_path: Path = DEFAULT_BUNDLE,
+    output_dir: Path = DEFAULT_OUTPUT_DIR,
+    skeleton_name: str | None = None,
+) -> ExtractionResult:
     """Export one bundle's directly referenced Spine package without partial output."""
     bundle_path = bundle_path.resolve()
     output_dir = output_dir.resolve()
@@ -270,7 +281,7 @@ def extract(bundle_path: Path = DEFAULT_BUNDLE, output_dir: Path = DEFAULT_OUTPU
     output_dir.parent.mkdir(parents=True, exist_ok=True)
     staging_dir = Path(tempfile.mkdtemp(prefix=f".{output_dir.name}.staging-", dir=output_dir.parent))
     try:
-        animations = _write_package(bundle_path, staging_dir)
+        animations = _write_package(bundle_path, staging_dir, skeleton_name)
         validated_animations = _validate_package(staging_dir)
         if animations != validated_animations:
             raise ExtractionError("Export validation changed the animation list")
@@ -286,8 +297,9 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--bundle", type=Path, default=DEFAULT_BUNDLE)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
+    parser.add_argument("--skeleton-name")
     args = parser.parse_args()
-    result = extract(args.bundle, args.output_dir)
+    result = extract(args.bundle, args.output_dir, args.skeleton_name)
     print(f"Exported {len(result.animations)} Spine animations to {result.output_dir}")
 
 

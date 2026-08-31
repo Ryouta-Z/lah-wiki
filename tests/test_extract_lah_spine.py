@@ -28,7 +28,7 @@ def local_ref(path_id):
     return {"m_FileID": 0, "m_PathID": path_id}
 
 
-def fake_environment(include_texture=True):
+def fake_environment(include_texture=True, second_skeleton=False):
     objects = [
         FakeObject(
             1,
@@ -71,6 +71,19 @@ def fake_environment(include_texture=True):
     ]
     if include_texture:
         objects.append(FakeObject(6, "Texture2D", "spine_akashi", image=Image.new("RGBA", (2, 2))))
+    if second_skeleton:
+        objects.append(
+            FakeObject(
+                7,
+                "MonoBehaviour",
+                "spine_akashiShadow_SkeletonData",
+                {
+                    "m_Name": "spine_akashiShadow_SkeletonData",
+                    "skeletonJSON": local_ref(2),
+                    "atlasAssets": [local_ref(3)],
+                },
+            )
+        )
     return SimpleNamespace(objects=objects)
 
 
@@ -119,6 +132,23 @@ class ExtractLahSpineTest(unittest.TestCase):
                     extract(bundle, output)
 
             self.assertEqual(marker.read_text(encoding="utf-8"), '{"previous": true}')
+
+    def test_selects_a_named_skeleton_when_a_bundle_contains_multiple_skeletons(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            bundle = root / "akashi.bundle"
+            bundle.write_bytes(b"bundle-data")
+            output = root / "akashi"
+
+            with patch(
+                "scripts.extract_lah_spine.UnityPy.load",
+                return_value=fake_environment(second_skeleton=True),
+            ):
+                result = extract(bundle, output, skeleton_name="spine_akashi_SkeletonData")
+
+            self.assertEqual(result.animations, ("Attack", "Idle"))
+            manifest = json.loads((output / "manifest.json").read_text(encoding="utf-8"))
+            self.assertEqual(manifest["skeleton_data"]["name"], "spine_akashi_SkeletonData")
 
 
 if __name__ == "__main__":
