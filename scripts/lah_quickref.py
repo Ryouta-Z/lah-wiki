@@ -36,6 +36,9 @@ DEFAULT_ALIASES_PATH = ROOT / "data" / "aliases.json"
 DEFAULT_CHAR_MAP_PATH = ROOT / "data" / "char_map.json"
 DEFAULT_ICON_DIR = ROOT / "data" / "images" / "icon"
 DEFAULT_AVATAR_OVERRIDES_PATH = ROOT / "data" / "quickref_avatar_overrides.json"
+DEFAULT_SIDEKICK_AVATAR_OVERRIDES_PATH = (
+    ROOT / "data" / "quickref_sidekick_avatar_overrides.json"
+)
 CODEX_NODE_PATH = Path(
     r"C:\Users\Penguin\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin\node.exe"
 )
@@ -161,6 +164,7 @@ def build_catalog(
     char_map_path: Path = DEFAULT_CHAR_MAP_PATH,
     icon_dir: Path = DEFAULT_ICON_DIR,
     avatar_overrides_path: Path = DEFAULT_AVATAR_OVERRIDES_PATH,
+    sidekick_avatar_overrides_path: Path = DEFAULT_SIDEKICK_AVATAR_OVERRIDES_PATH,
     assistant_tags_path: Path | None = None,
 ) -> dict[str, Any]:
     """Return a normalized catalog from one complete, date-consistent snapshot."""
@@ -175,11 +179,31 @@ def build_catalog(
         icon_dir,
         avatar_overrides_path,
     )
+    sidekick_avatars = _sidekick_avatar_overrides(
+        icon_dir, sidekick_avatar_overrides_path
+    )
     status_terms = _status_terms_by_id(localized)
 
     cards = [
-        *_build_cards(_highest_hero_cards(hero_cards), skills, localized, aliases, avatars, status_terms, "hero"),
-        *_build_cards(_highest_sidekick_cards(sidekick_cards), skills, localized, aliases, avatars, status_terms, "sidekick"),
+        *_build_cards(
+            _highest_hero_cards(hero_cards),
+            skills,
+            localized,
+            aliases,
+            avatars,
+            status_terms,
+            "hero",
+        ),
+        *_build_cards(
+            _highest_sidekick_cards(sidekick_cards),
+            skills,
+            localized,
+            aliases,
+            avatars,
+            status_terms,
+            "sidekick",
+            sidekick_avatars,
+        ),
     ]
     cards.sort(key=lambda card: (card["kind"], card["name"], card["cardId"]))
     assistant_tag_config = None
@@ -623,6 +647,7 @@ def _build_cards(
     avatars: dict[str, dict[str, dict[str, str | None]]],
     status_terms: dict[str, dict[str, str]],
     kind: str,
+    sidekick_avatars: dict[str, dict[str, str | None]] | None = None,
 ) -> list[dict[str, Any]]:
     result = []
     entries = raw_cards.values() if isinstance(raw_cards, dict) else raw_cards
@@ -664,7 +689,13 @@ def _build_cards(
                 "nameSource": "官方简中" if localized_name else "日文原文",
                 "originalName": original_name,
                 "aliases": aliases.get(original_name, []),
-                "avatar": _avatar_for_card(resource_name, original_name, name, avatars),
+                "avatar": _avatar_for_card(
+                    resource_name,
+                    original_name,
+                    name,
+                    avatars,
+                    sidekick_avatars if kind == "sidekick" else None,
+                ),
                 "rarity": raw_card.get("rarity", 0),
                 "initialRarity": raw_card.get("initialRarity") if kind == "hero" else None,
                 "element": _element(raw_card.get("element")) if kind == "hero" else None,
@@ -873,13 +904,39 @@ def _avatar_for_card(
     original_name: str,
     localized_name: str,
     avatars: dict[str, dict[str, dict[str, str | None]]],
+    sidekick_avatars: dict[str, dict[str, str | None]] | None = None,
 ) -> dict[str, str | None]:
-    avatar = avatars["code"].get(resource_name.lower()) or avatars["jp"].get(
+    avatar = (sidekick_avatars or {}).get(resource_name.lower()) or avatars["code"].get(
+        resource_name.lower()
+    ) or avatars["jp"].get(
         _canonical_character_name(original_name)
     ) or avatars["cn"].get(
         _canonical_character_name(localized_name)
     )
     return dict(avatar) if avatar else {"status": "missing", "code": None}
+
+
+def _sidekick_avatar_overrides(
+    icon_dir: Path, overrides_path: Path | None
+) -> dict[str, dict[str, str | None]]:
+    if not overrides_path or not overrides_path.is_file():
+        return {}
+    overrides = _read_json(overrides_path)
+    if not isinstance(overrides, dict):
+        return {}
+
+    result = {}
+    for resource_name, filename in overrides.items():
+        if not isinstance(resource_name, str) or not isinstance(filename, str):
+            continue
+        if Path(filename).name != filename or not (icon_dir / filename).is_file():
+            continue
+        result[resource_name.lower()] = {
+            "status": "available",
+            "code": resource_name,
+            "filename": filename,
+        }
+    return result
 
 
 def _canonical_character_name(name: str | None) -> str:
