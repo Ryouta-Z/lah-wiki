@@ -1,0 +1,117 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "id": "tag-84bbe49b-7daa-416a-8dd8-bda0e96c594a",
+      "label": "攻击性",
+      "parentId": null
+    },
+    {
+      "id": "tag-2a112be2-8c93-42c6-be6e-dd232c00d7ac",
+      "label": "生存性",
+      "parentId": null
+    },
+    {
+      "id": "tag-98feea96-b451-4562-9d5f-ca4b59e91537",
+      "label": "辅助性",
+      "parentId": null
+    },
+    {
+      "id": "tag-40e29b62-c5ec-4b33-bb6e-17c9ef3a6130",
+      "label": "群体输出",
+      "parentId": "tag-84bbe49b-7daa-416a-8dd8-bda0e96c594a"
+    },
+    {
+      "id": "tag-ccaecf71-255c-4129-88d7-efb7a8e60e02",
+      "label": "群体恢复",
+      "parentId": "tag-2a112be2-8c93-42c6-be6e-dd232c00d7ac"
+    },
+    {
+      "id": "tag-0d1b4f8c-f100-4903-a4f4-e9f7376383cb",
+      "label": "单体恢复",
+      "parentId": "tag-2a112be2-8c93-42c6-be6e-dd232c00d7ac"
+    },
+    {
+      "id": "tag-278e53b9-b38c-40a1-9e54-2dbe792b11ca",
+      "label": "单体输出",
+      "parentId": "tag-84bbe49b-7daa-416a-8dd8-bda0e96c594a"
+    },
+    {
+      "id": "tag-2dba4079-6b64-47ed-aa95-a7e51110b92c",
+      "label": "多段输出",
+      "parentId": "tag-84bbe49b-7daa-416a-8dd8-bda0e96c594a"
+    },
+    {
+      "id": "tag-bd0d522a-4555-4861-9c3f-bfcae1cc8c12",
+      "label": "Combo",
+      "parentId": "tag-c2850592-ce8f-489b-8797-0b19d15c15b9"
+    },
+    {
+      "id": "tag-c61ea35f-0760-4f71-b59c-3f922142e748",
+      "label": "多段",
+      "parentId": "tag-c2850592-ce8f-489b-8797-0b19d15c15b9"
+    },
+    {
+      "id": "tag-503adb31-c48a-469c-ae69-dedb4712098b",
+      "label": "View",
+      "parentId": "tag-c2850592-ce8f-489b-8797-0b19d15c15b9"
+    },
+    {
+      "id": "tag-dcc08bd2-a55c-47c8-9bde-56c75411152b",
+      "label": "回合外输出",
+      "parentId": "tag-84bbe49b-7daa-416a-8dd8-bda0e96c594a"
+    },
+    {
+      "id": "tag-53683a0e-442f-4809-ab0b-596809d08b64",
+      "label": "Dot",
+      "parentId": "tag-c2850592-ce8f-489b-8797-0b19d15c15b9"
+    },
+    {
+      "id": "tag-066373f1-f4f9-46cb-bae6-94110b493829",
+      "label": "护盾",
+      "parentId": "tag-2a112be2-8c93-42c6-be6e-dd232c00d7ac"
+    },
+    {
+      "id": "tag-c2850592-ce8f-489b-8797-0b19d15c15b9",
+      "label": "适配队伍",
+      "parentId": null
+    },
+    {
+      "id": "tag-1889cb9b-a83f-479a-898b-8c7ba4d447a9",
+      "label": "次数增伤",
+      "parentId": "tag-98feea96-b451-4562-9d5f-ca4b59e91537"
+    },
+    {
+      "id": "tag-a7f79386-0935-44d8-8d82-e257552b910f",
+      "label": "回合增伤",
+      "parentId": "tag-98feea96-b451-4562-9d5f-ca4b59e91537"
+    },
+    {
+      "id": "tag-8c2ec9cf-6dfa-433c-bf61-a22279fbb68d",
+      "label": "次数减伤",
+      "parentId": "tag-98feea96-b451-4562-9d5f-ca4b59e91537"
+    },
+    {
+      "id": "tag-9b40742c-b666-4f19-9a98-c8e90fcbc8a4",
+      "label": "回合减伤",
+      "parentId": "tag-98feea96-b451-4562-9d5f-ca4b59e91537"
+    },
+    {
+      "id": "tag-5965e1cb-b078-48e1-9e34-0c6e4c274df1",
+      "label": "速度控制",
+      "parentId": "tag-98feea96-b451-4562-9d5f-ca4b59e91537"
+    },
+    {
+      "id": "tag-a0495392-ffaf-4e60-b4ac-a34d139ac8c4",
+      "label": "速度差",
+      "parentId": "tag-c2850592-ce8f-489b-8797-0b19d15c15b9"
+    },
+    {
+      "id": "tag-7eed06d9-14b0-413f-8e3d-803e6a281358",
+      "label": "其他",
+      "parentId": "tag-c2850592-ce8f-489b-8797-0b19d15c15b9"
+    }
+  ],
+  "assignments": {},
+  "pinnedAssignments": {}
+}

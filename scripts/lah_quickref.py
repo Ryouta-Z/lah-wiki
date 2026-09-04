@@ -20,12 +20,24 @@ try:
         tags_for_assignments,
         validate_assistant_tag_config,
     )
+    from scripts.hero_tags import (
+        DEFAULT_HERO_TAGS_PATH,
+        read_hero_tag_config,
+        tags_for_assignments as hero_tags_for_assignments,
+        validate_hero_tag_config,
+    )
 except ModuleNotFoundError:  # Allow `python scripts/lah_quickref.py` from the project root.
     from assistant_tags import (  # type: ignore[no-redef]
         DEFAULT_ASSISTANT_TAGS_PATH,
         read_assistant_tag_config,
         tags_for_assignments,
         validate_assistant_tag_config,
+    )
+    from hero_tags import (  # type: ignore[no-redef]
+        DEFAULT_HERO_TAGS_PATH,
+        read_hero_tag_config,
+        tags_for_assignments as hero_tags_for_assignments,
+        validate_hero_tag_config,
     )
 
 ROOT = Path(__file__).parent.parent
@@ -166,6 +178,7 @@ def build_catalog(
     avatar_overrides_path: Path = DEFAULT_AVATAR_OVERRIDES_PATH,
     sidekick_avatar_overrides_path: Path = DEFAULT_SIDEKICK_AVATAR_OVERRIDES_PATH,
     assistant_tags_path: Path | None = None,
+    hero_tags_path: Path | None = None,
 ) -> dict[str, Any]:
     """Return a normalized catalog from one complete, date-consistent snapshot."""
     snapshot = _snapshot_files(snapshot_dir)
@@ -216,6 +229,16 @@ def build_catalog(
             if card["kind"] == "sidekick":
                 card["tags"] = tags_by_sidekick.get(card["key"], [])
 
+    hero_tag_config = None
+    if hero_tags_path is not None:
+        hero_tag_config = read_hero_tag_config(hero_tags_path)
+        hero_keys = {card["key"] for card in cards if card["kind"] == "hero"}
+        hero_tag_config = validate_hero_tag_config(hero_tag_config, hero_keys)
+        tags_by_hero = hero_tags_for_assignments(hero_tag_config)
+        for card in cards:
+            if card["kind"] == "hero":
+                card["tags"] = tags_by_hero.get(card["key"], [])
+
     skill_rows = _unique_skills(cards)
     skill_upgrades = _unique_skill_upgrades(cards)
     return {
@@ -235,6 +258,7 @@ def build_catalog(
         "skillUpgrades": skill_upgrades,
         "statusTerms": sorted(status_terms["all"].values(), key=lambda term: (term["name"], term["id"])),
         "assistantTags": assistant_tag_config["tags"] if assistant_tag_config else [],
+        "heroTags": hero_tag_config["tags"] if hero_tag_config else [],
     }
 
 
@@ -265,12 +289,15 @@ def write_static_site(
 
 def rebuild_quickref(
     assistant_tags_path: Path = DEFAULT_ASSISTANT_TAGS_PATH,
+    hero_tags_path: Path = DEFAULT_HERO_TAGS_PATH,
     snapshot_dir: Path = DEFAULT_SNAPSHOT_DIR,
     catalog_path: Path = DEFAULT_CATALOG_PATH,
     site_path: Path = DEFAULT_SITE_PATH,
 ) -> dict[str, Any]:
     """Rebuild the public offline catalog after a local administrator saves tags."""
-    catalog = build_catalog(snapshot_dir, assistant_tags_path=assistant_tags_path)
+    catalog = build_catalog(
+        snapshot_dir, assistant_tags_path=assistant_tags_path, hero_tags_path=hero_tags_path
+    )
     write_catalog(catalog, catalog_path)
     write_static_site(catalog, site_path)
     return catalog
@@ -286,7 +313,7 @@ def render_static_html(
 ) -> str:
     embedded_catalog = json.dumps(catalog, ensure_ascii=False).replace("</", "<\\/")
     tag_settings_button = '      <button id="tagSettings" type="button">标签设置</button>' if include_tag_settings else ""
-    tag_settings_dialog = """  <dialog id="tagSettingsDetail" aria-labelledby="tagSettingsTitle"><div class="detail"><button class="close tag-settings-close" aria-label="关闭标签设置">×</button><h2 id="tagSettingsTitle">标签管理</h2><p class="status-content">本页仅用于查询。请先在项目根目录运行 <code>uv run python scripts/assistant_tag_admin.py</code>，再打开 <a href="http://127.0.0.1:8787/" target="_blank" rel="noreferrer">本机标签管理页</a> 维护标签和助手归属。保存后会自动更新本页。</p></div></dialog>
+    tag_settings_dialog = """  <dialog id="tagSettingsDetail" aria-labelledby="tagSettingsTitle"><div class="detail"><button class="close tag-settings-close" aria-label="关闭标签设置">×</button><h2 id="tagSettingsTitle">标签管理</h2><p class="status-content">本页仅用于查询。请先在项目根目录运行 <code>uv run python scripts/tag_admin.py</code>，再打开 <a href="http://127.0.0.1:8787/" target="_blank" rel="noreferrer">本机标签管理页</a> 维护英雄和助手归属。保存后会自动更新本页。</p></div></dialog>
 """ if include_tag_settings else ""
     tag_settings_listeners = """    $('tagSettings').addEventListener('click', () => $('tagSettingsDetail').showModal());
     document.querySelector('.tag-settings-close').addEventListener('click', () => $('tagSettingsDetail').close());
@@ -311,7 +338,8 @@ def render_static_html(
     button.card {{ cursor: pointer; min-width: 0; text-align: left; border: 1px solid #31425f; border-radius: 12px; color: inherit; padding: 15px; background: #162238; font: inherit; }} button.card:hover, button.card:focus {{ border-color: #77a5ff; background: #1b2c49; }} .card-layout {{ display: grid; grid-template-columns: 58px minmax(0, 1fr); gap: 12px; align-items: center; }}
     .card-title {{ display: flex; justify-content: space-between; gap: 8px; font-weight: 700; }} .muted {{ color: #a9b7cf; font-size: 13px; }} .tags {{ display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }} .tag {{ background: #293b59; border-radius: 5px; padding: 3px 7px; font-size: 12px; }}
     .avatar {{ display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; overflow: hidden; border: 1px solid #4d6a98; border-radius: 50%; background: #263c60; color: #d8e7ff; font-weight: 700; }} .avatar img {{ width: 100%; height: 100%; object-fit: cover; }} .avatar-small {{ width: 58px; height: 58px; font-size: 24px; }} .avatar-large {{ width: 86px; height: 86px; font-size: 34px; }} .avatar-missing {{ border-style: dashed; color: #b7c8e5; }}
-    body.official-card-layout .results {{ grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }} body.official-card-layout button.card {{ min-height: 150px; padding: 14px; border-color: rgb(212 223 255 / 19%); border-radius: 16px; background: rgb(7 13 30 / 69%); box-shadow: inset 0 1px rgb(255 255 255 / 7%); }} body.official-card-layout .card-layout {{ grid-template-columns: 104px minmax(0, 1fr); gap: 12px; align-items: start; }} body.official-card-layout .portrait-block {{ position: relative; min-height: 126px; }} body.official-card-layout .portrait-shell {{ position: relative; width: 100px; height: 100px; }} body.official-card-layout .official-frame {{ position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; pointer-events: none; }} body.official-card-layout .official-frame-fallback {{ border: 2px solid #7d879b; border-radius: 8px; opacity: .8; }} body.official-card-layout .role-badge {{ position: absolute; z-index: 2; left: 0; bottom: 0; display: inline-flex; align-items: center; gap: 4px; min-height: 22px; padding: 2px 3px; }} body.official-card-layout .role-badge.sidekick {{ left: 50%; transform: translateX(-50%); }} body.official-card-layout .role-badge .role-icon {{ width: 18px; height: 18px; }} body.official-card-layout .role-badge .role-wordmark {{ width: auto; height: 16px; }} body.official-card-layout .role-badge.sidekick .role-wordmark {{ height: 14px; }} body.official-card-layout .role-fallback {{ padding: 3px 7px; border-radius: 999px; background: #233658; color: #dce7ff; font-size: 11px; font-weight: 800; letter-spacing: .08em; }} body.official-card-layout .card-avatar {{ position: absolute; inset: 7px; width: auto; height: auto; border-radius: 0; }} body.official-card-layout .card-avatar img {{ object-fit: cover; }} body.official-card-layout .card-copy {{ display: flex; min-width: 0; flex-direction: column; align-items: stretch; }} body.official-card-layout .name-copy {{ min-width: 0; }} body.official-card-layout .card-name {{ margin: 0; font-size: 20px; line-height: 1.12; letter-spacing: -.04em; text-wrap: balance; }} body.official-card-layout .card-jp-name {{ margin: 4px 0 0; color: #aeb9d5; font-size: 11px; line-height: 1.3; text-wrap: pretty; }} body.official-card-layout .attribute-stack {{ display: flex; flex-direction: column; align-items: center; gap: 5px; margin: 9px auto 0; }} body.official-card-layout .hero-element {{ display: inline-flex; width: 28px; height: 28px; align-items: center; justify-content: center; overflow: hidden; border-radius: 7px; box-shadow: 0 0 0 1px rgb(255 255 255 / 15%), 0 5px 10px rgb(0 0 0 / 20%); }} body.official-card-layout .hero-element img {{ display: block; width: 100%; height: 100%; object-fit: contain; }} body.official-card-layout .hero-role {{ display: inline-flex; align-items: center; min-height: 24px; padding: 4px 8px; border: 1px solid rgb(173 246 255 / 68%); border-radius: 8px; color: #061524; background: linear-gradient(135deg, #b9f7ff, #2cb8e8); box-shadow: 0 4px 10px rgb(25 202 239 / 22%), inset 0 1px rgb(255 255 255 / 62%); font-size: 12px; font-weight: 900; line-height: 1.1; white-space: nowrap; }} body.official-card-layout .card-tags {{ display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 5px; margin-top: 10px; }} body.official-card-layout .card-tags .tag {{ min-width: 0; overflow: hidden; padding: 4px 5px; font-size: 11px; line-height: 1.2; text-align: center; text-overflow: ellipsis; white-space: nowrap; }}
+    body.official-card-layout .results {{ grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }} body.official-card-layout button.card {{ min-height: 150px; padding: 14px; border-color: rgb(212 223 255 / 19%); border-radius: 16px; background: rgb(7 13 30 / 69%); box-shadow: inset 0 1px rgb(255 255 255 / 7%); }} body.official-card-layout .card-layout {{ grid-template-columns: 104px minmax(0, 1fr); gap: 12px; align-items: start; }} body.official-card-layout .portrait-block {{ position: relative; min-height: 126px; }} body.official-card-layout .portrait-shell {{ position: relative; width: 100px; height: 100px; }} body.official-card-layout .official-frame {{ position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; pointer-events: none; }} body.official-card-layout .official-frame-fallback {{ border: 2px solid #7d879b; border-radius: 8px; opacity: .8; }} body.official-card-layout .role-badge {{ position: absolute; z-index: 2; left: 0; bottom: 0; display: inline-flex; align-items: center; gap: 4px; min-height: 22px; padding: 2px 3px; }} body.official-card-layout .role-badge.sidekick {{ left: 50%; transform: translateX(-50%); }} body.official-card-layout .role-badge .role-icon {{ width: 18px; height: 18px; }} body.official-card-layout .role-badge .role-wordmark {{ width: auto; height: 16px; }} body.official-card-layout .role-badge.sidekick .role-wordmark {{ height: 14px; }} body.official-card-layout .role-fallback {{ padding: 3px 7px; border-radius: 999px; background: #233658; color: #dce7ff; font-size: 11px; font-weight: 800; letter-spacing: .08em; }} body.official-card-layout .card-avatar {{ position: absolute; inset: 7px; width: auto; height: auto; border-radius: 0; transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1); }} body.official-card-layout button.card:is(:hover, :focus-visible) .card-avatar {{ transform: scale(1.10); }} body.official-card-layout .card-avatar img {{ object-fit: cover; }} body.official-card-layout .card-copy {{ display: flex; min-width: 0; flex-direction: column; align-items: stretch; }} body.official-card-layout .name-copy {{ min-width: 0; }} body.official-card-layout .card-name {{ margin: 0; font-size: 20px; line-height: 1.12; letter-spacing: -.04em; text-wrap: balance; }} body.official-card-layout .card-jp-name {{ margin: 4px 0 0; color: #aeb9d5; font-size: 11px; line-height: 1.3; text-wrap: pretty; }} body.official-card-layout .attribute-stack {{ display: flex; flex-direction: column; align-items: center; gap: 5px; margin: 9px auto 0; }} body.official-card-layout .hero-element {{ display: inline-flex; width: 28px; height: 28px; align-items: center; justify-content: center; overflow: hidden; border-radius: 7px; box-shadow: 0 0 0 1px rgb(255 255 255 / 15%), 0 5px 10px rgb(0 0 0 / 20%); }} body.official-card-layout .hero-element img {{ display: block; width: 100%; height: 100%; object-fit: contain; }} body.official-card-layout .hero-role {{ display: inline-flex; align-items: center; min-height: 24px; padding: 4px 8px; border: 1px solid rgb(173 246 255 / 68%); border-radius: 8px; color: #061524; background: linear-gradient(135deg, #b9f7ff, #2cb8e8); box-shadow: 0 4px 10px rgb(25 202 239 / 22%), inset 0 1px rgb(255 255 255 / 62%); font-size: 12px; font-weight: 900; line-height: 1.1; white-space: nowrap; }} body.official-card-layout .card-tags {{ display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 5px; margin-top: 10px; }} body.official-card-layout .card-tags .tag {{ min-width: 0; overflow: hidden; padding: 4px 5px; font-size: 11px; line-height: 1.2; text-align: center; text-overflow: ellipsis; white-space: nowrap; }} @media (prefers-reduced-motion: reduce) {{ body.official-card-layout .card-avatar {{ transition: none; }} body.official-card-layout button.card:is(:hover, :focus-visible) .card-avatar {{ transform: none; }} }}
+    body.official-card-layout .hero-metadata {{ display: grid; grid-template-columns: max-content minmax(0, 1fr); align-items: stretch; gap: 10px; margin-top: 9px; }} body.official-card-layout .hero-metadata .attribute-stack {{ height: 82px; justify-content: space-between; margin: 0; }} body.official-card-layout .hero-tag-reserve {{ display: grid; grid-template-columns: minmax(0, 1fr) 28px; grid-template-rows: repeat(3, 24px); gap: 5px 7px; min-height: 82px; }} body.official-card-layout .hero-tag-slot {{ grid-column: 1; }} body.official-card-layout .hero-tag-overflow {{ grid-column: 2; grid-row: 3; }}
     dialog {{ width: min(820px, calc(100% - 28px)); max-height: 88vh; overflow: auto; color: #edf2ff; background: #132038; border: 1px solid #516a93; border-radius: 14px; padding: 0; }} dialog::backdrop {{ background: rgb(0 0 0 / 65%); }}
     .detail {{ padding: 24px; }} .close {{ float: right; cursor: pointer; color: #dce8ff; background: transparent; border: 0; font-size: 26px; }} .detail-heading {{ display: flex; gap: 16px; align-items: center; padding-right: 34px; }} .detail-heading h2 {{ margin: 0; }} .hero-detail-header {{ position: sticky; top: 0; z-index: 1; display: flex; gap: 16px; align-items: center; width: calc(100% + 48px); margin: -24px -24px 18px; padding: 24px 58px 18px 24px; background: #132038; border-bottom: 1px solid #516a93; box-shadow: 0 5px 12px rgb(8 15 29 / 55%); }} .hero-detail-header .detail-close {{ position: absolute; top: 18px; right: 18px; z-index: 2; }} .hero-detail-header .detail-heading {{ flex: 1 1 280px; min-width: 0; padding-right: 0; }} .hero-detail-facts {{ display: grid; flex: 0 1 250px; grid-template-columns: repeat(2, minmax(105px, 1fr)); gap: 9px; }} .hero-detail-fact {{ min-width: 0; padding: 9px 11px; border-radius: 8px; background: #1c2b46; }} .hero-detail-fact strong {{ display: block; font-size: 22px; }} .stat-grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 9px; margin: 18px 0; }} .stat {{ background: #1c2b46; padding: 10px; border-radius: 8px; }} .skill {{ border-left: 3px solid #7aa6ff; background: #192942; padding: 12px; margin: 10px 0; white-space: pre-wrap; }} .upgrade {{ border-left-color: #f59e0b; }} .source {{ color: #fbbf24; font-size: 12px; margin-top: 6px; }}
     .status-detail {{ position: fixed; right: 24px; bottom: 24px; z-index: 3; width: min(620px, calc(100% - 28px)); max-height: min(560px, calc(100vh - 48px)); overflow: auto; color: #edf2ff; background: #132038; border: 1px solid #516a93; border-radius: 14px; box-shadow: 0 12px 32px rgb(0 0 0 / 45%); }} .status-term {{ cursor: pointer; border: 0; border-bottom: 1px dashed #8fb5ff; color: #a8c7ff; background: transparent; padding: 0; font: inherit; font-weight: 700; }} .status-term:hover, .status-term:focus {{ color: #d7e6ff; border-bottom-style: solid; }} .status-term-highlight {{ color: #c5d7ff; background: rgb(122 166 255 / 18%); border-radius: 3px; padding: 0 2px; font-weight: 700; }} .status-term-note {{ color: #b7c8e8; font-size: 0.92em; }} .status-content {{ margin: 16px 0 0; white-space: pre-wrap; line-height: 1.65; }}
@@ -327,7 +355,8 @@ def render_static_html(
       <section class="filter-control multi-select" id="rarity"><span class="control-label" id="rarity-label">稀有度</span><button class="multi-select-trigger" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="rarity-menu" aria-labelledby="rarity-label">全部</button><div class="multi-select-menu" id="rarity-menu" role="group" aria-labelledby="rarity-label" hidden><div class="multi-select-options"></div><button class="multi-select-clear" type="button">清空</button></div></section>
       <section class="filter-control multi-select" id="element"><span class="control-label" id="element-label">属性</span><button class="multi-select-trigger" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="element-menu" aria-labelledby="element-label">全部</button><div class="multi-select-menu" id="element-menu" role="group" aria-labelledby="element-label" hidden><div class="multi-select-options"></div><button class="multi-select-clear" type="button">清空</button></div></section>
       <section class="filter-control multi-select" id="role"><span class="control-label" id="role-label">职能</span><button class="multi-select-trigger" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="role-menu" aria-labelledby="role-label">全部</button><div class="multi-select-menu" id="role-menu" role="group" aria-labelledby="role-label" hidden><div class="multi-select-options"></div><button class="multi-select-clear" type="button">清空</button></div></section>
-      <section class="filter-control multi-select tag-select" id="tags"><span class="control-label" id="tags-label">标签</span><button class="multi-select-trigger" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="tags-menu" aria-labelledby="tags-label">全部</button><div class="multi-select-menu" id="tags-menu" role="group" aria-labelledby="tags-label" hidden><div class="multi-select-options"></div><button class="multi-select-clear" type="button">清空</button></div></section>
+      <section class="filter-control multi-select tag-select" id="hero-tags"><span class="control-label" id="hero-tags-label">英雄标签</span><button class="multi-select-trigger" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="hero-tags-menu" aria-labelledby="hero-tags-label">全部</button><div class="multi-select-menu" id="hero-tags-menu" role="group" aria-labelledby="hero-tags-label" hidden><div class="multi-select-options"></div><button class="multi-select-clear" type="button">清空</button></div></section>
+      <section class="filter-control multi-select tag-select" id="assistant-tags"><span class="control-label" id="assistant-tags-label">助手标签</span><button class="multi-select-trigger" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="assistant-tags-menu" aria-labelledby="assistant-tags-label">全部</button><div class="multi-select-menu" id="assistant-tags-menu" role="group" aria-labelledby="assistant-tags-label" hidden><div class="multi-select-options"></div><button class="multi-select-clear" type="button">清空</button></div></section>
       <label class="filter-control sort-control"><span class="control-label">排序</span><span class="sort-selects"><select id="sortField" aria-label="排序依据"><option value="cardId">卡片 ID</option><option value="name">名称</option><option value="rarity">稀有度</option><option value="hp">HP</option><option value="attack">攻击</option><option value="agility">速度</option></select><select id="sortDirection" aria-label="排序顺序"><option value="asc">升序</option><option value="desc">降序</option></select></span></label>
 {tag_settings_button}
     </section>
@@ -342,6 +371,7 @@ def render_static_html(
     const useOfficialCardLayout = {str(use_official_card_layout).lower()};
     const cards = catalog.cards;
     const assistantTags = catalog.assistantTags || [];
+    const heroTags = catalog.heroTags || [];
     const byId = new Map(cards.map(card => [card.key, card]));
     const statusById = new Map(catalog.statusTerms.map(term => [term.id, term]));
     const statusTermsByName = new Map();
@@ -411,7 +441,9 @@ def render_static_html(
           : `<span class="hero-element">${{escape(card.element.label)}}</span>`)
         : '';
       const role = card.role?.label ? `<span class="hero-role">${{escape(card.role.label)}}</span>` : '';
-      return `<div class="attribute-stack">${{element}}${{role}}</div>`;
+      const pinnedTags = (card.tags || []).filter(tag => tag.pinned);
+      const tagReserve = `<div class="hero-tag-reserve">${{pinnedTags.slice(0, 3).map(tag => `<span class="tag hero-tag-slot">${{escape(tag.label)}}</span>`).join('')}}${{pinnedTags.length > 3 ? `<span class="tag hero-tag-overflow">+${{pinnedTags.length - 3}}</span>` : ''}}</div>`;
+      return `<div class="hero-metadata"><div class="attribute-stack">${{element}}${{role}}</div>${{tagReserve}}</div>`;
     }}
     function useHeroElementFallback(image) {{
       const holder = image.closest('.hero-element');
@@ -488,55 +520,29 @@ def render_static_html(
     const heroes = cards.filter(card => card.kind === 'hero');
     setupMultiSelect('element', new Set(heroes.map(card => card.element?.label)));
     setupMultiSelect('role', new Set(heroes.map(card => card.role?.label)));
-    const tagById = new Map(assistantTags.map(tag => [tag.id, tag]));
-    const tagChildren = parentId => assistantTags.filter(tag => tag.parentId === parentId);
-    const selectedTagIds = new Set();
-    let tagMenuPath = [];
-    function selectedTagValues() {{ return new Set(selectedTagIds); }}
-    function tagPath(tagId) {{
-      const tag = tagById.get(tagId); return tag?.parentId ? [...tagPath(tag.parentId), tag.label] : tag ? [tag.label] : [];
-    }}
-    function updateTagLabel() {{
-      const labels = [...selectedTagValues()].map(tagId => tagById.get(tagId)?.label).filter(Boolean);
-      $('tags').querySelector('.multi-select-trigger').textContent = labels.length === 0 ? '全部' : labels.length === 1 ? labels[0] : `已选 ${{labels.length}} 项`;
-    }}
-    function renderTagLevel(parentId, depth) {{
-      const level = document.createElement('div'); level.className = 'tag-menu-level';
-      for (const tag of tagChildren(parentId)) {{
-        if (tagChildren(tag.id).length) {{
-          const branch = document.createElement('button'); branch.type = 'button'; branch.className = `tag-menu-branch${{tagMenuPath[depth] === tag.id ? ' is-active' : ''}}`; branch.textContent = tag.label;
-          const openBranch = event => {{
-            if (event.type === 'click') event.stopPropagation();
-            tagMenuPath = [...tagMenuPath.slice(0, depth), tag.id]; renderTagMenu();
-          }};
-          branch.addEventListener('mouseenter', openBranch); branch.addEventListener('focus', openBranch); branch.addEventListener('click', openBranch); level.append(branch); continue;
+    function setupTagSelector(id, tags) {{
+      const control = $(id); const tagById = new Map(tags.map(tag => [tag.id, tag])); const selected = new Set(); let menuPath = [];
+      const children = parentId => tags.filter(tag => tag.parentId === parentId);
+      const updateLabel = () => {{ const labels = [...selected].map(tagId => tagById.get(tagId)?.label).filter(Boolean); control.querySelector('.multi-select-trigger').textContent = labels.length === 0 ? '全部' : labels.length === 1 ? labels[0] : `已选 ${{labels.length}} 项`; }};
+      const renderLevel = (parentId, depth) => {{
+        const level = document.createElement('div'); level.className = 'tag-menu-level';
+        for (const tag of children(parentId)) {{
+          if (children(tag.id).length) {{ const branch = document.createElement('button'); branch.type = 'button'; branch.className = `tag-menu-branch${{menuPath[depth] === tag.id ? ' is-active' : ''}}`; branch.textContent = tag.label; const open = event => {{ if (event.type === 'click') event.stopPropagation(); menuPath = [...menuPath.slice(0, depth), tag.id]; renderMenu(); }}; branch.addEventListener('mouseenter', open); branch.addEventListener('focus', open); branch.addEventListener('click', open); level.append(branch); continue; }}
+          const label = document.createElement('label'); label.className = 'multi-select-option'; const input = document.createElement('input'); input.type = 'checkbox'; input.value = tag.id; input.checked = selected.has(tag.id); input.addEventListener('change', () => {{ if (input.checked) selected.add(tag.id); else selected.delete(tag.id); updateLabel(); render(); }}); label.append(input, document.createTextNode(tag.label)); level.append(label);
         }}
-        const label = document.createElement('label'); label.className = 'multi-select-option';
-        const input = document.createElement('input'); input.type = 'checkbox'; input.value = tag.id; input.checked = selectedTagIds.has(tag.id);
-        input.addEventListener('change', () => {{
-          if (input.checked) selectedTagIds.add(tag.id); else selectedTagIds.delete(tag.id);
-          updateTagLabel(); render();
-        }});
-        label.append(input, document.createTextNode(tag.label)); level.append(label);
-      }}
-      const activeBranchId = tagMenuPath[depth];
-      if (activeBranchId && tagChildren(activeBranchId).length) level.append(renderTagLevel(activeBranchId, depth + 1));
-      if (!level.childElementCount) level.textContent = '此分类下暂无可筛选标签。';
-      return level;
+        const active = menuPath[depth]; if (active && children(active).length) level.append(renderLevel(active, depth + 1)); if (!level.childElementCount) level.textContent = '此分类下暂无可筛选标签。'; return level;
+      }};
+      const renderMenu = () => control.querySelector('.multi-select-options').replaceChildren(renderLevel(null, 0));
+      control.querySelector('.multi-select-clear').addEventListener('click', () => {{ selected.clear(); updateLabel(); renderMenu(); render(); }}); renderMenu(); return selected;
     }}
-    function renderTagMenu() {{
-      const options = $('tags').querySelector('.multi-select-options'); options.replaceChildren(renderTagLevel(null, 0));
-    }}
-    $('tags').querySelector('.multi-select-clear').addEventListener('click', () => {{
-      selectedTagIds.clear(); updateTagLabel(); renderTagMenu(); render();
-    }});
-    renderTagMenu();
+    const selectedHeroTagIds = setupTagSelector('hero-tags', heroTags);
+    const selectedAssistantTagIds = setupTagSelector('assistant-tags', assistantTags);
     $('snapshot').textContent = `快照：${{catalog.metadata.snapshotId}} · 英雄 ${{catalog.metadata.heroCardCount}} 张（仅 60 级属性）· 助手 ${{catalog.metadata.sidekickCardCount}} 张（最高技能阶段）· 技能强化 ${{catalog.metadata.skillUpgradeCount}} 项`;
     function matches(card) {{
       const query = $('query').value.trim().toLocaleLowerCase();
       const haystack = [card.name, card.originalName, card.cardId, ...card.aliases, ...card.skills.flatMap(skill => [skill.name, skill.originalName, skill.description]), ...(card.tags || []).map(tag => tag.label)].join('\\n').toLocaleLowerCase();
-      const rarity = selectedValues('rarity'); const element = selectedValues('element'); const role = selectedValues('role'); const tags = selectedTagValues();
-      return (!query || haystack.includes(query)) && (!$('kind').value || card.kind === $('kind').value) && (!rarity.size || rarity.has('★'.repeat(displayRarity(card)))) && (!element.size || element.has(card.element?.label)) && (!role.size || role.has(card.role?.label)) && (!tags.size || (card.kind === 'sidekick' && [...tags].every(tagId => card.tags?.some(tag => tag.id === tagId))));
+      const rarity = selectedValues('rarity'); const element = selectedValues('element'); const role = selectedValues('role'); const tags = card.kind === 'hero' ? selectedHeroTagIds : selectedAssistantTagIds;
+      return (!query || haystack.includes(query)) && (!$('kind').value || card.kind === $('kind').value) && (!rarity.size || rarity.has('★'.repeat(displayRarity(card)))) && (!element.size || element.has(card.element?.label)) && (!role.size || role.has(card.role?.label)) && (!tags.size || [...tags].every(tagId => card.tags?.some(tag => tag.id === tagId)));
     }}
     function sortValue(card, field) {{
       if (field === 'name') return card.name;
@@ -584,7 +590,10 @@ def render_static_html(
               : [...sidekickTagLabels.slice(0, 3), `+${{sidekickTagLabels.length - 3}}`])
             : [];
           const tagsMarkup = tags.length ? `<div class="tags card-tags">${{tags.map(tag => `<span class="tag">${{escape(tag)}}</span>`).join('')}}</div>` : '';
-          const officialCardMarkup = `<div class="card-layout">${{characterPortraitMarkup(card)}}<div class="card-copy"><div class="name-copy"><h3 class="card-name">${{escape(card.name)}}</h3><p class="card-jp-name">${{escape(card.originalName)}} · #${{escape(card.cardId)}}</p></div>${{heroMetadataMarkup(card)}}${{tagsMarkup}}</div></div>`;
+          const officialCardIdentity = card.kind === 'hero'
+            ? card.originalName
+            : `${{card.originalName}} · #${{card.cardId}}`;
+          const officialCardMarkup = `<div class="card-layout">${{characterPortraitMarkup(card)}}<div class="card-copy"><div class="name-copy"><h3 class="card-name">${{escape(card.name)}}</h3><p class="card-jp-name">${{escape(officialCardIdentity)}}</p></div>${{heroMetadataMarkup(card)}}${{tagsMarkup}}</div></div>`;
           const legacyCardMarkup = `<div class="card-layout">${{avatarMarkup(card, 'avatar-small')}}<div><div class="card-title"><span>${{escape(card.name)}}</span><span>${{escape('★'.repeat(displayRarity(card)))}}</span></div><div class="muted">${{escape(card.originalName)}} · #${{escape(card.cardId)}}</div><div class="tags">${{legacyTags.filter(Boolean).map(tag => `<span class="tag">${{escape(tag)}}</span>`).join('')}}</div></div></div>`;
           button.innerHTML = useOfficialCardLayout ? officialCardMarkup : legacyCardMarkup;
           grid.append(button);
@@ -605,7 +614,7 @@ def render_static_html(
         : `${{detailClose}}${{heading}}`;
       const upgradeHtml = card.skillUpgrades.length ? `<h3>技能强化（独立记录）</h3>${{card.skillUpgrades.map(upgrade => `<article class="skill upgrade"><strong>${{escape(upgrade.before.name)}} → ${{escape(upgrade.after.name)}}</strong><div class="muted">技能 #${{escape(upgrade.before.skillId)}} → #${{escape(upgrade.after.skillId)}}${{upgrade.questId ? ` · 任务 #${{escape(upgrade.questId)}}` : ''}}</div><div><b>强化前：</b>${{descriptionMarkup(upgrade.before)}}</div><div><b>强化后（最高等级）：</b>${{descriptionMarkup(upgrade.after)}}</div>${{sourceMarkup(upgrade.after)}}</article>`).join('')}}` : '';
       const skillCostMarkup = skill => skill.viewCost != null ? `<div class="muted">消耗 View：${{escape(skill.viewCost)}}</div>` : '';
-      const tagHtml = card.kind === 'sidekick' && card.tags?.length ? `<h3>助手标签</h3><div class="tags">${{card.tags.map(tag => `<span class="tag">${{escape(tag.path.join(' › '))}}</span>`).join('')}}</div>` : '';
+      const tagHtml = card.tags?.length ? `<h3>${{kindLabel(card.kind)}}标签</h3><div class="tags">${{card.tags.map(tag => `<span class="tag">${{escape(tag.path.join(' › '))}}</span>`).join('')}}</div>` : '';
       $('detailContent').innerHTML = `${{heroHeader}}<div class="stat-grid">${{stats.map(([label,value]) => `<div class="stat"><div class="muted">${{label}}</div><strong>${{escape(value ?? '—')}}</strong></div>`).join('')}}</div>${{tagHtml}}<h3>关联技能</h3>${{card.skills.map(skill => `<article class="skill"><strong>${{escape(skill.relation)}} · ${{escape(skill.name)}}</strong><div class="muted">${{escape(skill.originalName)}} · #${{escape(skill.skillId)}}</div>${{skillCostMarkup(skill)}}<div>${{descriptionMarkup(skill)}}</div>${{sourceMarkup(skill)}}</article>`).join('')}}${{upgradeHtml}}`;
       $('detail').showModal();
     }}
@@ -1271,13 +1280,18 @@ def main() -> None:
     parser.add_argument("--catalog", type=Path, default=DEFAULT_CATALOG_PATH)
     parser.add_argument("--site", type=Path, default=DEFAULT_SITE_PATH)
     parser.add_argument("--assistant-tags", type=Path, default=DEFAULT_ASSISTANT_TAGS_PATH)
+    parser.add_argument("--hero-tags", type=Path, default=DEFAULT_HERO_TAGS_PATH)
     parser.add_argument("--xlsx", type=Path, help="同时导出 Excel 工作簿")
     parser.add_argument(
         "--node",
         default=str(CODEX_NODE_PATH) if CODEX_NODE_PATH.is_file() else shutil.which("node") or "node",
     )
     args = parser.parse_args()
-    catalog = build_catalog(args.snapshot_dir, assistant_tags_path=args.assistant_tags)
+    catalog = build_catalog(
+        args.snapshot_dir,
+        assistant_tags_path=args.assistant_tags,
+        hero_tags_path=args.hero_tags,
+    )
     write_catalog(catalog, args.catalog)
     write_static_site(catalog, args.site)
     if args.xlsx:

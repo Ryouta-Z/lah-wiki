@@ -64,20 +64,21 @@ class AssistantTagAdminTest(unittest.TestCase):
         self.assertIn('id="pinnedTags"', page.text)
         self.assertIn("置顶标签（0/3）", page.text)
         self.assertIn("drag-handle", page.text)
-        self.assertIn("/api/tags/order", page.text)
+        self.assertIn("/api/${mode}/tags/order", page.text)
         self.assertIn("depth === 0 ? 'below' : 'side'", page.text)
         self.assertIn("const menuGap = 16", page.text)
         self.assertIn("window.innerWidth", page.text)
         self.assertIn("tag-option-label", page.text)
         self.assertIn("height: 22px", page.text)
         self.assertIn("input.click()", page.text)
+        self.assertIn("if (!children(tag.id).length)", page.text)
 
-        state = self.client.get("/api/state")
+        state = self.client.get("/api/assistant/state")
         self.assertEqual(state.status_code, 200)
-        self.assertEqual(state.json()["sidekicks"][0]["key"], "sidekick:100111")
+        self.assertEqual(state.json()["cards"][0]["key"], "sidekick:100111")
 
         saved = self.client.put(
-            "/api/sidekicks/sidekick:100111/tags",
+            "/api/assistant/cards/sidekick:100111/tags",
             json={"tagIds": ["target-self", "value-damage"], "pinnedTagIds": ["value-damage"]},
         )
         self.assertEqual(saved.status_code, 200)
@@ -85,19 +86,19 @@ class AssistantTagAdminTest(unittest.TestCase):
         self.assertEqual(saved.json()["config"]["pinnedAssignments"], {"sidekick:100111": ["value-damage"]})
 
         saved_without_pins = self.client.put(
-            "/api/sidekicks/sidekick:100111/tags",
+            "/api/assistant/cards/sidekick:100111/tags",
             json={"tagIds": ["target-self"]},
         )
         self.assertEqual(saved_without_pins.status_code, 200)
         self.assertEqual(saved_without_pins.json()["config"]["pinnedAssignments"], {})
 
-        rejected = self.client.put("/api/sidekicks/sidekick:100111/tags", json={"tagIds": ["targeting"]})
+        rejected = self.client.put("/api/assistant/cards/sidekick:100111/tags", json={"tagIds": ["targeting"]})
         self.assertEqual(rejected.status_code, 400)
         self.assertIn("叶子标签", rejected.json()["detail"])
 
     def test_creates_a_child_tag(self):
         created = self.client.post(
-            "/api/tags",
+            "/api/assistant/tags",
             json={"id": "damage-over-time", "label": "持续伤害", "parentId": "effect"},
         )
 
@@ -110,7 +111,7 @@ class AssistantTagAdminTest(unittest.TestCase):
     def test_reorders_complete_sibling_group_and_rejects_invalid_order(self):
         child_ids = ["target-none", "target-enemy-all", "target-enemy-multi", "target-enemy-single", "target-ally-all", "target-ally-multi", "target-ally-single", "target-self"]
 
-        saved = self.client.put("/api/tags/order", json={"parentId": "targeting", "tagIds": child_ids})
+        saved = self.client.put("/api/assistant/tags/order", json={"parentId": "targeting", "tagIds": child_ids})
 
         self.assertEqual(saved.status_code, 200)
         self.assertEqual(
@@ -118,21 +119,21 @@ class AssistantTagAdminTest(unittest.TestCase):
             child_ids,
         )
 
-        rejected = self.client.put("/api/tags/order", json={"parentId": "targeting", "tagIds": ["target-self"]})
+        rejected = self.client.put("/api/assistant/tags/order", json={"parentId": "targeting", "tagIds": ["target-self"]})
         self.assertEqual(rejected.status_code, 400)
         self.assertIn("全部直接子标签", rejected.json()["detail"])
 
     def test_delete_requires_confirmation_and_clears_affected_assignments(self):
         self.client.put(
-            "/api/sidekicks/sidekick:100111/tags",
+            "/api/assistant/cards/sidekick:100111/tags",
             json={"tagIds": ["target-self"], "pinnedTagIds": ["target-self"]},
         )
 
-        preview = self.client.delete("/api/tags/targeting")
+        preview = self.client.delete("/api/assistant/tags/targeting")
         self.assertEqual(preview.status_code, 409)
         self.assertEqual(preview.json()["detail"]["affected"], 1)
 
-        deleted = self.client.delete("/api/tags/targeting?confirm=true")
+        deleted = self.client.delete("/api/assistant/tags/targeting?confirm=true")
         self.assertEqual(deleted.status_code, 200)
         self.assertEqual(deleted.json()["config"]["assignments"], {})
         self.assertEqual(deleted.json()["config"]["pinnedAssignments"], {})

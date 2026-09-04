@@ -31,8 +31,8 @@ BUILD_MARKER = ".lah-vercel-readonly-build"
 FORBIDDEN_HTML_PATTERNS = (
     r"(?i)127\.0\.0\.1",
     r"(?i)localhost",
-    r"(?i)/api/tags",
-    r"(?i)assistant_tag_admin",
+    r"(?i)/api/[^\"']*(tags|cards)",
+    r"(?i)(assistant_tag_admin|tag_admin)",
     r"(?i)fastapi",
     r"(?i)uvicorn",
     r"(?i)\bfetch\s*\(",
@@ -83,7 +83,7 @@ def validate_deployment_package(
             raise ValueError(f"公开首页包含禁止内容：{pattern}")
     if 'id="tagSettings"' in html or 'id="tagSettingsDetail"' in html:
         raise ValueError("公开首页仍包含标签管理入口")
-    if "const catalog =" not in html or 'id="tags"' not in html or "avatarMarkup" not in html:
+    if "const catalog =" not in html or 'id="hero-tags"' not in html or 'id="assistant-tags"' not in html or "avatarMarkup" not in html:
         raise ValueError("公开首页缺少查询、标签筛选或头像展示功能")
 
     expected_filenames = _referenced_avatar_filenames(catalog) if catalog is not None else set()
@@ -116,6 +116,7 @@ def build_vercel_readonly(
             render_static_html(
                 catalog,
                 "assets/images/icon",
+                use_official_card_layout=True,
                 include_tag_settings=False,
             ),
             encoding="utf-8",

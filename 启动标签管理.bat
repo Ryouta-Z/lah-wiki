@@ -18,8 +18,8 @@ if %errorlevel%==0 (
   exit /b 0
 )
 
-echo Starting the assistant tag manager...
+echo Starting the tag manager...
 start "" /b "%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -WindowStyle Hidden -Command "Start-Sleep -Seconds 2; Start-Process 'http://127.0.0.1:8787/'"
-"%UV_EXE%" run python scripts\assistant_tag_admin.py
+"%UV_EXE%" run python scripts\tag_admin.py
 
 if errorlevel 1 pause

@@ -37,6 +37,7 @@ class VercelReadonlyTest(unittest.TestCase):
             "skillUpgrades": [],
             "statusTerms": [],
             "assistantTags": [{"id": "sample-tag", "label": "样例", "parentId": None}],
+            "heroTags": [],
         }
 
     def test_builds_a_static_readonly_package_without_admin_or_local_dependencies(self):
@@ -58,7 +59,9 @@ class VercelReadonlyTest(unittest.TestCase):
             self.assertTrue((output_dir / "assets/images/icon/hero-sample.png").is_file())
             self.assertTrue((output_dir / "assets/images/icon/sidekick-sample.png").is_file())
             self.assertIn("const catalog =", html)
-            self.assertIn('id="tags"', html)
+            self.assertIn('id="hero-tags"', html)
+            self.assertIn('id="assistant-tags"', html)
+            self.assertIn('<body class="official-card-layout">', html)
             self.assertIn("avatarMarkup", html)
             self.assertNotIn('id="tagSettings"', html)
             self.assertNotIn("127.0.0.1", html)

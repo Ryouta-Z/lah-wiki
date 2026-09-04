@@ -14,6 +14,7 @@ from scripts.lah_quickref import (
     render_static_html,
 )
 from scripts.assistant_tags import default_assistant_tag_config, write_assistant_tag_config
+from scripts.hero_tags import default_hero_tag_config, write_hero_tag_config
 
 
 class LahQuickrefTest(unittest.TestCase):
@@ -301,13 +302,14 @@ class LahQuickrefTest(unittest.TestCase):
             encoding="utf-8",
         )
 
-    def _catalog(self, source: Path, assistant_tags_path: Path | None = None) -> dict:
+    def _catalog(self, source: Path, assistant_tags_path: Path | None = None, hero_tags_path: Path | None = None) -> dict:
         return build_catalog(
             source,
             source / "aliases.json",
             source / "char_map.json",
             source / "icons",
             assistant_tags_path=assistant_tags_path,
+            hero_tags_path=hero_tags_path,
         )
 
     def test_build_catalog_keeps_hero_and_sidekick_cards_separate(self):
@@ -440,6 +442,28 @@ class LahQuickrefTest(unittest.TestCase):
         )
         self.assertNotIn("tags", hero)
         self.assertEqual(len(catalog["assistantTags"]), 25)
+
+    def test_catalog_embeds_independent_hero_tags_without_tagging_sidekicks(self):
+        with tempfile.TemporaryDirectory() as directory:
+            source = Path(directory)
+            self._write_snapshot(source)
+            tags_path = source / "hero_tags.json"
+            config = default_hero_tag_config()
+            config["tags"] = [
+                {"id": "role", "label": "定位", "parentId": None},
+                {"id": "attack", "label": "攻击", "parentId": "role"},
+            ]
+            config["assignments"] = {"hero:100116": ["attack"]}
+            config["pinnedAssignments"] = {"hero:100116": ["attack"]}
+            write_hero_tag_config(tags_path, config)
+            catalog = self._catalog(source, hero_tags_path=tags_path)
+
+        hero = next(card for card in catalog["cards"] if card["key"] == "hero:100116")
+        sidekick = next(card for card in catalog["cards"] if card["key"] == "sidekick:100111")
+        self.assertEqual(hero["tags"], [{"id": "attack", "label": "攻击", "path": ["定位", "攻击"], "pinned": True}])
+        self.assertNotIn("tags", sidekick)
+        self.assertEqual(catalog["heroTags"], config["tags"])
+        self.assertEqual(catalog["assistantTags"], [])
 
     def test_official_snapshot_links_status_terms_for_heroes_sidekicks_and_upgrades(self):
         catalog = build_catalog(DEFAULT_SNAPSHOT_DIR)
@@ -663,21 +687,22 @@ class LahQuickrefTest(unittest.TestCase):
         self.assertIn("!role.size || role.has(card.role?.label)", html)
         self.assertIn("menu.hidden = !menu.hidden", html)
         self.assertIn("if (!event.target.closest('.multi-select'))", html)
-        self.assertIn('id="tags"', html)
+        self.assertIn('id="hero-tags"', html)
+        self.assertIn('id="assistant-tags"', html)
         self.assertIn("const assistantTags = catalog.assistantTags || [];", html)
-        self.assertIn("const selectedTagIds = new Set();", html)
-        self.assertIn("let tagMenuPath = [];", html)
-        self.assertIn("function renderTagLevel(parentId, depth)", html)
-        self.assertIn("branch.addEventListener('mouseenter', openBranch)", html)
-        self.assertIn("branch.addEventListener('focus', openBranch)", html)
+        self.assertIn("const heroTags = catalog.heroTags || [];", html)
+        self.assertIn("function setupTagSelector(id, tags)", html)
+        self.assertIn("const selectedHeroTagIds = setupTagSelector('hero-tags', heroTags);", html)
+        self.assertIn("const selectedAssistantTagIds = setupTagSelector('assistant-tags', assistantTags);", html)
+        self.assertIn("menuPath = []", html)
+        self.assertIn("branch.addEventListener('mouseenter', open)", html)
+        self.assertIn("branch.addEventListener('focus', open)", html)
         self.assertIn("if (event.type === 'click') event.stopPropagation();", html)
-        self.assertIn("selectedTagIds.add(tag.id)", html)
-        self.assertIn("selectedTagIds.delete(tag.id)", html)
-        self.assertIn("selectedTagIds.clear()", html)
         self.assertIn(".tag-select .multi-select-options", html)
         self.assertIn(".tag-menu-level .tag-menu-level", html)
         self.assertIn("tag.path.join(' › ')", html)
-        self.assertIn("card.kind === 'sidekick' && [...tags].every", html)
+        self.assertIn("const tags = card.kind === 'hero' ? selectedHeroTagIds : selectedAssistantTagIds;", html)
+        self.assertIn("[...tags].every(tagId => card.tags?.some(tag => tag.id === tagId))", html)
         self.assertIn("...(card.tags || []).map(tag => tag.label)", html)
         self.assertIn("...orderedSidekickTags.slice(0, 3).map(tag => tag.label)", html)
         self.assertNotIn("['元素',card.element?.label", html)
@@ -711,7 +736,7 @@ class LahQuickrefTest(unittest.TestCase):
         self.assertIn('id="tagSettings"', html)
         self.assertIn('id="tagSettingsDetail"', html)
         self.assertIn("http://127.0.0.1:8787/", html)
-        self.assertIn("assistant_tag_admin.py", html)
+        self.assertIn("scripts/tag_admin.py", html)
 
     def test_avatar_mapping_uses_exact_japanese_then_chinese_and_never_guesses(self):
         with tempfile.TemporaryDirectory() as directory:
