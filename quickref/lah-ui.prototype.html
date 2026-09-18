@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Live A Hero 本地速查</title>
+  <title>LAH · 双版本 UI 原型</title>
   <style>
     :root { color-scheme: dark; font-family: "Microsoft YaHei UI", system-ui, sans-serif; background: #101827; color: #e6edf8; }
     * { box-sizing: border-box; } body { margin: 0; min-width: 320px; }
@@ -24,91 +24,47 @@
     .detail { padding: 24px; } .close { float: right; cursor: pointer; color: #dce8ff; background: transparent; border: 0; font-size: 26px; } .detail-heading { display: flex; gap: 16px; align-items: center; padding-right: 34px; } .detail-heading h2 { margin: 0; } .hero-detail-header { position: sticky; top: 0; z-index: 1; display: flex; gap: 16px; align-items: center; width: calc(100% + 48px); margin: -24px -24px 18px; padding: 24px 58px 18px 24px; background: #132038; border-bottom: 1px solid #516a93; box-shadow: 0 5px 12px rgb(8 15 29 / 55%); } .hero-detail-header .detail-close { position: absolute; top: 18px; right: 18px; z-index: 2; } .hero-detail-header .detail-heading { flex: 1 1 280px; min-width: 0; padding-right: 0; } .hero-detail-facts { display: grid; flex: 0 1 250px; grid-template-columns: repeat(2, minmax(105px, 1fr)); gap: 9px; } .hero-detail-fact { min-width: 0; padding: 9px 11px; border-radius: 8px; background: #1c2b46; } .hero-detail-fact strong { display: block; font-size: 22px; } .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 9px; margin: 18px 0; } .stat { background: #1c2b46; padding: 10px; border-radius: 8px; } .skill { border-left: 3px solid #7aa6ff; background: #192942; padding: 12px; margin: 10px 0; white-space: pre-wrap; } .upgrade { border-left-color: #f59e0b; } .source { color: #fbbf24; font-size: 12px; margin-top: 6px; }
     .status-detail { position: fixed; right: 24px; bottom: 24px; z-index: 3; width: min(620px, calc(100% - 28px)); max-height: min(560px, calc(100vh - 48px)); overflow: auto; color: #edf2ff; background: #132038; border: 1px solid #516a93; border-radius: 14px; box-shadow: 0 12px 32px rgb(0 0 0 / 45%); } .status-term { cursor: pointer; border: 0; border-bottom: 1px dashed #8fb5ff; color: #a8c7ff; background: transparent; padding: 0; font: inherit; font-weight: 700; } .status-term:hover, .status-term:focus { color: #d7e6ff; border-bottom-style: solid; } .status-term-highlight { color: #c5d7ff; background: rgb(122 166 255 / 18%); border-radius: 3px; padding: 0 2px; font-weight: 700; } .status-term-note { color: #b7c8e8; font-size: 0.92em; } .status-content { margin: 16px 0 0; white-space: pre-wrap; line-height: 1.65; }
     .empty { color: #a9b7cf; margin: 20px 0; } @media (max-width: 1119px) { body.official-card-layout .results { grid-template-columns: repeat(3, minmax(0, 1fr)); } } @media (max-width: 860px) { .controls { grid-template-columns: repeat(2, minmax(0, 1fr)); } .controls input { grid-column: span 2; } body.official-card-layout .results { grid-template-columns: repeat(2, minmax(0, 1fr)); } } @media (max-width: 600px) { input, select, .controls button { padding: 9px; font-size: 14px; } body.official-card-layout .results { grid-template-columns: 1fr; } body.official-card-layout .card-layout { grid-template-columns: 116px minmax(0, 1fr); gap: 14px; } body.official-card-layout .portrait-block { min-height: 139px; } body.official-card-layout .portrait-shell { width: 112px; height: 112px; } body.official-card-layout .card-avatar { inset: 8px; } body.official-card-layout .card-name { font-size: 22px; } .tag-menu-level .tag-menu-level { position: static; width: auto; min-width: 0; margin-top: 8px; } .hero-detail-header { flex-wrap: wrap; align-items: flex-start; } .hero-detail-facts { width: 100%; flex-basis: 100%; } .sort-selects { grid-template-columns: 1fr; gap: 6px; } .sort-selects select, .sort-selects select:first-child, .sort-selects select + select { border: 1px solid #394867; border-radius: 9px; } }
-    /* LAH 查询界面：同一数据与状态的紧凑查找、标签查找两种呈现。 */
-    body.official-card-layout { color: #20303a; background: #f4f5f1; }
-    body.official-card-layout::before { content: ''; position: fixed; z-index: -1; inset: 0; opacity: .42; background-image: radial-gradient(#c8d0cc 1.2px, transparent 1.7px), linear-gradient(45deg, transparent 48%, #dbe0dc 49%, #dbe0dc 51%, transparent 52%); background-size: 32px 32px, 64px 64px; }
-    body.official-card-layout header { padding: 22px max(18px, calc((100vw - 1220px) / 2)); color: #f7fbfb; background: #223238; box-shadow: 0 4px 14px rgb(15 28 31 / 20%); }
-    body.official-card-layout main { width: min(1220px, calc(100% - 32px)); margin-top: 18px; }
-    body.official-card-layout .controls { display: none !important; }
-    body.official-card-layout .masthead { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-    body.official-card-layout h1 { font-size: clamp(25px, 4vw, 36px); letter-spacing: -.03em; }
-    body.official-card-layout header p { max-width: 75ch; margin: 6px 0 14px; color: #cbe0df; font-size: 14px; }
-    .edition-switch, .kinds, .actions { display: flex; flex-wrap: wrap; gap: 8px; }
-    .edition-switch button, .kind-button, .ui-button { cursor: pointer; border: 1px solid #748489; border-radius: 8px; padding: 8px 14px; color: #253438; background: linear-gradient(155deg, #fff, #e3e7e6); box-shadow: 0 3px 0 #aeb6b7, 0 6px 12px rgb(32 48 53 / 13%); font: inherit; font-weight: 800; }
-    .edition-switch button[aria-pressed=true], .kind-button[aria-pressed=true], .ui-button.primary { border-color: #3b99b2; color: #123a48; background: linear-gradient(155deg, #a9edf7, #60c7df); box-shadow: 0 3px 0 #33849b, 0 6px 13px rgb(29 124 150 / 23%); }
-    .edition-switch button:focus-visible, .kind-button:focus-visible, .ui-button:focus-visible, body.official-card-layout button.card:focus-visible { outline: 3px solid #ff9b3d; outline-offset: 3px; }
-    .searchbox input { width: min(650px, 100%); min-height: 42px; border: 1px solid #7b999f; border-radius: 8px; padding: 10px 13px; color: #21353c; background: #f9ffff; font: inherit; font-size: 16px; }
-    .toolbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
-    .actions { justify-content: flex-end; }
-    .summary { align-items: center; margin: 12px 0 18px; color: #4e6166; }
-    .count { color: #1c3b45; font-weight: 900; }
-    .active-chip { border: 1px solid #9acbd2; border-radius: 999px; padding: 4px 9px; color: #20515d; background: #dff3f4; font-size: 12px; }
-    .clear-link { cursor: pointer; border: 0; color: #176b82; background: transparent; font: inherit; font-weight: 800; text-decoration: underline; text-underline-offset: 3px; }
-    .sort-tooltip { position: fixed; z-index: 30; max-width: min(300px, calc(100vw - 24px)); border: 1px solid #243b42; border-radius: 7px; padding: 7px 10px; color: #f8ffff; background: #243a41; box-shadow: 0 5px 13px rgb(20 43 49 / 28%); font-size: 13px; font-weight: 800; line-height: 1.35; opacity: 0; pointer-events: none; transform: translateY(4px); visibility: hidden; transition: opacity 120ms ease-out, transform 120ms ease-out, visibility 0s linear 120ms; }
-    .sort-tooltip.is-visible { opacity: 1; transform: translateY(0); visibility: visible; transition-delay: 0s; }
-    body.official-card-layout .groups { gap: 24px; }
-    body.official-card-layout .groups h2 { display: inline-flex; align-items: center; min-height: 42px; margin: 0 0 12px; padding: 7px 18px; border-radius: 0 22px 22px 0; color: #f7fbfb; background: #26373b; font-size: 21px; }
-    body.official-card-layout .groups h2::before, .dialog-heading::before { content: ''; width: 0; height: 0; margin-right: 10px; border-top: 10px solid transparent; border-bottom: 10px solid transparent; border-left: 15px solid #ff9c3d; }
-    body.official-card-layout .results { grid-template-columns: repeat(auto-fill, minmax(248px, 1fr)); gap: 12px; }
-    body.official-card-layout button.card { min-height: 144px; overflow: hidden; border: 1px solid #9ebbc2; border-radius: 13px; padding: 14px; color: #23353d; background: #fffefa; box-shadow: 0 4px 10px rgb(45 73 78 / 12%); }
-    body.official-card-layout button.card:hover { border-color: #37a3bd; background: #f0fbfd; box-shadow: 0 6px 14px rgb(43 122 139 / 20%); }
-    .proto-card-body { display: grid; grid-template-columns: 104px minmax(0, 1fr); gap: 13px; align-items: start; }
-    .portrait { position: relative; width: 104px; min-width: 0; padding-bottom: 22px; }
-    .portrait-face { position: relative; width: 100px; height: 100px; overflow: hidden; background: #d4dcda; }
-    .portrait.hero .portrait-face { border-radius: 9px; }
-    .portrait .card-avatar { position: absolute; z-index: 1; inset: 6% !important; width: auto !important; height: auto !important; overflow: hidden; border: 0 !important; border-radius: 0 !important; background: transparent !important; transform: none !important; transition: none !important; }
-    .portrait .card-avatar img { display: block; width: 100%; height: 100%; object-fit: cover; transform: scale(1); transition: transform 300ms cubic-bezier(.23, 1, .32, 1); }
-    body.official-card-layout button.card:is(:hover, :focus, :focus-visible) .portrait .card-avatar img { transform: scale(1.10); }
-    .portrait .official-frame { position: absolute; z-index: 3; inset: 0; width: 100%; height: 100%; pointer-events: none; }
-    .portrait .element-mark { position: absolute; z-index: 4; top: 4px; left: 4px; width: 25px; height: 25px; }
-    .portrait.sidekick { --shield-outline: polygon(0 9%, 25% 2%, 50% 0, 75% 2%, 100% 9%, 100% 77%, 50% 100%, 0 77%); }
-    .portrait.sidekick .portrait-face { clip-path: var(--shield-outline); background: #667276; }
-    .portrait.sidekick .portrait-face::before { content: ''; position: absolute; z-index: 0; inset: 2%; clip-path: var(--shield-outline); background: #d8dcd9; }
-    .portrait.sidekick .card-avatar { clip-path: var(--shield-outline); }
-    .rarity-stars { position: absolute; inset: auto 0 0; display: flex; justify-content: center; gap: 1px; height: 22px; color: #1cb5c0; filter: drop-shadow(0 1px #305258); }
-    .portrait.hero .rarity-stars { color: #ecb33b; }
-    .rarity-stars svg { width: 20px; height: 20px; fill: currentColor; stroke: #2d565c; stroke-width: 1.5px; }
-    .proto-copy { min-width: 0; }
-    .proto-copy h3 { margin: 5px 0 3px; color: #213640; font-size: 21px; line-height: 1.2; overflow-wrap: anywhere; }
-    .proto-jp { color: #597078; font-size: 14px; line-height: 1.4; overflow-wrap: anywhere; }
-    .proto-meta, .proto-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 9px; }
-    .proto-meta span, .proto-tags span { max-width: 100%; border-radius: 5px; padding: 4px 7px; color: #31525c; background: #edf3f3; font-size: 13px; overflow-wrap: anywhere; }
-    .proto-tags span { color: #44656b; background: #e1efed; }
-    body[data-edition=game] .results { grid-template-columns: repeat(auto-fill, minmax(116px, 1fr)); gap: 13px; }
-    body[data-edition=game] button.card { min-height: 0; padding: 9px; text-align: center; }
-    body[data-edition=game] .proto-card-body { display: block; }
-    body[data-edition=game] .portrait { width: 100%; padding-bottom: 20px; }
-    body[data-edition=game] .portrait-face { width: min(100%, 100px); height: auto; aspect-ratio: 1; margin: 0 auto; }
-    body[data-edition=game] .proto-copy h3 { margin: 2px 0 0; font-size: 15px; }
-    body[data-edition=game] .proto-jp, body[data-edition=game] .proto-meta, body[data-edition=game] .proto-tags { display: none; }
-    .ui-dialog { width: min(880px, calc(100% - 28px)); max-height: min(720px, calc(100vh - 28px)); border: 3px solid #334145; border-radius: 16px; color: #26383e; background: #f7f8f5; box-shadow: 0 14px 44px rgb(12 25 29 / 42%); }
-    .ui-dialog::backdrop { background: rgb(14 25 28 / 58%); }
-    .dialog-layout { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; max-height: inherit; }
-    .dialog-heading { display: flex; align-items: center; min-height: 58px; margin: 0; padding: 12px 18px; color: #fff; background: linear-gradient(#3d4c50, #263438); font-size: 22px; }
-    .dialog-scroll { min-height: 0; overflow: auto; padding: 18px; }
-    .dialog-footer { position: sticky; bottom: 0; display: flex; justify-content: flex-end; gap: 12px; padding: 14px 18px; border-top: 1px solid #cbd4d2; background: #fffefa; }
-    .ui-button.reset { margin-right: auto; }
-    .filter-section { padding: 0 0 18px; }
-    .filter-section + .filter-section { border-top: 1px solid #bdcdca; padding-top: 17px; }
-    .filter-section h3 { margin: 0 0 10px; color: #384b50; font-size: 17px; }
-    .dialog-note { margin: 0 0 18px; color: #53676c; line-height: 1.55; }
-    .choices { display: flex; flex-wrap: wrap; gap: 9px; }
-    .choice { cursor: pointer; border: 1px solid #9caaac; border-radius: 8px; padding: 8px 13px; color: #37494e; background: linear-gradient(155deg, #fff, #e7eae9); box-shadow: 0 2px 0 #c4cbca; font: inherit; font-weight: 700; }
-    .choice[aria-pressed=true] { border-color: #2d9bb4; color: #153f4d; background: #8cdeee; box-shadow: 0 2px 0 #4aafc3; }
-    .tag-crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; margin: 0 0 12px; color: #627277; font-size: 12px; }
-    .tag-crumb { border: 0; padding: 3px 4px; color: #266d80; background: transparent; font: inherit; text-decoration: underline; text-underline-offset: 3px; }
-    .tag-crumb:last-of-type { color: #34484d; font-weight: 800; text-decoration: none; }
-    .tag-branch { display: inline-flex; align-items: center; justify-content: space-between; gap: 12px; }
-    .selected-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
-    .selected-tag { display: inline-flex; align-items: center; gap: 5px; max-width: 100%; border: 1px solid #91c6d0; border-radius: 6px; padding: 5px 6px 5px 9px; color: #254c58; background: #def2f5; font-size: 12px; overflow-wrap: anywhere; }
-    .selected-tag button { flex: 0 0 auto; width: 19px; height: 19px; cursor: pointer; border: 0; border-radius: 50%; color: #244c58; background: #b7e4eb; font: inherit; line-height: 1; }
-    .empty { margin: 28px 0; padding: 28px; border: 1px solid #b8cccd; border-radius: 12px; color: #53686d; background: #fbfdfb; text-align: center; }
-    .footnote { margin: 34px 0 0; color: #637478; font-size: 13px; }
-    @media (max-width: 600px) { body.official-card-layout main { width: min(100% - 22px, 1220px); } body.official-card-layout header { padding: 16px 11px; } .masthead { align-items: flex-start !important; flex-direction: column; } .edition-switch button, .kind-button, .ui-button { padding: 8px 11px; } .toolbar { align-items: stretch; flex-direction: column; } .actions { justify-content: flex-start; } .searchbox input { font-size: 16px; } body.official-card-layout .groups h2 { min-height: 38px; font-size: 18px; } body.official-card-layout .results { grid-template-columns: 1fr; } .proto-card-body { grid-template-columns: 96px minmax(0, 1fr); gap: 10px; } .portrait { width: 96px; } .portrait-face { width: 92px; height: 92px; } .proto-copy h3 { font-size: 19px; } body[data-edition=game] .results { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; } body[data-edition=game] .portrait { width: 100%; } .dialog-scroll { padding: 14px; } .dialog-footer { gap: 8px; padding: 12px; } }
-    @media (prefers-reduced-motion: reduce) { .portrait .card-avatar img { transition: none; } body.official-card-layout button.card:is(:hover, :focus, :focus-visible) .portrait .card-avatar img { transform: none; } }
   </style>
-</head>
+<style>/* LAH reference screenshots supply the palette, bevels and star-pattern language. */
+:root{color-scheme:light;background:#203139;color:#282e31;font-family:'Microsoft YaHei UI',system-ui,sans-serif;--cyan:#75d2e8;--ink:#303638;--line:#a6afb1}*{box-sizing:border-box}body{margin:0;background-color:#f3f4f2;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'%3E%3Cpath fill='%23e5e8e5' d='M48 30Q51 45 66 48Q51 51 48 66Q45 51 30 48Q45 45 48 30Z'/%3E%3Cpath stroke='%23e7eae7' stroke-width='2' stroke-dasharray='7 9' d='M0 48H22M74 48H96M48 0V22M48 74V96'/%3E%3C/svg%3E");min-height:100vh;font-size:15px}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #147a99;outline-offset:4px}::selection{background:#a3e8f1;color:#172a31}*{scrollbar-color:#8d999e #e8ecec;scrollbar-width:thin}header{padding:27px max(24px,calc((100vw - 1240px)/2));background:#24343d;color:#fff;border-bottom:5px solid #72cede}header .masthead{display:flex;justify-content:space-between;gap:24px;align-items:center}h1{font-size:26px;letter-spacing:.03em}header p#snapshot{font-size:12px;line-height:1.8;color:#c2d2d8;margin:8px 0 0}.edition-switch{display:flex;gap:4px;padding:5px;background:#14252c;border-radius:9px;flex-shrink:0}.edition-switch button{border:0;padding:10px 16px;border-radius:5px;color:#d8e5e9;background:transparent;font-size:13px;font-weight:700}.edition-switch button[aria-pressed=true]{background:#c0edf3;color:#20343b}.searchbox{position:relative;margin-top:23px;max-width:630px}.searchbox input{width:100%;padding:13px 18px;border:1px solid #84959b;border-radius:6px;background:#fff;color:#27343a;font-size:14px}.searchbox input::placeholder{color:#64727a}main{width:min(1240px,calc(100% - 48px));margin:26px auto 64px}.controls{display:none!important}.toolbar{display:flex;justify-content:space-between;gap:18px;align-items:center}.kinds,.actions{display:flex;gap:8px}.ui-button,.kind-button,.choice{min-height:43px;padding:9px 21px;border:1px solid #899397;border-radius:7px;background:linear-gradient(165deg,#fff 0 53%,#e4e7e9 54%);color:#303638;font-weight:700;box-shadow:0 3px 4px #23313923}.kind-button[aria-pressed=true],.choice[aria-pressed=true],.primary{background:linear-gradient(165deg,#a2e5f0 0 53%,#71c8e0 54%);border-color:#39788b;color:#163f50}.ui-button:hover,.choice:hover,.kind-button:hover{filter:brightness(.97)}.summary{margin:20px 0 14px;align-items:center;color:#515c61;font-size:13px;gap:8px}.summary .count{font-weight:700;color:#29383e;margin-right:8px}.active-chip{background:#e1ecee;border:1px solid #acbfc3;padding:4px 9px;border-radius:4px}.clear-link{border:0;background:transparent;color:#216b80;text-decoration:underline;text-underline-offset:3px}.groups{gap:30px}.groups h2{display:flex;align-items:center;gap:10px;margin:0 0 16px;font-size:17px;color:#fff;background:#303638;width:max-content;min-width:170px;padding:10px 24px 10px 16px;border-radius:0 26px 26px 0}.groups h2:before,.dialog-heading:before{content:'';border-left:10px solid #f5a447;border-top:7px solid transparent;border-bottom:7px solid transparent}.results{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:14px!important}body button.card{display:block;min-width:0;padding:16px!important;border:1px solid #aebbc0!important;border-radius:8px!important;background:#fffefa!important;color:#283339!important;box-shadow:0 3px 7px #24313912!important;text-align:left;min-height:166px!important}body button.card:hover{border-color:#3387a0!important;background:#f0fafb!important;transform:translateY(-2px)}.proto-card-body{display:flex;gap:14px;align-items:flex-start}.proto-copy{min-width:0;flex:1}.proto-copy h3{margin:4px 0 5px;font-size:17px;overflow-wrap:anywhere;line-height:1.45}.proto-jp{font-size:11px;color:#647078;line-height:1.5;overflow-wrap:anywhere}.proto-meta{display:flex;flex-wrap:wrap;gap:5px;margin-top:12px;font-size:12px;color:#465861}.proto-meta span{padding:3px 7px;background:#e8eeef;border-radius:3px}.proto-tags{display:flex;gap:4px;flex-wrap:wrap;margin-top:10px}.proto-tags span{font-size:11px;color:#52656a;border-top:1px solid #dbe4e5;padding-top:5px}.portrait{width:86px;flex:0 0 86px;position:relative}.portrait-face{aspect-ratio:1;position:relative;background:#c9d1d6;isolation:isolate;border-radius:6px}.portrait-face>.avatar{position:absolute;inset:6%;width:88%;height:88%;border:0;border-radius:0;background:#cad3d5}.portrait-face .official-frame{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none}.portrait-face .element-mark{position:absolute;left:5px;top:5px;width:22px;height:22px;z-index:3}.portrait.sidekick .portrait-face{clip-path:polygon(0 9%,50% 0,100% 9%,100% 77%,50% 100%,0 77%);background:linear-gradient(135deg,#eee9de,#7c8189 47%,#e5e4e1 50%,#686c70);border-radius:0}.portrait.sidekick .avatar{inset:6%;clip-path:polygon(0 9%,50% 0,100% 9%,100% 77%,50% 100%,0 77%)}.rarity-stars{display:flex;justify-content:center;gap:1px;margin:3px 0 0;filter:drop-shadow(0 1px 1px #27394055)}.rarity-stars svg{width:13px;height:13px;fill:#ffca64;stroke:#855921;stroke-width:1.5}.sidekick .rarity-stars svg{fill:#59dadd;stroke:#22616d}.empty{padding:60px 20px;text-align:center;background:#fff9;color:#45555c}.empty h3{font-size:22px}.footnote{color:#627278;text-align:center;font-size:12px;margin:30px 0}.ui-dialog,dialog#detail{padding:0;border:2px solid #4b565b;border-radius:12px;background:#f6f7f5;color:#293339;width:min(720px,calc(100vw - 28px));max-height:calc(100dvh - 36px);box-shadow:0 20px 65px #13232e55}dialog::backdrop{background:#12202791}dialog .dialog-layout{display:flex;flex-direction:column;max-height:calc(100dvh - 44px)}.dialog-heading{display:flex;align-items:center;gap:12px;margin:0;padding:16px 21px;color:white;background:linear-gradient(#495154,#303638);font-size:19px}.dialog-scroll{padding:6px 24px 25px;overflow:auto;min-height:0}.filter-section{margin-top:22px}.filter-section h3{font-size:14px;margin:0 0 10px;padding-bottom:8px;border-bottom:1px solid #b8c3c7;color:#49575c}.choices{display:flex;gap:8px;flex-wrap:wrap}.choice{font-size:13px;padding:9px 14px;min-height:42px}.tag-choices .choice{text-align:left;font-size:12px}.dialog-footer{display:flex;justify-content:flex-end;gap:12px;padding:18px 24px;background:#eef1ef;border-top:1px solid #c3ccce;flex-shrink:0}.dialog-footer .reset{margin-right:auto}.dialog-note{color:#66767b;font-size:12px;line-height:1.7}.detail{padding:25px!important;background:#f6f7f5!important;color:#293339}.detail h2,.detail h3{color:#28363e!important}.detail .muted,.detail .source{color:#5d6c75!important}.detail .hero-detail-header,.detail .hero-detail-fact,.detail .stat,.detail .skill{background:#fff!important;border-color:#c1ccce!important;color:#293339!important}.detail .tag{background:#e4eeee;color:#3a515c}.detail .close{color:#303b41;background:#e0e8e9}.detail .status-term{color:#176783;background:#e3f1f4}.detail .status-term-note{color:#52676c}.detail .status-content{color:#293339}.status-detail{background:#20343b88!important}.detail p,.skill{overflow-wrap:anywhere}.detail-heading{padding-right:25px}.stat-grid{font-variant-numeric:tabular-nums}
+body[data-edition=game] main{max-width:1120px}body[data-edition=game] .results{grid-template-columns:repeat(8,minmax(0,1fr))!important;gap:14px!important;padding:19px;border:2px solid #abb0b0;border-radius:8px;background:#dfe2df70}body[data-edition=game] button.card{border:0!important;border-radius:0!important;padding:0!important;min-height:0!important;background:transparent!important;box-shadow:none!important}body[data-edition=game] .proto-card-body{display:block}body[data-edition=game] .portrait{width:100%;max-width:125px;margin:auto}body[data-edition=game] .proto-copy h3{font-size:12px;text-align:center;margin:8px 0 0}body[data-edition=game] .proto-jp,body[data-edition=game] .proto-meta,body[data-edition=game] .proto-tags{display:none}body[data-edition=game] .ui-button,body[data-edition=game] .kind-button,body[data-edition=game] .choice{border:3px solid #747b7e;box-shadow:0 5px 2px #565c6250}body[data-edition=game] .ui-dialog{border-width:5px}body[data-edition=game] .dialog-heading{font-size:22px}body[data-edition=game] .filter-section h3{background:#7b8184;color:#fff;padding:7px 12px;border-radius:7px}body[data-edition=game] .rarity-stars svg{width:15px;height:15px}
+@media(min-width:1000px){body[data-edition=web] .results{grid-template-columns:repeat(4,minmax(0,1fr))!important}}
+@media(max-width:1000px){.results{grid-template-columns:repeat(3,minmax(0,1fr))!important}body[data-edition=game] .results{grid-template-columns:repeat(6,minmax(0,1fr))!important}}
+@media(max-width:720px){header{padding:20px}.masthead{flex-direction:column;align-items:flex-start!important;gap:15px!important}h1{font-size:23px}.edition-switch{width:100%}.edition-switch button{flex:1}.searchbox{margin-top:16px}main{width:calc(100% - 28px);margin-top:20px}.toolbar{flex-wrap:wrap;gap:14px}.kinds{flex:1}.kind-button{flex:1;padding:8px 16px}.actions{width:100%}.actions button{flex:1}.results{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}.proto-card-body{display:block}.portrait{margin:0 auto 10px;width:92px}.proto-copy h3{font-size:16px}.proto-jp{font-size:11px}.proto-meta{margin-top:8px}body button.card{padding:12px!important}.groups h2{font-size:15px}.summary{line-height:1.7}body[data-edition=game] .results{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:12px 9px!important;padding:12px 9px}body[data-edition=game] .portrait{margin:0}.dialog-scroll{padding:2px 16px 18px}.dialog-footer{padding:16px 12px;gap:7px}.dialog-footer .ui-button{padding:8px 14px}.choice{padding:8px 10px}.detail{padding:18px!important}.stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}body[data-edition=game] .rarity-stars svg{width:11px;height:11px}}
+@media(prefers-reduced-motion:no-preference){button.card{transition:transform .18s ease-out,background .18s ease-out}dialog[open]{animation:arrive .18s ease-out}@keyframes arrive{from{opacity:.7;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}}
+</style><style>.detail .hero-detail-header{width:auto;margin:-25px -25px 18px;padding:25px 58px 18px 25px;box-shadow:0 3px 8px #23313920}.detail .status-term-highlight{color:#245c70;background:#dceff2}.ui-dialog .dialog-scroll{scroll-padding-top:18px}@media(max-width:720px){.detail .hero-detail-header{margin:-18px -18px 18px;padding:18px 46px 18px 18px}.hero-detail-heading{min-width:0}}</style>
+<style>
+  /* Keep frames fixed while the portrait image scales inside its own crop. */
+  body.official-card-layout .portrait .portrait-face { overflow: hidden; }
+  body.official-card-layout .portrait .card-avatar { inset: 6% !important; z-index: 1; transition: none !important; transform: none !important; }
+  body.official-card-layout button.card:is(:hover, :focus-visible) .portrait .card-avatar { transform: none !important; }
+  body.official-card-layout .portrait .card-avatar img { transform: scale(1); transition: transform 300ms cubic-bezier(.23, 1, .32, 1); }
+  body.official-card-layout button.card:is(:hover, :focus, :focus-visible) .portrait .card-avatar img { transform: scale(1.10); }
+  body.official-card-layout .portrait .official-frame { z-index: 3; }
+  body.official-card-layout .portrait .element-mark { z-index: 4; }
+  .portrait.sidekick { --shield-outline: polygon(0 9%, 25% 2%, 50% 0, 75% 2%, 100% 9%, 100% 77%, 50% 100%, 0 77%); }
+  .portrait.sidekick .portrait-face { clip-path: var(--shield-outline); background: #737d82; }
+  .portrait.sidekick .portrait-face::before { content: ''; position: absolute; inset: 2%; clip-path: var(--shield-outline); background: #d8dcd9; pointer-events: none; }
+  body.official-card-layout .portrait.sidekick .card-avatar { width: auto; height: auto; clip-path: var(--shield-outline); }
+  body button.card { position: relative; }
+  .tag-browser { padding-block-end: 2px; }
+  .tag-crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; margin-block: 3px 12px; color: #5c6c70; font-size: 12px; }
+  .tag-crumb { border: 0; padding: 3px 4px; border-radius: 3px; color: #245f72; background: transparent; text-decoration: underline; text-underline-offset: 3px; }
+  .tag-crumb:last-of-type { color: #34444a; font-weight: 700; text-decoration: none; cursor: default; }
+  .tag-branch { display: inline-flex; align-items: center; gap: 11px; justify-content: space-between; }
+  .tag-branch span { color: #4c747f; font-size: 18px; line-height: .7; }
+  .selected-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-block: 0 12px; }
+  .selected-tag { display: inline-flex; align-items: center; gap: 5px; max-width: 100%; padding: 5px 6px 5px 9px; border: 1px solid #8fc2cf; border-radius: 5px; color: #224754; background: #dff1f4; font-size: 12px; overflow-wrap: anywhere; }
+  .selected-tag button { flex: 0 0 auto; width: 19px; height: 19px; border: 0; border-radius: 50%; color: #214a57; background: #bae4eb; line-height: 1; }
+  @media (max-width: 720px) { .tag-crumbs { margin-block-end: 10px; } }
+  @media (prefers-reduced-motion: reduce) {
+    body.official-card-layout .portrait .card-avatar img { transition: none; }
+    body.official-card-layout button.card:is(:hover, :focus, :focus-visible) .portrait .card-avatar img { transform: none; }
+  }
+  .sort-tooltip{position:fixed;z-index:30;max-width:min(300px,calc(100vw - 24px));padding:7px 10px;border:1px solid #243b42;border-radius:7px;background:#243a41;color:#f8ffff;box-shadow:0 5px 13px rgb(20 43 49 / 28%);font-size:13px;font-weight:800;line-height:1.35;opacity:0;pointer-events:none;transform:translateY(4px);visibility:hidden;transition:opacity 120ms ease-out,transform 120ms ease-out,visibility 0s linear 120ms}.sort-tooltip.is-visible{opacity:1;transform:translateY(0);visibility:visible;transition-delay:0s}
+</style></head>
 <body class="official-card-layout">
+<!-- Independent LAH preview. Two visual editions share one local catalog and query state. Screenshot references define the star pattern, charcoal headings, cyan selection and beveled controls. Game edition emphasizes compact portraits; web edition emphasizes readable identity and metadata. Official hero/element PNGs come from the existing selected asset directory; the sidekick shield is a CSS reconstruction, not an official frame. No production page, API or catalog changes. -->
   <header><h1>Live A Hero 本地速查</h1><p id="snapshot"></p></header>
   <main>
     <section class="controls" aria-label="筛选条件">
@@ -330,41 +286,6 @@
       }
       return Number(left.cardId) - Number(right.cardId);
     }
-    function render() {
-      const result = cards.filter(matches); const groups = $('groups'); groups.replaceChildren();
-      $('summary').textContent = `找到 ${result.length} 张卡；输入角色名会按英雄和助手分组。`;
-      for (const kind of ['hero', 'sidekick']) {
-        const list = result.filter(card => card.kind === kind).sort(compareCards); if (!list.length) continue;
-        const section = document.createElement('section'); const heading = document.createElement('h2'); heading.textContent = `${kindLabel(kind)}（${list.length}）`; section.append(heading);
-        const grid = document.createElement('div'); grid.className = 'results';
-        for (const card of list) {
-          const button = document.createElement('button');
-          button.className = `card${useOfficialCardLayout && card.kind === 'hero' ? ' hero-card' : ''}`;
-          button.dataset.key = card.key;
-          const sidekickTags = card.tags || [];
-          const orderedSidekickTags = [...sidekickTags.filter(tag => tag.pinned), ...sidekickTags.filter(tag => !tag.pinned)];
-          const legacyTags = card.kind === 'hero'
-            ? [card.element?.label, card.role?.label, kindLabel(card.kind)]
-            : [kindLabel(card.kind), ...orderedSidekickTags.slice(0, 3).map(tag => tag.label), ...(orderedSidekickTags.length > 3 ? [`+${orderedSidekickTags.length - 3}`] : [])];
-          const sidekickTagLabels = orderedSidekickTags.map(tag => tag.label);
-          const tags = card.kind === 'sidekick'
-            ? (sidekickTagLabels.length <= 3
-              ? sidekickTagLabels
-              : [...sidekickTagLabels.slice(0, 3), `+${sidekickTagLabels.length - 3}`])
-            : [];
-          const tagsMarkup = tags.length ? `<div class="tags card-tags">${tags.map(tag => `<span class="tag">${escape(tag)}</span>`).join('')}</div>` : '';
-          const officialCardIdentity = card.kind === 'hero'
-            ? card.originalName
-            : `${card.originalName} · #${card.cardId}`;
-          const officialCardMarkup = `<div class="card-layout">${characterPortraitMarkup(card)}<div class="card-copy"><div class="name-copy"><h3 class="card-name">${escape(card.name)}</h3><p class="card-jp-name">${escape(officialCardIdentity)}</p></div>${heroMetadataMarkup(card)}${tagsMarkup}</div></div>`;
-          const legacyCardMarkup = `<div class="card-layout">${avatarMarkup(card, 'avatar-small')}<div><div class="card-title"><span>${escape(card.name)}</span><span>${escape('★'.repeat(displayRarity(card)))}</span></div><div class="muted">${escape(card.originalName)} · #${escape(card.cardId)}</div><div class="tags">${legacyTags.filter(Boolean).map(tag => `<span class="tag">${escape(tag)}</span>`).join('')}</div></div></div>`;
-          button.innerHTML = useOfficialCardLayout ? officialCardMarkup : legacyCardMarkup;
-          grid.append(button);
-        }
-        section.append(grid); groups.append(section);
-      }
-      if (!result.length) groups.innerHTML = '<p class="empty">没有匹配项。可尝试角色日文名、卡片编号或技能文字。</p>';
-    }
     function showDetail(card) {
       $('detail').classList.toggle('hero-detail', card.kind === 'hero');
       const stats = card.kind === 'hero'
@@ -407,132 +328,125 @@
     $('tagSettings').addEventListener('click', () => $('tagSettingsDetail').showModal());
     document.querySelector('.tag-settings-close').addEventListener('click', () => $('tagSettingsDetail').close());
 
-    // 查询界面层：不改变现有角色目录、匹配逻辑或详情页数据口径。
-    const starSvg = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.5 7 1-5 5 1.2 7L12 18l-6.2 3.5L7 14.5l-5-5 7-1Z"/></svg>';
-    const tagSources = {'hero-tags': heroTags, 'assistant-tags': assistantTags};
-    const tagBrowsers = {'hero-tags': [], 'assistant-tags': []};
-    const filterGroups = [
-      ['rarity', '稀有度', [...$('rarity').querySelectorAll('input')].map(input => [input.value, input.value])],
-      ['element', '属性（英雄）', [...$('element').querySelectorAll('input')].map(input => [input.value, input.value])],
-      ['role', '职能（英雄）', [...$('role').querySelectorAll('input')].map(input => [input.value, input.value])]
-    ];
-    let draftFilters, draftSort;
-    function portrait(card) {
-      const rarity = Number(displayRarity(card)) || 1;
-      const element = card.kind === 'hero' && elementAssetName[card.element?.code];
-      return `<div class="portrait ${card.kind}"><div class="portrait-face">${cardAvatarMarkup(card)}${card.kind === 'hero' ? cardFrameMarkup(card) : ''}${element ? `<img class="element-mark" src="${localOfficialAssetPrefix}/element-${element}.png" alt="${escape(card.element.label)}">` : ''}</div><div class="rarity-stars" aria-label="${rarity}星">${starSvg.repeat(rarity)}</div></div>`;
-    }
-    function tagPath(sourceId, tagId) {
-      const byTagId = new Map((tagSources[sourceId] || []).map(tag => [tag.id, tag]));
-      const labels = []; const seen = new Set(); let current = byTagId.get(tagId);
-      while (current && !seen.has(current.id)) { labels.unshift(current.label); seen.add(current.id); current = byTagId.get(current.parentId); }
-      return labels.join(' › ');
-    }
-    function selectedTagLabels(sourceId) {
-      const selected = sourceId === 'hero-tags' ? selectedHeroTagIds : selectedAssistantTagIds;
-      return [...selected].map(id => tagPath(sourceId, id)).filter(Boolean);
-    }
-    function render() {
-      const result = cards.filter(matches); $('groups').replaceChildren();
-      const labels = [...selectedValues('rarity'), ...selectedValues('element'), ...selectedValues('role'), ...selectedTagLabels('hero-tags'), ...selectedTagLabels('assistant-tags')];
-      $('summary').innerHTML = `<span class="count">${result.length} 张角色卡</span><span>${escape($('sortField').selectedOptions[0].textContent)} · ${$('sortDirection').value === 'asc' ? '升序' : '降序'}</span>${labels.map(label => `<span class="active-chip">${escape(label)}</span>`).join('')}${labels.length || $('query').value ? '<button class="clear-link" type="button" onclick="resetPreview()">清空条件</button>' : ''}`;
-      for (const kind of ['hero', 'sidekick']) {
-        const list = result.filter(card => card.kind === kind).sort(compareCards); if (!list.length) continue;
-        const section = document.createElement('section');
-        section.innerHTML = `<h2>${kindLabel(kind)}一览 · ${list.length}</h2><div class="results">${list.map(card => `<button class="card" data-key="${escape(card.key)}" aria-label="查看${escape(card.name)}详情"><div class="proto-card-body">${portrait(card)}<div class="proto-copy"><h3>${escape(card.name)}</h3><div class="proto-jp">${escape(card.originalName)}<br>No. ${escape(card.cardId)}</div><div class="proto-meta">${[card.element?.label, card.role?.label, kindLabel(kind)].filter(Boolean).map(value => `<span>${escape(value)}</span>`).join('')}</div><div class="proto-tags">${(card.tags || []).slice(0, 3).map(tag => `<span>${escape(tag.label)}</span>`).join('')}</div></div></div></button>`).join('')}</div>`;
-        $('groups').append(section);
-      }
-      if (!result.length) $('groups').innerHTML = '<div class="empty"><h3>没有找到符合条件的角色</h3><p>试试其他名称、技能文字，或清空筛选条件。</p><button class="ui-button primary" type="button" onclick="resetPreview()">清空条件</button></div>';
-    }
-    function resetPreview() {
-      $('query').value = '';
-      for (const id of ['rarity', 'element', 'role']) for (const input of $(id).querySelectorAll('input')) input.checked = false;
-      selectedHeroTagIds.clear(); selectedAssistantTagIds.clear(); render();
-    }
-    const sortFieldLabels = {cardId: '卡片 ID', name: '名称', rarity: '稀有度', hp: 'HP', attack: '攻击', agility: '速度'};
-    const sortTooltip = document.createElement('div');
-    sortTooltip.id = 'sortValueTooltip'; sortTooltip.className = 'sort-tooltip'; sortTooltip.setAttribute('role', 'tooltip'); document.body.append(sortTooltip);
-    let tooltipCard = null;
-    function sortTooltipText(card) {
-      const field = $('sortField').value; const fieldLabel = sortFieldLabels[field] || field;
-      if (field === 'cardId') return `当前按${fieldLabel}排序 · ${card.cardId || '暂无数据'}`;
-      if (field === 'name') return `当前按${fieldLabel}排序 · ${card.name || '暂无数据'}`;
-      if (field === 'rarity') return `当前按${fieldLabel}排序 · ${displayRarity(card) ? `${displayRarity(card)} 星` : '暂无数据'}`;
-      const stats = card.kind === 'hero' ? card.stats?.level60 : card.stats?.max;
-      const level = card.kind === 'hero' ? '60级' : '满级'; const value = stats?.[field];
-      return `当前按${fieldLabel}排序 · ${level}${fieldLabel}：${value ?? '暂无数据'}`;
-    }
-    function positionSortTooltip() {
-      if (!tooltipCard) return;
-      const rect = tooltipCard.getBoundingClientRect(); const margin = 8; const width = sortTooltip.offsetWidth; const height = sortTooltip.offsetHeight;
-      const left = Math.max(margin, Math.min(innerWidth - width - margin, rect.left + (rect.width - width) / 2));
-      const top = rect.bottom + height + margin > innerHeight ? Math.max(margin, rect.top - height - margin) : rect.bottom + margin;
-      sortTooltip.style.left = `${Math.round(left)}px`; sortTooltip.style.top = `${Math.round(top)}px`;
-    }
-    function showSortTooltip(button) {
-      const card = byId.get(button.dataset.key); if (!card) return;
-      tooltipCard = button; sortTooltip.textContent = sortTooltipText(card); sortTooltip.classList.add('is-visible'); button.setAttribute('aria-describedby', sortTooltip.id); positionSortTooltip();
-    }
-    function hideSortTooltip(button = tooltipCard) {
-      if (button) button.removeAttribute('aria-describedby'); tooltipCard = null; sortTooltip.classList.remove('is-visible');
-    }
-    document.addEventListener('pointerover', event => { const button = event.target.closest('button.card'); if (button) showSortTooltip(button); });
-    document.addEventListener('pointerout', event => { const button = event.target.closest('button.card'); if (button && !button.contains(event.relatedTarget)) hideSortTooltip(button); });
-    document.addEventListener('focusin', event => { const button = event.target.closest('button.card'); if (button) showSortTooltip(button); });
-    document.addEventListener('focusout', event => { const button = event.target.closest('button.card'); if (button && !button.contains(event.relatedTarget)) hideSortTooltip(button); });
-    window.addEventListener('scroll', positionSortTooltip, true); window.addEventListener('resize', positionSortTooltip);
-    function tagChildren(sourceId, parentId) { return (tagSources[sourceId] || []).filter(tag => tag.parentId === parentId); }
-    function drawTagBrowser(sourceId, heading) {
-      const trail = tagBrowsers[sourceId]; const parentId = trail.at(-1) || null; const selected = draftFilters[sourceId];
-      const breadcrumbs = [`<button class="tag-crumb" type="button" data-tag-crumb="-1" data-tag-source="${sourceId}">全部标签</button>`]
-        .concat(trail.map((id, index) => `<button class="tag-crumb" type="button" data-tag-crumb="${index}" data-tag-source="${sourceId}">${escape((tagSources[sourceId].find(tag => tag.id === id) || {}).label || '')}</button>`)).join('<span aria-hidden="true">›</span>');
-      const selectedHtml = [...selected].map(id => `<span class="selected-tag">${escape(tagPath(sourceId, id))}<button type="button" aria-label="移除 ${escape(tagPath(sourceId, id))}" data-remove-tag="${id}" data-tag-source="${sourceId}">×</button></span>`).join('');
-      const options = tagChildren(sourceId, parentId).map(tag => tagChildren(sourceId, tag.id).length
-        ? `<button class="choice tag-branch" type="button" data-tag-open="${tag.id}" data-tag-source="${sourceId}">${escape(tag.label)}<span aria-hidden="true">›</span></button>`
-        : `<button class="choice" type="button" data-filter="${sourceId}" data-value="${tag.id}" aria-pressed="${selected.has(tag.id)}">${escape(tag.label)}</button>`).join('') || '<p class="dialog-note">此分类下暂无可选标签。</p>';
-      return `<section class="filter-section"><h3>${heading}</h3><nav class="tag-crumbs" aria-label="${heading}路径">${breadcrumbs}</nav>${selectedHtml ? `<div class="selected-tags" aria-label="已选${heading}">${selectedHtml}</div>` : ''}<div class="choices">${options}</div></section>`;
-    }
-    function drawFilters() {
-      const basics = filterGroups.map(([id, label, options]) => `<section class="filter-section"><h3>${label}</h3><div class="choices">${options.map(([value, title]) => `<button class="choice" type="button" data-filter="${id}" data-value="${escape(value)}" aria-pressed="${draftFilters[id].has(value)}">${escape(title)}</button>`).join('')}</div></section>`).join('');
-      $('filterBody').innerHTML = `<p class="dialog-note">基础条件同组任选；末级标签可跨分支多选，角色需同时满足所有已选标签。确定后应用。</p>${basics}${drawTagBrowser('hero-tags', '英雄标签')}${drawTagBrowser('assistant-tags', '助手标签')}`;
-    }
-    function openFilters() {
-      tagBrowsers['hero-tags'] = []; tagBrowsers['assistant-tags'] = [];
-      draftFilters = Object.fromEntries([...filterGroups.map(([id]) => [id, new Set(selectedValues(id))]), ['hero-tags', new Set(selectedHeroTagIds)], ['assistant-tags', new Set(selectedAssistantTagIds)]]);
-      drawFilters(); $('filterDialog').showModal();
-    }
-    function applyFilters() {
-      for (const id of ['rarity', 'element', 'role']) for (const input of $(id).querySelectorAll('input')) input.checked = draftFilters[id].has(input.value);
-      for (const [id, selected] of [['hero-tags', selectedHeroTagIds], ['assistant-tags', selectedAssistantTagIds]]) { selected.clear(); for (const value of draftFilters[id]) selected.add(value); }
-      $('filterDialog').close(); render();
-    }
-    function drawSort() {
-      $('sortBody').innerHTML = `<section class="filter-section"><h3>排序依据</h3><div class="choices">${[...$('sortField').options].map(option => `<button class="choice" type="button" data-sort="field" data-value="${option.value}" aria-pressed="${draftSort.field === option.value}">${option.text}</button>`).join('')}</div></section><section class="filter-section"><h3>排列方向</h3><div class="choices">${[['asc', '升序'], ['desc', '降序']].map(([value, label]) => `<button class="choice" type="button" data-sort="direction" data-value="${value}" aria-pressed="${draftSort.direction === value}">${label}</button>`).join('')}</div></section>`;
-    }
-    document.body.dataset.edition = 'web';
-    document.querySelector('header').innerHTML = `<div class="masthead"><h1>Live A Hero 角色速查</h1><div class="edition-switch" aria-label="查询方式"><button type="button" data-edition="game" aria-pressed="false">快速查询</button><button type="button" data-edition="web" aria-pressed="true">标签查询</button></div></div><p id="snapshot">英雄属性：60 级 · 助手技能：最高阶段 · 本地数据快照 ${escape(catalog.metadata.snapshotId)}</p><div class="searchbox" id="searchbox"></div>`;
-    $('query').removeAttribute('autofocus'); $('query').setAttribute('aria-label', '搜索角色或技能'); $('query').placeholder = '搜索角色名称、别名、编号或技能…'; $('searchbox').append($('query'));
-    document.querySelector('main').insertAdjacentHTML('afterbegin', '<div class="toolbar"><div class="kinds" aria-label="角色分类"><button class="kind-button" type="button" data-kind="" aria-pressed="true">全部</button><button class="kind-button" type="button" data-kind="hero" aria-pressed="false">英雄</button><button class="kind-button" type="button" data-kind="sidekick" aria-pressed="false">助手</button></div><div class="actions"><button class="ui-button" type="button" id="openFilters">筛选条件</button><button class="ui-button" type="button" id="openSort">排序</button></div></div>');
-    document.querySelector('.actions').append($('tagSettings')); $('tagSettings').className = 'ui-button'; $('tagSettings').textContent = '标签管理';
-    document.querySelector('main').insertAdjacentHTML('beforeend', '<p class="footnote">仅供角色资料查询 · 英雄与助手采用各自的稀有度及属性口径</p>');
-    document.body.insertAdjacentHTML('beforeend', '<dialog class="ui-dialog" id="filterDialog" aria-labelledby="filterTitle"><div class="dialog-layout"><h2 class="dialog-heading" id="filterTitle">筛选条件</h2><div class="dialog-scroll" id="filterBody"></div><footer class="dialog-footer"><button class="ui-button reset" type="button" id="resetDraft">清空</button><button class="ui-button" type="button" data-close="filterDialog">取消</button><button class="ui-button primary" type="button" id="applyFilters">确定</button></footer></div></dialog><dialog class="ui-dialog" id="sortDialog" aria-labelledby="sortTitle"><div class="dialog-layout"><h2 class="dialog-heading" id="sortTitle">排序</h2><div class="dialog-scroll" id="sortBody"></div><footer class="dialog-footer"><button class="ui-button" type="button" data-close="sortDialog">取消</button><button class="ui-button primary" type="button" id="applySort">确定</button></footer></div></dialog>');
-    $('openFilters').onclick = openFilters; $('applyFilters').onclick = applyFilters;
-    $('resetDraft').onclick = () => { Object.values(draftFilters).forEach(set => set.clear()); drawFilters(); };
-    $('openSort').onclick = () => { draftSort = {field: $('sortField').value, direction: $('sortDirection').value}; drawSort(); $('sortDialog').showModal(); };
-    $('applySort').onclick = () => { $('sortField').value = draftSort.field; $('sortDirection').value = draftSort.direction; $('sortDialog').close(); render(); };
-    document.addEventListener('click', event => {
-      const button = event.target.closest('button'); if (!button) return;
-      if (button.dataset.edition) { document.body.dataset.edition = button.dataset.edition; document.querySelectorAll('button[data-edition]').forEach(item => item.setAttribute('aria-pressed', String(item === button))); }
-      if ('kind' in button.dataset) { $('kind').value = button.dataset.kind; document.querySelectorAll('[data-kind]').forEach(item => item.setAttribute('aria-pressed', String(item === button))); render(); }
-      if (button.dataset.close) $(button.dataset.close).close();
-      if (button.dataset.tagOpen) { tagBrowsers[button.dataset.tagSource].push(button.dataset.tagOpen); drawFilters(); return; }
-      if (button.dataset.tagCrumb !== undefined) { const index = Number(button.dataset.tagCrumb); tagBrowsers[button.dataset.tagSource] = index < 0 ? [] : tagBrowsers[button.dataset.tagSource].slice(0, index + 1); drawFilters(); return; }
-      if (button.dataset.removeTag) { draftFilters[button.dataset.tagSource].delete(button.dataset.removeTag); drawFilters(); return; }
-      if (button.dataset.filter) { const selected = draftFilters[button.dataset.filter]; const value = button.dataset.value; selected.has(value) ? selected.delete(value) : selected.add(value); if (button.dataset.filter.endsWith('tags')) { drawFilters(); return; } button.setAttribute('aria-pressed', String(selected.has(value))); }
-      if (button.dataset.sort) { draftSort[button.dataset.sort] = button.dataset.value; for (const item of $('sortBody').querySelectorAll('[data-sort]')) item.setAttribute('aria-pressed', String(draftSort[item.dataset.sort] === item.dataset.value)); }
-    });
-    $('detail').setAttribute('aria-label', '角色详情');
-    render();
+// Independent preview: shared catalog, existing matching semantics, no write APIs.
+const starSvg = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.5 7 1-5 5 1.2 7L12 18l-6.2 3.5L7 14.5l-5-5 7-1Z"/></svg>';
+function portrait(card) {
+  const count = Number(displayRarity(card)) || 1;
+  const element = card.kind === 'hero' && elementAssetName[card.element?.code];
+  return `<div class="portrait ${card.kind}"><div class="portrait-face">${cardAvatarMarkup(card)}${card.kind === 'hero' ? cardFrameMarkup(card) : ''}${element ? `<img class="element-mark" src="${localOfficialAssetPrefix}/element-${element}.png" alt="${escape(card.element.label)}">` : ''}</div><div class="rarity-stars" aria-label="${count}星">${starSvg.repeat(count)}</div></div>`;
+}
+function selectedTagLabels(sourceId) {
+  const tags = sourceId === 'hero-tags' ? heroTags : assistantTags;
+  const tagById = new Map(tags.map(tag => [tag.id, tag]));
+  const selected = sourceId === 'hero-tags' ? selectedHeroTagIds : selectedAssistantTagIds;
+  return [...selected].map(id => tagPath(sourceId, id)).filter(Boolean);
+}
+function render() {
+  const result = cards.filter(matches);
+  $('groups').replaceChildren();
+  const labels = [...selectedValues('rarity'), ...selectedValues('element'), ...selectedValues('role'), ...selectedTagLabels('hero-tags'), ...selectedTagLabels('assistant-tags')];
+  $('summary').innerHTML = `<span class="count">${result.length} 张角色卡</span><span>${escape($('sortField').selectedOptions[0].textContent)} · ${$('sortDirection').value === 'asc' ? '升序' : '降序'}</span>${labels.map(t => `<span class="active-chip">${escape(t)}</span>`).join('')}${labels.length || $('query').value ? '<button class="clear-link" onclick="resetPreview()">清空条件</button>' : ''}`;
+  for (const kind of ['hero', 'sidekick']) {
+    const list = result.filter(c => c.kind === kind).sort(compareCards);
+    if (!list.length) continue;
+    const section = document.createElement('section');
+    section.innerHTML = `<h2>${kindLabel(kind)}一览 · ${list.length}</h2><div class="results">${list.map(c => `<button class="card" data-key="${escape(c.key)}" aria-label="查看${escape(c.name)}详情"><div class="proto-card-body">${portrait(c)}<div class="proto-copy"><h3>${escape(c.name)}</h3><div class="proto-jp">${escape(c.originalName)}<br>No. ${escape(c.cardId)}</div><div class="proto-meta">${[c.element?.label,c.role?.label,kindLabel(kind)].filter(Boolean).map(x=>`<span>${escape(x)}</span>`).join('')}</div><div class="proto-tags">${(c.tags||[]).slice(0,3).map(t=>`<span>${escape(t.label)}</span>`).join('')}</div></div></div></button>`).join('')}</div>`;
+    $('groups').append(section);
+  }
+  if (!result.length) $('groups').innerHTML = '<div class="empty"><h3>没有找到符合条件的角色</h3><p>试试其他名称、技能文字，或清空筛选条件。</p><button class="ui-button primary" onclick="resetPreview()">清空条件</button></div>';
+}
+function resetPreview() {
+  $('query').value = '';
+  for (const id of ['rarity','element','role']) for (const input of $(id).querySelectorAll('input')) input.checked = false;
+  selectedHeroTagIds.clear(); selectedAssistantTagIds.clear();
+  render();
+}
+const sortFieldLabels={cardId:'卡片 ID',name:'名称',rarity:'稀有度',hp:'HP',attack:'攻击',agility:'速度'};
+const sortTooltip=document.createElement('div');
+sortTooltip.id='sortValueTooltip';sortTooltip.className='sort-tooltip';sortTooltip.setAttribute('role','tooltip');document.body.append(sortTooltip);
+let tooltipCard=null;
+function sortTooltipText(card){const field=$('sortField').value,fieldLabel=sortFieldLabels[field]||field;if(field==='cardId')return `当前按${fieldLabel}排序 · ${card.cardId||'暂无数据'}`;if(field==='name')return `当前按${fieldLabel}排序 · ${card.name||'暂无数据'}`;if(field==='rarity')return `当前按${fieldLabel}排序 · ${displayRarity(card)?`${displayRarity(card)} 星`:'暂无数据'}`;const stats=card.kind==='hero'?card.stats?.level60:card.stats?.max,level=card.kind==='hero'?'60级':'满级',value=stats?.[field];return `当前按${fieldLabel}排序 · ${level}${fieldLabel}：${value??'暂无数据'}`;}
+function positionSortTooltip(){if(!tooltipCard)return;const rect=tooltipCard.getBoundingClientRect(),margin=8,width=sortTooltip.offsetWidth,height=sortTooltip.offsetHeight,left=Math.max(margin,Math.min(innerWidth-width-margin,rect.left+(rect.width-width)/2)),top=rect.bottom+height+margin>innerHeight?Math.max(margin,rect.top-height-margin):rect.bottom+margin;sortTooltip.style.left=`${Math.round(left)}px`;sortTooltip.style.top=`${Math.round(top)}px`;}
+function showSortTooltip(button){const card=byId.get(button.dataset.key);if(!card)return;tooltipCard=button;sortTooltip.textContent=sortTooltipText(card);sortTooltip.classList.add('is-visible');button.setAttribute('aria-describedby',sortTooltip.id);positionSortTooltip();}
+function hideSortTooltip(button=tooltipCard){if(button)button.removeAttribute('aria-describedby');tooltipCard=null;sortTooltip.classList.remove('is-visible');}
+document.addEventListener('pointerover',event=>{const button=event.target.closest('button.card');if(button)showSortTooltip(button)});
+document.addEventListener('pointerout',event=>{const button=event.target.closest('button.card');if(button&&!button.contains(event.relatedTarget))hideSortTooltip(button)});
+document.addEventListener('focusin',event=>{const button=event.target.closest('button.card');if(button)showSortTooltip(button)});
+document.addEventListener('focusout',event=>{const button=event.target.closest('button.card');if(button&&!button.contains(event.relatedTarget))hideSortTooltip(button)});
+window.addEventListener('scroll',positionSortTooltip,true);window.addEventListener('resize',positionSortTooltip);
+const filterGroups = [
+  ['rarity','稀有度', [...$('rarity').querySelectorAll('input')].map(i=>[i.value,i.value])],
+  ['element','属性（英雄）', [...$('element').querySelectorAll('input')].map(i=>[i.value,i.value])],
+  ['role','职能（英雄）', [...$('role').querySelectorAll('input')].map(i=>[i.value,i.value])]
+];
+const tagSources = {'hero-tags': heroTags, 'assistant-tags': assistantTags};
+const tagBrowsers = {'hero-tags': [], 'assistant-tags': []};
+let draftFilters, draftSort;
+function tagPath(sourceId, tagId) {
+  const source = tagSources[sourceId] || [];
+  const byId = new Map(source.map(tag => [tag.id, tag]));
+  const labels = []; let current = byId.get(tagId); const seen = new Set();
+  while (current && !seen.has(current.id)) { labels.unshift(current.label); seen.add(current.id); current = byId.get(current.parentId); }
+  return labels.join(' › ');
+}
+function tagChildren(sourceId, parentId) { return (tagSources[sourceId] || []).filter(tag => tag.parentId === parentId); }
+function tagSet(sourceId) { return draftFilters[sourceId]; }
+function drawTagBrowser(sourceId, heading) {
+  const trail = tagBrowsers[sourceId];
+  const parentId = trail.at(-1) || null;
+  const children = tagChildren(sourceId, parentId);
+  const breadcrumbs = [`<button class="tag-crumb" type="button" data-tag-crumb="-1" data-tag-source="${sourceId}">全部标签</button>`]
+    .concat(trail.map((id, index) => `<button class="tag-crumb" type="button" data-tag-crumb="${index}" data-tag-source="${sourceId}">${escape((tagSources[sourceId].find(tag => tag.id === id) || {}).label || '')}</button>`)).join('<span aria-hidden="true">›</span>');
+  const selected = [...tagSet(sourceId)].map(id => `<span class="selected-tag">${escape(tagPath(sourceId, id))}<button type="button" aria-label="移除 ${escape(tagPath(sourceId, id))}" data-remove-tag="${id}" data-tag-source="${sourceId}">×</button></span>`).join('');
+  const options = children.map(tag => {
+    const hasChildren = tagChildren(sourceId, tag.id).length > 0;
+    return hasChildren
+      ? `<button class="choice tag-branch" type="button" data-tag-open="${tag.id}" data-tag-source="${sourceId}">${escape(tag.label)}<span aria-hidden="true">›</span></button>`
+      : `<button class="choice" type="button" data-filter="${sourceId}" data-value="${tag.id}" aria-pressed="${tagSet(sourceId).has(tag.id)}">${escape(tag.label)}</button>`;
+  }).join('') || '<p class="dialog-note">此分类下暂无可选标签。</p>';
+  return `<section class="filter-section tag-browser"><h3>${heading}</h3><nav class="tag-crumbs" aria-label="${heading}路径">${breadcrumbs}</nav>${selected ? `<div class="selected-tags" aria-label="已选${heading}">${selected}</div>` : ''}<div class="choices tag-choices">${options}</div></section>`;
+}
+function drawFilters() {
+  const basics = filterGroups.map(([id,label,options])=>`<section class="filter-section"><h3>${label}</h3><div class="choices">${options.map(([value,title])=>`<button class="choice" data-filter="${id}" data-value="${escape(value)}" aria-pressed="${draftFilters[id].has(value)}">${escape(title)}</button>`).join('')}</div></section>`).join('');
+  $('filterBody').innerHTML = `<p class="dialog-note">基础条件同组任选；末级标签可跨分支多选，角色需同时满足所有已选标签。确定后应用。</p>${basics}${drawTagBrowser('hero-tags', '英雄标签')}${drawTagBrowser('assistant-tags', '助手标签')}`;
+}
+function openFilters() {
+  tagBrowsers['hero-tags'] = []; tagBrowsers['assistant-tags'] = [];
+  draftFilters = Object.fromEntries([...filterGroups.map(([id])=>[id,new Set(selectedValues(id))]), ['hero-tags', new Set(selectedHeroTagIds)], ['assistant-tags', new Set(selectedAssistantTagIds)]]);
+  drawFilters(); $('filterDialog').showModal();
+}
+function applyFilters() {
+  for (const id of ['rarity','element','role']) for (const input of $(id).querySelectorAll('input')) input.checked = draftFilters[id].has(input.value);
+  for (const [id,set] of [['hero-tags',selectedHeroTagIds],['assistant-tags',selectedAssistantTagIds]]) {set.clear(); for (const value of draftFilters[id]) set.add(value);}
+  $('filterDialog').close(); render();
+}
+function drawSort() {
+  $('sortBody').innerHTML = `<section class="filter-section"><h3>排序依据</h3><div class="choices">${[...$('sortField').options].map(o=>`<button class="choice" data-sort="field" data-value="${o.value}" aria-pressed="${draftSort.field===o.value}">${o.text}</button>`).join('')}</div></section><section class="filter-section"><h3>排列方向</h3><div class="choices">${[['asc','升序'],['desc','降序']].map(([value,label])=>`<button class="choice" data-sort="direction" data-value="${value}" aria-pressed="${draftSort.direction===value}">${label}</button>`).join('')}</div></section>`;
+}
+document.body.dataset.edition='web';
+document.querySelector('header').innerHTML = `<div class="masthead"><h1>Live A Hero 角色速查</h1><div class="edition-switch" aria-label="查询方式"><button data-edition="game" aria-pressed="false">快速查询</button><button data-edition="web" aria-pressed="true">标签查询</button></div></div><p id="snapshot">英雄属性：60 级 · 助手技能：最高阶段 · 本地数据快照 ${escape(catalog.metadata.snapshotId)}</p><div class="searchbox" id="searchbox"></div>`;
+$('query').removeAttribute('autofocus'); $('query').setAttribute('aria-label','搜索角色或技能'); $('query').placeholder='搜索角色名称、别名、编号或技能…'; $('searchbox').append($('query'));
+document.querySelector('main').insertAdjacentHTML('afterbegin',`<div class="toolbar"><div class="kinds" aria-label="角色分类"><button class="kind-button" data-kind="" aria-pressed="true">全部</button><button class="kind-button" data-kind="hero" aria-pressed="false">英雄</button><button class="kind-button" data-kind="sidekick" aria-pressed="false">助手</button></div><div class="actions"><button class="ui-button" id="openFilters">筛选条件</button><button class="ui-button" id="openSort">排序</button></div></div>`);
+document.querySelector('main').insertAdjacentHTML('beforeend','<p class="footnote">仅供角色资料查询 · 英雄与助手采用各自的稀有度及属性口径</p>');
+document.body.insertAdjacentHTML('beforeend',`<dialog class="ui-dialog" id="filterDialog" aria-labelledby="filterTitle"><div class="dialog-layout"><h2 class="dialog-heading" id="filterTitle">筛选条件</h2><div class="dialog-scroll" id="filterBody"></div><footer class="dialog-footer"><button class="ui-button reset" id="resetDraft">清空</button><button class="ui-button" data-close="filterDialog">取消</button><button class="ui-button primary" id="applyFilters">确定</button></footer></div></dialog><dialog class="ui-dialog" id="sortDialog" aria-labelledby="sortTitle"><div class="dialog-layout"><h2 class="dialog-heading" id="sortTitle">排序</h2><div class="dialog-scroll" id="sortBody"></div><footer class="dialog-footer"><button class="ui-button" data-close="sortDialog">取消</button><button class="ui-button primary" id="applySort">确定</button></footer></div></dialog>`);
+$('openFilters').onclick=openFilters; $('applyFilters').onclick=applyFilters;
+$('resetDraft').onclick=()=>{Object.values(draftFilters).forEach(s=>s.clear());drawFilters();};
+$('openSort').onclick=()=>{draftSort={field:$('sortField').value,direction:$('sortDirection').value};drawSort();$('sortDialog').showModal();};
+$('applySort').onclick=()=>{$('sortField').value=draftSort.field;$('sortDirection').value=draftSort.direction;$('sortDialog').close();render();};
+document.addEventListener('click',event=>{
+  const b=event.target.closest('button');if(!b)return;
+  if(b.dataset.edition){document.body.dataset.edition=b.dataset.edition;document.querySelectorAll('button[data-edition]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));}
+  if('kind' in b.dataset){$('kind').value=b.dataset.kind;document.querySelectorAll('[data-kind]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));render();}
+  if(b.dataset.close)$(b.dataset.close).close();
+  if(b.dataset.tagOpen){tagBrowsers[b.dataset.tagSource].push(b.dataset.tagOpen);drawFilters();return;}
+  if(b.dataset.tagCrumb !== undefined){const index=Number(b.dataset.tagCrumb);tagBrowsers[b.dataset.tagSource]=index < 0 ? [] : tagBrowsers[b.dataset.tagSource].slice(0,index + 1);drawFilters();return;}
+  if(b.dataset.removeTag){draftFilters[b.dataset.tagSource].delete(b.dataset.removeTag);drawFilters();return;}
+  if(b.dataset.filter){const set=draftFilters[b.dataset.filter],value=b.dataset.value;set.has(value)?set.delete(value):set.add(value);if(b.dataset.filter.endsWith('tags')) {drawFilters();return;}b.setAttribute('aria-pressed',String(set.has(value)));}
+  if(b.dataset.sort){draftSort[b.dataset.sort]=b.dataset.value;for(const x of $('sortBody').querySelectorAll('[data-sort]'))x.setAttribute('aria-pressed',String(draftSort[x.dataset.sort]===x.dataset.value));}
+});
+$('detail').setAttribute('aria-label','角色详情');
+render();
+
   </script>
 </body>
 </html>

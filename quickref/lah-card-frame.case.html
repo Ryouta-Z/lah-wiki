@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LAH 头像框案例</title>
+  <style>
+    :root { font-family: "Microsoft YaHei UI", system-ui, sans-serif; color: #22343b; background: #f4f5f1; }
+    * { box-sizing: border-box; }
+    body { min-width: 320px; margin: 0; }
+    main { width: min(780px, calc(100% - 32px)); margin: 48px auto; }
+    h1 { margin: 0; font-size: clamp(25px, 5vw, 36px); }
+    p { color: #586c71; line-height: 1.6; }
+    .comparison { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; margin-top: 30px; }
+    .label { margin: 0 0 10px; color: #41575d; font-weight: 800; }
+    .sample-area { display: grid; min-height: 270px; place-items: center; border: 1px dashed #b6c5c5; border-radius: 14px; background-image: radial-gradient(#cbd2cf 1px, transparent 1.5px); background-size: 24px 24px; }
+    .outer-card { width: 208px; padding: 15px 15px 17px; border: 1px solid #9ebbc2; border-radius: 20px; background: #fffefa; box-shadow: 0 4px 10px rgb(45 73 78 / 12%); text-align: center; }
+    .portrait { position: relative; width: 160px; padding-bottom: 32px; }
+    .portrait-face { position: relative; width: 160px; aspect-ratio: 1; overflow: hidden; border-radius: 11px; background: #d5dcd9; }
+    .current .portrait-face { border: 3px solid #d29c36; box-shadow: 0 0 0 3px #606462; }
+    .avatar { position: absolute; z-index: 1; inset: 6%; overflow: hidden; }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .frame { position: absolute; z-index: 2; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+    .rarity { position: absolute; inset: auto 0 0; display: flex; justify-content: center; gap: 3px; color: #e9b43d; filter: drop-shadow(0 1px #305258); }
+    .rarity svg { width: 28px; height: 28px; fill: currentColor; stroke: #2d565c; stroke-width: 1.4px; }
+    .name { margin: 1px 0 0; font-size: 22px; font-weight: 900; }
+    .note { max-width: 28ch; margin: 14px auto 0; font-size: 13px; text-align: center; }
+    .proposed .label { color: #116b84; }
+    .proposed .sample-area { border-color: #55abc0; background-color: #effcff; }
+    @media (max-width: 600px) { main { margin: 28px auto; } .comparison { grid-template-columns: 1fr; gap: 20px; } .sample-area { min-height: 250px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>赤司头像框案例</h1>
+    <p>左侧是目前的银框外再叠一层金框；右侧保留白色圆角卡与银色头像框，只移除额外的金色框。</p>
+    <section class="comparison" aria-label="头像框前后对照">
+      <div class="current">
+        <p class="label">当前：银框外又叠金框</p>
+        <div class="sample-area">
+          <article class="outer-card" aria-label="当前赤司卡片">
+            <div class="portrait">
+              <div class="portrait-face"><span class="avatar"><img src="../data/images/icon/akashi.png" alt="赤司头像"></span><img class="frame" src="../data/cache/official-ui-candidates/selected/hero-frame-02.png" alt=""></div>
+              <div class="rarity" aria-label="3 星"><svg viewBox="0 0 24 24"><path d="m12 2 3 6.5 7 1-5 5 1.2 7L12 18l-6.2 3.5L7 14.5l-5-5 7-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.5 7 1-5 5 1.2 7L12 18l-6.2 3.5L7 14.5l-5-5 7-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.5 7 1-5 5 1.2 7L12 18l-6.2 3.5L7 14.5l-5-5 7-1Z"/></svg></div>
+            </div>
+            <p class="name">赤司</p>
+          </article>
+        </div>
+      </div>
+      <div class="proposed">
+        <p class="label">拟修改：保留银框，去掉金框</p>
+        <div class="sample-area">
+          <article class="outer-card" aria-label="拟修改的赤司卡片">
+            <div class="portrait">
+              <div class="portrait-face"><span class="avatar"><img src="../data/images/icon/akashi.png" alt="赤司头像"></span><img class="frame" src="../data/cache/official-ui-candidates/selected/hero-frame-02.png" alt=""></div>
+              <div class="rarity" aria-label="3 星"><svg viewBox="0 0 24 24"><path d="m12 2 3 6.5 7 1-5 5 1.2 7L12 18l-6.2 3.5L7 14.5l-5-5 7-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.5 7 1-5 5 1.2 7L12 18l-6.2 3.5L7 14.5l-5-5 7-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.5 7 1-5 5 1.2 7L12 18l-6.2 3.5L7 14.5l-5-5 7-1Z"/></svg></div>
+            </div>
+            <p class="name">赤司</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
