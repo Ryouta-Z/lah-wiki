@@ -1,0 +1,51 @@
+name: Publish portable Wiki
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [master]
+    paths:
+      - 'data/quickref_catalog.json'
+      - 'data/images/icon/**'
+      - 'quickref/**'
+      - 'scripts/build_portable_wiki.py'
+      - 'scripts/portable/**'
+      - '.github/workflows/portable-wiki.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: portable-wiki-release
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build offline package and per-file patches
+        env:
+          WIKI_REPO: ${{ github.repository }}
+          WIKI_VERSION: wiki-${{ github.run_number }}-${{ github.run_attempt }}-${{ github.sha }}
+        run: python scripts/build_portable_wiki.py --repository "$WIKI_REPO" --version "$WIKI_VERSION" --output outputs/portable-release
+      - name: Publish only after every asset is uploaded
+        env:
+          GH_TOKEN: ${{ github.token }}
+          WIKI_REPO: ${{ github.repository }}
+          WIKI_VERSION: wiki-${{ github.run_number }}-${{ github.run_attempt }}-${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import os, subprocess
+          from pathlib import Path
+          tag, repo = os.environ['WIKI_VERSION'], os.environ['WIKI_REPO']
+          base = ['gh', 'release']
+          subprocess.run(base + ['create', tag, '--repo', repo, '--target', os.environ['GITHUB_SHA'], '--draft', '--title', 'Live A Hero 便携 Wiki', '--notes', '首次使用下载 Live-A-Hero-Wiki-Setup.zip，解压后双击下载Wiki.cmd选择内容。完整离线包为 Live-A-Hero-Wiki.zip。已有用户双击原文件夹内的更新Wiki.cmd。签名、收藏卡和立绘等补充素材暂不包含。'], check=True)
+          assets = sorted(str(p) for p in Path('outputs/portable-release/release').iterdir())
+          for start in range(0, len(assets), 40):
+              subprocess.run(base + ['upload', tag, '--repo', repo] + assets[start:start+40], check=True)
+          subprocess.run(base + ['edit', tag, '--repo', repo, '--draft=false', '--latest'], check=True)
+          PY

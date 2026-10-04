@@ -6,8 +6,20 @@ __pycache__/
 _nb.log
 _img.log
 *.log
-data/images/
+data/images/*
+!data/images/icon/
+data/images/icon/*
+!data/images/icon/wolfmanfire.png
+!data/images/icon/wolfmanwater.png
+!data/images/icon/wolfmanlight.png
+!data/images/icon/wolfmanfire-sidekick.png
+!data/images/icon/wolfmanwater-sidekick.png
+!data/images/icon/wolfmanlight-sidekick.png
 data/cache/
 outputs/
 scripts/node_modules/
 .uv-cache/
+
+# The portable release needs the referenced avatars in clean checkouts.
+!data/images/icon/*.png
+!data/images/icon/player.gif

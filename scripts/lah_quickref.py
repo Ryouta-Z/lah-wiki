@@ -42,6 +42,7 @@ except ModuleNotFoundError:  # Allow `python scripts/lah_quickref.py` from the p
 
 ROOT = Path(__file__).parent.parent
 DEFAULT_SNAPSHOT_DIR = ROOT / "data" / "cache" / "lah-localization"
+DEFAULT_MASTER_UPDATES_PATH = ROOT / "data" / "quickref_master_updates.json"
 DEFAULT_CATALOG_PATH = ROOT / "data" / "quickref_catalog.json"
 DEFAULT_SITE_PATH = ROOT / "quickref" / "index.html"
 DEFAULT_ALIASES_PATH = ROOT / "data" / "aliases.json"
@@ -179,6 +180,7 @@ def build_catalog(
     sidekick_avatar_overrides_path: Path = DEFAULT_SIDEKICK_AVATAR_OVERRIDES_PATH,
     assistant_tags_path: Path | None = None,
     hero_tags_path: Path | None = None,
+    master_updates_path: Path | None = None,
 ) -> dict[str, Any]:
     """Return a normalized catalog from one complete, date-consistent snapshot."""
     snapshot = _snapshot_files(snapshot_dir)
@@ -186,6 +188,14 @@ def build_catalog(
     hero_cards = _read_json(snapshot["hero_cards"])
     sidekick_cards = _read_json(snapshot["sidekick_cards"])
     skills = _index_by_id(_read_json(snapshot["skills"]), "skillId")
+    updates = None
+    if master_updates_path is not None and master_updates_path.is_file():
+        candidate = _read_json(master_updates_path)
+        if candidate["baseSnapshotId"] == snapshot["id"]:
+            updates = candidate
+            hero_cards = {**hero_cards, **updates["heroCards"]}
+            sidekick_cards = {**sidekick_cards, **updates["sidekickCards"]}
+            skills = {**skills, **updates["skills"]}
     aliases = _aliases_by_original(_read_json(aliases_path)) if aliases_path.exists() else {}
     avatars = _avatar_index(
         _read_json(char_map_path) if char_map_path.exists() else {},
@@ -243,7 +253,8 @@ def build_catalog(
     skill_upgrades = _unique_skill_upgrades(cards)
     return {
         "metadata": {
-            "snapshotId": snapshot["id"],
+            "snapshotId": f"{snapshot['id']}+{updates['id']}" if updates else snapshot["id"],
+            **({"supplementalData": updates["source"]} if updates else {}),
             "generatedAt": datetime.now(UTC).isoformat(),
             "heroCardCount": sum(card["kind"] == "hero" for card in cards),
             "sidekickCardCount": sum(card["kind"] == "sidekick" for card in cards),
@@ -269,6 +280,17 @@ def write_catalog(catalog: dict[str, Any], output_path: Path) -> None:
 def write_static_site(
     catalog: dict[str, Any], output_path: Path, icon_dir: Path = DEFAULT_ICON_DIR
 ) -> None:
+    if output_path.is_file():
+        existing = output_path.read_text(encoding="utf-8")
+        if "// 查询界面层：" in existing:
+            updated, count = re.subn(
+                r"(?m)^    const catalog = .*;$",
+                lambda _: "    const catalog = " + json.dumps(catalog, ensure_ascii=False) + ";",
+                existing,
+            )
+            if count == 1:
+                _write_text_atomic(output_path, updated)
+                return
     avatar_url_prefix = Path(os.path.relpath(icon_dir, start=output_path.parent)).as_posix()
     official_ui_dir = ROOT / "data" / "cache" / "official-ui-candidates" / "selected"
     local_official_asset_prefix = (
@@ -296,7 +318,8 @@ def rebuild_quickref(
 ) -> dict[str, Any]:
     """Rebuild the public offline catalog after a local administrator saves tags."""
     catalog = build_catalog(
-        snapshot_dir, assistant_tags_path=assistant_tags_path, hero_tags_path=hero_tags_path
+        snapshot_dir, assistant_tags_path=assistant_tags_path, hero_tags_path=hero_tags_path,
+        master_updates_path=DEFAULT_MASTER_UPDATES_PATH,
     )
     write_catalog(catalog, catalog_path)
     write_static_site(catalog, site_path)
@@ -742,6 +765,11 @@ def _skill_row(
     description_source = description_source_override or (
         "官方简中" if localized.get(f"SKILL_DESCRIPTION_{skill_id}") else "日文原文"
     )
+    if str(skill_id) == "1033207" and "バイレクェ・トラエカルマ" in cleaned_description:
+        cleaned_description = cleaned_description.replace(
+            "バイレクェ・トラエカルマ", "宁静之舞（暂译；バイレクェ・トラエカルマ）"
+        )
+        description_source += "（含暂译名）"
     skill_for_status_terms = (
         {**raw_skill, "effects": effects_override}
         if effects_override is not None
@@ -1277,6 +1305,7 @@ def _write_text_atomic(path: Path, content: str) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser(description="生成 Live A Hero 离线速查数据与网页")
     parser.add_argument("--snapshot-dir", type=Path, default=DEFAULT_SNAPSHOT_DIR)
+    parser.add_argument("--master-updates", type=Path, default=DEFAULT_MASTER_UPDATES_PATH)
     parser.add_argument("--catalog", type=Path, default=DEFAULT_CATALOG_PATH)
     parser.add_argument("--site", type=Path, default=DEFAULT_SITE_PATH)
     parser.add_argument("--assistant-tags", type=Path, default=DEFAULT_ASSISTANT_TAGS_PATH)
@@ -1291,6 +1320,7 @@ def main() -> None:
         args.snapshot_dir,
         assistant_tags_path=args.assistant_tags,
         hero_tags_path=args.hero_tags,
+        master_updates_path=args.master_updates,
     )
     write_catalog(catalog, args.catalog)
     write_static_site(catalog, args.site)
