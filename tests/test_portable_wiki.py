@@ -18,7 +18,9 @@ class PortableBuildTest(unittest.TestCase):
             root = Path(directory)
             catalog = {"metadata": {}, "cards": [], "heroTags": [], "assistantTags": [], "statusTerms": [], "skills": [], "skillUpgrades": []}
             (root / "catalog.json").write_text(json.dumps(catalog), encoding="utf-8")
-            html = render_static_html(catalog, collection_cards_url="collection-cards/index.html")
+            html = render_static_html(catalog).replace(
+                "</header>", '<nav class="wiki-navigation"><a href="collection-cards/index.html">收藏卡</a></nav></header>'
+            )
             (root / "index.html").write_text(html.replace("</body>", '<div id="custom-query-interface">custom</div></body>'), encoding="utf-8")
             ui = root / "ui"
             ui.mkdir()
