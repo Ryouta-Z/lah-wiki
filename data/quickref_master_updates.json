@@ -2,6 +2,7 @@
   "id": "20261009",
   "baseSnapshotId": "20260815",
   "source": {
+    "gameVersion": "4.16.1",
     "sourceKind": "official_game_local_cache_and_approved_review",
     "cacheCollectedThroughBeijing": "2026-10-09T10:38:21.9968293+08:00",
     "scope": "2026-10-08活动三名英雄与两名助手全部阶段、真实技能引用链；狼人21字段官方中文与导星的罗伊克4项官方描述补全。",

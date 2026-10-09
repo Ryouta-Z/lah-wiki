@@ -631,7 +631,9 @@ def render_static_html(
     }}
     const selectedHeroTagIds = setupTagSelector('hero-tags', heroTags);
     const selectedAssistantTagIds = setupTagSelector('assistant-tags', assistantTags);
-    $('snapshot').textContent = `快照：${{catalog.metadata.snapshotId}} · 英雄 ${{catalog.metadata.heroCardCount}} 张（仅 60 级属性）· 助手 ${{catalog.metadata.sidekickCardCount}} 张（最高技能阶段）· 技能强化 ${{catalog.metadata.skillUpgradeCount}} 项`;
+    const snapshotSource = catalog.metadata.supplementalData || {{}};
+    const snapshotDate = (snapshotSource.integratedAtBeijing || '').slice(0, 10).replaceAll('-', ':');
+    $('snapshot').textContent = `当前版本：${{snapshotSource.gameVersion ? 'v' + snapshotSource.gameVersion : '未标注'}} · 更新时间：${{snapshotDate || '未标注'}}`;
     function matches(card) {{
       const query = $('query').value.trim().toLocaleLowerCase();
       const haystack = [card.name, card.originalName, card.cardId, ...card.aliases, ...card.skills.flatMap(skill => [skill.name, skill.originalName, skill.description]), ...(card.tags || []).map(tag => tag.label)].join('\\n').toLocaleLowerCase();
