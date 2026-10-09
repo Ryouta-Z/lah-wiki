@@ -1,18 +1,67 @@
 {
   "metadata": {
-    "snapshotId": "20260815+20261001",
+    "snapshotId": "20260815+20261009",
     "supplementalData": {
-      "masterVersion": 1401,
-      "url": "https://github.com/liveahero-community/translations/tree/main/master-data/1401/ja-JP",
-      "scope": "火、水、光狼人英雄与助手；拳闪的普洛基、圣冰的格米萨技能树",
-      "localization": "使用原官方简中快照；新增文本缺失时保留日文原文"
+      "sourceKind": "official_game_local_cache_and_approved_review",
+      "cacheCollectedThroughBeijing": "2026-10-09T10:38:21.9968293+08:00",
+      "scope": "2026-10-08活动三名英雄与两名助手全部阶段、真实技能引用链；狼人21字段官方中文与导星的罗伊克4项官方描述补全。",
+      "localization": "localized仅保留官方简中精确键；reviewedTranslations独立保存用户已审核暂译，原始日文与缺失官中状态保留。",
+      "reviewStatus": "approved",
+      "integratedAtBeijing": "2026-10-09T18:15:53+08:00",
+      "sourceFiles": [
+        {
+          "file": "CardMaster",
+          "sourceKind": "official_game_local_cache",
+          "sha256": "9713437529cfc713d6ed42330613ff8571ff3454e65287659dbcec743aa4f1a1",
+          "bytes": 1684227,
+          "collectedThroughBeijing": "2026-10-09T10:38:21.9968293+08:00"
+        },
+        {
+          "file": "SidekickMaster",
+          "sourceKind": "official_game_local_cache",
+          "sha256": "131c66c7a0f091382b4cc7a8eeb7abb9d810247dc5e2cada6466d9afe7408b42",
+          "bytes": 988738,
+          "collectedThroughBeijing": "2026-10-09T10:38:21.9968293+08:00"
+        },
+        {
+          "file": "SkillMaster",
+          "sourceKind": "official_game_local_cache",
+          "sha256": "6efb28b5d406b44e75c94f35d560ad949f231085ce515834cc4e164dd77398e3",
+          "bytes": 19039131,
+          "collectedThroughBeijing": "2026-10-09T10:38:21.9968293+08:00"
+        },
+        {
+          "file": "ChineseSimplified.json",
+          "sourceKind": "official_game_local_cache",
+          "sha256": "12bc2fec870d7eb2bc8cc76682deb699f0768fa7d35825b136d4d4a44067836f",
+          "bytes": 3223979,
+          "collectedThroughBeijing": "2026-10-09T10:38:21.9968293+08:00"
+        },
+        {
+          "file": "SkillEffectMaster",
+          "sourceKind": "official_game_local_cache",
+          "sha256": "3f3ab896a320f827a47006b45f46ee9997f28aaec730846fd505c37f5f7a53fe",
+          "bytes": 4939816,
+          "collectedThroughBeijing": "2026-10-09T10:42:45.4019272+08:00"
+        }
+      ],
+      "reviewEvidence": [
+        {
+          "file": "max-level-verification.json",
+          "sha256": "6e54ae1fe00156ead19ca8d89a9e20063aef9998e8f9cfdb7cf6292b35abdfb3"
+        },
+        {
+          "file": "review-data.json",
+          "sha256": "403ef52600d48f6a55cf4a992eb1fb9ca87f41d2aa7d5d6adba4940b29683c9c"
+        }
+      ]
     },
-    "generatedAt": "2026-10-04T07:28:56.992106+00:00",
-    "heroCardCount": 208,
-    "sidekickCardCount": 156,
-    "skillCount": 871,
+    "generatedAt": "2026-10-09T10:52:42.026405+00:00",
+    "heroCardCount": 211,
+    "sidekickCardCount": 158,
+    "skillCount": 888,
     "skillUpgradeCount": 66,
-    "translationPolicy": "官方简中优先；缺失片段保留日文原文。",
+    "translationPolicy": "官方简中优先；已审核暂译明确标注并保留日文；其余缺失片段保留日文原文。",
     "heroStatPolicy": "同名英雄仅保留最高星卡的 60 级属性；无 60 级数据的特殊卡保留技能并标记。",
     "sidekickSkillPolicy": "每名助手仅保留最高阶段的主动技能与最高等级装备技能。"
   },
@@ -213,7 +262,17 @@
       ],
       "skillLevel": null,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "tag-dd911f7d-32ff-4fce-af79-e9b9415e7b70",
+          "label": "减益解除",
+          "path": [
+            "辅助性",
+            "减益解除"
+          ],
+          "pinned": false
+        }
+      ]
     },
     {
       "key": "hero:119913",
@@ -1138,8 +1197,8 @@
           "skillId": "1044101",
           "relation": "主动技能",
           "viewCost": 0,
-          "name": "スラッシュ",
-          "nameSource": "日文原文",
+          "name": "斩击",
+          "nameSource": "官方简中",
           "originalName": "スラッシュ",
           "description": "对敌方单体给予80%伤害。",
           "descriptionSource": "官方简中",
@@ -1151,8 +1210,8 @@
           "skillId": "1044102",
           "relation": "主动技能",
           "viewCost": 2000,
-          "name": "毒突き",
-          "nameSource": "日文原文",
+          "name": "毒刺",
+          "nameSource": "官方简中",
           "originalName": "毒突き",
           "description": "给予敌方单体80%伤害。以80%的概率附加1回合期间毒伤。",
           "descriptionSource": "官方简中",
@@ -1164,12 +1223,12 @@
           "skillId": "1044104",
           "relation": "主动技能",
           "viewCost": 3500,
-          "name": "光狼の意地+",
-          "nameSource": "日文原文",
+          "name": "光狼的坚持+",
+          "nameSource": "官方简中",
           "originalName": "光狼の意地+",
-          "description": "敵単体に130%ダメージ。バフを1つ解除。",
-          "descriptionSource": "日文原文",
-          "officialChineseAvailability": "无官方简中",
+          "description": "对敌方单体造成130%伤害。解除1个增益效果。",
+          "descriptionSource": "官方简中",
+          "officialChineseAvailability": "完整官方简中",
           "statusTermSources": "—",
           "statusTerms": []
         }
@@ -1838,6 +1897,192 @@
       "tags": []
     },
     {
+      "key": "hero:133513",
+      "kind": "hero",
+      "cardId": "133513",
+      "name": "凯夫",
+      "nameSource": "审核暂译",
+      "originalName": "ケフ",
+      "aliases": [],
+      "avatar": {
+        "status": "available",
+        "code": "ceph",
+        "filename": "ceph.png"
+      },
+      "rarity": 6,
+      "initialRarity": 4,
+      "element": {
+        "code": 1,
+        "label": "火"
+      },
+      "role": {
+        "code": 3,
+        "label": "辅助"
+      },
+      "stats": {
+        "level60": {
+          "level": 60,
+          "hp": 4950,
+          "attack": 1700,
+          "agility": 111
+        }
+      },
+      "skills": [
+        {
+          "skillId": "1335101",
+          "relation": "主动技能",
+          "viewCost": 0,
+          "name": "光之舞台",
+          "nameSource": "审核暂译",
+          "originalName": "スカエナ・ルーキス",
+          "description": "对敌方单体附加1次行动期间的SPD下降。\n获得1000View。",
+          "descriptionSource": "审核暂译",
+          "officialChineseAvailability": "无官方简中（已审核暂译）",
+          "statusTermSources": "—",
+          "statusTerms": [],
+          "originalDescription": "敵単体に1回の行動の間SPDダウンを付与。Viewを1000獲得。"
+        },
+        {
+          "skillId": "1335104",
+          "relation": "主动技能",
+          "viewCost": 4500,
+          "name": "你闪耀着+",
+          "nameSource": "审核暂译",
+          "originalName": "トゥ・フルゲス+",
+          "description": "为我方单体及编成中位于该目标下一位的我方，恢复基础ATK60%的HP。\n目标被附加减益时，解除1个减益。\n目标未被附加减益时，连击数+1。\n【连击数≥5时】\n再行动1次。（每回合最多1次）",
+          "descriptionSource": "审核暂译",
+          "officialChineseAvailability": "无官方简中（已审核暂译）",
+          "statusTermSources": "—",
+          "statusTerms": [],
+          "originalDescription": "味方単体と対象の1つ下に編成されている味方のHPを基礎ATKの60%回復する。対象にデバフが付与されている場合、デバフを1つ解除。対象にデバフが付与されていない場合、コンボ数+1。【コンボ数が5以上の場合】もう１度行動をする。（1ターンに1回まで）"
+        },
+        {
+          "skillId": "1335103",
+          "relation": "主动技能",
+          "viewCost": 8000,
+          "name": "比万物更耀眼",
+          "nameSource": "审核暂译",
+          "originalName": "クラリオル・オムニバス",
+          "description": "【自身未被附加演坛时】\n对自身附加3回合期间的演坛。\n【自身已被附加演坛时】\n对敌方全体附加1回合期间的眩晕，连击数+1。",
+          "descriptionSource": "审核暂译",
+          "officialChineseAvailability": "无官方简中（已审核暂译）",
+          "statusTermSources": "审核暂译（官方公告机制）",
+          "statusTerms": [
+            {
+              "id": "review-20261008-podium",
+              "name": "演坛",
+              "description": "我方ATK随连击数上升。（最多+50%；连击数为25时达到最大值）\n我方使用不造成伤害的技能时，连击+2。（每回合最多触发3次）\n任意角色被附加不同的场地效果时，演坛解除。\n【分类】其他／不可叠加／场地",
+              "source": "审核暂译（官方公告机制）",
+              "originalName": "演壇",
+              "originalDescription": "味方はコンボ数に応じてATKが上昇。(最大+50％。コンボ数25の時最大値に到達)\n味方がダメージを与えないスキルを使用した時、コンボ+2。（1ターン中に3回まで発動）\n異なるフィールド効果がいずれかのキャラクターに付与された時、解除される。",
+              "sourceKind": "official_event_notice"
+            }
+          ],
+          "originalDescription": "【自身に演壇が付与されていない場合】自身に3ターンの間演壇を付与。【自身に演壇が付与されている場合】敵全体に1ターンの間眩暈を付与。コンボ数+1。"
+        },
+        {
+          "skillId": "8335101",
+          "relation": "战内替换技能",
+          "viewCost": null,
+          "name": "比万物更耀眼",
+          "nameSource": "审核暂译",
+          "originalName": "クラリオル・オムニバス",
+          "description": "【自身未被附加演坛时】\n对自身附加3回合期间的演坛。\n【自身已被附加演坛时】\n对敌方全体附加1回合期间的眩晕，连击数+1。",
+          "descriptionSource": "审核暂译",
+          "officialChineseAvailability": "无官方简中（已审核暂译）",
+          "statusTermSources": "审核暂译（官方公告机制）",
+          "statusTerms": [
+            {
+              "id": "review-20261008-podium",
+              "name": "演坛",
+              "description": "我方ATK随连击数上升。（最多+50%；连击数为25时达到最大值）\n我方使用不造成伤害的技能时，连击+2。（每回合最多触发3次）\n任意角色被附加不同的场地效果时，演坛解除。\n【分类】其他／不可叠加／场地",
+              "source": "审核暂译（官方公告机制）",
+              "originalName": "演壇",
+              "originalDescription": "味方はコンボ数に応じてATKが上昇。(最大+50％。コンボ数25の時最大値に到達)\n味方がダメージを与えないスキルを使用した時、コンボ+2。（1ターン中に3回まで発動）\n異なるフィールド効果がいずれかのキャラクターに付与された時、解除される。",
+              "sourceKind": "official_event_notice"
+            }
+          ],
+          "originalDescription": "【自身に演壇が付与されていない場合】自身に3ターンの間演壇を付与。【自身に演壇が付与されている場合】敵全体に1ターンの間眩暈を付与。コンボ数+1。"
+        }
+      ],
+      "skillLevel": null,
+      "skillUpgrades": [],
+      "tags": [
+        {
+          "id": "tag-51db8c72-7a59-4fdb-b67a-bc22a057495f",
+          "label": "多目标治疗",
+          "path": [
+            "生存性",
+            "多目标治疗"
+          ],
+          "pinned": false
+        },
+        {
+          "id": "tag-a7f79386-0935-44d8-8d82-e257552b910f",
+          "label": "回合增伤",
+          "path": [
+            "辅助性",
+            "回合增伤"
+          ],
+          "pinned": true
+        },
+        {
+          "id": "tag-5965e1cb-b078-48e1-9e34-0c6e4c274df1",
+          "label": "速度控制",
+          "path": [
+            "辅助性",
+            "速度控制"
+          ],
+          "pinned": false
+        },
+        {
+          "id": "tag-dd911f7d-32ff-4fce-af79-e9b9415e7b70",
+          "label": "减益解除",
+          "path": [
+            "辅助性",
+            "减益解除"
+          ],
+          "pinned": true
+        },
+        {
+          "id": "tag-83b92c32-54ce-4214-abbe-199a2f68b685",
+          "label": "场地效果",
+          "path": [
+            "辅助性",
+            "场地效果"
+          ],
+          "pinned": false
+        },
+        {
+          "id": "tag-bd0d522a-4555-4861-9c3f-bfcae1cc8c12",
+          "label": "Combo",
+          "path": [
+            "适配队伍",
+            "Combo"
+          ],
+          "pinned": true
+        },
+        {
+          "id": "tag-503adb31-c48a-469c-ae69-dedb4712098b",
+          "label": "View",
+          "path": [
+            "适配队伍",
+            "View"
+          ],
+          "pinned": false
+        },
+        {
+          "id": "tag-0beaea32-ec69-4246-b30a-b811260b27f8",
+          "label": "根据站位选择",
+          "path": [
+            "目标选择",
+            "根据站位选择"
+          ],
+          "pinned": false
+        }
+      ]
+    },
+    {
       "key": "hero:101313",
       "kind": "hero",
       "cardId": "101313",
@@ -2278,7 +2523,17 @@
           }
         }
       ],
-      "tags": []
+      "tags": [
+        {
+          "id": "tag-dd911f7d-32ff-4fce-af79-e9b9415e7b70",
+          "label": "减益解除",
+          "path": [
+            "辅助性",
+            "减益解除"
+          ],
+          "pinned": false
+        }
+      ]
     },
     {
       "key": "hero:908211",
@@ -2560,7 +2815,26 @@
       ],
       "skillLevel": null,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "tag-51db8c72-7a59-4fdb-b67a-bc22a057495f",
+          "label": "多目标治疗",
+          "path": [
+            "生存性",
+            "多目标治疗"
+          ],
+          "pinned": false
+        },
+        {
+          "id": "tag-dd911f7d-32ff-4fce-af79-e9b9415e7b70",
+          "label": "减益解除",
+          "path": [
+            "辅助性",
+            "减益解除"
+          ],
+          "pinned": false
+        }
+      ]
     },
     {
       "key": "hero:103413",
@@ -2911,7 +3185,17 @@
       ],
       "skillLevel": null,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "tag-1044c3ff-63bd-41b0-bc9c-6c7e1139c69d",
+          "label": "护盾",
+          "path": [
+            "适配队伍",
+            "护盾"
+          ],
+          "pinned": false
+        }
+      ]
     },
     {
       "key": "hero:106413",
@@ -3085,7 +3369,175 @@
       ],
       "skillLevel": null,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "tag-83b92c32-54ce-4214-abbe-199a2f68b685",
+          "label": "场地效果",
+          "path": [
+            "辅助性",
+            "场地效果"
+          ],
+          "pinned": false
+        }
+      ]
+    },
+    {
+      "key": "hero:130412",
+      "kind": "hero",
+      "cardId": "130412",
+      "name": "图班",
+      "nameSource": "审核暂译",
+      "originalName": "トゥバン",
+      "aliases": [],
+      "avatar": {
+        "status": "available",
+        "code": "thuban",
+        "filename": "thuban.png"
+      },
+      "rarity": 6,
+      "initialRarity": 5,
+      "element": {
+        "code": 4,
+        "label": "光"
+      },
+      "role": {
+        "code": 1,
+        "label": "攻击"
+      },
+      "stats": {
+        "level60": {
+          "level": 60,
+          "hp": 7353,
+          "attack": 2789,
+          "agility": 106
+        }
+      },
+      "skills": [
+        {
+          "skillId": "1304101",
+          "relation": "主动技能",
+          "viewCost": 0,
+          "name": "斯塔迪格·佩拉雷",
+          "nameSource": "审核暂译",
+          "originalName": "スターディグ・ペーラレ",
+          "description": "【自身未被附加屏障时】\n对敌方单体造成50%伤害。\n对自身附加2次行动期间、数值为View的40%的屏障。\n【自身已被附加屏障时】\n对敌方全体造成50%伤害。\n【被动】\n持有支柱。\n我方被附加屏障时，支柱增加所附加屏障值的1%。（最大值为50）\n支柱超过30时，消耗我方全体的30点支柱，诱发自身技能1。（每回合最多4次）\n由此诱发的技能无法获得View与连击。",
+          "descriptionSource": "审核暂译",
+          "officialChineseAvailability": "无官方简中（已审核暂译）",
+          "statusTermSources": "审核暂译（官方公告机制）",
+          "statusTerms": [
+            {
+              "id": "review-20261008-pillar",
+              "name": "支柱",
+              "description": "我方获屏障时，增加赋予屏障值的1%，上限50；超过30时按技能1被动消耗并触发技能1。",
+              "source": "审核暂译（官方公告机制）",
+              "originalName": "支柱",
+              "originalDescription": "支柱を持つ。\n味方にバリアが付与された時、付与したバリア値の1%分支柱が増加する。（最大50まで）\n支柱が30を超えた時、味方全体の支柱を30消費して自身のスキル1を誘発する。（1ターンに4回まで）\nこの誘発ではView・コンボを獲得できない。",
+              "sourceKind": "official_event_notice"
+            }
+          ],
+          "originalDescription": "【自身にバリアが付与されていない時】敵単体に50%ダメージ。自身に2回の行動の間Viewの40％の値のバリアを付与。【自身にバリアが付与されている時】敵全体に50%ダメージ。支柱を持つ。味方にバリアが付与された時、付与したバリア値の1%分支柱が増加する。（最大50まで）支柱が30を超えた時、味方全体の支柱を30消費して自身のスキル1を誘発する。（1ターンに4回まで）この誘発ではView・コンボを獲得できない。"
+        },
+        {
+          "skillId": "1304102",
+          "relation": "主动技能",
+          "viewCost": 1500,
+          "name": "法德尔斯·雷德宁",
+          "nameSource": "审核暂译",
+          "originalName": "ファーデルス・レードニング",
+          "description": "先对我方全体造成各自最大HP10%的贯通伤害，再对目标附加2次行动期间、数值为目标最大HP10%的屏障。\n我方不会因本技能的贯通伤害而战斗不能，HP保留至最大值的1%。\n自身计量槽+1。\n在自身行动时发动此技能的情况下，进行连续行动。（每回合最多2次）\n【被动】\n我方带有屏障行动，并使屏障剩余回合数减少时，自身计量槽+1。（计量槽最大值为8）\n计量槽达到最大值时，消耗我方全体图班的全部计量槽，发动“德拉肯斯·坎普（ドラーケンス・カンプ）”。",
+          "descriptionSource": "审核暂译",
+          "officialChineseAvailability": "无官方简中（已审核暂译）",
+          "statusTermSources": "—",
+          "statusTerms": [],
+          "originalDescription": "味方全体に最大HPの10％の貫通ダメージを与えた後、2回の行動の間対象の最大HPの10%の値のバリアを付与。このスキルによって与える貫通ダメージで味方は戦闘不能にならず、HPは最大値の1%残る。自身のゲージ+1。自身の行動時にこのスキルを発動した場合、連続行動をする。（1ターンに2回まで）味方がバリアが付与された状態で行動してバリアの残ターン数が減少した時、自身のゲージ+1。（最大値は8）ゲージが最大になった時、味方全体のトゥバンのゲージを全て消費して「ドラーケンス・カンプ」を発動する。"
+        },
+        {
+          "skillId": "1304104",
+          "relation": "主动技能",
+          "viewCost": 7500,
+          "name": "斯托尔·沃克特德拉格+",
+          "nameSource": "审核暂译",
+          "originalName": "ストール・ヴォクテドラーゲ+",
+          "description": "对敌方单体及其相邻敌方造成90%伤害，伤害量随我方全体所持屏障值的总和上升。（最大总倍率为180%；屏障值总和为10000时达到最大伤害。）\n【被动】\n自身存活期间，已有屏障的我方再次被附加屏障时，目标的屏障值+500，持续回合数+2。（最多3回合）\n此效果不叠加。",
+          "descriptionSource": "审核暂译",
+          "officialChineseAvailability": "无官方简中（已审核暂译）",
+          "statusTermSources": "—",
+          "statusTerms": [],
+          "originalDescription": "敵単体と隣接する敵に90％ダメージ＋味方全体に付与されているバリアの値の合計に応じてダメージ量が上昇。(最大180％まで上昇。バリアの値の合計が10000の時最大ダメージに到達)生存中、バリアが既に付与されている味方にバリアが重複して付与された時、対象のバリアの値+500＆ターン数+2。（最大3ターンまで）この効果は重複しない。"
+        },
+        {
+          "skillId": "8304101",
+          "relation": "触发技能",
+          "viewCost": null,
+          "name": "德拉肯斯·坎普",
+          "nameSource": "审核暂译",
+          "originalName": "ドラーケンス・カンプ",
+          "description": "从敌方全体中随机选择目标，造成3次60%伤害。\n对自身附加2回合期间ATK+15%。（最多可叠加2个）",
+          "descriptionSource": "审核暂译",
+          "officialChineseAvailability": "无官方简中（已审核暂译）",
+          "statusTermSources": "—",
+          "statusTerms": [],
+          "originalDescription": "敵全体からランダムに3回、60%ダメージ。自身に2ターンの間ATK+15%を付与。（最大2個まで重複可能）"
+        }
+      ],
+      "skillLevel": null,
+      "skillUpgrades": [],
+      "tags": [
+        {
+          "id": "tag-40e29b62-c5ec-4b33-bb6e-17c9ef3a6130",
+          "label": "群体输出",
+          "path": [
+            "攻击性",
+            "群体输出"
+          ],
+          "pinned": false
+        },
+        {
+          "id": "tag-278e53b9-b38c-40a1-9e54-2dbe792b11ca",
+          "label": "单体输出",
+          "path": [
+            "攻击性",
+            "单体输出"
+          ],
+          "pinned": false
+        },
+        {
+          "id": "tag-2dba4079-6b64-47ed-aa95-a7e51110b92c",
+          "label": "多段输出",
+          "path": [
+            "攻击性",
+            "多段输出"
+          ],
+          "pinned": true
+        },
+        {
+          "id": "tag-dcc08bd2-a55c-47c8-9bde-56c75411152b",
+          "label": "回合外输出",
+          "path": [
+            "攻击性",
+            "回合外输出"
+          ],
+          "pinned": true
+        },
+        {
+          "id": "tag-066373f1-f4f9-46cb-bae6-94110b493829",
+          "label": "护盾",
+          "path": [
+            "生存性",
+            "护盾"
+          ],
+          "pinned": true
+        },
+        {
+          "id": "tag-1044c3ff-63bd-41b0-bc9c-6c7e1139c69d",
+          "label": "护盾",
+          "path": [
+            "适配队伍",
+            "护盾"
+          ],
+          "pinned": false
+        }
+      ]
     },
     {
       "key": "hero:103322",
@@ -3267,7 +3719,26 @@
           }
         }
       ],
-      "tags": []
+      "tags": [
+        {
+          "id": "tag-51db8c72-7a59-4fdb-b67a-bc22a057495f",
+          "label": "多目标治疗",
+          "path": [
+            "生存性",
+            "多目标治疗"
+          ],
+          "pinned": false
+        },
+        {
+          "id": "tag-0beaea32-ec69-4246-b30a-b811260b27f8",
+          "label": "根据站位选择",
+          "path": [
+            "目标选择",
+            "根据站位选择"
+          ],
+          "pinned": false
+        }
+      ]
     },
     {
       "key": "hero:100222",
@@ -3351,7 +3822,17 @@
       ],
       "skillLevel": null,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "tag-dd911f7d-32ff-4fce-af79-e9b9415e7b70",
+          "label": "减益解除",
+          "path": [
+            "辅助性",
+            "减益解除"
+          ],
+          "pinned": false
+        }
+      ]
     },
     {
       "key": "hero:900221",
@@ -3458,7 +3939,17 @@
       ],
       "skillLevel": null,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "tag-14eda385-fc4a-4fef-99b3-2056ae0b8fc8",
+          "label": "治疗受伤最多",
+          "path": [
+            "生存性",
+            "治疗受伤最多"
+          ],
+          "pinned": false
+        }
+      ]
     },
     {
       "key": "hero:103512",
@@ -3890,7 +4381,17 @@
       ],
       "skillLevel": null,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "tag-14eda385-fc4a-4fef-99b3-2056ae0b8fc8",
+          "label": "治疗受伤最多",
+          "path": [
+            "生存性",
+            "治疗受伤最多"
+          ],
+          "pinned": false
+        }
+      ]
     },
     {
       "key": "hero:112313",
@@ -4051,7 +4552,17 @@
       ],
       "skillLevel": null,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "tag-dd911f7d-32ff-4fce-af79-e9b9415e7b70",
+          "label": "减益解除",
+          "path": [
+            "辅助性",
+            "减益解除"
+          ],
+          "pinned": false
+        }
+      ]
     },
     {
       "key": "hero:108122",
@@ -4373,7 +4884,17 @@
       ],
       "skillLevel": null,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "tag-dd911f7d-32ff-4fce-af79-e9b9415e7b70",
+          "label": "减益解除",
+          "path": [
+            "辅助性",
+            "减益解除"
+          ],
+          "pinned": false
+        }
+      ]
     },
     {
       "key": "hero:111522",
@@ -4464,7 +4985,17 @@
       ],
       "skillLevel": null,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "tag-83b92c32-54ce-4214-abbe-199a2f68b685",
+          "label": "场地效果",
+          "path": [
+            "辅助性",
+            "场地效果"
+          ],
+          "pinned": false
+        }
+      ]
     },
     {
       "key": "hero:118313",
@@ -4644,7 +5175,17 @@
       ],
       "skillLevel": null,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "tag-14eda385-fc4a-4fef-99b3-2056ae0b8fc8",
+          "label": "治疗受伤最多",
+          "path": [
+            "生存性",
+            "治疗受伤最多"
+          ],
+          "pinned": false
+        }
+      ]
     },
     {
       "key": "hero:102512",
@@ -4798,7 +5339,17 @@
       ],
       "skillLevel": null,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "tag-83b92c32-54ce-4214-abbe-199a2f68b685",
+          "label": "场地效果",
+          "path": [
+            "辅助性",
+            "场地效果"
+          ],
+          "pinned": false
+        }
+      ]
     },
     {
       "key": "hero:111322",
@@ -4965,7 +5516,17 @@
       ],
       "skillLevel": null,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "tag-dd911f7d-32ff-4fce-af79-e9b9415e7b70",
+          "label": "减益解除",
+          "path": [
+            "辅助性",
+            "减益解除"
+          ],
+          "pinned": false
+        }
+      ]
     },
     {
       "key": "hero:100713",
@@ -5119,7 +5680,17 @@
       ],
       "skillLevel": null,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "tag-dd911f7d-32ff-4fce-af79-e9b9415e7b70",
+          "label": "减益解除",
+          "path": [
+            "辅助性",
+            "减益解除"
+          ],
+          "pinned": false
+        }
+      ]
     },
     {
       "key": "hero:111222",
@@ -5405,7 +5976,17 @@
       ],
       "skillLevel": null,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "tag-83b92c32-54ce-4214-abbe-199a2f68b685",
+          "label": "场地效果",
+          "path": [
+            "辅助性",
+            "场地效果"
+          ],
+          "pinned": false
+        }
+      ]
     },
     {
       "key": "hero:102922",
@@ -6287,7 +6868,17 @@
       ],
       "skillLevel": null,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "tag-14eda385-fc4a-4fef-99b3-2056ae0b8fc8",
+          "label": "治疗受伤最多",
+          "path": [
+            "生存性",
+            "治疗受伤最多"
+          ],
+          "pinned": false
+        }
+      ]
     },
     {
       "key": "hero:107522",
@@ -6804,7 +7395,26 @@
       ],
       "skillLevel": null,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "tag-dd911f7d-32ff-4fce-af79-e9b9415e7b70",
+          "label": "减益解除",
+          "path": [
+            "辅助性",
+            "减益解除"
+          ],
+          "pinned": false
+        },
+        {
+          "id": "tag-0beaea32-ec69-4246-b30a-b811260b27f8",
+          "label": "根据站位选择",
+          "path": [
+            "目标选择",
+            "根据站位选择"
+          ],
+          "pinned": false
+        }
+      ]
     },
     {
       "key": "hero:118213",
@@ -7049,7 +7659,17 @@
           }
         }
       ],
-      "tags": []
+      "tags": [
+        {
+          "id": "tag-dd911f7d-32ff-4fce-af79-e9b9415e7b70",
+          "label": "减益解除",
+          "path": [
+            "辅助性",
+            "减益解除"
+          ],
+          "pinned": false
+        }
+      ]
     },
     {
       "key": "hero:130213",
@@ -7133,7 +7753,17 @@
       ],
       "skillLevel": null,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "tag-14eda385-fc4a-4fef-99b3-2056ae0b8fc8",
+          "label": "治疗受伤最多",
+          "path": [
+            "生存性",
+            "治疗受伤最多"
+          ],
+          "pinned": false
+        }
+      ]
     },
     {
       "key": "hero:103222",
@@ -7998,7 +8628,17 @@
       ],
       "skillLevel": null,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "tag-dd911f7d-32ff-4fce-af79-e9b9415e7b70",
+          "label": "减益解除",
+          "path": [
+            "辅助性",
+            "减益解除"
+          ],
+          "pinned": false
+        }
+      ]
     },
     {
       "key": "hero:103122",
@@ -8425,7 +9065,17 @@
       ],
       "skillLevel": null,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "tag-dd911f7d-32ff-4fce-af79-e9b9415e7b70",
+          "label": "减益解除",
+          "path": [
+            "辅助性",
+            "减益解除"
+          ],
+          "pinned": false
+        }
+      ]
     },
     {
       "key": "hero:124016",
@@ -9277,7 +9927,17 @@
       ],
       "skillLevel": null,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "tag-14eda385-fc4a-4fef-99b3-2056ae0b8fc8",
+          "label": "治疗受伤最多",
+          "path": [
+            "生存性",
+            "治疗受伤最多"
+          ],
+          "pinned": false
+        }
+      ]
     },
     {
       "key": "hero:130312",
@@ -9732,7 +10392,17 @@
           }
         }
       ],
-      "tags": []
+      "tags": [
+        {
+          "id": "tag-dd911f7d-32ff-4fce-af79-e9b9415e7b70",
+          "label": "减益解除",
+          "path": [
+            "辅助性",
+            "减益解除"
+          ],
+          "pinned": false
+        }
+      ]
     },
     {
       "key": "hero:117013",
@@ -9809,7 +10479,17 @@
       ],
       "skillLevel": null,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "tag-dd911f7d-32ff-4fce-af79-e9b9415e7b70",
+          "label": "减益解除",
+          "path": [
+            "辅助性",
+            "减益解除"
+          ],
+          "pinned": false
+        }
+      ]
     },
     {
       "key": "hero:123713",
@@ -9894,6 +10574,198 @@
       "skillLevel": null,
       "skillUpgrades": [],
       "tags": []
+    },
+    {
+      "key": "hero:123622",
+      "kind": "hero",
+      "cardId": "123622",
+      "name": "檄声的阿连德",
+      "nameSource": "审核暂译",
+      "originalName": "檄声のアレンド",
+      "aliases": [],
+      "avatar": {
+        "status": "available",
+        "code": "alendblues2610",
+        "filename": "alendblues2610.png"
+      },
+      "rarity": 6,
+      "initialRarity": 5,
+      "element": {
+        "code": 3,
+        "label": "木"
+      },
+      "role": {
+        "code": 1,
+        "label": "攻击"
+      },
+      "stats": {
+        "level60": {
+          "level": 60,
+          "hp": 6078,
+          "attack": 2764,
+          "agility": 107
+        }
+      },
+      "skills": [
+        {
+          "skillId": "1236201",
+          "relation": "主动技能",
+          "viewCost": 0,
+          "name": "舞台之上",
+          "nameSource": "审核暂译",
+          "originalName": "イン・シェーナ",
+          "description": "对敌方单体造成2～4次20%伤害。\n从第2次攻击开始，每次追加连击数+1。\n自身的技能发动概率提升效果越高，越容易增加攻击次数。\n【被动】\n连击数增加时，自身计量槽+1。（计量槽最大值为8）\n使用会获得连击数的主动技能时，额外使计量槽+1。\n计量槽达到最大值时，消耗自身全部计量槽，发动“盛大登场（グランデ・エントラータ）”。",
+          "descriptionSource": "审核暂译",
+          "officialChineseAvailability": "无官方简中（已审核暂译）",
+          "statusTermSources": "—",
+          "statusTerms": [],
+          "originalDescription": "敵単体に2～4回、20%ダメージ。2回目以降はコンボ数+1の追加効果。自身のスキル発動確率上昇効果が高いほど、回数が多くなりやすくなる。コンボ数が増加した時、自身のゲージ+1。（ゲージの最大値は8）コンボ数を獲得するアクティブスキルを使用した時、追加でゲージ+1。ゲージが最大になった時、ゲージを全て消費して「グランデ・エントラータ」を発動。"
+        },
+        {
+          "skillId": "1236204",
+          "relation": "主动技能",
+          "viewCost": 5000,
+          "name": "英雄呼唤+",
+          "nameSource": "审核暂译",
+          "originalName": "リキアーモ・エロイコ+",
+          "description": "对敌方单体造成110%伤害。\n在自身行动时发动此技能的情况下，编成中位于自身上一位的友方进行追击。\n在下一名敌方开始行动前，发动“华丽搏斗（ロッタ・マニフィカ）”。\n【被动】\n自身存活时，若不存在被附加響杭（响桩）的敌方，则我方使用主动技能攻击敌方时，对敌方附加響杭。\n若攻击目标有多个，对编成顺序最靠上的敌方附加。",
+          "descriptionSource": "审核暂译",
+          "officialChineseAvailability": "无官方简中（已审核暂译）",
+          "statusTermSources": "审核暂译（官方公告机制）",
+          "statusTerms": [
+            {
+              "id": "review-20261008-resonance-stake",
+              "name": "响桩",
+              "description": "受到主动技能攻击时，连击数+1。\n我方檄声的阿连德全部战斗不能时解除。\n【分类】其他／不可叠加",
+              "source": "审核暂译（官方公告机制）",
+              "originalName": "響杭",
+              "originalDescription": "アクティブスキルで攻撃された時、コンボ数+1。\n味方の檄声のアレンドが全員戦闘不能になった時、解除される。",
+              "sourceKind": "official_event_notice"
+            }
+          ],
+          "originalDescription": "敵単体に110%ダメージ。自身の行動時にこのスキルを発動した場合、自身の1つ上に編成されている味方が追撃。次の敵の行動開始前に「ロッタ・マニフィカ」を発動する。生存時、響杭が付与されている敵がいない場合、味方がアクティブスキルで敵を攻撃した時、敵に響杭を付与。（対象が複数の場合は最も編成順が上の敵に付与）"
+        },
+        {
+          "skillId": "1236203",
+          "relation": "主动技能",
+          "viewCost": 11000,
+          "name": "超越征途",
+          "nameSource": "审核暂译",
+          "originalName": "オルトレ・イル・カンミーノ",
+          "description": "对敌方全体造成80%伤害。\n根据周波的数值，再对敌方全体造成1～3次40%伤害。（每追加1次消耗1点周波）\n【被动】\n持有周波。\n发动“盛大登场（グランデ・エントラータ）”时，周波增加。\n我方有多名檄声的阿连德时，共享周波的增减。",
+          "descriptionSource": "审核暂译",
+          "officialChineseAvailability": "无官方简中（已审核暂译）",
+          "statusTermSources": "审核暂译（官方公告机制）",
+          "statusTerms": [
+            {
+              "id": "review-20261008-wave",
+              "name": "周波",
+              "description": "与特定技能相关的效果。最大值为4。",
+              "source": "审核暂译（官方公告机制）",
+              "originalName": "周波",
+              "originalDescription": "特定のスキルに関連する効果。最大4まで。",
+              "sourceKind": "official_event_notice"
+            }
+          ],
+          "originalDescription": "敵全体に80%ダメージ。周波の値に応じて敵全体に1～3回40%ダメージ。（1回の回数ごとに周波を1消費）周波を持つ。周波は「グランデ・エントラータ」の発動時に増加する。周波の増減は味方に檄声のアレンドが複数いるとき、共有される。"
+        },
+        {
+          "skillId": "8236203",
+          "relation": "触发技能",
+          "viewCost": null,
+          "name": "盛大登场",
+          "nameSource": "审核暂译",
+          "originalName": "グランデ・エントラータ",
+          "description": "对敌方全体造成50%伤害。\n对自身附加2回合期间ATK+20%。（最多可叠加3个）\n周波+1。\nView与连击数不会因本次行动增加。",
+          "descriptionSource": "审核暂译",
+          "officialChineseAvailability": "无官方简中（已审核暂译）",
+          "statusTermSources": "审核暂译（官方公告机制）",
+          "statusTerms": [
+            {
+              "id": "review-20261008-wave",
+              "name": "周波",
+              "description": "与特定技能相关的效果。最大值为4。",
+              "source": "审核暂译（官方公告机制）",
+              "originalName": "周波",
+              "originalDescription": "特定のスキルに関連する効果。最大4まで。",
+              "sourceKind": "official_event_notice"
+            }
+          ],
+          "originalDescription": "敵全体に50%ダメージ。自身に2ターンの間ATK+20%を付与。（最大3個まで重複する）周波+1。この行動でView、コンボ数は増加しない。"
+        },
+        {
+          "skillId": "8236205",
+          "relation": "触发技能",
+          "viewCost": null,
+          "name": "华丽搏斗",
+          "nameSource": "审核暂译",
+          "originalName": "ロッタ・マニフィカ",
+          "description": "从敌方全体中随机选择目标，造成1～4次30%伤害。\n攻击次数随技能发动时的连击数增加。（每5连击，攻击次数+1）\nView与连击数不会因本次行动增加。",
+          "descriptionSource": "审核暂译",
+          "officialChineseAvailability": "无官方简中（已审核暂译）",
+          "statusTermSources": "—",
+          "statusTerms": [],
+          "originalDescription": "敵全体からランダムに1～4回30%ダメージ。スキル発動時のコンボ数に応じて攻撃回数が増加する。（5コンボ毎に攻撃回数+1）この行動でView、コンボ数は増加しない。"
+        }
+      ],
+      "skillLevel": null,
+      "skillUpgrades": [],
+      "tags": [
+        {
+          "id": "tag-40e29b62-c5ec-4b33-bb6e-17c9ef3a6130",
+          "label": "群体输出",
+          "path": [
+            "攻击性",
+            "群体输出"
+          ],
+          "pinned": false
+        },
+        {
+          "id": "tag-278e53b9-b38c-40a1-9e54-2dbe792b11ca",
+          "label": "单体输出",
+          "path": [
+            "攻击性",
+            "单体输出"
+          ],
+          "pinned": false
+        },
+        {
+          "id": "tag-2dba4079-6b64-47ed-aa95-a7e51110b92c",
+          "label": "多段输出",
+          "path": [
+            "攻击性",
+            "多段输出"
+          ],
+          "pinned": true
+        },
+        {
+          "id": "tag-dcc08bd2-a55c-47c8-9bde-56c75411152b",
+          "label": "回合外输出",
+          "path": [
+            "攻击性",
+            "回合外输出"
+          ],
+          "pinned": true
+        },
+        {
+          "id": "tag-bd0d522a-4555-4861-9c3f-bfcae1cc8c12",
+          "label": "Combo",
+          "path": [
+            "适配队伍",
+            "Combo"
+          ],
+          "pinned": true
+        },
+        {
+          "id": "tag-0beaea32-ec69-4246-b30a-b811260b27f8",
+          "label": "根据站位选择",
+          "path": [
+            "目标选择",
+            "根据站位选择"
+          ],
+          "pinned": false
+        }
+      ]
     },
     {
       "key": "hero:116812",
@@ -10548,8 +11420,8 @@
           "skillId": "1042101",
           "relation": "主动技能",
           "viewCost": 0,
-          "name": "スラッシュ",
-          "nameSource": "日文原文",
+          "name": "斩击",
+          "nameSource": "官方简中",
           "originalName": "スラッシュ",
           "description": "对敌方单体给予80%伤害。",
           "descriptionSource": "官方简中",
@@ -10561,8 +11433,8 @@
           "skillId": "1042102",
           "relation": "主动技能",
           "viewCost": 2000,
-          "name": "毒突き",
-          "nameSource": "日文原文",
+          "name": "毒刺",
+          "nameSource": "官方简中",
           "originalName": "毒突き",
           "description": "给予敌方单体80%伤害。以80%的概率附加1回合期间毒伤。",
           "descriptionSource": "官方简中",
@@ -10574,12 +11446,12 @@
           "skillId": "1042104",
           "relation": "主动技能",
           "viewCost": 3500,
-          "name": "水狼の意地+",
-          "nameSource": "日文原文",
+          "name": "水狼的坚持+",
+          "nameSource": "官方简中",
           "originalName": "水狼の意地+",
-          "description": "敵単体に130%ダメージ。自身のHPを基礎ATKの30%回復する。",
-          "descriptionSource": "日文原文",
-          "officialChineseAvailability": "无官方简中",
+          "description": "对敌方单体造成130%伤害。恢复自身基础ATK30%的HP。",
+          "descriptionSource": "官方简中",
+          "officialChineseAvailability": "完整官方简中",
           "statusTermSources": "—",
           "statusTerms": []
         }
@@ -10906,7 +11778,17 @@
       ],
       "skillLevel": null,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "tag-83b92c32-54ce-4214-abbe-199a2f68b685",
+          "label": "场地效果",
+          "path": [
+            "辅助性",
+            "场地效果"
+          ],
+          "pinned": false
+        }
+      ]
     },
     {
       "key": "hero:101923",
@@ -10983,7 +11865,17 @@
       ],
       "skillLevel": null,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "tag-dd911f7d-32ff-4fce-af79-e9b9415e7b70",
+          "label": "减益解除",
+          "path": [
+            "辅助性",
+            "减益解除"
+          ],
+          "pinned": false
+        }
+      ]
     },
     {
       "key": "hero:126512",
@@ -11074,7 +11966,17 @@
       ],
       "skillLevel": null,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "tag-dd911f7d-32ff-4fce-af79-e9b9415e7b70",
+          "label": "减益解除",
+          "path": [
+            "辅助性",
+            "减益解除"
+          ],
+          "pinned": false
+        }
+      ]
     },
     {
       "key": "hero:119013",
@@ -11737,7 +12639,17 @@
       ],
       "skillLevel": null,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "tag-dd911f7d-32ff-4fce-af79-e9b9415e7b70",
+          "label": "减益解除",
+          "path": [
+            "辅助性",
+            "减益解除"
+          ],
+          "pinned": false
+        }
+      ]
     },
     {
       "key": "hero:105322",
@@ -12673,8 +13585,8 @@
           "skillId": "1041101",
           "relation": "主动技能",
           "viewCost": 0,
-          "name": "スラッシュ",
-          "nameSource": "日文原文",
+          "name": "斩击",
+          "nameSource": "官方简中",
           "originalName": "スラッシュ",
           "description": "对敌方单体给予80%伤害。",
           "descriptionSource": "官方简中",
@@ -12686,8 +13598,8 @@
           "skillId": "1041102",
           "relation": "主动技能",
           "viewCost": 2000,
-          "name": "毒突き",
-          "nameSource": "日文原文",
+          "name": "毒刺",
+          "nameSource": "官方简中",
           "originalName": "毒突き",
           "description": "给予敌方单体80%伤害。以80%的概率附加1回合期间毒伤。",
           "descriptionSource": "官方简中",
@@ -12699,12 +13611,12 @@
           "skillId": "1041104",
           "relation": "主动技能",
           "viewCost": 3500,
-          "name": "火狼の意地+",
-          "nameSource": "日文原文",
+          "name": "火狼的坚持+",
+          "nameSource": "官方简中",
           "originalName": "火狼の意地+",
-          "description": "敵単体に130%ダメージ。60%の確率で1ターンの間火傷を付与。",
-          "descriptionSource": "日文原文",
-          "officialChineseAvailability": "无官方简中",
+          "description": "对敌方单体造成130%伤害。以60%的概率附加1回合期间烧伤。",
+          "descriptionSource": "官方简中",
+          "officialChineseAvailability": "完整官方简中",
           "statusTermSources": "—",
           "statusTerms": []
         }
@@ -13050,7 +13962,17 @@
       ],
       "skillLevel": null,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "tag-dd911f7d-32ff-4fce-af79-e9b9415e7b70",
+          "label": "减益解除",
+          "path": [
+            "辅助性",
+            "减益解除"
+          ],
+          "pinned": false
+        }
+      ]
     },
     {
       "key": "hero:112222",
@@ -13804,7 +14726,17 @@
       ],
       "skillLevel": null,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "tag-83b92c32-54ce-4214-abbe-199a2f68b685",
+          "label": "场地效果",
+          "path": [
+            "辅助性",
+            "场地效果"
+          ],
+          "pinned": false
+        }
+      ]
     },
     {
       "key": "hero:132612",
@@ -13893,7 +14825,17 @@
       ],
       "skillLevel": null,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "tag-14eda385-fc4a-4fef-99b3-2056ae0b8fc8",
+          "label": "治疗受伤最多",
+          "path": [
+            "生存性",
+            "治疗受伤最多"
+          ],
+          "pinned": false
+        }
+      ]
     },
     {
       "key": "hero:119112",
@@ -14190,7 +15132,17 @@
           }
         }
       ],
-      "tags": []
+      "tags": [
+        {
+          "id": "tag-dd911f7d-32ff-4fce-af79-e9b9415e7b70",
+          "label": "减益解除",
+          "path": [
+            "辅助性",
+            "减益解除"
+          ],
+          "pinned": false
+        }
+      ]
     },
     {
       "key": "hero:101913",
@@ -14743,7 +15695,17 @@
       ],
       "skillLevel": null,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "tag-dd911f7d-32ff-4fce-af79-e9b9415e7b70",
+          "label": "减益解除",
+          "path": [
+            "辅助性",
+            "减益解除"
+          ],
+          "pinned": false
+        }
+      ]
     },
     {
       "key": "hero:111313",
@@ -16110,7 +17072,17 @@
       ],
       "skillLevel": null,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "tag-83b92c32-54ce-4214-abbe-199a2f68b685",
+          "label": "场地效果",
+          "path": [
+            "辅助性",
+            "场地效果"
+          ],
+          "pinned": false
+        }
+      ]
     },
     {
       "key": "hero:100922",
@@ -16812,7 +17784,17 @@
       ],
       "skillLevel": null,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "tag-dd911f7d-32ff-4fce-af79-e9b9415e7b70",
+          "label": "减益解除",
+          "path": [
+            "辅助性",
+            "减益解除"
+          ],
+          "pinned": false
+        }
+      ]
     },
     {
       "key": "hero:100822",
@@ -17128,7 +18110,17 @@
       ],
       "skillLevel": null,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "tag-dd911f7d-32ff-4fce-af79-e9b9415e7b70",
+          "label": "减益解除",
+          "path": [
+            "辅助性",
+            "减益解除"
+          ],
+          "pinned": false
+        }
+      ]
     },
     {
       "key": "hero:102622",
@@ -17464,7 +18456,17 @@
           }
         }
       ],
-      "tags": []
+      "tags": [
+        {
+          "id": "tag-dd911f7d-32ff-4fce-af79-e9b9415e7b70",
+          "label": "减益解除",
+          "path": [
+            "辅助性",
+            "减益解除"
+          ],
+          "pinned": false
+        }
+      ]
     },
     {
       "key": "hero:101822",
@@ -17947,7 +18949,17 @@
       ],
       "skillLevel": null,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "tag-1044c3ff-63bd-41b0-bc9c-6c7e1139c69d",
+          "label": "护盾",
+          "path": [
+            "适配队伍",
+            "护盾"
+          ],
+          "pinned": false
+        }
+      ]
     },
     {
       "key": "hero:101223",
@@ -18632,7 +19644,17 @@
       ],
       "skillLevel": null,
       "skillUpgrades": [],
-      "tags": []
+      "tags": [
+        {
+          "id": "tag-dd911f7d-32ff-4fce-af79-e9b9415e7b70",
+          "label": "减益解除",
+          "path": [
+            "辅助性",
+            "减益解除"
+          ],
+          "pinned": false
+        }
+      ]
     },
     {
       "key": "hero:101412",
@@ -18800,7 +19822,17 @@
           }
         }
       ],
-      "tags": []
+      "tags": [
+        {
+          "id": "tag-1044c3ff-63bd-41b0-bc9c-6c7e1139c69d",
+          "label": "护盾",
+          "path": [
+            "适配队伍",
+            "护盾"
+          ],
+          "pinned": false
+        }
+      ]
     },
     {
       "key": "hero:106112",
@@ -20648,9 +21680,9 @@
           "name": "掩护斩击++",
           "nameSource": "官方简中",
           "originalName": "援護スラッシュ++",
-          "description": "敵単体に75%ダメージ。",
-          "descriptionSource": "日文原文",
-          "officialChineseAvailability": "无官方简中",
+          "description": "对敌方单体造成75%伤害。",
+          "descriptionSource": "官方简中",
+          "officialChineseAvailability": "完整官方简中",
           "statusTermSources": "—",
           "statusTerms": []
         },
@@ -20658,12 +21690,12 @@
           "skillId": "3044106",
           "relation": "装备技能（最高等级）",
           "viewCost": null,
-          "name": "光狼の声援Ⅵ",
-          "nameSource": "日文原文",
+          "name": "光狼的声援Ⅵ",
+          "nameSource": "官方简中",
           "originalName": "光狼の声援Ⅵ",
-          "description": "自身が使用する回復スキルのHP回復量+6%。",
-          "descriptionSource": "日文原文",
-          "officialChineseAvailability": "无官方简中",
+          "description": "自身的恢复技能的HP恢复量+6%。",
+          "descriptionSource": "官方简中",
+          "officialChineseAvailability": "完整官方简中",
           "statusTermSources": "—",
           "statusTerms": []
         }
@@ -21198,6 +22230,136 @@
             "自动选择目标"
           ],
           "pinned": false
+        }
+      ]
+    },
+    {
+      "key": "sidekick:133516",
+      "kind": "sidekick",
+      "cardId": "133516",
+      "name": "凯夫",
+      "nameSource": "审核暂译",
+      "originalName": "ケフ",
+      "aliases": [],
+      "avatar": {
+        "status": "available",
+        "code": "ceph",
+        "filename": "ceph-sidekick.png"
+      },
+      "rarity": 4,
+      "initialRarity": null,
+      "element": null,
+      "role": null,
+      "stats": {
+        "level1": {
+          "level": 1,
+          "hp": 55,
+          "attack": 26,
+          "agility": 4
+        },
+        "max": {
+          "level": 100,
+          "hp": 550,
+          "attack": 260,
+          "agility": 4
+        }
+      },
+      "skills": [
+        {
+          "skillId": "2335103",
+          "relation": "主动技能（最高阶段）",
+          "viewCost": 4000,
+          "name": "按计划进行++",
+          "nameSource": "审核暂译",
+          "originalName": "オンスケです++",
+          "description": "为我方单体及相邻我方恢复基础ATK40%的HP。\n连击数≥5时，恢复量提高至基础ATK的60%。",
+          "descriptionSource": "审核暂译",
+          "officialChineseAvailability": "无官方简中（已审核暂译）",
+          "statusTermSources": "—",
+          "statusTerms": [],
+          "originalDescription": "味方単体と隣接する味方のHPを基礎ATKの40%回復する。コンボ数が5以上の場合、回復量が60%に増加する。"
+        },
+        {
+          "skillId": "3335106",
+          "relation": "装备技能（最高等级）",
+          "viewCost": null,
+          "name": "活动策划人的协调力Ⅵ",
+          "nameSource": "审核暂译",
+          "originalName": "イベンターの調整力Ⅵ",
+          "description": "战斗开始时，对自身附加蓄能数为1的VP充填。\n每当连击数达到5的倍数时，VP充填的蓄能数+1。（最大蓄能数为5）\n行动开始时，每1点VP充填蓄能，获得自身View的10%。\n效果发动后，将VP充填的蓄能数设为1。\n【自动行动时】\n连击数≤5的情况下，优先使用第2技能。",
+          "descriptionSource": "审核暂译",
+          "officialChineseAvailability": "无官方简中（已审核暂译）",
+          "statusTermSources": "审核暂译（官方公告机制）",
+          "statusTerms": [
+            {
+              "id": "review-20261008-vp-charge",
+              "name": "VP充填",
+              "description": "蓄能数初始为1、最大5；连击达到5的倍数时+1；行动开始时每蓄能获得自身View10%，发动后重置为1。",
+              "source": "审核暂译（官方公告机制）",
+              "originalName": "VP充填",
+              "originalDescription": "バトル開始時、自身にチャージ数1のVP充填を付与。<style=\"改行\"></style>コンボ数が5の倍数に達する度にVP充填のチャージ数を+1。（最大チャージ数は5）<style=\"改行\"></style>行動開始時、VP充填のチャージ数1につき自身のViewの10%を獲得。<style=\"改行\"></style>効果発動後、VP充填のチャージ数を1にする。<style=\"オート行動\">コンボ数が5以下の場合は第2スキルを優先して使用する。</style>",
+              "sourceKind": "official_event_notice_and_game_cache"
+            }
+          ],
+          "originalDescription": "バトル開始時、自身にチャージ数1のVP充填を付与。コンボ数が5の倍数に達する度にVP充填のチャージ数を+1。（最大チャージ数は5）行動開始時、VP充填のチャージ数1につき自身のViewの10%を獲得。効果発動後、VP充填のチャージ数を1にする。コンボ数が5以下の場合は第2スキルを優先して使用する。"
+        }
+      ],
+      "skillLevel": 6,
+      "skillUpgrades": [],
+      "tags": [
+        {
+          "id": "target-ally-multi",
+          "label": "友方多目标",
+          "path": [
+            "主动-作用目标",
+            "友方多目标"
+          ],
+          "pinned": false
+        },
+        {
+          "id": "value-recovery",
+          "label": "恢复",
+          "path": [
+            "主动-作用数值",
+            "恢复"
+          ],
+          "pinned": true
+        },
+        {
+          "id": "tag-bc2a6ed4-a1ea-4114-afb7-93ab272f0f9c",
+          "label": "登场时",
+          "path": [
+            "被动-触发时机",
+            "登场时"
+          ],
+          "pinned": false
+        },
+        {
+          "id": "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+          "label": "行动相关",
+          "path": [
+            "被动-触发时机",
+            "行动相关"
+          ],
+          "pinned": false
+        },
+        {
+          "id": "tag-143d8bab-4954-4174-abba-09e3dee91e40",
+          "label": "View",
+          "path": [
+            "被动-作用效果",
+            "View"
+          ],
+          "pinned": true
+        },
+        {
+          "id": "auto-skill-2",
+          "label": "释放技能 2",
+          "path": [
+            "被动-自动战斗",
+            "释放技能 2"
+          ],
+          "pinned": true
         }
       ]
     },
@@ -22313,6 +23475,99 @@
             "恢复"
           ],
           "pinned": false
+        }
+      ]
+    },
+    {
+      "key": "sidekick:130416",
+      "kind": "sidekick",
+      "cardId": "130416",
+      "name": "图班",
+      "nameSource": "审核暂译",
+      "originalName": "トゥバン",
+      "aliases": [],
+      "avatar": {
+        "status": "available",
+        "code": "thuban",
+        "filename": "thuban-sidekick.png"
+      },
+      "rarity": 3,
+      "initialRarity": null,
+      "element": null,
+      "role": null,
+      "stats": {
+        "level1": {
+          "level": 1,
+          "hp": 70,
+          "attack": 18,
+          "agility": 2
+        },
+        "max": {
+          "level": 100,
+          "hp": 700,
+          "attack": 180,
+          "agility": 2
+        }
+      },
+      "skills": [
+        {
+          "skillId": "2304103",
+          "relation": "主动技能（最高阶段）",
+          "viewCost": 2000,
+          "name": "宽阔的背影++",
+          "nameSource": "审核暂译",
+          "originalName": "デカい背中++",
+          "description": "对我方单体及相邻我方附加1次行动期间、数值为View的20%的屏障。",
+          "descriptionSource": "审核暂译",
+          "officialChineseAvailability": "无官方简中（已审核暂译）",
+          "statusTermSources": "—",
+          "statusTerms": [],
+          "originalDescription": "味方単体と隣接する味方に、1回の行動の間Viewの20%の値のバリアを付与。"
+        },
+        {
+          "skillId": "3304106",
+          "relation": "装备技能（最高等级）",
+          "viewCost": null,
+          "name": "父龙的庇护Ⅵ",
+          "nameSource": "审核暂译",
+          "originalName": "父龍の庇護Ⅵ",
+          "description": "被附加屏障时，View基础值+15%。",
+          "descriptionSource": "审核暂译",
+          "officialChineseAvailability": "无官方简中（已审核暂译）",
+          "statusTermSources": "—",
+          "statusTerms": [],
+          "originalDescription": "バリアが付与されている時、View基礎値+15%。"
+        }
+      ],
+      "skillLevel": 6,
+      "skillUpgrades": [],
+      "tags": [
+        {
+          "id": "target-ally-multi",
+          "label": "友方多目标",
+          "path": [
+            "主动-作用目标",
+            "友方多目标"
+          ],
+          "pinned": true
+        },
+        {
+          "id": "value-shield",
+          "label": "护盾",
+          "path": [
+            "主动-作用数值",
+            "护盾"
+          ],
+          "pinned": true
+        },
+        {
+          "id": "tag-143d8bab-4954-4174-abba-09e3dee91e40",
+          "label": "View",
+          "path": [
+            "被动-作用效果",
+            "View"
+          ],
+          "pinned": true
         }
       ]
     },
@@ -29186,9 +30441,9 @@
           "name": "掩护斩击++",
           "nameSource": "官方简中",
           "originalName": "援護スラッシュ++",
-          "description": "敵単体に75%ダメージ。",
-          "descriptionSource": "日文原文",
-          "officialChineseAvailability": "无官方简中",
+          "description": "对敌方单体造成75%伤害。",
+          "descriptionSource": "官方简中",
+          "officialChineseAvailability": "完整官方简中",
           "statusTermSources": "—",
           "statusTerms": []
         },
@@ -29196,12 +30451,12 @@
           "skillId": "3042106",
           "relation": "装备技能（最高等级）",
           "viewCost": null,
-          "name": "水狼の声援Ⅵ",
-          "nameSource": "日文原文",
+          "name": "水狼的声援Ⅵ",
+          "nameSource": "官方简中",
           "originalName": "水狼の声援Ⅵ",
-          "description": "スキル発動確率+6%。",
-          "descriptionSource": "日文原文",
-          "officialChineseAvailability": "无官方简中",
+          "description": "技能发动概率+6%。",
+          "descriptionSource": "官方简中",
+          "officialChineseAvailability": "完整官方简中",
           "statusTermSources": "—",
           "statusTerms": []
         }
@@ -30838,9 +32093,9 @@
           "name": "掩护斩击++",
           "nameSource": "官方简中",
           "originalName": "援護スラッシュ++",
-          "description": "敵単体に75%ダメージ。",
-          "descriptionSource": "日文原文",
-          "officialChineseAvailability": "无官方简中",
+          "description": "对敌方单体造成75%伤害。",
+          "descriptionSource": "官方简中",
+          "officialChineseAvailability": "完整官方简中",
           "statusTermSources": "—",
           "statusTerms": []
         },
@@ -30848,12 +32103,12 @@
           "skillId": "3041106",
           "relation": "装备技能（最高等级）",
           "viewCost": null,
-          "name": "火狼の声援Ⅵ",
-          "nameSource": "日文原文",
+          "name": "火狼的声援Ⅵ",
+          "nameSource": "官方简中",
           "originalName": "火狼の声援Ⅵ",
-          "description": "View基礎値+6%。",
-          "descriptionSource": "日文原文",
-          "officialChineseAvailability": "无官方简中",
+          "description": "View基础值+6%。",
+          "descriptionSource": "官方简中",
+          "officialChineseAvailability": "完整官方简中",
           "statusTermSources": "—",
           "statusTerms": []
         }
@@ -35858,45 +37113,6 @@
       "statusTerms": []
     },
     {
-      "skillId": "1041101",
-      "relation": "主动技能",
-      "viewCost": 0,
-      "name": "スラッシュ",
-      "nameSource": "日文原文",
-      "originalName": "スラッシュ",
-      "description": "对敌方单体给予80%伤害。",
-      "descriptionSource": "官方简中",
-      "officialChineseAvailability": "完整官方简中",
-      "statusTermSources": "—",
-      "statusTerms": []
-    },
-    {
-      "skillId": "1042101",
-      "relation": "主动技能",
-      "viewCost": 0,
-      "name": "スラッシュ",
-      "nameSource": "日文原文",
-      "originalName": "スラッシュ",
-      "description": "对敌方单体给予80%伤害。",
-      "descriptionSource": "官方简中",
-      "officialChineseAvailability": "完整官方简中",
-      "statusTermSources": "—",
-      "statusTerms": []
-    },
-    {
-      "skillId": "1044101",
-      "relation": "主动技能",
-      "viewCost": 0,
-      "name": "スラッシュ",
-      "nameSource": "日文原文",
-      "originalName": "スラッシュ",
-      "description": "对敌方单体给予80%伤害。",
-      "descriptionSource": "官方简中",
-      "officialChineseAvailability": "完整官方简中",
-      "statusTermSources": "—",
-      "statusTerms": []
-    },
-    {
       "skillId": "2305103",
       "relation": "主动技能（最高阶段）",
       "viewCost": 4000,
@@ -36925,6 +38141,20 @@
       "statusTerms": []
     },
     {
+      "skillId": "1335104",
+      "relation": "主动技能",
+      "viewCost": 4500,
+      "name": "你闪耀着+",
+      "nameSource": "审核暂译",
+      "originalName": "トゥ・フルゲス+",
+      "description": "为我方单体及编成中位于该目标下一位的我方，恢复基础ATK60%的HP。\n目标被附加减益时，解除1个减益。\n目标未被附加减益时，连击数+1。\n【连击数≥5时】\n再行动1次。（每回合最多1次）",
+      "descriptionSource": "审核暂译",
+      "officialChineseAvailability": "无官方简中（已审核暂译）",
+      "statusTermSources": "—",
+      "statusTerms": [],
+      "originalDescription": "味方単体と対象の1つ下に編成されている味方のHPを基礎ATKの60%回復する。対象にデバフが付与されている場合、デバフを1つ解除。対象にデバフが付与されていない場合、コンボ数+1。【コンボ数が5以上の場合】もう１度行動をする。（1ターンに1回まで）"
+    },
+    {
       "skillId": "1081104",
       "relation": "主动技能",
       "viewCost": 4500,
@@ -37193,6 +38423,20 @@
       ]
     },
     {
+      "skillId": "1335101",
+      "relation": "主动技能",
+      "viewCost": 0,
+      "name": "光之舞台",
+      "nameSource": "审核暂译",
+      "originalName": "スカエナ・ルーキス",
+      "description": "对敌方单体附加1次行动期间的SPD下降。\n获得1000View。",
+      "descriptionSource": "审核暂译",
+      "officialChineseAvailability": "无官方简中（已审核暂译）",
+      "statusTermSources": "—",
+      "statusTerms": [],
+      "originalDescription": "敵単体に1回の行動の間SPDダウンを付与。Viewを1000獲得。"
+    },
+    {
       "skillId": "1190102",
       "relation": "主动技能",
       "viewCost": 6000,
@@ -37330,28 +38574,28 @@
       "statusTerms": []
     },
     {
-      "skillId": "3044106",
-      "relation": "装备技能（最高等级）",
-      "viewCost": null,
-      "name": "光狼の声援Ⅵ",
-      "nameSource": "日文原文",
-      "originalName": "光狼の声援Ⅵ",
-      "description": "自身が使用する回復スキルのHP回復量+6%。",
-      "descriptionSource": "日文原文",
-      "officialChineseAvailability": "无官方简中",
+      "skillId": "1044104",
+      "relation": "主动技能",
+      "viewCost": 3500,
+      "name": "光狼的坚持+",
+      "nameSource": "官方简中",
+      "originalName": "光狼の意地+",
+      "description": "对敌方单体造成130%伤害。解除1个增益效果。",
+      "descriptionSource": "官方简中",
+      "officialChineseAvailability": "完整官方简中",
       "statusTermSources": "—",
       "statusTerms": []
     },
     {
-      "skillId": "1044104",
-      "relation": "主动技能",
-      "viewCost": 3500,
-      "name": "光狼の意地+",
-      "nameSource": "日文原文",
-      "originalName": "光狼の意地+",
-      "description": "敵単体に130%ダメージ。バフを1つ解除。",
-      "descriptionSource": "日文原文",
-      "officialChineseAvailability": "无官方简中",
+      "skillId": "3044106",
+      "relation": "装备技能（最高等级）",
+      "viewCost": null,
+      "name": "光狼的声援Ⅵ",
+      "nameSource": "官方简中",
+      "originalName": "光狼の声援Ⅵ",
+      "description": "自身的恢复技能的HP恢复量+6%。",
+      "descriptionSource": "官方简中",
+      "officialChineseAvailability": "完整官方简中",
       "statusTermSources": "—",
       "statusTerms": []
     },
@@ -38060,6 +39304,20 @@
       "officialChineseAvailability": "完整官方简中",
       "statusTermSources": "—",
       "statusTerms": []
+    },
+    {
+      "skillId": "8236205",
+      "relation": "触发技能",
+      "viewCost": null,
+      "name": "华丽搏斗",
+      "nameSource": "审核暂译",
+      "originalName": "ロッタ・マニフィカ",
+      "description": "从敌方全体中随机选择目标，造成1～4次30%伤害。\n攻击次数随技能发动时的连击数增加。（每5连击，攻击次数+1）\nView与连击数不会因本次行动增加。",
+      "descriptionSource": "审核暂译",
+      "officialChineseAvailability": "无官方简中（已审核暂译）",
+      "statusTermSources": "—",
+      "statusTerms": [],
+      "originalDescription": "敵全体からランダムに1～4回30%ダメージ。スキル発動時のコンボ数に応じて攻撃回数が増加する。（5コンボ毎に攻撃回数+1）この行動でView、コンボ数は増加しない。"
     },
     {
       "skillId": "1126104",
@@ -39490,6 +40748,20 @@
       "statusTerms": []
     },
     {
+      "skillId": "2304103",
+      "relation": "主动技能（最高阶段）",
+      "viewCost": 2000,
+      "name": "宽阔的背影++",
+      "nameSource": "审核暂译",
+      "originalName": "デカい背中++",
+      "description": "对我方单体及相邻我方附加1次行动期间、数值为View的20%的屏障。",
+      "descriptionSource": "审核暂译",
+      "officialChineseAvailability": "无官方简中（已审核暂译）",
+      "statusTermSources": "—",
+      "statusTerms": [],
+      "originalDescription": "味方単体と隣接する味方に、1回の行動の間Viewの20%の値のバリアを付与。"
+    },
+    {
       "skillId": "3237106",
       "relation": "装备技能（最高等级）",
       "viewCost": null,
@@ -40358,6 +41630,20 @@
       "statusTerms": []
     },
     {
+      "skillId": "8304101",
+      "relation": "触发技能",
+      "viewCost": null,
+      "name": "德拉肯斯·坎普",
+      "nameSource": "审核暂译",
+      "originalName": "ドラーケンス・カンプ",
+      "description": "从敌方全体中随机选择目标，造成3次60%伤害。\n对自身附加2回合期间ATK+15%。（最多可叠加2个）",
+      "descriptionSource": "审核暂译",
+      "officialChineseAvailability": "无官方简中（已审核暂译）",
+      "statusTermSources": "—",
+      "statusTerms": [],
+      "originalDescription": "敵全体からランダムに3回、60%ダメージ。自身に2ターンの間ATK+15%を付与。（最大2個まで重複可能）"
+    },
+    {
       "skillId": "1076104",
       "relation": "主动技能",
       "viewCost": 4000,
@@ -41188,6 +42474,20 @@
       "statusTerms": []
     },
     {
+      "skillId": "2335103",
+      "relation": "主动技能（最高阶段）",
+      "viewCost": 4000,
+      "name": "按计划进行++",
+      "nameSource": "审核暂译",
+      "originalName": "オンスケです++",
+      "description": "为我方单体及相邻我方恢复基础ATK40%的HP。\n连击数≥5时，恢复量提高至基础ATK的60%。",
+      "descriptionSource": "审核暂译",
+      "officialChineseAvailability": "无官方简中（已审核暂译）",
+      "statusTermSources": "—",
+      "statusTerms": [],
+      "originalDescription": "味方単体と隣接する味方のHPを基礎ATKの40%回復する。コンボ数が5以上の場合、回復量が60%に増加する。"
+    },
+    {
       "skillId": "1160101",
       "relation": "主动技能",
       "viewCost": 0,
@@ -41345,9 +42645,9 @@
       "name": "掩护斩击++",
       "nameSource": "官方简中",
       "originalName": "援護スラッシュ++",
-      "description": "敵単体に75%ダメージ。",
-      "descriptionSource": "日文原文",
-      "officialChineseAvailability": "无官方简中",
+      "description": "对敌方单体造成75%伤害。",
+      "descriptionSource": "官方简中",
+      "officialChineseAvailability": "完整官方简中",
       "statusTermSources": "—",
       "statusTerms": []
     },
@@ -41358,9 +42658,9 @@
       "name": "掩护斩击++",
       "nameSource": "官方简中",
       "originalName": "援護スラッシュ++",
-      "description": "敵単体に75%ダメージ。",
-      "descriptionSource": "日文原文",
-      "officialChineseAvailability": "无官方简中",
+      "description": "对敌方单体造成75%伤害。",
+      "descriptionSource": "官方简中",
+      "officialChineseAvailability": "完整官方简中",
       "statusTermSources": "—",
       "statusTerms": []
     },
@@ -41384,9 +42684,9 @@
       "name": "掩护斩击++",
       "nameSource": "官方简中",
       "originalName": "援護スラッシュ++",
-      "description": "敵単体に75%ダメージ。",
-      "descriptionSource": "日文原文",
-      "officialChineseAvailability": "无官方简中",
+      "description": "对敌方单体造成75%伤害。",
+      "descriptionSource": "官方简中",
+      "officialChineseAvailability": "完整官方简中",
       "statusTermSources": "—",
       "statusTerms": []
     },
@@ -41606,6 +42906,32 @@
       "statusTerms": []
     },
     {
+      "skillId": "1041101",
+      "relation": "主动技能",
+      "viewCost": 0,
+      "name": "斩击",
+      "nameSource": "官方简中",
+      "originalName": "スラッシュ",
+      "description": "对敌方单体给予80%伤害。",
+      "descriptionSource": "官方简中",
+      "officialChineseAvailability": "完整官方简中",
+      "statusTermSources": "—",
+      "statusTerms": []
+    },
+    {
+      "skillId": "1042101",
+      "relation": "主动技能",
+      "viewCost": 0,
+      "name": "斩击",
+      "nameSource": "官方简中",
+      "originalName": "スラッシュ",
+      "description": "对敌方单体给予80%伤害。",
+      "descriptionSource": "官方简中",
+      "officialChineseAvailability": "完整官方简中",
+      "statusTermSources": "—",
+      "statusTerms": []
+    },
+    {
       "skillId": "1043101",
       "relation": "主动技能",
       "viewCost": 0,
@@ -41613,6 +42939,19 @@
       "nameSource": "官方简中",
       "originalName": "スラッシュ",
       "description": "对敌方单体造成80%伤害。",
+      "descriptionSource": "官方简中",
+      "officialChineseAvailability": "完整官方简中",
+      "statusTermSources": "—",
+      "statusTerms": []
+    },
+    {
+      "skillId": "1044101",
+      "relation": "主动技能",
+      "viewCost": 0,
+      "name": "斩击",
+      "nameSource": "官方简中",
+      "originalName": "スラッシュ",
+      "description": "对敌方单体给予80%伤害。",
       "descriptionSource": "官方简中",
       "officialChineseAvailability": "完整官方简中",
       "statusTermSources": "—",
@@ -41663,6 +43002,44 @@
           "source": "官方简中"
         }
       ]
+    },
+    {
+      "skillId": "1304101",
+      "relation": "主动技能",
+      "viewCost": 0,
+      "name": "斯塔迪格·佩拉雷",
+      "nameSource": "审核暂译",
+      "originalName": "スターディグ・ペーラレ",
+      "description": "【自身未被附加屏障时】\n对敌方单体造成50%伤害。\n对自身附加2次行动期间、数值为View的40%的屏障。\n【自身已被附加屏障时】\n对敌方全体造成50%伤害。\n【被动】\n持有支柱。\n我方被附加屏障时，支柱增加所附加屏障值的1%。（最大值为50）\n支柱超过30时，消耗我方全体的30点支柱，诱发自身技能1。（每回合最多4次）\n由此诱发的技能无法获得View与连击。",
+      "descriptionSource": "审核暂译",
+      "officialChineseAvailability": "无官方简中（已审核暂译）",
+      "statusTermSources": "审核暂译（官方公告机制）",
+      "statusTerms": [
+        {
+          "id": "review-20261008-pillar",
+          "name": "支柱",
+          "description": "我方获屏障时，增加赋予屏障值的1%，上限50；超过30时按技能1被动消耗并触发技能1。",
+          "source": "审核暂译（官方公告机制）",
+          "originalName": "支柱",
+          "originalDescription": "支柱を持つ。\n味方にバリアが付与された時、付与したバリア値の1%分支柱が増加する。（最大50まで）\n支柱が30を超えた時、味方全体の支柱を30消費して自身のスキル1を誘発する。（1ターンに4回まで）\nこの誘発ではView・コンボを獲得できない。",
+          "sourceKind": "official_event_notice"
+        }
+      ],
+      "originalDescription": "【自身にバリアが付与されていない時】敵単体に50%ダメージ。自身に2回の行動の間Viewの40％の値のバリアを付与。【自身にバリアが付与されている時】敵全体に50%ダメージ。支柱を持つ。味方にバリアが付与された時、付与したバリア値の1%分支柱が増加する。（最大50まで）支柱が30を超えた時、味方全体の支柱を30消費して自身のスキル1を誘発する。（1ターンに4回まで）この誘発ではView・コンボを獲得できない。"
+    },
+    {
+      "skillId": "1304104",
+      "relation": "主动技能",
+      "viewCost": 7500,
+      "name": "斯托尔·沃克特德拉格+",
+      "nameSource": "审核暂译",
+      "originalName": "ストール・ヴォクテドラーゲ+",
+      "description": "对敌方单体及其相邻敌方造成90%伤害，伤害量随我方全体所持屏障值的总和上升。（最大总倍率为180%；屏障值总和为10000时达到最大伤害。）\n【被动】\n自身存活期间，已有屏障的我方再次被附加屏障时，目标的屏障值+500，持续回合数+2。（最多3回合）\n此效果不叠加。",
+      "descriptionSource": "审核暂译",
+      "officialChineseAvailability": "无官方简中（已审核暂译）",
+      "statusTermSources": "—",
+      "statusTerms": [],
+      "originalDescription": "敵単体と隣接する敵に90％ダメージ＋味方全体に付与されているバリアの値の合計に応じてダメージ量が上昇。(最大180％まで上昇。バリアの値の合計が10000の時最大ダメージに到達)生存中、バリアが既に付与されている味方にバリアが重複して付与された時、対象のバリアの値+500＆ターン数+2。（最大3ターンまで）この効果は重複しない。"
     },
     {
       "skillId": "1009204",
@@ -42949,6 +44326,32 @@
       "statusTerms": []
     },
     {
+      "skillId": "1041102",
+      "relation": "主动技能",
+      "viewCost": 2000,
+      "name": "毒刺",
+      "nameSource": "官方简中",
+      "originalName": "毒突き",
+      "description": "给予敌方单体80%伤害。以80%的概率附加1回合期间毒伤。",
+      "descriptionSource": "官方简中",
+      "officialChineseAvailability": "完整官方简中",
+      "statusTermSources": "—",
+      "statusTerms": []
+    },
+    {
+      "skillId": "1042102",
+      "relation": "主动技能",
+      "viewCost": 2000,
+      "name": "毒刺",
+      "nameSource": "官方简中",
+      "originalName": "毒突き",
+      "description": "给予敌方单体80%伤害。以80%的概率附加1回合期间毒伤。",
+      "descriptionSource": "官方简中",
+      "officialChineseAvailability": "完整官方简中",
+      "statusTermSources": "—",
+      "statusTerms": []
+    },
+    {
       "skillId": "1043102",
       "relation": "主动技能",
       "viewCost": 2000,
@@ -42956,6 +44359,19 @@
       "nameSource": "官方简中",
       "originalName": "毒突き",
       "description": "对敌方单体造成80%伤害。以80%的概率附加1回合期间毒伤。",
+      "descriptionSource": "官方简中",
+      "officialChineseAvailability": "完整官方简中",
+      "statusTermSources": "—",
+      "statusTerms": []
+    },
+    {
+      "skillId": "1044102",
+      "relation": "主动技能",
+      "viewCost": 2000,
+      "name": "毒刺",
+      "nameSource": "官方简中",
+      "originalName": "毒突き",
+      "description": "给予敌方单体80%伤害。以80%的概率附加1回合期间毒伤。",
       "descriptionSource": "官方简中",
       "officialChineseAvailability": "完整官方简中",
       "statusTermSources": "—",
@@ -42988,43 +44404,52 @@
       "statusTerms": []
     },
     {
-      "skillId": "1041102",
+      "skillId": "1335103",
       "relation": "主动技能",
-      "viewCost": 2000,
-      "name": "毒突き",
-      "nameSource": "日文原文",
-      "originalName": "毒突き",
-      "description": "给予敌方单体80%伤害。以80%的概率附加1回合期间毒伤。",
-      "descriptionSource": "官方简中",
-      "officialChineseAvailability": "完整官方简中",
-      "statusTermSources": "—",
-      "statusTerms": []
+      "viewCost": 8000,
+      "name": "比万物更耀眼",
+      "nameSource": "审核暂译",
+      "originalName": "クラリオル・オムニバス",
+      "description": "【自身未被附加演坛时】\n对自身附加3回合期间的演坛。\n【自身已被附加演坛时】\n对敌方全体附加1回合期间的眩晕，连击数+1。",
+      "descriptionSource": "审核暂译",
+      "officialChineseAvailability": "无官方简中（已审核暂译）",
+      "statusTermSources": "审核暂译（官方公告机制）",
+      "statusTerms": [
+        {
+          "id": "review-20261008-podium",
+          "name": "演坛",
+          "description": "我方ATK随连击数上升。（最多+50%；连击数为25时达到最大值）\n我方使用不造成伤害的技能时，连击+2。（每回合最多触发3次）\n任意角色被附加不同的场地效果时，演坛解除。\n【分类】其他／不可叠加／场地",
+          "source": "审核暂译（官方公告机制）",
+          "originalName": "演壇",
+          "originalDescription": "味方はコンボ数に応じてATKが上昇。(最大+50％。コンボ数25の時最大値に到達)\n味方がダメージを与えないスキルを使用した時、コンボ+2。（1ターン中に3回まで発動）\n異なるフィールド効果がいずれかのキャラクターに付与された時、解除される。",
+          "sourceKind": "official_event_notice"
+        }
+      ],
+      "originalDescription": "【自身に演壇が付与されていない場合】自身に3ターンの間演壇を付与。【自身に演壇が付与されている場合】敵全体に1ターンの間眩暈を付与。コンボ数+1。"
     },
     {
-      "skillId": "1042102",
-      "relation": "主动技能",
-      "viewCost": 2000,
-      "name": "毒突き",
-      "nameSource": "日文原文",
-      "originalName": "毒突き",
-      "description": "给予敌方单体80%伤害。以80%的概率附加1回合期间毒伤。",
-      "descriptionSource": "官方简中",
-      "officialChineseAvailability": "完整官方简中",
-      "statusTermSources": "—",
-      "statusTerms": []
-    },
-    {
-      "skillId": "1044102",
-      "relation": "主动技能",
-      "viewCost": 2000,
-      "name": "毒突き",
-      "nameSource": "日文原文",
-      "originalName": "毒突き",
-      "description": "给予敌方单体80%伤害。以80%的概率附加1回合期间毒伤。",
-      "descriptionSource": "官方简中",
-      "officialChineseAvailability": "完整官方简中",
-      "statusTermSources": "—",
-      "statusTerms": []
+      "skillId": "8335101",
+      "relation": "战内替换技能",
+      "viewCost": null,
+      "name": "比万物更耀眼",
+      "nameSource": "审核暂译",
+      "originalName": "クラリオル・オムニバス",
+      "description": "【自身未被附加演坛时】\n对自身附加3回合期间的演坛。\n【自身已被附加演坛时】\n对敌方全体附加1回合期间的眩晕，连击数+1。",
+      "descriptionSource": "审核暂译",
+      "officialChineseAvailability": "无官方简中（已审核暂译）",
+      "statusTermSources": "审核暂译（官方公告机制）",
+      "statusTerms": [
+        {
+          "id": "review-20261008-podium",
+          "name": "演坛",
+          "description": "我方ATK随连击数上升。（最多+50%；连击数为25时达到最大值）\n我方使用不造成伤害的技能时，连击+2。（每回合最多触发3次）\n任意角色被附加不同的场地效果时，演坛解除。\n【分类】其他／不可叠加／场地",
+          "source": "审核暂译（官方公告机制）",
+          "originalName": "演壇",
+          "originalDescription": "味方はコンボ数に応じてATKが上昇。(最大+50％。コンボ数25の時最大値に到達)\n味方がダメージを与えないスキルを使用した時、コンボ+2。（1ターン中に3回まで発動）\n異なるフィールド効果がいずれかのキャラクターに付与された時、解除される。",
+          "sourceKind": "official_event_notice"
+        }
+      ],
+      "originalDescription": "【自身に演壇が付与されていない場合】自身に3ターンの間演壇を付与。【自身に演壇が付与されている場合】敵全体に1ターンの間眩暈を付与。コンボ数+1。"
     },
     {
       "skillId": "1211202",
@@ -43184,28 +44609,28 @@
       "statusTerms": []
     },
     {
-      "skillId": "3042106",
-      "relation": "装备技能（最高等级）",
-      "viewCost": null,
-      "name": "水狼の声援Ⅵ",
-      "nameSource": "日文原文",
-      "originalName": "水狼の声援Ⅵ",
-      "description": "スキル発動確率+6%。",
-      "descriptionSource": "日文原文",
-      "officialChineseAvailability": "无官方简中",
+      "skillId": "1042104",
+      "relation": "主动技能",
+      "viewCost": 3500,
+      "name": "水狼的坚持+",
+      "nameSource": "官方简中",
+      "originalName": "水狼の意地+",
+      "description": "对敌方单体造成130%伤害。恢复自身基础ATK30%的HP。",
+      "descriptionSource": "官方简中",
+      "officialChineseAvailability": "完整官方简中",
       "statusTermSources": "—",
       "statusTerms": []
     },
     {
-      "skillId": "1042104",
-      "relation": "主动技能",
-      "viewCost": 3500,
-      "name": "水狼の意地+",
-      "nameSource": "日文原文",
-      "originalName": "水狼の意地+",
-      "description": "敵単体に130%ダメージ。自身のHPを基礎ATKの30%回復する。",
-      "descriptionSource": "日文原文",
-      "officialChineseAvailability": "无官方简中",
+      "skillId": "3042106",
+      "relation": "装备技能（最高等级）",
+      "viewCost": null,
+      "name": "水狼的声援Ⅵ",
+      "nameSource": "官方简中",
+      "originalName": "水狼の声援Ⅵ",
+      "description": "技能发动概率+6%。",
+      "descriptionSource": "官方简中",
+      "officialChineseAvailability": "完整官方简中",
       "statusTermSources": "—",
       "statusTerms": []
     },
@@ -43373,6 +44798,20 @@
       "statusTerms": []
     },
     {
+      "skillId": "1304102",
+      "relation": "主动技能",
+      "viewCost": 1500,
+      "name": "法德尔斯·雷德宁",
+      "nameSource": "审核暂译",
+      "originalName": "ファーデルス・レードニング",
+      "description": "先对我方全体造成各自最大HP10%的贯通伤害，再对目标附加2次行动期间、数值为目标最大HP10%的屏障。\n我方不会因本技能的贯通伤害而战斗不能，HP保留至最大值的1%。\n自身计量槽+1。\n在自身行动时发动此技能的情况下，进行连续行动。（每回合最多2次）\n【被动】\n我方带有屏障行动，并使屏障剩余回合数减少时，自身计量槽+1。（计量槽最大值为8）\n计量槽达到最大值时，消耗我方全体图班的全部计量槽，发动“德拉肯斯·坎普（ドラーケンス・カンプ）”。",
+      "descriptionSource": "审核暂译",
+      "officialChineseAvailability": "无官方简中（已审核暂译）",
+      "statusTermSources": "—",
+      "statusTerms": [],
+      "originalDescription": "味方全体に最大HPの10％の貫通ダメージを与えた後、2回の行動の間対象の最大HPの10%の値のバリアを付与。このスキルによって与える貫通ダメージで味方は戦闘不能にならず、HPは最大値の1%残る。自身のゲージ+1。自身の行動時にこのスキルを発動した場合、連続行動をする。（1ターンに2回まで）味方がバリアが付与された状態で行動してバリアの残ターン数が減少した時、自身のゲージ+1。（最大値は8）ゲージが最大になった時、味方全体のトゥバンのゲージを全て消費して「ドラーケンス・カンプ」を発動する。"
+    },
+    {
       "skillId": "3051106",
       "relation": "装备技能（最高等级）",
       "viewCost": null,
@@ -43443,6 +44882,30 @@
           "source": "官方简中"
         }
       ]
+    },
+    {
+      "skillId": "3335106",
+      "relation": "装备技能（最高等级）",
+      "viewCost": null,
+      "name": "活动策划人的协调力Ⅵ",
+      "nameSource": "审核暂译",
+      "originalName": "イベンターの調整力Ⅵ",
+      "description": "战斗开始时，对自身附加蓄能数为1的VP充填。\n每当连击数达到5的倍数时，VP充填的蓄能数+1。（最大蓄能数为5）\n行动开始时，每1点VP充填蓄能，获得自身View的10%。\n效果发动后，将VP充填的蓄能数设为1。\n【自动行动时】\n连击数≤5的情况下，优先使用第2技能。",
+      "descriptionSource": "审核暂译",
+      "officialChineseAvailability": "无官方简中（已审核暂译）",
+      "statusTermSources": "审核暂译（官方公告机制）",
+      "statusTerms": [
+        {
+          "id": "review-20261008-vp-charge",
+          "name": "VP充填",
+          "description": "蓄能数初始为1、最大5；连击达到5的倍数时+1；行动开始时每蓄能获得自身View10%，发动后重置为1。",
+          "source": "审核暂译（官方公告机制）",
+          "originalName": "VP充填",
+          "originalDescription": "バトル開始時、自身にチャージ数1のVP充填を付与。<style=\"改行\"></style>コンボ数が5の倍数に達する度にVP充填のチャージ数を+1。（最大チャージ数は5）<style=\"改行\"></style>行動開始時、VP充填のチャージ数1につき自身のViewの10%を獲得。<style=\"改行\"></style>効果発動後、VP充填のチャージ数を1にする。<style=\"オート行動\">コンボ数が5以下の場合は第2スキルを優先して使用する。</style>",
+          "sourceKind": "official_event_notice_and_game_cache"
+        }
+      ],
+      "originalDescription": "バトル開始時、自身にチャージ数1のVP充填を付与。コンボ数が5の倍数に達する度にVP充填のチャージ数を+1。（最大チャージ数は5）行動開始時、VP充填のチャージ数1につき自身のViewの10%を獲得。効果発動後、VP充填のチャージ数を1にする。コンボ数が5以下の場合は第2スキルを優先して使用する。"
     },
     {
       "skillId": "1128104",
@@ -43884,28 +45347,28 @@
       "statusTerms": []
     },
     {
-      "skillId": "3041106",
-      "relation": "装备技能（最高等级）",
-      "viewCost": null,
-      "name": "火狼の声援Ⅵ",
-      "nameSource": "日文原文",
-      "originalName": "火狼の声援Ⅵ",
-      "description": "View基礎値+6%。",
-      "descriptionSource": "日文原文",
-      "officialChineseAvailability": "无官方简中",
+      "skillId": "1041104",
+      "relation": "主动技能",
+      "viewCost": 3500,
+      "name": "火狼的坚持+",
+      "nameSource": "官方简中",
+      "originalName": "火狼の意地+",
+      "description": "对敌方单体造成130%伤害。以60%的概率附加1回合期间烧伤。",
+      "descriptionSource": "官方简中",
+      "officialChineseAvailability": "完整官方简中",
       "statusTermSources": "—",
       "statusTerms": []
     },
     {
-      "skillId": "1041104",
-      "relation": "主动技能",
-      "viewCost": 3500,
-      "name": "火狼の意地+",
-      "nameSource": "日文原文",
-      "originalName": "火狼の意地+",
-      "description": "敵単体に130%ダメージ。60%の確率で1ターンの間火傷を付与。",
-      "descriptionSource": "日文原文",
-      "officialChineseAvailability": "无官方简中",
+      "skillId": "3041106",
+      "relation": "装备技能（最高等级）",
+      "viewCost": null,
+      "name": "火狼的声援Ⅵ",
+      "nameSource": "官方简中",
+      "originalName": "火狼の声援Ⅵ",
+      "description": "View基础值+6%。",
+      "descriptionSource": "官方简中",
+      "officialChineseAvailability": "完整官方简中",
       "statusTermSources": "—",
       "statusTerms": []
     },
@@ -44110,6 +45573,20 @@
       "officialChineseAvailability": "完整官方简中",
       "statusTermSources": "—",
       "statusTerms": []
+    },
+    {
+      "skillId": "3304106",
+      "relation": "装备技能（最高等级）",
+      "viewCost": null,
+      "name": "父龙的庇护Ⅵ",
+      "nameSource": "审核暂译",
+      "originalName": "父龍の庇護Ⅵ",
+      "description": "被附加屏障时，View基础值+15%。",
+      "descriptionSource": "审核暂译",
+      "officialChineseAvailability": "无官方简中（已审核暂译）",
+      "statusTermSources": "—",
+      "statusTerms": [],
+      "originalDescription": "バリアが付与されている時、View基礎値+15%。"
     },
     {
       "skillId": "1054104",
@@ -44676,6 +46153,30 @@
       "officialChineseAvailability": "完整官方简中",
       "statusTermSources": "—",
       "statusTerms": []
+    },
+    {
+      "skillId": "8236203",
+      "relation": "触发技能",
+      "viewCost": null,
+      "name": "盛大登场",
+      "nameSource": "审核暂译",
+      "originalName": "グランデ・エントラータ",
+      "description": "对敌方全体造成50%伤害。\n对自身附加2回合期间ATK+20%。（最多可叠加3个）\n周波+1。\nView与连击数不会因本次行动增加。",
+      "descriptionSource": "审核暂译",
+      "officialChineseAvailability": "无官方简中（已审核暂译）",
+      "statusTermSources": "审核暂译（官方公告机制）",
+      "statusTerms": [
+        {
+          "id": "review-20261008-wave",
+          "name": "周波",
+          "description": "与特定技能相关的效果。最大值为4。",
+          "source": "审核暂译（官方公告机制）",
+          "originalName": "周波",
+          "originalDescription": "特定のスキルに関連する効果。最大4まで。",
+          "sourceKind": "official_event_notice"
+        }
+      ],
+      "originalDescription": "敵全体に50%ダメージ。自身に2ターンの間ATK+20%を付与。（最大3個まで重複する）周波+1。この行動でView、コンボ数は増加しない。"
     },
     {
       "skillId": "1183103",
@@ -45746,6 +47247,20 @@
       "statusTerms": []
     },
     {
+      "skillId": "1236201",
+      "relation": "主动技能",
+      "viewCost": 0,
+      "name": "舞台之上",
+      "nameSource": "审核暂译",
+      "originalName": "イン・シェーナ",
+      "description": "对敌方单体造成2～4次20%伤害。\n从第2次攻击开始，每次追加连击数+1。\n自身的技能发动概率提升效果越高，越容易增加攻击次数。\n【被动】\n连击数增加时，自身计量槽+1。（计量槽最大值为8）\n使用会获得连击数的主动技能时，额外使计量槽+1。\n计量槽达到最大值时，消耗自身全部计量槽，发动“盛大登场（グランデ・エントラータ）”。",
+      "descriptionSource": "审核暂译",
+      "officialChineseAvailability": "无官方简中（已审核暂译）",
+      "statusTermSources": "—",
+      "statusTerms": [],
+      "originalDescription": "敵単体に2～4回、20%ダメージ。2回目以降はコンボ数+1の追加効果。自身のスキル発動確率上昇効果が高いほど、回数が多くなりやすくなる。コンボ数が増加した時、自身のゲージ+1。（ゲージの最大値は8）コンボ数を獲得するアクティブスキルを使用した時、追加でゲージ+1。ゲージが最大になった時、ゲージを全て消費して「グランデ・エントラータ」を発動。"
+    },
+    {
       "skillId": "2168103",
       "relation": "主动技能（最高阶段）",
       "viewCost": 4000,
@@ -45829,6 +47344,30 @@
       "officialChineseAvailability": "完整官方简中",
       "statusTermSources": "—",
       "statusTerms": []
+    },
+    {
+      "skillId": "1236204",
+      "relation": "主动技能",
+      "viewCost": 5000,
+      "name": "英雄呼唤+",
+      "nameSource": "审核暂译",
+      "originalName": "リキアーモ・エロイコ+",
+      "description": "对敌方单体造成110%伤害。\n在自身行动时发动此技能的情况下，编成中位于自身上一位的友方进行追击。\n在下一名敌方开始行动前，发动“华丽搏斗（ロッタ・マニフィカ）”。\n【被动】\n自身存活时，若不存在被附加響杭（响桩）的敌方，则我方使用主动技能攻击敌方时，对敌方附加響杭。\n若攻击目标有多个，对编成顺序最靠上的敌方附加。",
+      "descriptionSource": "审核暂译",
+      "officialChineseAvailability": "无官方简中（已审核暂译）",
+      "statusTermSources": "审核暂译（官方公告机制）",
+      "statusTerms": [
+        {
+          "id": "review-20261008-resonance-stake",
+          "name": "响桩",
+          "description": "受到主动技能攻击时，连击数+1。\n我方檄声的阿连德全部战斗不能时解除。\n【分类】其他／不可叠加",
+          "source": "审核暂译（官方公告机制）",
+          "originalName": "響杭",
+          "originalDescription": "アクティブスキルで攻撃された時、コンボ数+1。\n味方の檄声のアレンドが全員戦闘不能になった時、解除される。",
+          "sourceKind": "official_event_notice"
+        }
+      ],
+      "originalDescription": "敵単体に110%ダメージ。自身の行動時にこのスキルを発動した場合、自身の1つ上に編成されている味方が追撃。次の敵の行動開始前に「ロッタ・マニフィカ」を発動する。生存時、響杭が付与されている敵がいない場合、味方がアクティブスキルで敵を攻撃した時、敵に響杭を付与。（対象が複数の場合は最も編成順が上の敵に付与）"
     },
     {
       "skillId": "2064103",
@@ -46716,6 +48255,30 @@
       "officialChineseAvailability": "完整官方简中",
       "statusTermSources": "—",
       "statusTerms": []
+    },
+    {
+      "skillId": "1236203",
+      "relation": "主动技能",
+      "viewCost": 11000,
+      "name": "超越征途",
+      "nameSource": "审核暂译",
+      "originalName": "オルトレ・イル・カンミーノ",
+      "description": "对敌方全体造成80%伤害。\n根据周波的数值，再对敌方全体造成1～3次40%伤害。（每追加1次消耗1点周波）\n【被动】\n持有周波。\n发动“盛大登场（グランデ・エントラータ）”时，周波增加。\n我方有多名檄声的阿连德时，共享周波的增减。",
+      "descriptionSource": "审核暂译",
+      "officialChineseAvailability": "无官方简中（已审核暂译）",
+      "statusTermSources": "审核暂译（官方公告机制）",
+      "statusTerms": [
+        {
+          "id": "review-20261008-wave",
+          "name": "周波",
+          "description": "与特定技能相关的效果。最大值为4。",
+          "source": "审核暂译（官方公告机制）",
+          "originalName": "周波",
+          "originalDescription": "特定のスキルに関連する効果。最大4まで。",
+          "sourceKind": "official_event_notice"
+        }
+      ],
+      "originalDescription": "敵全体に80%ダメージ。周波の値に応じて敵全体に1～3回40%ダメージ。（1回の回数ごとに周波を1消費）周波を持つ。周波は「グランデ・エントラータ」の発動時に増加する。周波の増減は味方に檄声のアレンドが複数いるとき、共有される。"
     },
     {
       "skillId": "1025301",
@@ -52089,6 +53652,15 @@
       "source": "官方简中"
     },
     {
+      "id": "review-20261008-vp-charge",
+      "name": "VP充填",
+      "description": "蓄能数初始为1、最大5；连击达到5的倍数时+1；行动开始时每蓄能获得自身View10%，发动后重置为1。",
+      "source": "审核暂译（官方公告机制）",
+      "originalName": "VP充填",
+      "originalDescription": "バトル開始時、自身にチャージ数1のVP充填を付与。<style=\"改行\"></style>コンボ数が5の倍数に達する度にVP充填のチャージ数を+1。（最大チャージ数は5）<style=\"改行\"></style>行動開始時、VP充填のチャージ数1につき自身のViewの10%を獲得。<style=\"改行\"></style>効果発動後、VP充填のチャージ数を1にする。<style=\"オート行動\">コンボ数が5以下の場合は第2スキルを優先して使用する。</style>",
+      "sourceKind": "official_event_notice_and_game_cache"
+    },
+    {
       "id": "55",
       "name": "View减少",
       "description": "View基础値变为一半。",
@@ -53362,10 +54934,28 @@
       "source": "官方简中"
     },
     {
+      "id": "review-20261008-wave",
+      "name": "周波",
+      "description": "与特定技能相关的效果。最大值为4。",
+      "source": "审核暂译（官方公告机制）",
+      "originalName": "周波",
+      "originalDescription": "特定のスキルに関連する効果。最大4まで。",
+      "sourceKind": "official_event_notice"
+    },
+    {
       "id": "5049",
       "name": "咏唱",
       "description": "与特定技能相关的效果。",
       "source": "官方简中"
+    },
+    {
+      "id": "review-20261008-resonance-stake",
+      "name": "响桩",
+      "description": "受到主动技能攻击时，连击数+1。\n我方檄声的阿连德全部战斗不能时解除。\n【分类】其他／不可叠加",
+      "source": "审核暂译（官方公告机制）",
+      "originalName": "響杭",
+      "originalDescription": "アクティブスキルで攻撃された時、コンボ数+1。\n味方の檄声のアレンドが全員戦闘不能になった時、解除される。",
+      "sourceKind": "official_event_notice"
     },
     {
       "id": "6236",
@@ -54665,6 +56255,15 @@
       "source": "官方简中"
     },
     {
+      "id": "review-20261008-pillar",
+      "name": "支柱",
+      "description": "我方获屏障时，增加赋予屏障值的1%，上限50；超过30时按技能1被动消耗并触发技能1。",
+      "source": "审核暂译（官方公告机制）",
+      "originalName": "支柱",
+      "originalDescription": "支柱を持つ。\n味方にバリアが付与された時、付与したバリア値の1%分支柱が増加する。（最大50まで）\n支柱が30を超えた時、味方全体の支柱を30消費して自身のスキル1を誘発する。（1ターンに4回まで）\nこの誘発ではView・コンボを獲得できない。",
+      "sourceKind": "official_event_notice"
+    },
+    {
       "id": "4413",
       "name": "攻击指令",
       "description": "回合开始时，对自身附加2次行动期间ATK上升。",
@@ -55336,6 +56935,15 @@
       "name": "漂浮滑板损伤",
       "description": "如果被附加4个，则变化为SPD下降×1。",
       "source": "官方简中"
+    },
+    {
+      "id": "review-20261008-podium",
+      "name": "演坛",
+      "description": "我方ATK随连击数上升。（最多+50%；连击数为25时达到最大值）\n我方使用不造成伤害的技能时，连击+2。（每回合最多触发3次）\n任意角色被附加不同的场地效果时，演坛解除。\n【分类】其他／不可叠加／场地",
+      "source": "审核暂译（官方公告机制）",
+      "originalName": "演壇",
+      "originalDescription": "味方はコンボ数に応じてATKが上昇。(最大+50％。コンボ数25の時最大値に到達)\n味方がダメージを与えないスキルを使用した時、コンボ+2。（1ターン中に3回まで発動）\n異なるフィールド効果がいずれかのキャラクターに付与された時、解除される。",
+      "sourceKind": "official_event_notice"
     },
     {
       "id": "4745",
@@ -57003,6 +58611,41 @@
       "id": "tag-7eed06d9-14b0-413f-8e3d-803e6a281358",
       "label": "其他",
       "parentId": "tag-c2850592-ce8f-489b-8797-0b19d15c15b9"
+    },
+    {
+      "id": "tag-8da38031-7da8-4cae-8d97-a872a2afbbf1",
+      "label": "目标选择",
+      "parentId": null
+    },
+    {
+      "id": "tag-51db8c72-7a59-4fdb-b67a-bc22a057495f",
+      "label": "多目标治疗",
+      "parentId": "tag-2a112be2-8c93-42c6-be6e-dd232c00d7ac"
+    },
+    {
+      "id": "tag-14eda385-fc4a-4fef-99b3-2056ae0b8fc8",
+      "label": "治疗受伤最多",
+      "parentId": "tag-2a112be2-8c93-42c6-be6e-dd232c00d7ac"
+    },
+    {
+      "id": "tag-dd911f7d-32ff-4fce-af79-e9b9415e7b70",
+      "label": "减益解除",
+      "parentId": "tag-98feea96-b451-4562-9d5f-ca4b59e91537"
+    },
+    {
+      "id": "tag-83b92c32-54ce-4214-abbe-199a2f68b685",
+      "label": "场地效果",
+      "parentId": "tag-98feea96-b451-4562-9d5f-ca4b59e91537"
+    },
+    {
+      "id": "tag-1044c3ff-63bd-41b0-bc9c-6c7e1139c69d",
+      "label": "护盾",
+      "parentId": "tag-c2850592-ce8f-489b-8797-0b19d15c15b9"
+    },
+    {
+      "id": "tag-0beaea32-ec69-4246-b30a-b811260b27f8",
+      "label": "根据站位选择",
+      "parentId": "tag-8da38031-7da8-4cae-8d97-a872a2afbbf1"
     }
   ]
 }

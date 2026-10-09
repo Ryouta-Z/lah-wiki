@@ -196,6 +196,7 @@ def build_catalog(
             hero_cards = {**hero_cards, **updates["heroCards"]}
             sidekick_cards = {**sidekick_cards, **updates["sidekickCards"]}
             skills = {**skills, **updates["skills"]}
+            localized = {**localized, **updates.get("localized", {})}
     aliases = _aliases_by_original(_read_json(aliases_path)) if aliases_path.exists() else {}
     avatars = _avatar_index(
         _read_json(char_map_path) if char_map_path.exists() else {},
@@ -229,6 +230,13 @@ def build_catalog(
         ),
     ]
     cards.sort(key=lambda card: (card["kind"], card["name"], card["cardId"]))
+    if updates and updates.get("reviewedTranslations"):
+        _apply_reviewed_translations(
+            cards, hero_cards, sidekick_cards, skills, localized,
+            updates["reviewedTranslations"], status_terms,
+            updates.get("reviewedStatusTerms", {}),
+        )
+        cards.sort(key=lambda card: (card["kind"], card["name"], card["cardId"]))
     assistant_tag_config = None
     if assistant_tags_path is not None:
         assistant_tag_config = read_assistant_tag_config(assistant_tags_path)
@@ -260,7 +268,11 @@ def build_catalog(
             "sidekickCardCount": sum(card["kind"] == "sidekick" for card in cards),
             "skillCount": len(skill_rows),
             "skillUpgradeCount": len(skill_upgrades),
-            "translationPolicy": "官方简中优先；缺失片段保留日文原文。",
+            "translationPolicy": (
+                "官方简中优先；已审核暂译明确标注并保留日文；其余缺失片段保留日文原文。"
+                if updates and updates.get("reviewedTranslations")
+                else "官方简中优先；缺失片段保留日文原文。"
+            ),
             "heroStatPolicy": "同名英雄仅保留最高星卡的 60 级属性；无 60 级数据的特殊卡保留技能并标记。",
             "sidekickSkillPolicy": "每名助手仅保留最高阶段的主动技能与最高等级装备技能。",
         },
@@ -271,6 +283,64 @@ def build_catalog(
         "assistantTags": assistant_tag_config["tags"] if assistant_tag_config else [],
         "heroTags": hero_tag_config["tags"] if hero_tag_config else [],
     }
+
+
+def _apply_reviewed_translations(
+    cards: list[dict[str, Any]],
+    hero_cards: dict[str, Any],
+    sidekick_cards: dict[str, Any],
+    skills: dict[str, dict[str, Any]],
+    localized: dict[str, str],
+    translations: dict[str, dict[str, Any]],
+    status_terms: dict[str, dict[str, dict[str, str]]],
+    reviewed_terms: dict[str, list[dict[str, str]]],
+) -> None:
+    """Apply approved drafts only where official Chinese is still absent."""
+    def approved(key: str) -> str | None:
+        entry = translations.get(key, {})
+        if not localized.get(key) and entry.get("reviewStatus") == "approved":
+            return entry.get("value") or None
+        return None
+
+    for card in cards:
+        raw_cards = hero_cards if card["kind"] == "hero" else sidekick_cards
+        raw_card = raw_cards[card["cardId"]]
+        name = approved(f"CARD_NAME_{raw_card.get('resourceName', '').upper()}")
+        if name:
+            card.update(name=name, nameSource="审核暂译")
+        rows = [*card["skills"]]
+        for upgrade in card["skillUpgrades"]:
+            rows.extend([upgrade["before"], upgrade["after"]])
+        for row in rows:
+            skill_id = row["skillId"]
+            name = approved(f"SKILL_NAME_{skill_id}")
+            description = approved(f"SKILL_DESCRIPTION_{skill_id}")
+            if name:
+                row.update(name=name, nameSource="审核暂译")
+            if description:
+                row.update(
+                    description=_clean_text(description),
+                    descriptionSource="审核暂译",
+                    originalDescription=_clean_text(skills[skill_id].get("description", "")),
+                    officialChineseAvailability="无官方简中（已审核暂译）",
+                )
+            if description:
+                terms = [
+                    {key: term[key] for key in (
+                        "id", "name", "description", "source", "matchName",
+                        "originalName", "originalDescription", "sourceKind", "sourceUrl",
+                    ) if key in term}
+                    for term in reviewed_terms.get(skill_id, [])
+                ]
+                for term in terms:
+                    status_terms["all"][term["id"]] = term
+                row["statusTerms"] = _status_terms_for_skill(
+                    skills[skill_id], row["description"], status_terms,
+                    [*_status_terms_for_card(raw_card, status_terms), *terms],
+                )
+                row["statusTermSources"] = "、".join(sorted({
+                    term.get("source", "官方简中") for term in row["statusTerms"]
+                })) or "—"
 
 
 def write_catalog(catalog: dict[str, Any], output_path: Path) -> None:
@@ -502,6 +572,7 @@ def render_static_html(
       return termMarkup(skill.description, skill.statusTerms || []);
     }}
     function sourceMarkup(skill) {{
+      if (skill.nameSource === '审核暂译' || skill.descriptionSource === '审核暂译') return '<div class="source">中文暂译（已审核；游戏尚无官方简中）</div>';
       if (skill.descriptionSource === '部分日文回退') return '<div class="source">部分日文原文（官方简中未完整覆盖）</div>';
       if (skill.nameSource === '日文原文' || skill.descriptionSource === '日文原文') return '<div class="source">日文原文（官方简中未覆盖）</div>';
       return '';
@@ -631,7 +702,7 @@ def render_static_html(
         ? [['60级 HP',card.stats.level60.hp], ['60级 攻击',card.stats.level60.attack], ['60级 速度',card.stats.level60.agility]]
         : [['稀有度','★'.repeat(card.rarity)], ['满级 HP',card.stats.max.hp], ['满级 攻击',card.stats.max.attack], ['满级 速度',card.stats.max.agility]];
       const detailClose = '<button class="close detail-close" aria-label="关闭">×</button>';
-      const heading = `<div class="detail-heading">${{avatarMarkup(card, 'avatar-large')}}<div><h2>${{escape(kindLabel(card.kind))}} · ${{escape(card.name)}}</h2><p class="muted">${{escape(card.originalName)}} · 卡片编号 #${{escape(card.cardId)}}${{card.kind === 'sidekick' ? ` · 最高技能阶段 ${{escape(card.skillLevel)}}` : ''}}</p></div></div>`;
+      const heading = `<div class="detail-heading">${{avatarMarkup(card, 'avatar-large')}}<div><h2>${{escape(kindLabel(card.kind))}} · ${{escape(card.name)}}${{card.nameSource === '审核暂译' ? '（暂译）' : ''}}</h2><p class="muted">${{escape(card.originalName)}} · 卡片编号 #${{escape(card.cardId)}}${{card.kind === 'sidekick' ? ` · 最高技能阶段 ${{escape(card.skillLevel)}}` : ''}}</p></div></div>`;
       const heroHeader = card.kind === 'hero'
         ? `<div class="hero-detail-header">${{detailClose}}${{heading}}<div class="hero-detail-facts"><div class="hero-detail-fact"><div class="muted">属性</div><strong>${{escape(card.element?.label || '不适用')}}</strong></div><div class="hero-detail-fact"><div class="muted">职能</div><strong>${{escape(card.role?.label || '不适用')}}</strong></div></div></div>`
         : `${{detailClose}}${{heading}}`;
@@ -711,6 +782,8 @@ def _build_cards(
         card_skills = [
             *[_skill_row(skill_id, "主动技能" if kind == "hero" else "主动技能（最高阶段）", skills, localized, status_terms, card_status_terms=card_status_terms) for skill_id in active_ids],
             *equipment_rows,
+            *[_skill_row(skill_id, raw_card.get("reviewSkillRelations", {}).get(str(skill_id), "触发技能"), skills, localized, status_terms, card_status_terms=card_status_terms)
+              for skill_id in raw_card.get("reviewTriggeredSkillIds", [])],
         ]
         result.append(
             {

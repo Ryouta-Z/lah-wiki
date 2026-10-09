@@ -808,5 +808,26 @@
     "bundle": "zaniah_assets_all_60c4a683552de0e9278a6a5e779ca845.bundle",
     "cn": "扎妮娅",
     "jp": "ザニア"
+  },
+  "alendBlues2610": {
+    "bundle": "alendblues2610_assets_all_67f28dc6afb99a841cbc35a27d2dbe59.bundle",
+    "cn": "檄声的阿连德",
+    "jp": "檄声のアレンド",
+    "cnSource": "审核暂译",
+    "officialChineseAvailability": "无官中"
+  },
+  "thuban": {
+    "bundle": "thuban_assets_all_b40dd1727db455138fb166bdc9817341.bundle",
+    "cn": "图班",
+    "jp": "トゥバン",
+    "cnSource": "审核暂译",
+    "officialChineseAvailability": "无官中"
+  },
+  "ceph": {
+    "bundle": "ceph_assets_all_e2cdf2d30d079eb432305add149f6fd6.bundle",
+    "cn": "凯夫",
+    "jp": "ケフ",
+    "cnSource": "审核暂译",
+    "officialChineseAvailability": "无官中"
   }
 }

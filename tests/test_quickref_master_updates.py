@@ -13,18 +13,23 @@ from scripts.lah_quickref import (
 
 
 class QuickrefMasterUpdatesTest(unittest.TestCase):
-    def test_supplement_adds_wolves_and_skill_trees_without_changing_other_cards(self):
+    def test_supplement_adds_reviewed_cards_and_preserves_other_cards(self):
         baseline = build_catalog(DEFAULT_SNAPSHOT_DIR)
         updated = build_catalog(
             DEFAULT_SNAPSHOT_DIR, master_updates_path=DEFAULT_MASTER_UPDATES_PATH
         )
         before = {card["key"]: card for card in baseline["cards"]}
         after = {card["key"]: card for card in updated["cards"]}
-        self.assertEqual(updated["metadata"]["heroCardCount"], 208)
-        self.assertEqual(updated["metadata"]["sidekickCardCount"], 156)
+        self.assertEqual(updated["metadata"]["heroCardCount"], 211)
+        self.assertEqual(updated["metadata"]["sidekickCardCount"], 158)
         self.assertEqual(updated["metadata"]["skillUpgradeCount"], 66)
-        self.assertEqual(updated["metadata"]["supplementalData"]["masterVersion"], 1401)
-        self.assertEqual(len(after.keys() - before.keys()), 6)
+        self.assertEqual(updated["metadata"]["supplementalData"]["sourceKind"], "official_game_local_cache_and_approved_review")
+        self.assertEqual(after.keys() - before.keys(), {
+            "hero:104116", "hero:104216", "hero:104416",
+            "sidekick:104116", "sidekick:104216", "sidekick:104416",
+            "hero:123622", "hero:130412", "hero:133513",
+            "sidekick:130416", "sidekick:133516",
+        })
         for key, card in before.items():
             if key not in {"hero:103322", "hero:103222"}:
                 self.assertEqual(after[key], card, key)
@@ -43,6 +48,16 @@ class QuickrefMasterUpdatesTest(unittest.TestCase):
             self.assertEqual({row["questId"] for row in after[key]["skillUpgrades"]}, {quest})
             for row in after[key]["skillUpgrades"]:
                 self.assertNotEqual(row["after"]["descriptionSource"], "官方简中")
+
+        for key in ("hero:123622", "hero:130412", "hero:133513", "sidekick:130416", "sidekick:133516"):
+            card = after[key]
+            self.assertEqual(card["nameSource"], "审核暂译")
+            self.assertEqual(card["avatar"]["status"], "available")
+            for skill in card["skills"]:
+                self.assertEqual(skill["descriptionSource"], "审核暂译")
+                self.assertTrue(skill["originalDescription"])
+        self.assertEqual(next(s for s in after["hero:130412"]["skills"] if s["skillId"] == "1304104")["viewCost"], 7500)
+        self.assertIn("每5连击", next(s for s in after["hero:123622"]["skills"] if s["skillId"] == "8236205")["description"])
 
     def test_supplement_does_not_override_a_different_base_snapshot(self):
         with tempfile.TemporaryDirectory() as directory:

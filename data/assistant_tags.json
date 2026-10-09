@@ -1233,6 +1233,31 @@
       "value-recovery",
       "tag-aad3d89b-68eb-49ef-b10e-7ee02d71efb7",
       "auto-target-selection"
+    ],
+    "sidekick:130416": [
+      "value-shield",
+      "target-ally-multi",
+      "tag-143d8bab-4954-4174-abba-09e3dee91e40"
+    ],
+    "sidekick:133516": [
+      "value-recovery",
+      "tag-143d8bab-4954-4174-abba-09e3dee91e40",
+      "auto-skill-2",
+      "target-ally-multi",
+      "tag-417a62e0-9e9e-47fd-aab7-c769099fecf3",
+      "tag-bc2a6ed4-a1ea-4114-afb7-93ab272f0f9c"
+    ]
+  },
+  "pinnedAssignments": {
+    "sidekick:130416": [
+      "value-shield",
+      "target-ally-multi",
+      "tag-143d8bab-4954-4174-abba-09e3dee91e40"
+    ],
+    "sidekick:133516": [
+      "value-recovery",
+      "tag-143d8bab-4954-4174-abba-09e3dee91e40",
+      "auto-skill-2"
     ]
   }
 }

@@ -3857,7 +3857,12 @@
   "aliases": [
    "セレスティアル・トレック"
   ],
-  "content": "对我方单体附加2次行动期间注目。\n获得等于自身当前View能力值200%的View。（最多至20000View）\n此效果不重复。"
+  "content": "对我方单体附加2次行动期间注目。\n获得等于自身当前View能力值200%的View。（最多至20000View）存活期间，我方全体的ATK上升View能力值的30%。（最多+1500）\n此效果不重复。",
+  "translationSource": "官方简体中文",
+  "originalJapanese": {
+   "name": "セレスティアル・トレック",
+   "description": "味方単体に2回の行動の間注目を付与。<style=\"改行\"></style>自身の現在のViewステータスの200%分のViewPowerを獲得。(最大で20000Viewまで)<style=\"パッシブ領域\">生存中、味方全体のATKがViewステータスの30%分上昇する。（最大で+1500まで）<style=\"改行\"></style>この効果は重複しない。</style>"
+  }
  },
  "skill:1113203": {
   "name": "多元宇宙的导星",
@@ -3865,7 +3870,12 @@
   "aliases": [
    "サイノシュア・フォア・マルチバース"
   ],
-  "content": "对我方单体附加3次的召唤・分身。\n在自身行动时发动此技能的情况下，行动不会结束，能继续行动。（1回合最多1次）\n分身被召唤时，此技能将变化为“分歧射线”。\n被自身附加召唤・分身的我方ATK+20%。\n自身召唤的分身存在时，我方每消耗5000ViewPower，则自身的计量槽+1。（计量槽最大值为10）\n每有1个计量槽，被附加召唤・分身的我方ATK+3%。（最多+30%）\n分身消失时，计量槽将被重置。"
+  "content": "对我方单体附加3次的召唤・分身。\n在自身行动时发动此技能的情况下，行动不会结束，能继续行动。（1回合最多1次）\n分身被召唤时，此技能将变化为“分歧射线”。战斗开始时，对队伍中ATK最高的英雄附加1次的召唤・分身。\n被自身附加召唤・分身的我方ATK+20%。\n自身召唤的分身存在时，我方每消耗5000ViewPower，则自身的计量槽+1。（计量槽最大值为10）\n每有1个计量槽，被附加召唤・分身的我方ATK+3%。（最多+30%）\n分身消失时，计量槽将被重置。",
+  "translationSource": "官方简体中文",
+  "originalJapanese": {
+   "name": "サイノシュア・フォア・マルチバース",
+   "description": "味方単体に3回分の召喚・分身を付与。<style=\"改行\"></style>自身の行動時にこのスキルを発動した場合、連続行動をする。（1ターンに1回まで）<style=\"改行\"></style>分身が召喚されている時、このスキルは「ダイバージェンス・レイ」に変化する。<style=\"パッシブ領域\">バトル開始時、チームで一番ATKの高いヒーローに1回分の召喚・分身を付与。<style=\"改行\"></style>自身によって召喚・分身を付与されている味方のATK+20%。<style=\"改行\"></style>自身が召喚した分身が存在する時、味方がViewPowerを5000消費する度に自身のゲージ+1。（ゲージの最大値は10）<style=\"改行\"></style>ゲージ1につき、召喚・分身が付与されている味方のATK+3%。（最大+30%）<style=\"改行\"></style>分身がいなくなった時、ゲージはリセットされる。</style>"
+  }
  },
  "skill:1113204": {
   "name": "多元宇宙的导星+",
@@ -3873,7 +3883,12 @@
   "aliases": [
    "サイノシュア・フォア・マルチバース+"
   ],
-  "content": "对我方单体附加3次的召唤・分身。\n在自身行动时发动此技能的情况下，行动不会结束，能继续行动。（1回合最多1次）\n分身被召唤时，此技能将变化为“分歧射线”。\n被自身附加召唤・分身的我方ATK+20%。\n自身召唤的分身存在时，我方每消耗5000ViewPower，则自身的计量槽+1。（计量槽最大值为10）\n每有1个计量槽，被附加召唤・分身的我方ATK+3%。（最多+30%）\n分身消失时，计量槽将被重置。"
+  "content": "对我方单体附加3次的召唤・分身。\n在自身行动时发动此技能的情况下，行动不会结束，能继续行动。（1回合最多1次）\n分身被召唤时，此技能将变化为“分歧射线”。战斗开始时，对队伍中ATK最高的英雄附加1次的召唤・分身。\n被自身附加召唤・分身的我方ATK+20%。\n自身召唤的分身存在时，我方每消耗5000ViewPower，则自身的计量槽+1。（计量槽最大值为10）\n每有1个计量槽，被附加召唤・分身的我方ATK+3%。（最多+30%）\n分身消失时，计量槽将被重置。",
+  "translationSource": "官方简体中文",
+  "originalJapanese": {
+   "name": "サイノシュア・フォア・マルチバース+",
+   "description": "味方単体に3回分の召喚・分身を付与。<style=\"改行\"></style>自身の行動時にこのスキルを発動した場合、連続行動をする。（1ターンに1回まで）<style=\"改行\"></style>分身が召喚されている時、このスキルは「ダイバージェンス・レイ」に変化する。<style=\"パッシブ領域\">バトル開始時、チームで一番ATKの高いヒーローに1回分の召喚・分身を付与。<style=\"改行\"></style>自身によって召喚・分身を付与されている味方のATK+20%。<style=\"改行\"></style>自身が召喚した分身が存在する時、味方がViewPowerを5000消費する度に自身のゲージ+1。（ゲージの最大値は10）<style=\"改行\"></style>ゲージ1につき、召喚・分身が付与されている味方のATK+3%。（最大+30%）<style=\"改行\"></style>分身がいなくなった時、ゲージはリセットされる。</style>"
+  }
  },
  "skill:1115101": {
   "name": "水箭矢",
@@ -19383,7 +19398,12 @@
   "aliases": [
    "ダイバージェンス・レイ"
   ],
-  "content": "对敌方单体附加2次行动期间SPD下降。\n对我方全体附加3次行动期间View的40%的屏障。\n目标已被附加屏障的情况下，将目标的屏障值增加自身View的40%&剩余回合数+2。（最多至3回合）\n被自身附加召唤・分身的我方ATK+20%。\n自身召唤的分身存在时，我方每消耗5000ViewPower，则自身的计量槽+1。（计量槽最大值为10）\n每有1个计量槽，被附加召唤・分身的我方ATK+3%。（最多+30%）\n分身消失时，计量槽将被重置。"
+  "content": "对敌方单体附加2次行动期间SPD下降。\n对我方全体附加3次行动期间View的40%的屏障。\n目标已被附加屏障的情况下，将目标的屏障值增加自身View的40%&剩余回合数+2。（最多至3回合）战斗开始时，对队伍中ATK最高的英雄附加1次的召唤・分身。\n被自身附加召唤・分身的我方ATK+20%。\n自身召唤的分身存在时，我方每消耗5000ViewPower，则自身的计量槽+1。（计量槽最大值为10）\n每有1个计量槽，被附加召唤・分身的我方ATK+3%。（最多+30%）\n分身消失时，计量槽将被重置。",
+  "translationSource": "官方简体中文",
+  "originalJapanese": {
+   "name": "ダイバージェンス・レイ",
+   "description": "敵単体に2回の行動の間SPDダウンを付与。<style=\"改行\"></style>味方全体に3回の行動の間Viewの40%の値のバリアを付与。<style=\"改行\"></style>対象に既にバリアが付与されている場合、対象のバリアの値を自身のViewの40%増加&残ターン数を+2。（最大3ターンまで）<style=\"パッシブ領域\">バトル開始時、チームで一番ATKの高いヒーローに1回分の召喚・分身を付与。<style=\"改行\"></style>自身によって召喚・分身を付与されている味方のATK+20%。<style=\"改行\"></style>自身が召喚した分身が存在する時、味方がViewPowerを5000消費する度に自身のゲージ+1。（ゲージの最大値は10）<style=\"改行\"></style>ゲージ1につき、召喚・分身が付与されている味方のATK+3%。（最大+30%）<style=\"改行\"></style>分身がいなくなった時、ゲージはリセットされる。</style>"
+  }
  },
  "skill:8113203": {
   "name": "分身スキル1",
@@ -21308,5 +21328,810 @@
    "ルクバス"
   ],
   "content": "稀有度: ★★★\n【技能】\n· 数据包风暴\n  对敌方单体造成2次20%伤害。\n对相邻敌方造成1次20%伤害。\n· 加速链接\n  对我方单体和队伍中ATK最高的我方附加2次行动期间ATK上升S。\n我方为2人以上时，无法选择队伍中ATK最高的我方作为技能目标。\n敌方受到伤害后计量槽-1。\n敌方的计量槽变为0时，对该敌方附加1次行动期间所受伤害+20%＆SPD下降。\n· 无敌防火墙\n  对我方单体附加1回合期间护盾&次数弱化无效。\n解除1个减益效果。"
+ },
+ "skill:1236201": {
+  "name": "舞台之上",
+  "type": "技能",
+  "aliases": [
+   "イン・シェーナ"
+  ],
+  "content": "【审核暂译；暂无官方简中】\n对敌方单体造成2～4次20%伤害。\n从第2次攻击开始，每次追加连击数+1。\n自身的技能发动概率提升效果越高，越容易增加攻击次数。\n【被动】\n连击数增加时，自身计量槽+1。（计量槽最大值为8）\n使用会获得连击数的主动技能时，额外使计量槽+1。\n计量槽达到最大值时，消耗自身全部计量槽，发动“盛大登场（グランデ・エントラータ）”。",
+  "translationSource": "审核暂译",
+  "reviewStatus": "approved",
+  "officialChineseAvailability": "无官中",
+  "originalJapanese": {
+   "name": "イン・シェーナ",
+   "description": "敵単体に2～4回、20%ダメージ。<style=\"改行\"></style>2回目以降はコンボ数+1の追加効果。<style=\"改行\"></style>自身のスキル発動確率上昇効果が高いほど、回数が多くなりやすくなる。<style=\"パッシブ領域\">コンボ数が増加した時、自身のゲージ+1。（ゲージの最大値は8）<style=\"改行\"></style>コンボ数を獲得するアクティブスキルを使用した時、追加でゲージ+1。<style=\"改行\"></style>ゲージが最大になった時、ゲージを全て消費して「グランデ・エントラータ」を発動。</style>"
+  },
+  "masterSkillId": 1236201
+ },
+ "skill:1236202": {
+  "name": "英雄呼唤",
+  "type": "技能",
+  "aliases": [
+   "リキアーモ・エロイコ"
+  ],
+  "content": "【审核暂译；暂无官方简中】\n对敌方单体造成90%伤害。\n在自身行动时发动此技能的情况下，编成中位于自身上一位的友方进行追击。\n在下一名敌方开始行动前，发动“华丽搏斗（ロッタ・マニフィカ）”。\n【被动】\n自身存活时，若不存在被附加響杭（响桩）的敌方，则我方使用主动技能攻击敌方时，对敌方附加響杭。\n若攻击目标有多个，对编成顺序最靠上的敌方附加。",
+  "translationSource": "审核暂译",
+  "reviewStatus": "approved",
+  "officialChineseAvailability": "无官中",
+  "originalJapanese": {
+   "name": "リキアーモ・エロイコ",
+   "description": "敵単体に90%ダメージ。<style=\"改行\"></style>自身の行動時にこのスキルを発動した場合、自身の1つ上に編成されている味方が追撃。<style=\"改行\"></style>次の敵の行動開始前に「ロッタ・マニフィカ」を発動する。<style=\"パッシブ領域\">生存時、響杭が付与されている敵がいない場合、味方がアクティブスキルで敵を攻撃した時、敵に響杭を付与。（対象が複数の場合は最も編成順が上の敵に付与）</style>"
+  },
+  "masterSkillId": 1236202
+ },
+ "skill:1236203": {
+  "name": "超越征途",
+  "type": "技能",
+  "aliases": [
+   "オルトレ・イル・カンミーノ"
+  ],
+  "content": "【审核暂译；暂无官方简中】\n对敌方全体造成80%伤害。\n根据周波的数值，再对敌方全体造成1～3次40%伤害。（每追加1次消耗1点周波）\n【被动】\n持有周波。\n发动“盛大登场（グランデ・エントラータ）”时，周波增加。\n我方有多名檄声的阿连德时，共享周波的增减。",
+  "translationSource": "审核暂译",
+  "reviewStatus": "approved",
+  "officialChineseAvailability": "无官中",
+  "originalJapanese": {
+   "name": "オルトレ・イル・カンミーノ",
+   "description": "敵全体に80%ダメージ。<style=\"改行\"></style>周波の値に応じて敵全体に1～3回40%ダメージ。（1回の回数ごとに周波を1消費）<style=\"パッシブ領域\">周波<sprite=0>を持つ。<style=\"改行\"></style>周波は「グランデ・エントラータ」の発動時に増加する。<style=\"改行\"></style>周波の増減は味方に檄声のアレンドが複数いるとき、共有される。</style>"
+  },
+  "masterSkillId": 1236203
+ },
+ "skill:1236204": {
+  "name": "英雄呼唤+",
+  "type": "技能",
+  "aliases": [
+   "リキアーモ・エロイコ+"
+  ],
+  "content": "【审核暂译；暂无官方简中】\n对敌方单体造成110%伤害。\n在自身行动时发动此技能的情况下，编成中位于自身上一位的友方进行追击。\n在下一名敌方开始行动前，发动“华丽搏斗（ロッタ・マニフィカ）”。\n【被动】\n自身存活时，若不存在被附加響杭（响桩）的敌方，则我方使用主动技能攻击敌方时，对敌方附加響杭。\n若攻击目标有多个，对编成顺序最靠上的敌方附加。",
+  "translationSource": "审核暂译",
+  "reviewStatus": "approved",
+  "officialChineseAvailability": "无官中",
+  "originalJapanese": {
+   "name": "リキアーモ・エロイコ+",
+   "description": "敵単体に110%ダメージ。<style=\"改行\"></style>自身の行動時にこのスキルを発動した場合、自身の1つ上に編成されている味方が追撃。<style=\"改行\"></style>次の敵の行動開始前に「ロッタ・マニフィカ」を発動する。<style=\"パッシブ領域\">生存時、響杭が付与されている敵がいない場合、味方がアクティブスキルで敵を攻撃した時、敵に響杭を付与。（対象が複数の場合は最も編成順が上の敵に付与）</style>"
+  },
+  "masterSkillId": 1236204
+ },
+ "skill:8236203": {
+  "name": "盛大登场",
+  "type": "技能",
+  "aliases": [
+   "グランデ・エントラータ"
+  ],
+  "content": "【审核暂译；暂无官方简中】\n对敌方全体造成50%伤害。\n对自身附加2回合期间ATK+20%。（最多可叠加3个）\n周波+1。\nView与连击数不会因本次行动增加。",
+  "translationSource": "审核暂译",
+  "reviewStatus": "approved",
+  "officialChineseAvailability": "无官中",
+  "originalJapanese": {
+   "name": "グランデ・エントラータ",
+   "description": "敵全体に50%ダメージ。自身に2ターンの間ATK+20%を付与。（最大3個まで重複する）周波+1。この行動でView、コンボ数は増加しない。"
+  },
+  "masterSkillId": 8236203
+ },
+ "skill:8236205": {
+  "name": "华丽搏斗",
+  "type": "技能",
+  "aliases": [
+   "ロッタ・マニフィカ"
+  ],
+  "content": "【审核暂译；暂无官方简中】\n从敌方全体中随机选择目标，造成1～4次30%伤害。\n攻击次数随技能发动时的连击数增加。（每5连击，攻击次数+1）\nView与连击数不会因本次行动增加。",
+  "translationSource": "审核暂译",
+  "reviewStatus": "approved",
+  "officialChineseAvailability": "无官中",
+  "originalJapanese": {
+   "name": "ロッタ・マニフィカ",
+   "description": "敵全体からランダムに1～4回30%ダメージ。スキル発動時のコンボ数に応じて攻撃回数が増加する。（5コンボ毎に攻撃回数+1）この行動でView、コンボ数は増加しない。"
+  },
+  "masterSkillId": 8236205
+ },
+ "skill:1304101": {
+  "name": "斯塔迪格·佩拉雷",
+  "type": "技能",
+  "aliases": [
+   "スターディグ・ペーラレ"
+  ],
+  "content": "【审核暂译；暂无官方简中】\n【自身未被附加屏障时】\n对敌方单体造成50%伤害。\n对自身附加2次行动期间、数值为View的40%的屏障。\n【自身已被附加屏障时】\n对敌方全体造成50%伤害。\n【被动】\n持有支柱。\n我方被附加屏障时，支柱增加所附加屏障值的1%。（最大值为50）\n支柱超过30时，消耗我方全体的30点支柱，诱发自身技能1。（每回合最多4次）\n由此诱发的技能无法获得View与连击。",
+  "translationSource": "审核暂译",
+  "reviewStatus": "approved",
+  "officialChineseAvailability": "无官中",
+  "originalJapanese": {
+   "name": "スターディグ・ペーラレ",
+   "description": "【自身にバリアが付与されていない時】敵単体に50%ダメージ。<style=\"改行\"></style>自身に2回の行動の間Viewの40％の値のバリアを付与。<style=\"改行\"></style>【自身にバリアが付与されている時】敵全体に50%ダメージ。<style=\"パッシブ領域\">支柱<sprite=0>を持つ。<style=\"改行\"></style>味方にバリアが付与された時、付与したバリア値の1%分支柱が増加する。（最大50まで）<style=\"改行\"></style>支柱が30を超えた時、味方全体の支柱を30消費して自身のスキル1を誘発する。（1ターンに4回まで）<style=\"改行\"></style>この誘発ではView・コンボを獲得できない。</style>"
+  },
+  "masterSkillId": 1304101
+ },
+ "skill:1304102": {
+  "name": "法德尔斯·雷德宁",
+  "type": "技能",
+  "aliases": [
+   "ファーデルス・レードニング"
+  ],
+  "content": "【审核暂译；暂无官方简中】\n先对我方全体造成各自最大HP10%的贯通伤害，再对目标附加2次行动期间、数值为目标最大HP10%的屏障。\n我方不会因本技能的贯通伤害而战斗不能，HP保留至最大值的1%。\n自身计量槽+1。\n在自身行动时发动此技能的情况下，进行连续行动。（每回合最多2次）\n【被动】\n我方带有屏障行动，并使屏障剩余回合数减少时，自身计量槽+1。（计量槽最大值为8）\n计量槽达到最大值时，消耗我方全体图班的全部计量槽，发动“德拉肯斯·坎普（ドラーケンス・カンプ）”。",
+  "translationSource": "审核暂译",
+  "reviewStatus": "approved",
+  "officialChineseAvailability": "无官中",
+  "originalJapanese": {
+   "name": "ファーデルス・レードニング",
+   "description": "味方全体に最大HPの10％の貫通ダメージを与えた後、2回の行動の間対象の最大HPの10%の値のバリアを付与。<style=\"改行\"></style>このスキルによって与える貫通ダメージで味方は戦闘不能にならず、HPは最大値の1%残る。<style=\"改行\"></style>自身のゲージ+1。<style=\"改行\"></style>自身の行動時にこのスキルを発動した場合、連続行動をする。（1ターンに2回まで）<style=\"パッシブ領域\">味方がバリアが付与された状態で行動してバリアの残ターン数が減少した時、自身のゲージ+1。（最大値は8）<style=\"改行\"></style>ゲージが最大になった時、味方全体のトゥバンのゲージを全て消費して「ドラーケンス・カンプ」を発動する。</style>"
+  },
+  "masterSkillId": 1304102
+ },
+ "skill:1304103": {
+  "name": "斯托尔·沃克特德拉格",
+  "type": "技能",
+  "aliases": [
+   "ストール・ヴォクテドラーゲ"
+  ],
+  "content": "【审核暂译；暂无官方简中】\n对敌方单体及其相邻敌方造成90%伤害，伤害量随我方全体所持屏障值的总和上升。（最大总倍率为180%；屏障值总和为10000时达到最大伤害。）\n【被动】\n自身存活期间，已有屏障的我方再次被附加屏障时，目标的屏障值+500，持续回合数+2。（最多3回合）\n此效果不叠加。",
+  "translationSource": "审核暂译",
+  "reviewStatus": "approved",
+  "officialChineseAvailability": "无官中",
+  "originalJapanese": {
+   "name": "ストール・ヴォクテドラーゲ",
+   "description": "敵単体と隣接する敵に90％ダメージ＋味方全体に付与されているバリアの値の合計に応じてダメージ量が上昇。(最大180％まで上昇。バリアの値の合計が10000の時最大ダメージに到達)<style=\"パッシブ領域\">生存中、バリアが既に付与されている味方にバリアが重複して付与された時、対象のバリアの値+500＆ターン数+2。（最大3ターンまで）<style=\"改行\"></style>この効果は重複しない。</style>"
+  },
+  "masterSkillId": 1304103
+ },
+ "skill:1304104": {
+  "name": "斯托尔·沃克特德拉格+",
+  "type": "技能",
+  "aliases": [
+   "ストール・ヴォクテドラーゲ+"
+  ],
+  "content": "【审核暂译；暂无官方简中】\n对敌方单体及其相邻敌方造成90%伤害，伤害量随我方全体所持屏障值的总和上升。（最大总倍率为180%；屏障值总和为10000时达到最大伤害。）\n【被动】\n自身存活期间，已有屏障的我方再次被附加屏障时，目标的屏障值+500，持续回合数+2。（最多3回合）\n此效果不叠加。",
+  "translationSource": "审核暂译",
+  "reviewStatus": "approved",
+  "officialChineseAvailability": "无官中",
+  "originalJapanese": {
+   "name": "ストール・ヴォクテドラーゲ+",
+   "description": "敵単体と隣接する敵に90％ダメージ＋味方全体に付与されているバリアの値の合計に応じてダメージ量が上昇。(最大180％まで上昇。バリアの値の合計が10000の時最大ダメージに到達)<style=\"パッシブ領域\">生存中、バリアが既に付与されている味方にバリアが重複して付与された時、対象のバリアの値+500＆ターン数+2。（最大3ターンまで）<style=\"改行\"></style>この効果は重複しない。</style>"
+  },
+  "masterSkillId": 1304104
+ },
+ "skill:8304101": {
+  "name": "德拉肯斯·坎普",
+  "type": "技能",
+  "aliases": [
+   "ドラーケンス・カンプ"
+  ],
+  "content": "【审核暂译；暂无官方简中】\n从敌方全体中随机选择目标，造成3次60%伤害。\n对自身附加2回合期间ATK+15%。（最多可叠加2个）",
+  "translationSource": "审核暂译",
+  "reviewStatus": "approved",
+  "officialChineseAvailability": "无官中",
+  "originalJapanese": {
+   "name": "ドラーケンス・カンプ",
+   "description": "敵全体からランダムに3回、60%ダメージ。<style=\"改行\"></style>自身に2ターンの間ATK+15%を付与。（最大2個まで重複可能）"
+  },
+  "masterSkillId": 8304101
+ },
+ "skill:1335101": {
+  "name": "光之舞台",
+  "type": "技能",
+  "aliases": [
+   "スカエナ・ルーキス"
+  ],
+  "content": "【审核暂译；暂无官方简中】\n对敌方单体附加1次行动期间的SPD下降。\n获得1000View。",
+  "translationSource": "审核暂译",
+  "reviewStatus": "approved",
+  "officialChineseAvailability": "无官中",
+  "originalJapanese": {
+   "name": "スカエナ・ルーキス",
+   "description": "敵単体に1回の行動の間SPDダウンを付与。<style=\"改行\"></style>Viewを1000獲得。"
+  },
+  "masterSkillId": 1335101
+ },
+ "skill:1335102": {
+  "name": "你闪耀着",
+  "type": "技能",
+  "aliases": [
+   "トゥ・フルゲス"
+  ],
+  "content": "【审核暂译；暂无官方简中】\n为我方单体及编成中位于该目标下一位的我方，恢复基础ATK60%的HP。\n目标被附加减益时，解除1个减益。\n目标未被附加减益时，连击数+1。\n【连击数≥5时】\n再行动1次。（每回合最多1次）",
+  "translationSource": "审核暂译",
+  "reviewStatus": "approved",
+  "officialChineseAvailability": "无官中",
+  "originalJapanese": {
+   "name": "トゥ・フルゲス",
+   "description": "味方単体と対象の1つ下に編成されている味方のHPを基礎ATKの60%回復する。<style=\"改行\"></style>対象にデバフが付与されている場合、デバフを1つ解除。<style=\"改行\"></style>対象にデバフが付与されていない場合、コンボ数+1。<style=\"改行\"></style>【コンボ数が5以上の場合】もう１度行動をする。（1ターンに1回まで）"
+  },
+  "masterSkillId": 1335102
+ },
+ "skill:1335103": {
+  "name": "比万物更耀眼",
+  "type": "技能",
+  "aliases": [
+   "クラリオル・オムニバス"
+  ],
+  "content": "【审核暂译；暂无官方简中】\n【自身未被附加演坛时】\n对自身附加3回合期间的演坛。\n【自身已被附加演坛时】\n对敌方全体附加1回合期间的眩晕，连击数+1。",
+  "translationSource": "审核暂译",
+  "reviewStatus": "approved",
+  "officialChineseAvailability": "无官中",
+  "originalJapanese": {
+   "name": "クラリオル・オムニバス",
+   "description": "【自身に演壇が付与されていない場合】<style=\"改行\"></style>自身に3ターンの間演壇を付与。<style=\"改行\"></style>【自身に演壇が付与されている場合】<style=\"改行\"></style>敵全体に1ターンの間眩暈を付与。コンボ数+1。"
+  },
+  "masterSkillId": 1335103
+ },
+ "skill:1335104": {
+  "name": "你闪耀着+",
+  "type": "技能",
+  "aliases": [
+   "トゥ・フルゲス+"
+  ],
+  "content": "【审核暂译；暂无官方简中】\n为我方单体及编成中位于该目标下一位的我方，恢复基础ATK60%的HP。\n目标被附加减益时，解除1个减益。\n目标未被附加减益时，连击数+1。\n【连击数≥5时】\n再行动1次。（每回合最多1次）",
+  "translationSource": "审核暂译",
+  "reviewStatus": "approved",
+  "officialChineseAvailability": "无官中",
+  "originalJapanese": {
+   "name": "トゥ・フルゲス+",
+   "description": "味方単体と対象の1つ下に編成されている味方のHPを基礎ATKの60%回復する。<style=\"改行\"></style>対象にデバフが付与されている場合、デバフを1つ解除。<style=\"改行\"></style>対象にデバフが付与されていない場合、コンボ数+1。<style=\"改行\"></style>【コンボ数が5以上の場合】もう１度行動をする。（1ターンに1回まで）"
+  },
+  "masterSkillId": 1335104
+ },
+ "skill:2304101": {
+  "name": "宽阔的背影",
+  "type": "技能",
+  "aliases": [
+   "デカい背中"
+  ],
+  "content": "【审核暂译；暂无官方简中】\n对我方单体及相邻我方附加1次行动期间、数值为View的20%的屏障。",
+  "translationSource": "审核暂译",
+  "reviewStatus": "approved",
+  "officialChineseAvailability": "无官中",
+  "originalJapanese": {
+   "name": "デカい背中",
+   "description": "味方単体と隣接する味方に、1回の行動の間Viewの20%の値のバリアを付与。"
+  },
+  "masterSkillId": 2304101
+ },
+ "skill:2304102": {
+  "name": "宽阔的背影+",
+  "type": "技能",
+  "aliases": [
+   "デカい背中+"
+  ],
+  "content": "【审核暂译；暂无官方简中】\n对我方单体及相邻我方附加1次行动期间、数值为View的20%的屏障。",
+  "translationSource": "审核暂译",
+  "reviewStatus": "approved",
+  "officialChineseAvailability": "无官中",
+  "originalJapanese": {
+   "name": "デカい背中+",
+   "description": "味方単体と隣接する味方に、1回の行動の間Viewの20%の値のバリアを付与。"
+  },
+  "masterSkillId": 2304102
+ },
+ "skill:2304103": {
+  "name": "宽阔的背影++",
+  "type": "技能",
+  "aliases": [
+   "デカい背中++"
+  ],
+  "content": "【审核暂译；暂无官方简中】\n对我方单体及相邻我方附加1次行动期间、数值为View的20%的屏障。",
+  "translationSource": "审核暂译",
+  "reviewStatus": "approved",
+  "officialChineseAvailability": "无官中",
+  "originalJapanese": {
+   "name": "デカい背中++",
+   "description": "味方単体と隣接する味方に、1回の行動の間Viewの20%の値のバリアを付与。"
+  },
+  "masterSkillId": 2304103
+ },
+ "skill:3304101": {
+  "name": "父龙的庇护Ⅰ",
+  "type": "技能",
+  "aliases": [
+   "父龍の庇護Ⅰ"
+  ],
+  "content": "【审核暂译；暂无官方简中】\n被附加屏障时，View基础值+10%。",
+  "translationSource": "审核暂译",
+  "reviewStatus": "approved",
+  "officialChineseAvailability": "无官中",
+  "originalJapanese": {
+   "name": "父龍の庇護Ⅰ",
+   "description": "バリアが付与されている時、View基礎値+10%。"
+  },
+  "masterSkillId": 3304101
+ },
+ "skill:3304102": {
+  "name": "父龙的庇护Ⅱ",
+  "type": "技能",
+  "aliases": [
+   "父龍の庇護Ⅱ"
+  ],
+  "content": "【审核暂译；暂无官方简中】\n被附加屏障时，View基础值+11%。",
+  "translationSource": "审核暂译",
+  "reviewStatus": "approved",
+  "officialChineseAvailability": "无官中",
+  "originalJapanese": {
+   "name": "父龍の庇護Ⅱ",
+   "description": "バリアが付与されている時、View基礎値+11%。"
+  },
+  "masterSkillId": 3304102
+ },
+ "skill:3304103": {
+  "name": "父龙的庇护Ⅲ",
+  "type": "技能",
+  "aliases": [
+   "父龍の庇護Ⅲ"
+  ],
+  "content": "【审核暂译；暂无官方简中】\n被附加屏障时，View基础值+12%。",
+  "translationSource": "审核暂译",
+  "reviewStatus": "approved",
+  "officialChineseAvailability": "无官中",
+  "originalJapanese": {
+   "name": "父龍の庇護Ⅲ",
+   "description": "バリアが付与されている時、View基礎値+12%。"
+  },
+  "masterSkillId": 3304103
+ },
+ "skill:3304104": {
+  "name": "父龙的庇护Ⅳ",
+  "type": "技能",
+  "aliases": [
+   "父龍の庇護Ⅳ"
+  ],
+  "content": "【审核暂译；暂无官方简中】\n被附加屏障时，View基础值+13%。",
+  "translationSource": "审核暂译",
+  "reviewStatus": "approved",
+  "officialChineseAvailability": "无官中",
+  "originalJapanese": {
+   "name": "父龍の庇護Ⅳ",
+   "description": "バリアが付与されている時、View基礎値+13%。"
+  },
+  "masterSkillId": 3304104
+ },
+ "skill:3304105": {
+  "name": "父龙的庇护Ⅴ",
+  "type": "技能",
+  "aliases": [
+   "父龍の庇護Ⅴ"
+  ],
+  "content": "【审核暂译；暂无官方简中】\n被附加屏障时，View基础值+14%。",
+  "translationSource": "审核暂译",
+  "reviewStatus": "approved",
+  "officialChineseAvailability": "无官中",
+  "originalJapanese": {
+   "name": "父龍の庇護Ⅴ",
+   "description": "バリアが付与されている時、View基礎値+14%。"
+  },
+  "masterSkillId": 3304105
+ },
+ "skill:3304106": {
+  "name": "父龙的庇护Ⅵ",
+  "type": "技能",
+  "aliases": [
+   "父龍の庇護Ⅵ"
+  ],
+  "content": "【审核暂译；暂无官方简中】\n被附加屏障时，View基础值+15%。",
+  "translationSource": "审核暂译",
+  "reviewStatus": "approved",
+  "officialChineseAvailability": "无官中",
+  "originalJapanese": {
+   "name": "父龍の庇護Ⅵ",
+   "description": "バリアが付与されている時、View基礎値+15%。"
+  },
+  "masterSkillId": 3304106
+ },
+ "skill:2335101": {
+  "name": "按计划进行",
+  "type": "技能",
+  "aliases": [
+   "オンスケです"
+  ],
+  "content": "【审核暂译；暂无官方简中】\n为我方单体及相邻我方恢复基础ATK40%的HP。\n连击数≥5时，恢复量提高至基础ATK的60%。",
+  "translationSource": "审核暂译",
+  "reviewStatus": "approved",
+  "officialChineseAvailability": "无官中",
+  "originalJapanese": {
+   "name": "オンスケです",
+   "description": "味方単体と隣接する味方のHPを基礎ATKの40%回復する。<style=\"改行\"></style>コンボ数が5以上の場合、回復量が60%に増加する。"
+  },
+  "masterSkillId": 2335101
+ },
+ "skill:2335102": {
+  "name": "按计划进行+",
+  "type": "技能",
+  "aliases": [
+   "オンスケです+"
+  ],
+  "content": "【审核暂译；暂无官方简中】\n为我方单体及相邻我方恢复基础ATK40%的HP。\n连击数≥5时，恢复量提高至基础ATK的60%。",
+  "translationSource": "审核暂译",
+  "reviewStatus": "approved",
+  "officialChineseAvailability": "无官中",
+  "originalJapanese": {
+   "name": "オンスケです+",
+   "description": "味方単体と隣接する味方のHPを基礎ATKの40%回復する。<style=\"改行\"></style>コンボ数が5以上の場合、回復量が60%に増加する。"
+  },
+  "masterSkillId": 2335102
+ },
+ "skill:2335103": {
+  "name": "按计划进行++",
+  "type": "技能",
+  "aliases": [
+   "オンスケです++"
+  ],
+  "content": "【审核暂译；暂无官方简中】\n为我方单体及相邻我方恢复基础ATK40%的HP。\n连击数≥5时，恢复量提高至基础ATK的60%。",
+  "translationSource": "审核暂译",
+  "reviewStatus": "approved",
+  "officialChineseAvailability": "无官中",
+  "originalJapanese": {
+   "name": "オンスケです++",
+   "description": "味方単体と隣接する味方のHPを基礎ATKの40%回復する。<style=\"改行\"></style>コンボ数が5以上の場合、回復量が60%に増加する。"
+  },
+  "masterSkillId": 2335103
+ },
+ "skill:3335101": {
+  "name": "活动策划人的协调力Ⅰ",
+  "type": "技能",
+  "aliases": [
+   "イベンターの調整力Ⅰ"
+  ],
+  "content": "【审核暂译；暂无官方简中】\n战斗开始时，对自身附加蓄能数为1的VP充填。\n每当连击数达到5的倍数时，VP充填的蓄能数+1。（最大蓄能数为5）\n行动开始时，每1点VP充填蓄能，获得自身View的5%。\n效果发动后，将VP充填的蓄能数设为1。\n【自动行动时】\n连击数≤5的情况下，优先使用第2技能。",
+  "translationSource": "审核暂译",
+  "reviewStatus": "approved",
+  "officialChineseAvailability": "无官中",
+  "originalJapanese": {
+   "name": "イベンターの調整力Ⅰ",
+   "description": "バトル開始時、自身にチャージ数1のVP充填を付与。<style=\"改行\"></style>コンボ数が5の倍数に達する度にVP充填のチャージ数を+1。（最大チャージ数は5）<style=\"改行\"></style>行動開始時、VP充填のチャージ数1につき自身のViewの5%を獲得。<style=\"改行\"></style>効果発動後、VP充填のチャージ数を1にする。<style=\"オート行動\">コンボ数が5以下の場合は第2スキルを優先して使用する。</style>"
+  },
+  "masterSkillId": 3335101
+ },
+ "skill:3335102": {
+  "name": "活动策划人的协调力Ⅱ",
+  "type": "技能",
+  "aliases": [
+   "イベンターの調整力Ⅱ"
+  ],
+  "content": "【审核暂译；暂无官方简中】\n战斗开始时，对自身附加蓄能数为1的VP充填。\n每当连击数达到5的倍数时，VP充填的蓄能数+1。（最大蓄能数为5）\n行动开始时，每1点VP充填蓄能，获得自身View的6%。\n效果发动后，将VP充填的蓄能数设为1。\n【自动行动时】\n连击数≤5的情况下，优先使用第2技能。",
+  "translationSource": "审核暂译",
+  "reviewStatus": "approved",
+  "officialChineseAvailability": "无官中",
+  "originalJapanese": {
+   "name": "イベンターの調整力Ⅱ",
+   "description": "バトル開始時、自身にチャージ数1のVP充填を付与。<style=\"改行\"></style>コンボ数が5の倍数に達する度にVP充填のチャージ数を+1。（最大チャージ数は5）<style=\"改行\"></style>行動開始時、VP充填のチャージ数1につき自身のViewの6%を獲得。<style=\"改行\"></style>効果発動後、VP充填のチャージ数を1にする。<style=\"オート行動\">コンボ数が5以下の場合は第2スキルを優先して使用する。</style>"
+  },
+  "masterSkillId": 3335102
+ },
+ "skill:3335103": {
+  "name": "活动策划人的协调力Ⅲ",
+  "type": "技能",
+  "aliases": [
+   "イベンターの調整力Ⅲ"
+  ],
+  "content": "【审核暂译；暂无官方简中】\n战斗开始时，对自身附加蓄能数为1的VP充填。\n每当连击数达到5的倍数时，VP充填的蓄能数+1。（最大蓄能数为5）\n行动开始时，每1点VP充填蓄能，获得自身View的7%。\n效果发动后，将VP充填的蓄能数设为1。\n【自动行动时】\n连击数≤5的情况下，优先使用第2技能。",
+  "translationSource": "审核暂译",
+  "reviewStatus": "approved",
+  "officialChineseAvailability": "无官中",
+  "originalJapanese": {
+   "name": "イベンターの調整力Ⅲ",
+   "description": "バトル開始時、自身にチャージ数1のVP充填を付与。<style=\"改行\"></style>コンボ数が5の倍数に達する度にVP充填のチャージ数を+1。（最大チャージ数は5）<style=\"改行\"></style>行動開始時、VP充填のチャージ数1につき自身のViewの7%を獲得。<style=\"改行\"></style>効果発動後、VP充填のチャージ数を1にする。<style=\"オート行動\">コンボ数が5以下の場合は第2スキルを優先して使用する。</style>"
+  },
+  "masterSkillId": 3335103
+ },
+ "skill:3335104": {
+  "name": "活动策划人的协调力Ⅳ",
+  "type": "技能",
+  "aliases": [
+   "イベンターの調整力Ⅳ"
+  ],
+  "content": "【审核暂译；暂无官方简中】\n战斗开始时，对自身附加蓄能数为1的VP充填。\n每当连击数达到5的倍数时，VP充填的蓄能数+1。（最大蓄能数为5）\n行动开始时，每1点VP充填蓄能，获得自身View的8%。\n效果发动后，将VP充填的蓄能数设为1。\n【自动行动时】\n连击数≤5的情况下，优先使用第2技能。",
+  "translationSource": "审核暂译",
+  "reviewStatus": "approved",
+  "officialChineseAvailability": "无官中",
+  "originalJapanese": {
+   "name": "イベンターの調整力Ⅳ",
+   "description": "バトル開始時、自身にチャージ数1のVP充填を付与。<style=\"改行\"></style>コンボ数が5の倍数に達する度にVP充填のチャージ数を+1。（最大チャージ数は5）<style=\"改行\"></style>行動開始時、VP充填のチャージ数1につき自身のViewの8%を獲得。<style=\"改行\"></style>効果発動後、VP充填のチャージ数を1にする。<style=\"オート行動\">コンボ数が5以下の場合は第2スキルを優先して使用する。</style>"
+  },
+  "masterSkillId": 3335104
+ },
+ "skill:3335105": {
+  "name": "活动策划人的协调力Ⅴ",
+  "type": "技能",
+  "aliases": [
+   "イベンターの調整力Ⅴ"
+  ],
+  "content": "【审核暂译；暂无官方简中】\n战斗开始时，对自身附加蓄能数为1的VP充填。\n每当连击数达到5的倍数时，VP充填的蓄能数+1。（最大蓄能数为5）\n行动开始时，每1点VP充填蓄能，获得自身View的9%。\n效果发动后，将VP充填的蓄能数设为1。\n【自动行动时】\n连击数≤5的情况下，优先使用第2技能。",
+  "translationSource": "审核暂译",
+  "reviewStatus": "approved",
+  "officialChineseAvailability": "无官中",
+  "originalJapanese": {
+   "name": "イベンターの調整力Ⅴ",
+   "description": "バトル開始時、自身にチャージ数1のVP充填を付与。<style=\"改行\"></style>コンボ数が5の倍数に達する度にVP充填のチャージ数を+1。（最大チャージ数は5）<style=\"改行\"></style>行動開始時、VP充填のチャージ数1につき自身のViewの9%を獲得。<style=\"改行\"></style>効果発動後、VP充填のチャージ数を1にする。<style=\"オート行動\">コンボ数が5以下の場合は第2スキルを優先して使用する。</style>"
+  },
+  "masterSkillId": 3335105
+ },
+ "skill:3335106": {
+  "name": "活动策划人的协调力Ⅵ",
+  "type": "技能",
+  "aliases": [
+   "イベンターの調整力Ⅵ"
+  ],
+  "content": "【审核暂译；暂无官方简中】\n战斗开始时，对自身附加蓄能数为1的VP充填。\n每当连击数达到5的倍数时，VP充填的蓄能数+1。（最大蓄能数为5）\n行动开始时，每1点VP充填蓄能，获得自身View的10%。\n效果发动后，将VP充填的蓄能数设为1。\n【自动行动时】\n连击数≤5的情况下，优先使用第2技能。",
+  "translationSource": "审核暂译",
+  "reviewStatus": "approved",
+  "officialChineseAvailability": "无官中",
+  "originalJapanese": {
+   "name": "イベンターの調整力Ⅵ",
+   "description": "バトル開始時、自身にチャージ数1のVP充填を付与。<style=\"改行\"></style>コンボ数が5の倍数に達する度にVP充填のチャージ数を+1。（最大チャージ数は5）<style=\"改行\"></style>行動開始時、VP充填のチャージ数1につき自身のViewの10%を獲得。<style=\"改行\"></style>効果発動後、VP充填のチャージ数を1にする。<style=\"オート行動\">コンボ数が5以下の場合は第2スキルを優先して使用する。</style>"
+  },
+  "masterSkillId": 3335106
+ },
+ "skill:8335101": {
+  "name": "比万物更耀眼",
+  "type": "技能",
+  "aliases": [
+   "クラリオル・オムニバス"
+  ],
+  "content": "【审核暂译；暂无官方简中】\n【自身未被附加演坛时】\n对自身附加3回合期间的演坛。\n【自身已被附加演坛时】\n对敌方全体附加1回合期间的眩晕，连击数+1。",
+  "translationSource": "审核暂译",
+  "reviewStatus": "approved",
+  "officialChineseAvailability": "无官中",
+  "originalJapanese": {
+   "name": "クラリオル・オムニバス",
+   "description": "【自身に演壇が付与されていない場合】<style=\"改行\"></style>自身に3ターンの間演壇を付与。<style=\"改行\"></style>【自身に演壇が付与されている場合】<style=\"改行\"></style>敵全体に1ターンの間眩暈を付与。コンボ数+1。"
+  },
+  "masterSkillId": 8335101,
+  "relation": "战内替换技能"
+ },
+ "skill:1041101": {
+  "name": "斩击",
+  "type": "技能",
+  "aliases": [
+   "スラッシュ"
+  ],
+  "content": "对敌方单体给予80%伤害。",
+  "translationSource": "官方简体中文",
+  "originalJapanese": {
+   "name": "スラッシュ",
+   "description": "敵単体に80%ダメージ。"
+  }
+ },
+ "skill:1041102": {
+  "name": "毒刺",
+  "type": "技能",
+  "aliases": [
+   "毒突き"
+  ],
+  "content": "给予敌方单体80%伤害。以80%的概率附加1回合期间毒伤。",
+  "translationSource": "官方简体中文",
+  "originalJapanese": {
+   "name": "毒突き",
+   "description": "敵単体に80%ダメージ。80%の確率で1ターンの間毒を付与。"
+  }
+ },
+ "skill:1041104": {
+  "name": "火狼的坚持+",
+  "type": "技能",
+  "aliases": [
+   "火狼の意地+"
+  ],
+  "content": "对敌方单体造成130%伤害。以60%的概率附加1回合期间烧伤。",
+  "translationSource": "官方简体中文",
+  "originalJapanese": {
+   "name": "火狼の意地+",
+   "description": "敵単体に<style=\"スキル強化\">130%ダメージ</style>。<style=\"改行\"></style>60%の確率で1ターンの間火傷を付与。"
+  }
+ },
+ "skill:1042101": {
+  "name": "斩击",
+  "type": "技能",
+  "aliases": [
+   "スラッシュ"
+  ],
+  "content": "对敌方单体给予80%伤害。",
+  "translationSource": "官方简体中文",
+  "originalJapanese": {
+   "name": "スラッシュ",
+   "description": "敵単体に80%ダメージ。"
+  }
+ },
+ "skill:1042102": {
+  "name": "毒刺",
+  "type": "技能",
+  "aliases": [
+   "毒突き"
+  ],
+  "content": "给予敌方单体80%伤害。以80%的概率附加1回合期间毒伤。",
+  "translationSource": "官方简体中文",
+  "originalJapanese": {
+   "name": "毒突き",
+   "description": "敵単体に80%ダメージ。80%の確率で1ターンの間毒を付与。"
+  }
+ },
+ "skill:1042104": {
+  "name": "水狼的坚持+",
+  "type": "技能",
+  "aliases": [
+   "水狼の意地+"
+  ],
+  "content": "对敌方单体造成130%伤害。恢复自身基础ATK30%的HP。",
+  "translationSource": "官方简体中文",
+  "originalJapanese": {
+   "name": "水狼の意地+",
+   "description": "敵単体に130%ダメージ。<style=\"改行\"></style>自身のHPを基礎ATKの30%回復する。"
+  }
+ },
+ "skill:1044101": {
+  "name": "斩击",
+  "type": "技能",
+  "aliases": [
+   "スラッシュ"
+  ],
+  "content": "对敌方单体给予80%伤害。",
+  "translationSource": "官方简体中文",
+  "originalJapanese": {
+   "name": "スラッシュ",
+   "description": "敵単体に80%ダメージ。"
+  }
+ },
+ "skill:1044102": {
+  "name": "毒刺",
+  "type": "技能",
+  "aliases": [
+   "毒突き"
+  ],
+  "content": "给予敌方单体80%伤害。以80%的概率附加1回合期间毒伤。",
+  "translationSource": "官方简体中文",
+  "originalJapanese": {
+   "name": "毒突き",
+   "description": "敵単体に80%ダメージ。80%の確率で1ターンの間毒を付与。"
+  }
+ },
+ "skill:1044104": {
+  "name": "光狼的坚持+",
+  "type": "技能",
+  "aliases": [
+   "光狼の意地+"
+  ],
+  "content": "对敌方单体造成130%伤害。解除1个增益效果。",
+  "translationSource": "官方简体中文",
+  "originalJapanese": {
+   "name": "光狼の意地+",
+   "description": "敵単体に130%ダメージ。<style=\"改行\"></style>バフを1つ解除。"
+  }
+ },
+ "skill:2041103": {
+  "name": "掩护斩击++",
+  "type": "技能",
+  "aliases": [
+   "援護スラッシュ++"
+  ],
+  "content": "对敌方单体造成75%伤害。",
+  "translationSource": "官方简体中文",
+  "originalJapanese": {
+   "name": "援護スラッシュ++",
+   "description": "敵単体に<style=\"スキル強化\">75%ダメージ</style>。"
+  }
+ },
+ "skill:2042103": {
+  "name": "掩护斩击++",
+  "type": "技能",
+  "aliases": [
+   "援護スラッシュ++"
+  ],
+  "content": "对敌方单体造成75%伤害。",
+  "translationSource": "官方简体中文",
+  "originalJapanese": {
+   "name": "援護スラッシュ++",
+   "description": "敵単体に<style=\"スキル強化\">75%ダメージ</style>。"
+  }
+ },
+ "skill:2044103": {
+  "name": "掩护斩击++",
+  "type": "技能",
+  "aliases": [
+   "援護スラッシュ++"
+  ],
+  "content": "对敌方单体造成75%伤害。",
+  "translationSource": "官方简体中文",
+  "originalJapanese": {
+   "name": "援護スラッシュ++",
+   "description": "敵単体に<style=\"スキル強化\">75%ダメージ</style>。"
+  }
+ },
+ "skill:3041106": {
+  "name": "火狼的声援Ⅵ",
+  "type": "技能",
+  "aliases": [
+   "火狼の声援Ⅵ"
+  ],
+  "content": "View基础值+6%。",
+  "translationSource": "官方简体中文",
+  "originalJapanese": {
+   "name": "火狼の声援Ⅵ",
+   "description": "<style=\"スキル強化\">View基礎値+6%</style>。"
+  }
+ },
+ "skill:3042106": {
+  "name": "水狼的声援Ⅵ",
+  "type": "技能",
+  "aliases": [
+   "水狼の声援Ⅵ"
+  ],
+  "content": "技能发动概率+6%。",
+  "translationSource": "官方简体中文",
+  "originalJapanese": {
+   "name": "水狼の声援Ⅵ",
+   "description": "<style=\"スキル強化\">スキル発動確率+6%</style>。"
+  }
+ },
+ "skill:3044106": {
+  "name": "光狼的声援Ⅵ",
+  "type": "技能",
+  "aliases": [
+   "光狼の声援Ⅵ"
+  ],
+  "content": "自身的恢复技能的HP恢复量+6%。",
+  "translationSource": "官方简体中文",
+  "originalJapanese": {
+   "name": "光狼の声援Ⅵ",
+   "description": "<style=\"スキル強化\">自身が使用する回復スキルのHP回復量+6%</style>。"
+  }
+ },
+ "hero:123622": {
+  "name": "檄声的阿连德",
+  "type": "英雄",
+  "aliases": [
+   "檄声のアレンド"
+  ],
+  "content": "【审核暂译；暂无官方简中】\n稀有度: ★★★★★★\n【技能】\n· 舞台之上\n  对敌方单体造成2～4次20%伤害。\n  从第2次攻击开始，每次追加连击数+1。\n  自身的技能发动概率提升效果越高，越容易增加攻击次数。\n  【被动】\n  连击数增加时，自身计量槽+1。（计量槽最大值为8）\n  使用会获得连击数的主动技能时，额外使计量槽+1。\n  计量槽达到最大值时，消耗自身全部计量槽，发动“盛大登场（グランデ・エントラータ）”。\n· 英雄呼唤+\n  对敌方单体造成110%伤害。\n  在自身行动时发动此技能的情况下，编成中位于自身上一位的友方进行追击。\n  在下一名敌方开始行动前，发动“华丽搏斗（ロッタ・マニフィカ）”。\n  【被动】\n  自身存活时，若不存在被附加響杭（响桩）的敌方，则我方使用主动技能攻击敌方时，对敌方附加響杭。\n  若攻击目标有多个，对编成顺序最靠上的敌方附加。\n· 超越征途\n  对敌方全体造成80%伤害。\n  根据周波的数值，再对敌方全体造成1～3次40%伤害。（每追加1次消耗1点周波）\n  【被动】\n  持有周波。\n  发动“盛大登场（グランデ・エントラータ）”时，周波增加。\n  我方有多名檄声的阿连德时，共享周波的增减。\n【触发技能】\n· 盛大登场\n  对敌方全体造成50%伤害。\n  对自身附加2回合期间ATK+20%。（最多可叠加3个）\n  周波+1。\n  View与连击数不会因本次行动增加。\n【触发技能】\n· 华丽搏斗\n  从敌方全体中随机选择目标，造成1～4次30%伤害。\n  攻击次数随技能发动时的连击数增加。（每5连击，攻击次数+1）\n  View与连击数不会因本次行动增加。\n【响桩（暂译）】\n受到主动技能攻击时，连击数+1。\n我方檄声的阿连德全部战斗不能时解除。",
+  "translationSource": "审核暂译",
+  "reviewStatus": "approved",
+  "officialChineseAvailability": "无官中",
+  "originalJapanese": "檄声のアレンド",
+  "resourceName": "alendBlues2610"
+ },
+ "hero:130412": {
+  "name": "图班",
+  "type": "英雄",
+  "aliases": [
+   "トゥバン"
+  ],
+  "content": "【审核暂译；暂无官方简中】\n稀有度: ★★★★★★\n【技能】\n· 斯塔迪格·佩拉雷\n  【自身未被附加屏障时】\n  对敌方单体造成50%伤害。\n  对自身附加2次行动期间、数值为View的40%的屏障。\n  【自身已被附加屏障时】\n  对敌方全体造成50%伤害。\n  【被动】\n  持有支柱。\n  我方被附加屏障时，支柱增加所附加屏障值的1%。（最大值为50）\n  支柱超过30时，消耗我方全体的30点支柱，诱发自身技能1。（每回合最多4次）\n  由此诱发的技能无法获得View与连击。\n· 法德尔斯·雷德宁\n  先对我方全体造成各自最大HP10%的贯通伤害，再对目标附加2次行动期间、数值为目标最大HP10%的屏障。\n  我方不会因本技能的贯通伤害而战斗不能，HP保留至最大值的1%。\n  自身计量槽+1。\n  在自身行动时发动此技能的情况下，进行连续行动。（每回合最多2次）\n  【被动】\n  我方带有屏障行动，并使屏障剩余回合数减少时，自身计量槽+1。（计量槽最大值为8）\n  计量槽达到最大值时，消耗我方全体图班的全部计量槽，发动“德拉肯斯·坎普（ドラーケンス・カンプ）”。\n· 斯托尔·沃克特德拉格+\n  对敌方单体及其相邻敌方造成90%伤害，伤害量随我方全体所持屏障值的总和上升。（最大总倍率为180%；屏障值总和为10000时达到最大伤害。）\n  【被动】\n  自身存活期间，已有屏障的我方再次被附加屏障时，目标的屏障值+500，持续回合数+2。（最多3回合）\n  此效果不叠加。\n【触发技能】\n· 德拉肯斯·坎普\n  从敌方全体中随机选择目标，造成3次60%伤害。\n  对自身附加2回合期间ATK+15%。（最多可叠加2个）",
+  "translationSource": "审核暂译",
+  "reviewStatus": "approved",
+  "officialChineseAvailability": "无官中",
+  "originalJapanese": "トゥバン",
+  "resourceName": "thuban"
+ },
+ "hero:133513": {
+  "name": "凯夫",
+  "type": "英雄",
+  "aliases": [
+   "ケフ"
+  ],
+  "content": "【审核暂译；暂无官方简中】\n稀有度: ★★★★★★\n【技能】\n· 光之舞台\n  对敌方单体附加1次行动期间的SPD下降。\n  获得1000View。\n· 你闪耀着+\n  为我方单体及编成中位于该目标下一位的我方，恢复基础ATK60%的HP。\n  目标被附加减益时，解除1个减益。\n  目标未被附加减益时，连击数+1。\n  【连击数≥5时】\n  再行动1次。（每回合最多1次）\n· 比万物更耀眼\n  【自身未被附加演坛时】\n  对自身附加3回合期间的演坛。\n  【自身已被附加演坛时】\n  对敌方全体附加1回合期间的眩晕，连击数+1。\n【演坛（暂译）】\n我方ATK随连击数上升。（最多+50%；连击数为25时达到最大值）\n我方使用不造成伤害的技能时，连击+2。（每回合最多触发3次）\n任意角色被附加不同的场地效果时，演坛解除。",
+  "translationSource": "审核暂译",
+  "reviewStatus": "approved",
+  "officialChineseAvailability": "无官中",
+  "originalJapanese": "ケフ",
+  "resourceName": "ceph"
+ },
+ "sidekick:130416": {
+  "name": "图班",
+  "type": "助手",
+  "aliases": [
+   "トゥバン"
+  ],
+  "content": "【审核暂译；暂无官方简中】\n助手最终阶段：Lv100成长终点\n【技能】\n· 宽阔的背影++\n  对我方单体及相邻我方附加1次行动期间、数值为View的20%的屏障。\n【装备技能Ⅵ】\n· 父龙的庇护Ⅵ\n  被附加屏障时，View基础值+15%。",
+  "translationSource": "审核暂译",
+  "reviewStatus": "approved",
+  "officialChineseAvailability": "无官中",
+  "originalJapanese": "トゥバン",
+  "resourceName": "thuban"
+ },
+ "sidekick:133516": {
+  "name": "凯夫",
+  "type": "助手",
+  "aliases": [
+   "ケフ"
+  ],
+  "content": "【审核暂译；暂无官方简中】\n助手最终阶段：Lv100成长终点\n【技能】\n· 按计划进行++\n  为我方单体及相邻我方恢复基础ATK40%的HP。\n  连击数≥5时，恢复量提高至基础ATK的60%。\n【装备技能Ⅵ】\n· 活动策划人的协调力Ⅵ\n  战斗开始时，对自身附加蓄能数为1的VP充填。\n  每当连击数达到5的倍数时，VP充填的蓄能数+1。（最大蓄能数为5）\n  行动开始时，每1点VP充填蓄能，获得自身View的10%。\n  效果发动后，将VP充填的蓄能数设为1。\n  【自动行动时】\n  连击数≤5的情况下，优先使用第2技能。",
+  "translationSource": "审核暂译",
+  "reviewStatus": "approved",
+  "officialChineseAvailability": "无官中",
+  "originalJapanese": "ケフ",
+  "resourceName": "ceph"
  }
 }
