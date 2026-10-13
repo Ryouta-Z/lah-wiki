@@ -32,7 +32,12 @@ class QuickrefMasterUpdatesTest(unittest.TestCase):
         })
         for key, card in before.items():
             if key not in {"hero:103322", "hero:103222"}:
-                self.assertEqual(after[key], card, key)
+                self.assertEqual({field: value for field, value in after[key].items() if field != "history"},
+                                 {field: value for field, value in card.items() if field != "history"}, key)
+                self.assertEqual({field: value for field, value in after[key]["history"].items() if field != "familyCardKeys"},
+                                 {field: value for field, value in card["history"].items() if field != "familyCardKeys"}, key)
+                self.assertTrue(set(card["history"]["familyCardKeys"]).issubset(after[key]["history"]["familyCardKeys"]))
+        self.assertIn("hero:123622", after["hero:123612"]["history"]["familyCardKeys"])
         for stock, name in (("10411", "火之狼人"), ("10421", "水之狼人"), ("10441", "光之狼人")):
             for kind in ("hero", "sidekick"):
                 card = after[f"{kind}:{stock}6"]
@@ -88,17 +93,19 @@ class QuickrefMasterUpdatesTest(unittest.TestCase):
         catalog = build_catalog(
             DEFAULT_SNAPSHOT_DIR, master_updates_path=DEFAULT_MASTER_UPDATES_PATH
         )
-        prefix = '<style>.custom-layout { color: red; }</style>\n<script>\n'
-        suffix = '\n// 查询界面层：保留现有交互\n</script>'
+        prefix = '<html><head><style>.custom-layout { color: red; }</style></head><body>\n<script>\n'
+        suffix = '\n// 查询界面层：保留现有交互\n</script></body></html>'
         with tempfile.TemporaryDirectory(dir=DEFAULT_SNAPSHOT_DIR.parent) as directory:
             path = Path(directory) / "index.html"
             path.write_text(prefix + '    const catalog = {};'+ suffix, encoding="utf-8")
             write_static_site(catalog, path)
             html = path.read_text(encoding="utf-8")
-        self.assertEqual(
-            html,
-            prefix + '    const catalog = ' + json.dumps(catalog, ensure_ascii=False) + ';' + suffix,
-        )
+        self.assertIn('<style>.custom-layout { color: red; }</style>', html)
+        catalog_line = next(line for line in html.splitlines() if line.startswith('    const catalog = '))
+        self.assertEqual(json.loads(catalog_line.removeprefix('    const catalog = ').removesuffix(';')), catalog)
+        self.assertIn('// 查询界面层：保留现有交互\n</script>', html)
+        self.assertEqual(html.count('id="card-history-style"'), 1)
+        self.assertEqual(html.count('id="card-history-script"'), 1)
 
 
 if __name__ == "__main__":

@@ -14,6 +14,7 @@ from tempfile import NamedTemporaryFile
 from typing import Any
 
 try:
+    from scripts.card_history import attach_card_history
     from scripts.assistant_tags import (
         DEFAULT_ASSISTANT_TAGS_PATH,
         read_assistant_tag_config,
@@ -27,6 +28,7 @@ try:
         validate_hero_tag_config,
     )
 except ModuleNotFoundError:  # Allow `python scripts/lah_quickref.py` from the project root.
+    from card_history import attach_card_history  # type: ignore[no-redef]
     from assistant_tags import (  # type: ignore[no-redef]
         DEFAULT_ASSISTANT_TAGS_PATH,
         read_assistant_tag_config,
@@ -44,6 +46,7 @@ ROOT = Path(__file__).parent.parent
 DEFAULT_SNAPSHOT_DIR = ROOT / "data" / "cache" / "lah-localization"
 DEFAULT_MASTER_UPDATES_PATH = ROOT / "data" / "quickref_master_updates.json"
 DEFAULT_CATALOG_PATH = ROOT / "data" / "quickref_catalog.json"
+DEFAULT_CARD_HISTORY_PATH = ROOT / "data" / "card_history.json"
 DEFAULT_SITE_PATH = ROOT / "quickref" / "index.html"
 DEFAULT_ALIASES_PATH = ROOT / "data" / "aliases.json"
 DEFAULT_CHAR_MAP_PATH = ROOT / "data" / "char_map.json"
@@ -181,6 +184,7 @@ def build_catalog(
     assistant_tags_path: Path | None = None,
     hero_tags_path: Path | None = None,
     master_updates_path: Path | None = None,
+    card_history_path: Path | None = DEFAULT_CARD_HISTORY_PATH,
 ) -> dict[str, Any]:
     """Return a normalized catalog from one complete, date-consistent snapshot."""
     snapshot = _snapshot_files(snapshot_dir)
@@ -259,7 +263,7 @@ def build_catalog(
 
     skill_rows = _unique_skills(cards)
     skill_upgrades = _unique_skill_upgrades(cards)
-    return {
+    catalog = {
         "metadata": {
             "snapshotId": f"{snapshot['id']}+{updates['id']}" if updates else snapshot["id"],
             **({"supplementalData": updates["source"]} if updates else {}),
@@ -283,6 +287,8 @@ def build_catalog(
         "assistantTags": assistant_tag_config["tags"] if assistant_tag_config else [],
         "heroTags": hero_tag_config["tags"] if hero_tag_config else [],
     }
+    attach_card_history(catalog, hero_cards, sidekick_cards, card_history_path)
+    return catalog
 
 
 def _apply_reviewed_translations(
@@ -359,7 +365,7 @@ def write_static_site(
                 existing,
             )
             if count == 1:
-                _write_text_atomic(output_path, updated)
+                _write_text_atomic(output_path, _include_card_history(updated))
                 return
     avatar_url_prefix = Path(os.path.relpath(icon_dir, start=output_path.parent)).as_posix()
     official_ui_dir = ROOT / "data" / "cache" / "official-ui-candidates" / "selected"
@@ -396,6 +402,32 @@ def rebuild_quickref(
     return catalog
 
 
+def _include_card_history(html: str) -> str:
+    """Embed history in both fresh pages and the preserved query interface."""
+    fragment_dir = ROOT / "quickref" / "card-history"
+    for name in ("style", "script"):
+        start, end = f"<!-- card-history:{name}:start -->", f"<!-- card-history:{name}:end -->"
+        html = re.sub(re.escape(start) + r".*?" + re.escape(end) + r"\n?", "", html, flags=re.S)
+    css = (fragment_dir / "history.css").read_text(encoding="utf-8")
+    script = (fragment_dir / "history.js").read_text(encoding="utf-8")
+    html = html.replace("</head>", f'<!-- card-history:style:start -->\n<style id="card-history-style">\n{css}\n</style>\n<!-- card-history:style:end -->\n</head>', 1)
+    catalog_line = re.search(r"(?m)^    const catalog = ", html)
+    script_start = html.rfind("<script", 0, catalog_line.start()) if catalog_line else -1
+    if script_start < 0:
+        raise ValueError("无法识别目录脚本，卡片历史未能接入")
+    block = f'<!-- card-history:script:start -->\n<script id="card-history-script">\n{script}\n</script>\n<!-- card-history:script:end -->\n'
+    html = html[:script_start] + block + html[script_start:]
+    html = html.replace(
+        "button.innerHTML = useOfficialCardLayout ? officialCardMarkup : legacyCardMarkup;",
+        "button.innerHTML = (useOfficialCardLayout ? officialCardMarkup : legacyCardMarkup) + cardReleaseMarkup(card);",
+    )
+    html = html.replace("</div></div></div></button>`).join('')", "</div></div></div>${cardReleaseMarkup(card)}</button>`).join('')")
+    hook = "      renderCardHistoryDetail(card);\n"
+    if hook not in html:
+        html = html.replace("      $('detail').showModal();", hook + "      $('detail').showModal();", 1)
+    return html
+
+
 def render_static_html(
     catalog: dict[str, Any],
     avatar_url_prefix: str = "../data/images/icon",
@@ -411,7 +443,7 @@ def render_static_html(
     tag_settings_listeners = """    $('tagSettings').addEventListener('click', () => $('tagSettingsDetail').showModal());
     document.querySelector('.tag-settings-close').addEventListener('click', () => $('tagSettingsDetail').close());
 """ if include_tag_settings else ""
-    return f"""<!doctype html>
+    html = f"""<!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
@@ -742,6 +774,7 @@ def render_static_html(
   </script>
 </body>
 </html>"""
+    return _include_card_history(html)
 
 
 def _build_cards(
@@ -1381,6 +1414,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="生成 Live A Hero 离线速查数据与网页")
     parser.add_argument("--snapshot-dir", type=Path, default=DEFAULT_SNAPSHOT_DIR)
     parser.add_argument("--master-updates", type=Path, default=DEFAULT_MASTER_UPDATES_PATH)
+    parser.add_argument("--card-history", type=Path, default=DEFAULT_CARD_HISTORY_PATH)
     parser.add_argument("--catalog", type=Path, default=DEFAULT_CATALOG_PATH)
     parser.add_argument("--site", type=Path, default=DEFAULT_SITE_PATH)
     parser.add_argument("--assistant-tags", type=Path, default=DEFAULT_ASSISTANT_TAGS_PATH)
@@ -1396,6 +1430,7 @@ def main() -> None:
         assistant_tags_path=args.assistant_tags,
         hero_tags_path=args.hero_tags,
         master_updates_path=args.master_updates,
+        card_history_path=args.card_history,
     )
     write_catalog(catalog, args.catalog)
     write_static_site(catalog, args.site)
