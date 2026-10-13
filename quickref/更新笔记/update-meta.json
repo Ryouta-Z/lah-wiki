@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "activityId": "20261008-heroes-blues",
+  "activityName": "英雄们的布鲁斯",
+  "latest": {
+    "pushSha": "4bdfb983b4183db4560525a88c1f21584ee4f49d",
+    "pushedAtBeijing": "2026-10-09T20:41:10+08:00",
+    "title": "版本与更新时间显示完善",
+    "summary": "页头现在显示游戏版本 v4.16.1 和资料更新时间。本次是界面补正，角色、技能与标签沿用此前的大更新。",
+    "notesPath": "20261008-heroes-blues.html",
+    "notesAnchor": "update-4bdfb98"
+  }
+}

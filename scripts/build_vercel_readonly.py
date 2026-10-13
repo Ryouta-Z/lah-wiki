@@ -60,6 +60,33 @@ def _referenced_avatar_filenames(catalog: dict[str, Any]) -> set[str]:
     return filenames
 
 
+def _update_note_files() -> dict[str, bytes]:
+    """Ship cumulative activity pages, not the embedded reminder's source templates."""
+    files = {}
+    for path in sorted((ROOT / "quickref" / "更新笔记").iterdir()):
+        if path.name in {"reminder.html", "reminder.css", "reminder.js"}:
+            continue
+        if path.is_symlink() or not path.is_file() or not re.fullmatch(
+            r"(?:[A-Za-z0-9][A-Za-z0-9_.-]*\.(?:html|css)|update-meta\.json)", path.name
+        ):
+            raise ValueError(f"不支持的更新笔记文件：{path.name}")
+        content = path.read_bytes()
+        if path.suffix == ".html":
+            content = content.decode("utf-8").replace(
+                "../../data/images/icon/", "../assets/images/icon/"
+            ).encode("utf-8")
+        files[f"更新笔记/{path.name}"] = content
+    return files
+
+
+def _note_avatar_filenames(files: dict[str, bytes]) -> set[str]:
+    return {
+        filename
+        for name, content in files.items() if name.endswith(".html")
+        for filename in re.findall(r"\.\./assets/images/icon/([A-Za-z0-9_.-]+\.(?:png|gif))", content.decode("utf-8"))
+    }
+
+
 def validate_deployment_package(
     output_dir: Path,
     catalog: dict[str, Any] | None = None,
@@ -91,6 +118,22 @@ def validate_deployment_package(
     missing = [filename for filename in sorted(expected_filenames) if not (asset_dir / filename).is_file()]
     if missing:
         raise ValueError(f"缺少公开头像：{', '.join(missing[:5])}")
+    if 'id="wiki-update-meta"' in html:
+        metadata = json.loads(re.search(r'<script type="application/json" id="wiki-update-meta">(.*?)</script>', html, re.S)[1])
+        latest = metadata["latest"]
+        notes_dir = output_dir / "更新笔记"
+        latest_page = notes_dir / latest["notesPath"]
+        if not latest_page.is_file() or f'id="{latest["notesAnchor"]}"' not in latest_page.read_text(encoding="utf-8"):
+            raise ValueError("最新更新笔记页面或定位入口缺失")
+        note_files = {path.name: path.read_bytes() for path in notes_dir.glob("*.html")}
+        for name, content in note_files.items():
+            page = content.decode("utf-8")
+            if "../../data/" in page or "prototype" in page or re.search(r"(?:src|href)=[\"'](?:https?://|file:)", page):
+                raise ValueError(f"更新笔记包含非离线资源：{name}")
+            for reference in re.findall(r'(?:src|href)="([^"?#]+)', page):
+                target = (notes_dir / reference).resolve()
+                if not target.is_relative_to(output_dir) or not target.is_file():
+                    raise ValueError(f"更新笔记资源缺失或越界：{name} → {reference}")
     return {"avatars": len(expected_filenames), "files": sum(path.is_file() for path in output_dir.rglob("*"))}
 
 
@@ -128,6 +171,14 @@ def build_vercel_readonly(
             if not source.is_file():
                 raise ValueError(f"源头像不存在：{source}")
             shutil.copy2(source, destination_icons / filename)
+
+        note_files = _update_note_files()
+        for name, content in note_files.items():
+            target = staging_dir / name
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_bytes(content)
+        for filename in sorted(_note_avatar_filenames(note_files) - filenames):
+            shutil.copy2(ROOT / "data/images/icon" / filename, destination_icons / filename)
 
         summary = validate_deployment_package(staging_dir, catalog)
         if output_dir.exists():

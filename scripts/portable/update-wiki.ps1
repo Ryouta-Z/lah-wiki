@@ -14,7 +14,7 @@ function Get-WikiHash([string]$Path) {
 }
 
 function Resolve-WikiPath([string]$Root, [string]$Relative) {
-    if ($Relative -notmatch '^(index\.html|(update|install)-wiki\.ps1|(打开|更新|下载)Wiki\.cmd|使用说明\.txt|assets/(images/icon|official-ui)/[A-Za-z0-9_.-]+\.(png|gif))$' -or
+    if ($Relative -notmatch '^(index\.html|(update|install)-wiki\.ps1|(打开|更新|下载)Wiki\.cmd|使用说明\.txt|assets/(images/icon|official-ui)/[A-Za-z0-9_.-]+\.(png|gif)|更新笔记/[A-Za-z0-9][A-Za-z0-9_.-]*\.(html|css|js)|更新笔记/update-meta\.json)$' -or
         $Relative.Split('/') -contains '..' -or $Relative -match '//') {
         throw "更新文件路径不合法：$Relative"
     }

@@ -1,6 +1,7 @@
 import gzip
 import hashlib
 import json
+import re
 import shutil
 import subprocess
 import tempfile
@@ -35,7 +36,24 @@ class PortableBuildTest(unittest.TestCase):
             self.assertIn('"assets/official-ui"', page)
             self.assertNotIn("tagSettings", page)
             self.assertNotIn("127.0.0.1", page)
+            embedded_meta = re.search(r'<script type="application/json" id="wiki-update-meta">(.*?)</script>', page, re.S)
+            self.assertIsNotNone(embedded_meta)
+            self.assertEqual(json.loads(embedded_meta[1])["releaseVersion"], "wiki-test")
             manifest = json.loads((root / "output/release/wiki-manifest.json").read_text(encoding="utf-8"))
+            notes_files = {"更新笔记/20261008-heroes-blues.html", "更新笔记/style.css", "更新笔记/update-meta.json"}
+            template_files = {"更新笔记/reminder.html", "更新笔记/reminder.css", "更新笔记/reminder.js"}
+            manifest_paths = {entry["path"] for entry in manifest["files"]}
+            self.assertTrue(notes_files <= manifest_paths)
+            self.assertTrue(template_files.isdisjoint(manifest_paths))
+            notes_page = root / "output/wiki/更新笔记/20261008-heroes-blues.html"
+            notes_html = notes_page.read_text(encoding="utf-8")
+            self.assertIn('id="update-4bdfb98"', notes_html)
+            self.assertIn('id="update-6e9febd"', notes_html)
+            note_images = re.findall(r'<img[^>]+src="([^"]+)"', notes_html)
+            self.assertEqual(len(note_images), 5)
+            for reference in note_images:
+                self.assertTrue(reference.startswith("../assets/images/icon/"), reference)
+                self.assertTrue((notes_page.parent / reference).is_file(), reference)
             for entry in manifest["files"]:
                 blob = root / "output/release" / ("blob-" + entry["sha256"] + ".gz")
                 content = gzip.decompress(blob.read_bytes())
@@ -43,12 +61,25 @@ class PortableBuildTest(unittest.TestCase):
                 self.assertEqual(len(content), entry["size"])
             with zipfile.ZipFile(result["zip"]) as archive:
                 self.assertIn("Live-A-Hero-Wiki/更新Wiki.cmd", archive.namelist())
+                self.assertTrue({"Live-A-Hero-Wiki/" + name for name in notes_files} <= set(archive.namelist()))
+                self.assertTrue({"Live-A-Hero-Wiki/" + name for name in template_files}.isdisjoint(archive.namelist()))
                 self.assertFalse(any("collection-cards" in name for name in archive.namelist()))
                 self.assertTrue(all(".env" not in name for name in archive.namelist()))
+                for name in archive.namelist():
+                    if Path(name).suffix in {".html", ".css", ".js", ".json"}:
+                        content = archive.read(name).decode("utf-8")
+                        self.assertNotIn("__UPDATE_NOTES_BASE__", content, name)
+                        self.assertNotIn("__WIKI_UPDATE_META_JSON__", content, name)
             self.assertNotIn("collection-cards/index.html", page)
             with zipfile.ZipFile(result["setupZip"]) as archive:
                 self.assertIn("Live-A-Hero-Wiki/下载Wiki.cmd", archive.namelist())
                 self.assertFalse(any(name.endswith("index.html") or name.endswith(".png") for name in archive.namelist()))
+            with zipfile.ZipFile(result["updaterZip"]) as archive:
+                self.assertEqual(set(archive.namelist()), {"update-wiki.ps1", "更新器升级说明.txt"})
+                self.assertEqual(archive.read("update-wiki.ps1").decode("utf-8-sig"), (ROOT / "scripts/portable/update-wiki.ps1").read_text(encoding="utf-8-sig"))
+                instructions = archive.read("更新器升级说明.txt").decode("utf-8-sig")
+                self.assertIn("update-wiki.ps1", instructions)
+                self.assertIn(".wiki-state.json", instructions)
             with self.assertRaisesRegex(ValueError, "已存在"):
                 build_portable_wiki(root / "output", "wiki-test")
 
@@ -139,6 +170,132 @@ $out | ConvertTo-Json -Depth 20 | Set-Content -LiteralPath {quote(self.root / 'r
         self.assertTrue(again["ok"], again)
         self.assertEqual(again["result"]["downloaded"], 0)
         self.assertEqual(len(again["requests"]), 1)
+
+    def test_downloads_current_and_historical_release_notes_with_styles_and_metadata(self):
+        notes = {
+            "更新笔记/202609-old-event.html": b"previous activity notes",
+            "更新笔记/20261008-heroes-blues.html": b"current activity notes",
+            "更新笔记/style.css": b"notes styles",
+            "更新笔记/reminder.js": b"reminder script",
+            "更新笔记/update-meta.json": b'{"activityId":"20261008-heroes-blues"}',
+        }
+        manifest = self.make_manifest("wiki-notes-new", {**self.old_files, **notes, "index.html": b"new page with notes"})
+        result = self.run_update(manifest)
+        self.assertTrue(result["ok"], result)
+        self.assertEqual(result["result"]["downloaded"], len(notes) + 1)
+        for name, content in notes.items():
+            self.assertEqual((self.wiki / name).read_bytes(), content)
+        self.assertEqual((self.wiki / "index.html").read_bytes(), b"new page with notes")
+        self.assertEqual((self.wiki / "my-notes.txt").read_bytes(), b"user file")
+        self.assertEqual(json.loads((self.wiki / ".wiki-state.json").read_text(encoding="utf-8")), manifest)
+
+    def test_skipping_versions_keeps_all_prior_activity_notes(self):
+        first_files = {
+            **self.old_files,
+            "更新笔记/202609-old-event.html": b"first activity notes",
+            "更新笔记/style.css": b"old notes styles",
+        }
+        first = self.make_manifest("wiki-notes-first", first_files)
+        self.assertTrue(self.run_update(first)["ok"])
+        skipped_files = {
+            **first_files,
+            "index.html": b"skipped page",
+            "更新笔记/20261008-heroes-blues.html": b"second activity notes",
+        }
+        self.make_manifest("wiki-notes-skipped", skipped_files)
+        latest_files = {
+            **skipped_files,
+            "index.html": b"latest page",
+            "更新笔记/202610-next-event.html": b"latest activity notes",
+            "更新笔记/style.css": b"latest notes styles",
+        }
+        latest = self.make_manifest("wiki-notes-latest", latest_files)
+        result = self.run_update(latest)
+        self.assertTrue(result["ok"], result)
+        self.assertEqual(result["result"]["downloaded"], 4)
+        self.assertEqual(result["result"]["removed"], 0)
+        for name, content in latest_files.items():
+            self.assertEqual((self.wiki / name).read_bytes(), content)
+        self.assertFalse(any("/wiki-notes-skipped/" in request for request in result["requests"]))
+        self.assertEqual(json.loads((self.wiki / ".wiki-state.json").read_text(encoding="utf-8")), latest)
+
+    def test_corrupt_release_notes_keep_old_homepage_notes_styles_and_state(self):
+        old_files = {
+            **self.old_files,
+            "更新笔记/20261008-heroes-blues.html": b"old activity notes",
+            "更新笔记/style.css": b"old notes styles",
+        }
+        old_manifest = self.make_manifest("wiki-notes-old", old_files)
+        self.assertTrue(self.run_update(old_manifest)["ok"])
+        old_state = (self.wiki / ".wiki-state.json").read_bytes()
+        new_manifest = self.make_manifest("wiki-notes-new", {
+            **old_files,
+            "index.html": b"new page",
+            "更新笔记/20261008-heroes-blues.html": b"new activity notes",
+            "更新笔记/style.css": b"new notes styles",
+            "更新笔记/202610-next-event.html": b"new historical page",
+        })
+        entry = next(e for e in new_manifest["files"] if e["path"] == "更新笔记/20261008-heroes-blues.html")
+        blob_path = self.remote / entry["url"].split("/")[-1]
+        corrupt_notes = b"bad activity notes"
+        self.assertEqual(len(corrupt_notes), entry["size"])
+        blob_path.write_bytes(gzip.compress(corrupt_notes, mtime=0))
+        entry["downloadSize"] = blob_path.stat().st_size
+        result = self.run_update(new_manifest)
+        self.assertFalse(result["ok"])
+        self.assertIn("校验失败", result["error"])
+        self.assertIn("更新笔记/20261008-heroes-blues.html", result["error"])
+        for name, content in old_files.items():
+            self.assertEqual((self.wiki / name).read_bytes(), content)
+        self.assertEqual((self.wiki / ".wiki-state.json").read_bytes(), old_state)
+        self.assertFalse((self.wiki / "更新笔记/202610-next-event.html").exists())
+        self.assertFalse((self.wiki / ".wiki-update").exists())
+
+    def test_frozen_legacy_updater_rejects_notes_then_script_only_upgrade_can_skip_versions(self):
+        frozen_updater = subprocess.check_output([
+            "git", "show", "4bdfb983b4183db4560525a88c1f21584ee4f49d:scripts/portable/update-wiki.ps1"
+        ], cwd=ROOT)
+        self.assertNotEqual(frozen_updater, self.updater)
+        legacy_files = {**self.old_files, "update-wiki.ps1": frozen_updater}
+        legacy_manifest = self.make_manifest("wiki-legacy", legacy_files)
+        (self.wiki / "update-wiki.ps1").write_bytes(frozen_updater)
+        self.write_json(self.wiki / ".wiki-state.json", legacy_manifest)
+        legacy_state = (self.wiki / ".wiki-state.json").read_bytes()
+        skipped_files = {
+            **legacy_files,
+            "update-wiki.ps1": self.updater,
+            "index.html": b"skipped page with notes",
+            "更新笔记/202609-old-event.html": b"historical notes",
+            "更新笔记/style.css": b"notes styles",
+        }
+        self.make_manifest("wiki-legacy-skipped", skipped_files)
+        latest_files = {
+            **skipped_files,
+            "index.html": b"latest page with cumulative notes",
+            "更新笔记/20261008-heroes-blues.html": b"latest activity notes",
+        }
+        manifest = self.make_manifest("wiki-legacy-latest", latest_files)
+        rejected = self.run_update(manifest)
+        self.assertFalse(rejected["ok"])
+        self.assertIn("更新文件路径不合法：更新笔记/", rejected["error"])
+        self.assertEqual(len(rejected["requests"]), 1)
+        self.assertEqual((self.wiki / "update-wiki.ps1").read_bytes(), frozen_updater)
+        self.assertEqual((self.wiki / "index.html").read_bytes(), b"old page")
+        self.assertEqual((self.wiki / ".wiki-state.json").read_bytes(), legacy_state)
+        self.assertFalse((self.wiki / "更新笔记").exists())
+        self.assertFalse((self.wiki / ".wiki-update").exists())
+
+        # Upgrade only the updater file; the homepage and version state stay old until it succeeds.
+        (self.wiki / "update-wiki.ps1").write_bytes(self.updater)
+        self.assertEqual((self.wiki / ".wiki-state.json").read_bytes(), legacy_state)
+        result = self.run_update(manifest)
+        self.assertTrue(result["ok"], result)
+        self.assertEqual(result["result"]["downloaded"], 4)
+        for name, content in latest_files.items():
+            self.assertEqual((self.wiki / name).read_bytes(), content)
+        self.assertFalse(any("/wiki-legacy-skipped/" in request for request in result["requests"]))
+        self.assertEqual((self.wiki / "my-notes.txt").read_bytes(), b"user file")
+        self.assertEqual(json.loads((self.wiki / ".wiki-state.json").read_text(encoding="utf-8")), manifest)
 
     def test_corrupt_download_keeps_all_old_files_and_version(self):
         manifest = self.make_manifest("wiki-new", {**self.old_files, "index.html": b"new page"})

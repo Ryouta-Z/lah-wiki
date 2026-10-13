@@ -1,0 +1,38 @@
+.wiki-update-access { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 12px 0; }
+.wiki-update-button { box-sizing: border-box; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid #d5dfdc; border-radius: 8px; padding: 8px 16px; color: #23353d; background: #fffefa; font: inherit; font-weight: 700; line-height: 1.5; text-decoration: none; cursor: pointer; }
+.wiki-update-button:hover { border-color: #176b82; background: #e7f2f1; }
+.wiki-update-button:active { transform: translateY(1px); }
+.wiki-update-button:focus-visible, #wiki-update-dialog :focus-visible { outline: 3px solid #b85c12; outline-offset: 3px; }
+.wiki-update-primary { border-color: #4598aa; color: #123a48; background: #83d9eb; }
+.wiki-update-primary:hover { background: #a9edf7; }
+#wiki-update-dialog { box-sizing: border-box; width: min(560px, calc(100% - 32px)); max-height: calc(100dvh - 32px); padding: 0; border: 1px solid #d5dfdc; border-radius: 16px; color: #23353d; background: #fffefa; box-shadow: 0 16px 48px rgb(14 25 28 / 28%); overflow: auto; font-family: "Microsoft YaHei UI", "Microsoft YaHei", system-ui, sans-serif; line-height: 1.65; }
+#wiki-update-dialog::backdrop { background: rgb(14 25 28 / 58%); }
+body:has(#wiki-update-dialog[open]) { overflow: hidden; }
+#wiki-update-dialog .wiki-update-mast { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 12px 24px; color: #fffefa; background: #223238; }
+#wiki-update-dialog .wiki-update-mast strong::before { content: ''; display: inline-block; margin-right: 10px; border-left: 10px solid #ff9c3d; border-top: 7px solid transparent; border-bottom: 7px solid transparent; vertical-align: -2px; }
+#wiki-update-dialog .wiki-update-close { width: 40px; min-height: 40px; padding: 0; border: 0; border-radius: 8px; color: #fffefa; background: transparent; font: inherit; font-size: 24px; font-weight: 400; line-height: 1.5; cursor: pointer; }
+#wiki-update-dialog .wiki-update-close:hover { color: #23353d; background: #e7f2f1; }
+#wiki-update-dialog .wiki-update-body { padding: 24px 28px 28px; }
+#wiki-update-dialog .wiki-update-label { margin: 0; color: #597078; font-size: 12px; font-weight: 800; letter-spacing: .08em; }
+#wiki-update-dialog #wiki-update-title { margin: 0 0 8px; color: #23353d; font-size: 32px; line-height: 1.3; letter-spacing: -.03em; }
+#wiki-update-dialog #wiki-update-topic { margin: 0 0 8px; color: #23353d; font-size: 19px; }
+#wiki-update-dialog .wiki-update-time { margin: 0 0 20px; color: #597078; font-size: 13px; font-variant-numeric: tabular-nums; }
+#wiki-update-dialog .wiki-update-summary { margin: 0 0 20px; color: #597078; font-size: 15px; }
+#wiki-update-dialog .wiki-update-choice { display: flex; align-items: center; gap: 12px; min-height: 44px; cursor: pointer; font-size: 15px; font-weight: 700; }
+#wiki-update-dialog .wiki-update-choice input { width: 19px; height: 19px; margin: 0; accent-color: #176b82; cursor: pointer; }
+#wiki-update-dialog .wiki-update-choice input:disabled { cursor: default; }
+#wiki-update-dialog .wiki-update-preference-help { margin: 0 0 24px 31px; color: #597078; font-size: 13px; }
+#wiki-update-dialog .wiki-update-state { margin: 0 0 20px; color: #597078; font-size: 13px; }
+#wiki-update-dialog .wiki-update-actions { display: flex; gap: 12px; }
+#wiki-update-dialog .wiki-update-actions .wiki-update-primary { flex: 1; }
+#wiki-update-dialog [hidden] { display: none !important; }
+@media (max-width: 700px) {
+  .wiki-update-access { gap: 8px; }
+  .wiki-update-access .wiki-update-button { padding: 8px 12px; font-size: 13px; }
+  #wiki-update-dialog .wiki-update-mast { padding: 8px 16px; }
+  #wiki-update-dialog .wiki-update-body { padding: 20px; }
+  #wiki-update-dialog #wiki-update-title { font-size: 28px; }
+  #wiki-update-dialog .wiki-update-actions { flex-wrap: wrap; }
+  #wiki-update-dialog .wiki-update-actions .wiki-update-button { flex: 1 1 120px; }
+}
+@media (prefers-reduced-motion: reduce) { .wiki-update-button:active { transform: none; } }

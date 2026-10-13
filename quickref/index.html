@@ -108,6 +108,49 @@
     @media (prefers-reduced-motion: reduce) { .portrait .card-avatar img { transition: none; } body.official-card-layout button.card:is(:hover, :focus, :focus-visible) .portrait .card-avatar img { transform: none; } }
     .wiki-navigation { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; } .wiki-navigation a { padding: 6px 12px; border-radius: 6px; color: #cbe0df; text-decoration: none; } .wiki-navigation a[aria-current] { color: #173e48; background: #d6edf0; } .wiki-navigation a:hover { color: white; background: #3c555c; } .wiki-navigation a:focus-visible { outline: 3px solid #ff9b3d; outline-offset: 3px; }
   </style>
+<!-- wiki-update:style:start -->
+<style id="wiki-update-style">
+.wiki-update-access { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 12px 0; }
+.wiki-update-button { box-sizing: border-box; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid #d5dfdc; border-radius: 8px; padding: 8px 16px; color: #23353d; background: #fffefa; font: inherit; font-weight: 700; line-height: 1.5; text-decoration: none; cursor: pointer; }
+.wiki-update-button:hover { border-color: #176b82; background: #e7f2f1; }
+.wiki-update-button:active { transform: translateY(1px); }
+.wiki-update-button:focus-visible, #wiki-update-dialog :focus-visible { outline: 3px solid #b85c12; outline-offset: 3px; }
+.wiki-update-primary { border-color: #4598aa; color: #123a48; background: #83d9eb; }
+.wiki-update-primary:hover { background: #a9edf7; }
+#wiki-update-dialog { box-sizing: border-box; width: min(560px, calc(100% - 32px)); max-height: calc(100dvh - 32px); padding: 0; border: 1px solid #d5dfdc; border-radius: 16px; color: #23353d; background: #fffefa; box-shadow: 0 16px 48px rgb(14 25 28 / 28%); overflow: auto; font-family: "Microsoft YaHei UI", "Microsoft YaHei", system-ui, sans-serif; line-height: 1.65; }
+#wiki-update-dialog::backdrop { background: rgb(14 25 28 / 58%); }
+body:has(#wiki-update-dialog[open]) { overflow: hidden; }
+#wiki-update-dialog .wiki-update-mast { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 12px 24px; color: #fffefa; background: #223238; }
+#wiki-update-dialog .wiki-update-mast strong::before { content: ''; display: inline-block; margin-right: 10px; border-left: 10px solid #ff9c3d; border-top: 7px solid transparent; border-bottom: 7px solid transparent; vertical-align: -2px; }
+#wiki-update-dialog .wiki-update-close { width: 40px; min-height: 40px; padding: 0; border: 0; border-radius: 8px; color: #fffefa; background: transparent; font: inherit; font-size: 24px; font-weight: 400; line-height: 1.5; cursor: pointer; }
+#wiki-update-dialog .wiki-update-close:hover { color: #23353d; background: #e7f2f1; }
+#wiki-update-dialog .wiki-update-body { padding: 24px 28px 28px; }
+#wiki-update-dialog .wiki-update-label { margin: 0; color: #597078; font-size: 12px; font-weight: 800; letter-spacing: .08em; }
+#wiki-update-dialog #wiki-update-title { margin: 0 0 8px; color: #23353d; font-size: 32px; line-height: 1.3; letter-spacing: -.03em; }
+#wiki-update-dialog #wiki-update-topic { margin: 0 0 8px; color: #23353d; font-size: 19px; }
+#wiki-update-dialog .wiki-update-time { margin: 0 0 20px; color: #597078; font-size: 13px; font-variant-numeric: tabular-nums; }
+#wiki-update-dialog .wiki-update-summary { margin: 0 0 20px; color: #597078; font-size: 15px; }
+#wiki-update-dialog .wiki-update-choice { display: flex; align-items: center; gap: 12px; min-height: 44px; cursor: pointer; font-size: 15px; font-weight: 700; }
+#wiki-update-dialog .wiki-update-choice input { width: 19px; height: 19px; margin: 0; accent-color: #176b82; cursor: pointer; }
+#wiki-update-dialog .wiki-update-choice input:disabled { cursor: default; }
+#wiki-update-dialog .wiki-update-preference-help { margin: 0 0 24px 31px; color: #597078; font-size: 13px; }
+#wiki-update-dialog .wiki-update-state { margin: 0 0 20px; color: #597078; font-size: 13px; }
+#wiki-update-dialog .wiki-update-actions { display: flex; gap: 12px; }
+#wiki-update-dialog .wiki-update-actions .wiki-update-primary { flex: 1; }
+#wiki-update-dialog [hidden] { display: none !important; }
+@media (max-width: 700px) {
+  .wiki-update-access { gap: 8px; }
+  .wiki-update-access .wiki-update-button { padding: 8px 12px; font-size: 13px; }
+  #wiki-update-dialog .wiki-update-mast { padding: 8px 16px; }
+  #wiki-update-dialog .wiki-update-body { padding: 20px; }
+  #wiki-update-dialog #wiki-update-title { font-size: 28px; }
+  #wiki-update-dialog .wiki-update-actions { flex-wrap: wrap; }
+  #wiki-update-dialog .wiki-update-actions .wiki-update-button { flex: 1 1 120px; }
+}
+@media (prefers-reduced-motion: reduce) { .wiki-update-button:active { transform: none; } }
+
+</style>
+<!-- wiki-update:style:end -->
 <!-- card-history:style:start -->
 <style id="card-history-style">
 .lah-card-release { display: flex; flex-wrap: wrap; gap: 3px 9px; margin-top: 10px; border-top: 1px solid #52617c; padding-top: 8px; color: #b9c7df; font-size: 12px; font-variant-numeric: tabular-nums; }
@@ -199,6 +242,13 @@ body[data-edition=game] .lah-card-release { display: none; }
 </head>
 <body class="official-card-layout">
   <header><h1>Live A Hero 本地速查</h1><p id="snapshot"></p></header>
+<!-- wiki-update:access:start -->
+<nav class="wiki-update-access" aria-label="Wiki 更新内容">
+  <a class="wiki-update-button" id="wiki-update-entry" data-wiki-update-base="更新笔记" href="更新笔记/20261008-heroes-blues.html#update-4bdfb98" target="_blank" rel="noopener">更新笔记</a>
+  <button class="wiki-update-button" id="wiki-update-show" type="button">查看更新提醒</button>
+</nav>
+<!-- wiki-update:access:end -->
+
   <main>
     <section class="controls" aria-label="筛选条件">
       <input id="query" autofocus placeholder="搜索中文名、日文名、卡片编号或技能内容，例如：阿卡西">
@@ -734,5 +784,95 @@ document.addEventListener('keydown', event => {
     $('detail').setAttribute('aria-label', '角色详情');
     render();
   </script>
+<!-- wiki-update:dialog:start -->
+<dialog id="wiki-update-dialog" aria-labelledby="wiki-update-title" aria-describedby="wiki-update-summary">
+  <div class="wiki-update-mast"><strong>Wiki 更新内容</strong><button class="wiki-update-close" id="wiki-update-dismiss" aria-label="关闭更新提醒" type="button">×</button></div>
+  <div class="wiki-update-body">
+    <p class="wiki-update-label">当前活动大版本</p>
+    <h2 id="wiki-update-title">英雄们的布鲁斯</h2>
+    <p class="wiki-update-time" id="wiki-update-time">当前更新：2026.10.09 20:41:10（北京时间）</p>
+    <h3 id="wiki-update-topic">版本与更新时间显示完善</h3>
+    <p class="wiki-update-summary" id="wiki-update-summary">页头现在显示游戏版本 v4.16.1 和资料更新时间。本次是界面补正，角色、技能与标签沿用此前的大更新。</p>
+    <label class="wiki-update-choice"><input id="wiki-update-dont-remind" type="checkbox" aria-describedby="wiki-update-preference-help">不再提醒</label>
+    <div class="wiki-update-preference-help" id="wiki-update-preference-help">仅适用于这次更新；同一活动内有后续更新时仍会提示。</div>
+    <p class="wiki-update-state" id="wiki-update-state" role="status" aria-live="polite" hidden></p>
+    <div class="wiki-update-actions">
+      <a class="wiki-update-button wiki-update-primary" id="wiki-update-notes" href="更新笔记/20261008-heroes-blues.html#update-4bdfb98" target="_blank" rel="noopener" autofocus>查看更新笔记</a>
+      <button class="wiki-update-button" id="wiki-update-read" type="button">开始查阅</button>
+    </div>
+  </div>
+</dialog>
+<script type="application/json" id="wiki-update-meta">{"schemaVersion": 1, "activityId": "20261008-heroes-blues", "activityName": "英雄们的布鲁斯", "latest": {"pushSha": "4bdfb983b4183db4560525a88c1f21584ee4f49d", "pushedAtBeijing": "2026-10-09T20:41:10+08:00", "title": "版本与更新时间显示完善", "summary": "页头现在显示游戏版本 v4.16.1 和资料更新时间。本次是界面补正，角色、技能与标签沿用此前的大更新。", "notesPath": "20261008-heroes-blues.html", "notesAnchor": "update-4bdfb98"}}</script>
+<script id="wiki-update-script">
+(() => {
+  const header = document.querySelector('header');
+  const access = document.querySelector('.wiki-update-access');
+  if (header && access) header.append(access);
+  const requiredIds = [
+    'wiki-update-meta', 'wiki-update-dialog', 'wiki-update-entry', 'wiki-update-show',
+    'wiki-update-title', 'wiki-update-time', 'wiki-update-topic', 'wiki-update-summary',
+    'wiki-update-dont-remind', 'wiki-update-state', 'wiki-update-dismiss',
+    'wiki-update-notes', 'wiki-update-read'
+  ];
+  const elements = Object.fromEntries(requiredIds.map(id => [id, document.getElementById(id)]));
+  if (requiredIds.some(id => !elements[id])) return;
+  let metadata;
+  try { metadata = JSON.parse(elements['wiki-update-meta'].textContent); }
+  catch { return; }
+  const latest = metadata.latest;
+  if (!latest || !/^[a-f0-9]{40}$/.test(latest.pushSha)) return;
+
+  const dialog = elements['wiki-update-dialog'];
+  if (typeof dialog.showModal !== 'function') return;
+  const checkbox = elements['wiki-update-dont-remind'];
+  const state = elements['wiki-update-state'];
+  const entry = elements['wiki-update-entry'];
+  const reminderVersion = typeof metadata.releaseVersion === 'string' && /^[A-Za-z0-9][A-Za-z0-9._-]{0,79}$/.test(metadata.releaseVersion)
+    ? metadata.releaseVersion : latest.pushSha;
+  const preferenceKey = 'lah-wiki-update:suppressed:' + reminderVersion;
+  let suppressed = false;
+  let storageAvailable = true;
+  try { suppressed = localStorage.getItem(preferenceKey) === '1'; }
+  catch { storageAvailable = false; }
+
+  elements['wiki-update-title'].textContent = metadata.activityName;
+  elements['wiki-update-time'].textContent = '当前更新：' + latest.pushedAtBeijing.slice(0, 19).replace('T', ' ').replaceAll('-', '.') + '（北京时间）';
+  elements['wiki-update-topic'].textContent = latest.title;
+  elements['wiki-update-summary'].textContent = latest.summary;
+  const notesHref = entry.dataset.wikiUpdateBase + '/' + latest.notesPath + '#' + latest.notesAnchor;
+  entry.href = elements['wiki-update-notes'].href = notesHref;
+
+  function updateStorageState() {
+    state.hidden = storageAvailable;
+    state.textContent = storageAvailable ? '' : '浏览器无法保存提醒偏好，重新打开时仍会提示。';
+    checkbox.disabled = !storageAvailable;
+  }
+  function showReminder() {
+    checkbox.checked = suppressed;
+    if (!dialog.open) dialog.showModal();
+  }
+  dialog.addEventListener('close', () => {
+    try {
+      if (checkbox.checked) {
+        localStorage.setItem(preferenceKey, '1');
+        suppressed = true;
+      } else if (suppressed) {
+        localStorage.removeItem(preferenceKey);
+        suppressed = false;
+      }
+    } catch { storageAvailable = false; }
+    updateStorageState();
+    entry.focus();
+  });
+  ['wiki-update-dismiss', 'wiki-update-read', 'wiki-update-notes'].forEach(id => {
+    elements[id].addEventListener('click', () => dialog.close());
+  });
+  elements['wiki-update-show'].addEventListener('click', showReminder);
+  updateStorageState();
+  if (!suppressed || new URLSearchParams(location.search).get('reminder') === 'show') showReminder();
+})();
+
+</script>
+<!-- wiki-update:dialog:end -->
 </body>
 </html>

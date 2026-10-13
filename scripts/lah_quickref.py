@@ -9,6 +9,7 @@ import re
 import shutil
 import subprocess
 from datetime import UTC, datetime
+from html import escape as escape_html
 from pathlib import Path
 from tempfile import NamedTemporaryFile
 from typing import Any
@@ -365,7 +366,7 @@ def write_static_site(
                 existing,
             )
             if count == 1:
-                _write_text_atomic(output_path, _include_card_history(updated))
+                _write_text_atomic(output_path, _include_card_history(_include_update_notes(updated, "更新笔记")))
                 return
     avatar_url_prefix = Path(os.path.relpath(icon_dir, start=output_path.parent)).as_posix()
     official_ui_dir = ROOT / "data" / "cache" / "official-ui-candidates" / "selected"
@@ -402,6 +403,42 @@ def rebuild_quickref(
     return catalog
 
 
+def _include_update_notes(html: str, update_notes_base: str) -> str:
+    notes_dir = ROOT / "quickref" / "更新笔记"
+    meta = json.loads((notes_dir / "update-meta.json").read_text(encoding="utf-8"))
+    embedded_meta = (
+        json.dumps(meta, ensure_ascii=False)
+        .replace("</", "<\\/")
+        .replace("\u2028", "\\u2028")
+        .replace("\u2029", "\\u2029")
+    )
+    markup = (notes_dir / "reminder.html").read_text(encoding="utf-8")
+    markup = markup.replace("__WIKI_UPDATE_META_JSON__", embedded_meta).replace(
+        "__UPDATE_NOTES_BASE__", escape_html(update_notes_base.rstrip("/"), quote=True)
+    )
+    access, separator, dialog = markup.partition("<!-- UPDATE_NOTES_DIALOG -->")
+    if not separator:
+        raise ValueError("更新提醒模板缺少入口与弹窗分隔标记")
+    css = (notes_dir / "reminder.css").read_text(encoding="utf-8")
+    script = (notes_dir / "reminder.js").read_text(encoding="utf-8")
+    fragments = (
+        ("style", f'<style id="wiki-update-style">\n{css}\n</style>', "</head>"),
+        ("access", access.strip(), "</header>"),
+        ("dialog", f'{dialog.strip()}\n<script id="wiki-update-script">\n{script}\n</script>', "</body>"),
+    )
+    for name, content, anchor in fragments:
+        start, end = f"<!-- wiki-update:{name}:start -->", f"<!-- wiki-update:{name}:end -->"
+        block = f"{start}\n{content}\n{end}\n"
+        if name == "access":
+            html = re.sub(re.escape(start) + r".*?" + re.escape(end) + r"\n?", "", html, flags=re.S)
+            html = html.replace(anchor, anchor + "\n" + block, 1)
+            continue
+        html, count = re.subn(re.escape(start) + r".*?" + re.escape(end) + r"\n?", lambda _: block, html, flags=re.S)
+        if not count:
+            html = html.replace(anchor, block + anchor, 1)
+    return html
+
+
 def _include_card_history(html: str) -> str:
     """Embed history in both fresh pages and the preserved query interface."""
     fragment_dir = ROOT / "quickref" / "card-history"
@@ -435,6 +472,7 @@ def render_static_html(
     local_official_asset_prefix: str = "",
     use_official_card_layout: bool = False,
     include_tag_settings: bool = True,
+    update_notes_base: str = "更新笔记",
 ) -> str:
     embedded_catalog = json.dumps(catalog, ensure_ascii=False).replace("</", "<\\/")
     tag_settings_button = '      <button id="tagSettings" type="button">标签设置</button>' if include_tag_settings else ""
@@ -774,7 +812,7 @@ def render_static_html(
   </script>
 </body>
 </html>"""
-    return _include_card_history(html)
+    return _include_card_history(_include_update_notes(html, update_notes_base))
 
 
 def _build_cards(

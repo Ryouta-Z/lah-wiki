@@ -11,9 +11,9 @@ import zipfile
 from pathlib import Path
 
 try:
-    from scripts.build_vercel_readonly import _referenced_avatar_filenames, validate_deployment_package
+    from scripts.build_vercel_readonly import _note_avatar_filenames, _referenced_avatar_filenames, _update_note_files, validate_deployment_package
 except ModuleNotFoundError:
-    from build_vercel_readonly import _referenced_avatar_filenames, validate_deployment_package
+    from build_vercel_readonly import _note_avatar_filenames, _referenced_avatar_filenames, _update_note_files, validate_deployment_package
 
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_REPOSITORY = "Ryouta-Z/lah-wiki"
@@ -48,11 +48,26 @@ def build_portable_wiki(
     html, ui_changed = re.subn(r'(?m)^    const localOfficialAssetPrefix = .*;$', '    const localOfficialAssetPrefix = "assets/official-ui";', html)
     if avatars_changed != 1 or ui_changed != 1:
         raise ValueError("无法识别首页图片路径")
+    def set_release_version(match: re.Match) -> str:
+        metadata = json.loads(match[2])
+        metadata["releaseVersion"] = version
+        embedded = json.dumps(metadata, ensure_ascii=False).replace("</", "<\\/").replace("\u2028", "\\u2028").replace("\u2029", "\\u2029")
+        return match[1] + embedded + match[3]
+    html, reminder_count = re.subn(
+        r'(<script type="application/json" id="wiki-update-meta">)(.*?)(</script>)',
+        set_release_version, html, flags=re.S,
+    )
+    if reminder_count != 1:
+        raise ValueError("首页缺少唯一的更新提醒，请先重建 Wiki")
     files: dict[str, bytes] = {"index.html": html.encode("utf-8")}
-    for filename in sorted(_referenced_avatar_filenames(catalog)):
+    note_files = _update_note_files()
+    files.update(note_files)
+    catalog_avatars = _referenced_avatar_filenames(catalog)
+    for filename in sorted(catalog_avatars | _note_avatar_filenames(note_files)):
         if Path(filename).name != filename or "\\" in filename:
             raise ValueError("头像文件名包含路径")
-        files[f"assets/images/icon/{filename}"] = (icon_dir / filename).read_bytes()
+        source_dir = icon_dir if filename in catalog_avatars else ROOT / "data/images/icon"
+        files[f"assets/images/icon/{filename}"] = (source_dir / filename).read_bytes()
     if not ui_dir.is_dir():
         raise ValueError("缺少正式 UI 图片目录")
     for path in sorted(ui_dir.glob("*.png")):
@@ -69,6 +84,9 @@ def build_portable_wiki(
         "Live A Hero 便携 Wiki\r\n\r\n"
         "解压整个压缩包后，双击「打开Wiki.cmd」或 index.html 即可离线查询。\r\n"
         "双击「更新Wiki.cmd」检查更新，只下载新增或变更的文件。更新后刷新浏览器。\r\n"
+        "新版首次打开会提示当前活动及更新摘要；点击「更新笔记」查看同一活动的累计变化。\r\n"
+        "「不再提醒」仅关闭当前发行版的提醒；下一次更新仍会提示。首页可随时查看笔记或提醒。\r\n"
+        "更新笔记保存在「更新笔记」文件夹，文字、目录和图片均可离线查看。\r\n"
         "更新需要联网访问 GitHub；无需安装 Python、Git 或其他开发工具。\r\n"
         "下载或校验失败不会替换现有内容；意外中断时再次运行更新器可恢复。\r\n"
         "请保留整个文件夹，不要单独移动首页。勿在更新过程中移动文件夹或关闭窗口。\r\n"
@@ -96,7 +114,7 @@ def build_portable_wiki(
     (package / ".wiki-channel.json").write_text(json.dumps({"repository": repository, "manifestUrl": f"https://github.com/{repository}/releases/latest/download/wiki-manifest.json"}), encoding="utf-8")
     (release / "wiki-manifest.json").write_bytes(manifest_bytes)
     validate_deployment_package(package, catalog)
-    if len(list(release.iterdir())) + 2 > 1000:
+    if len(list(release.iterdir())) + 3 > 1000:
         raise ValueError("发布文件超出 GitHub 单版本的 1000 个附件限制")
     zip_path = release / "Live-A-Hero-Wiki.zip"
     with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
@@ -109,7 +127,18 @@ def build_portable_wiki(
             archive.write(package / name, "Live-A-Hero-Wiki/" + name)
         archive.writestr("Live-A-Hero-Wiki/.wiki-state.json", json.dumps({"schemaVersion": 1, "version": "not-installed", "files": []}))
         archive.writestr("Live-A-Hero-Wiki/使用说明.txt", "解压整个文件夹，双击「下载Wiki.cmd」，选择 Wiki 后开始下载。\r\n下载完成后可离线打开；签名、收藏卡、立绘等补充素材暂不提供。\r\n".encode("utf-8-sig"))
-    return {"version": version, "files": len(entries), "zip": str(zip_path), "zipBytes": zip_path.stat().st_size, "setupZip": str(setup_path), "setupBytes": setup_path.stat().st_size}
+    updater_path = release / "Live-A-Hero-Wiki-Updater.zip"
+    with zipfile.ZipFile(updater_path, "w", zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
+        archive.writestr("update-wiki.ps1", files["update-wiki.ps1"])
+        archive.writestr("更新器升级说明.txt", (
+            "旧分享包的一次性更新器升级\r\n\r\n"
+            "旧更新器不识别新增的「更新笔记」目录，需先升级一次。\r\n"
+            "关闭正在运行的更新器。将本包的 update-wiki.ps1 复制到原 Wiki 文件夹，替换同名文件。\r\n"
+            "原首页、assets 和 .wiki-state.json 均保留；不要删掉原 Wiki 文件夹。\r\n"
+            "然后双击原来的「更新Wiki.cmd」。发布新版后即可下载累计笔记，支持跳过中间版本。\r\n"
+            "之后的更新继续使用同一入口，无需再次应用本补丁。\r\n"
+        ).encode("utf-8-sig"))
+    return {"version": version, "files": len(entries), "zip": str(zip_path), "zipBytes": zip_path.stat().st_size, "setupZip": str(setup_path), "setupBytes": setup_path.stat().st_size, "updaterZip": str(updater_path), "updaterBytes": updater_path.stat().st_size}
 
 
 def main() -> None:
